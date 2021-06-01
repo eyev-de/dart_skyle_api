@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:grpc/grpc_connection_interface.dart';
 import 'package:grpc/service_api.dart';
 
-import '../../timer_provider.dart';
+import 'timer_provider.dart';
 import '../api.dart';
 
 // ignore: constant_identifier_names

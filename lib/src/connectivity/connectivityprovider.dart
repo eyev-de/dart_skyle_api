@@ -4,7 +4,7 @@
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
 //
 
-import '../../../skyle_api/et.dart';
+import '../../et.dart';
 
 import 'connectivitystub.dart'
     // ignore: uri_does_not_exist

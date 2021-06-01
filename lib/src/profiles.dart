@@ -9,7 +9,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:grpc/grpc_connection_interface.dart';
 import 'package:grpc/service_api.dart';
 
-import '../../skyle_api/api.dart';
+import '../api.dart';
 
 extension ProfileSkillExtension on Profile_Skill {
   int get fixationFilterValue {

@@ -1,7 +1,9 @@
+//  Skyle
+//
+//  Created by Konstantin Wachendorff.
+//  Copyright © 2021 eyeV GmbH. All rights reserved.
+//
+
 library dart_skyle_api;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'api.dart';

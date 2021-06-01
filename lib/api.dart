@@ -14,5 +14,4 @@ export 'src/positioning.dart';
 export 'src/profiles.dart';
 export 'src/reset.dart';
 export 'src/switchoptions.dart';
-export 'src/update.dart';
 export 'src/version.dart';
