@@ -4,6 +4,8 @@
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
 //
 
+library dart_skyle_api;
+
 export 'et.dart';
 export 'src/calibration.dart';
 export 'src/gaze.dart';
