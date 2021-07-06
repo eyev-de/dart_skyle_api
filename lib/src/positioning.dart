@@ -1,4 +1,4 @@
-//  Skyle
+//  Skyle API
 //
 //  Created by Konstantin Wachendorff.
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
@@ -24,7 +24,7 @@ class PositioningData {
 class Positioning extends ChangeNotifier {
   static double width = 1280;
   static double height = 720;
-  ClientChannelBase? channel;
+  SkyleClient? client;
   ResponseStream<PositioningMessage>? _stream;
   final _timerProvider = TimerProvider();
 
@@ -46,10 +46,10 @@ class Positioning extends ChangeNotifier {
       if (_stream != null) {
         return;
       }
-      if (channel == null) {
+      if (client == null) {
         return;
       }
-      _stream = SkyleClient(channel!).positioning(Empty());
+      _stream = client!.positioning(Empty());
       _timer = createTimeoutTimer();
       await for (final PositioningMessage event in _stream!) {
         final PositioningMessage p = PositioningMessage()..mergeFromJson(event.writeToJson());

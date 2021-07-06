@@ -1,4 +1,4 @@
-//  Skyle
+//  Skyle API
 //
 //  Created by Konstantin Wachendorff.
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
@@ -9,13 +9,13 @@ import 'package:grpc/grpc_connection_interface.dart';
 import '../api.dart';
 
 class Reset {
-  ClientChannelBase? channel;
+  SkyleClient? client;
 
   Future<bool> restartServices() async {
     try {
-      if (channel == null) throw Exception('Not connected');
+      if (client == null) throw Exception('Not connected');
       final ResetMessage message = ResetMessage()..services = true;
-      final StatusMessage status = await SkyleClient(channel!).reset(message);
+      final StatusMessage status = await client!.reset(message);
       return status.success;
     } catch (error) {
       // Ignore
@@ -25,9 +25,9 @@ class Reset {
 
   Future<bool> restartDevice() async {
     try {
-      if (channel == null) throw Exception('Not connected');
+      if (client == null) throw Exception('Not connected');
       final ResetMessage message = ResetMessage()..device = true;
-      final StatusMessage status = await SkyleClient(channel!).reset(message);
+      final StatusMessage status = await client!.reset(message);
       return status.success;
     } catch (error) {
       // Ignore
@@ -37,9 +37,9 @@ class Reset {
 
   Future<bool> resetData() async {
     try {
-      if (channel == null) throw Exception('Not connected');
+      if (client == null) throw Exception('Not connected');
       final ResetMessage message = ResetMessage()..data = true;
-      final StatusMessage status = await SkyleClient(channel!).reset(message);
+      final StatusMessage status = await client!.reset(message);
       return status.success;
     } catch (error) {
       // Ignore

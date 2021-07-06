@@ -1,4 +1,4 @@
-//  Skyle
+//  Skyle API
 //
 //  Created by Konstantin Wachendorff.
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
@@ -12,7 +12,6 @@ import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_connection_interface.dart';
 
 import 'src/calibration.dart';
-import 'src/client/clientchannelwrapper.dart';
 import 'src/connectivity/connectivityprovider.dart';
 import 'src/gaze.dart';
 import 'src/generated/Skyle.proto/Skyle.pbgrpc.dart';
@@ -22,6 +21,7 @@ import 'src/profiles.dart';
 import 'src/reset.dart';
 import 'src/switchoptions.dart';
 import 'src/version.dart';
+import 'skyle_service.dart';
 
 String baseURL = !kIsWeb
     ? Platform.isAndroid
@@ -33,7 +33,6 @@ String baseIP = !kIsWeb
         ? '10.0.0.1'
         : '192.168.137.1'
     : '127.0.0.1';
-int port = 50052;
 
 enum Connection { connected, disconnected }
 
@@ -76,7 +75,7 @@ class ET extends ChangeNotifier {
   Future<void> _onConnectionChanged(state) async {
     if (state == Connection.connected) {
       try {
-        _connectClients();
+        _connectClients(url: baseURL, port: 50052);
         for (var i = 0; i < 20; i++) {
           try {
             await options.initAsync();
@@ -101,15 +100,26 @@ class ET extends ChangeNotifier {
     }
   }
 
-  void _connectClients() {
-    _channel = ClientChannelWrapper().getGRPCClient(
-      baseURL,
-      // "skyle.local",
-      port,
-      const ChannelOptions(credentials: ChannelCredentials.insecure()),
+  Future<void> testConnectClients({required String url, required int port}) async {
+    _connectClients(url: url, port: port);
+    await options.initAsync();
+    _state = state;
+    notifyListeners();
+  }
+
+  void _connectClients({required String url, required int port}) {
+    _channel = ClientChannel(
+      url,
+      port: port,
+      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
     );
+    // _channel = ClientChannelWrapper().getGRPCClient(
+    //   url,
+    //   port,
+    //   const ChannelOptions(credentials: ChannelCredentials.insecure()),
+    // );
     _client = SkyleClient(_channel!);
-    _setChannel();
+    _setClient();
   }
 
   Future<void> _disconnectClients() async {
@@ -120,17 +130,38 @@ class ET extends ChangeNotifier {
     await _channel?.shutdown();
     _channel = null;
     _client = null;
-    _setChannel();
+    _setClient();
   }
 
-  void _setChannel() {
-    calibration.channel = _channel;
-    gaze.channel = _channel;
-    positioning.channel = _channel;
-    options.channel = _channel;
-    version.channel = _channel;
-    profiles.channel = _channel;
-    switchOptions.channel = _channel;
-    reset.channel = _channel;
+  void _setClient() {
+    calibration.client = client;
+    gaze.client = client;
+    positioning.client = client;
+    options.client = client;
+    version.client = client;
+    profiles.client = client;
+    switchOptions.client = client;
+    reset.client = client;
+  }
+}
+
+class SkyleTestClient {
+  final et = ET();
+
+  Future<void> main(List<String> args) async {
+    et.testConnectClients(url: 'localhost', port: 8001);
+  }
+}
+
+class SkyleTestServer {
+  final service = SkyleService();
+  late Server server;
+
+  SkyleTestServer() {
+    server = Server([service]);
+  }
+
+  Future<void> main(List<String> args) async {
+    await server.serve(port: 8001, shared: true);
   }
 }

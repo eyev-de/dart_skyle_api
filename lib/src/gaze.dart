@@ -1,4 +1,4 @@
-//  Skyle
+//  Skyle API
 //
 //  Created by Konstantin Wachendorff.
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
@@ -18,7 +18,7 @@ class GazeData {
 }
 
 class Gaze extends ChangeNotifier {
-  ClientChannelBase? channel;
+  SkyleClient? client;
   ResponseStream<Point>? _stream;
 
   final Point _point = Point();
@@ -36,10 +36,10 @@ class Gaze extends ChangeNotifier {
       if (_stream != null) {
         return;
       }
-      if (channel == null) {
+      if (client == null) {
         return;
       }
-      _stream = SkyleClient(channel!).gaze(Empty());
+      _stream = client!.gaze(Empty());
       _timer = createTimeoutTimer();
       await for (final Point event in _stream!) {
         _point.mergeFromJson(event.writeToJson());

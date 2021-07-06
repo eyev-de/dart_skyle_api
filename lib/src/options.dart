@@ -1,4 +1,4 @@
-//  Skyle
+//  Skyle API
 //
 //  Created by Konstantin Wachendorff.
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
@@ -10,7 +10,7 @@ import 'package:grpc/grpc_connection_interface.dart';
 import '../api.dart';
 
 class OptionsStateNotifier extends ChangeNotifier {
-  ClientChannelBase? channel;
+  SkyleClient? client;
   Options _state = Options.create();
   GRPCFailed _error = GRPCFailed(error: '');
 
@@ -19,7 +19,7 @@ class OptionsStateNotifier extends ChangeNotifier {
   GRPCFailed get error => _error;
 
   set state(Options value) {
-    if (channel == null) return;
+    if (client == null) return;
     if (_state != value) {
       if (value.hasFilter()) {
         if (value.filter.gazeFilter > 33) value.filter.gazeFilter = 33;
@@ -29,7 +29,7 @@ class OptionsStateNotifier extends ChangeNotifier {
       }
       _state.mergeFromJson(value.writeToJson());
       final OptionMessage req = OptionMessage()..options = _state;
-      SkyleClient(channel!).configure(req).then((options) {
+      client!.configure(req).then((options) {
         _state = options;
       }).catchError((error) {
         _error = GRPCFailed(error: error.toString());
@@ -39,10 +39,10 @@ class OptionsStateNotifier extends ChangeNotifier {
 
   Future<Options> setStateAsync(Options value, {bool passError = false}) async {
     try {
-      if (channel == null) throw Exception('Not connected');
+      if (client == null) throw Exception('Not connected');
       _state.mergeFromJson(value.writeToJson());
       final req = OptionMessage()..options = _state;
-      final options = await SkyleClient(channel!).configure(req);
+      final options = await client!.configure(req);
       _state = options;
       notifyListeners();
     } catch (error) {

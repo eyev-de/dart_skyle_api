@@ -1,4 +1,4 @@
-//  Skyle
+//  Skyle API
 //
 //  Created by Konstantin Wachendorff.
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
@@ -6,7 +6,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:grpc/grpc_connection_interface.dart';
 import 'package:grpc/service_api.dart';
 
 import '../api.dart';
@@ -39,12 +38,14 @@ extension ProfileSkillExtension on Profile_Skill {
 
 class ProfileWrapper extends ChangeNotifier {
   final Profile _data;
-  ClientChannelBase? channel;
+  SkyleClient? client;
   FilterOptions? filter;
 
-  ProfileWrapper({required data}) : _data = data;
+  ProfileWrapper({required Profile data}) : _data = data;
 
   Profile get data => _data;
+
+  int get id => _data.iD;
 
   set name(String value) {
     _data.name = value;
@@ -62,18 +63,8 @@ class ProfileWrapper extends ChangeNotifier {
 
   Future<bool> select() async {
     try {
-      if (channel == null) throw Exception('Not connected');
-      final StatusMessage res = await SkyleClient(channel!).setProfile(data);
-      return res.success;
-    } catch (error) {
-      return false;
-    }
-  }
-
-  Future<bool> delete() async {
-    try {
-      if (channel == null) throw Exception('Not connected');
-      final StatusMessage res = await SkyleClient(channel!).deleteProfile(data);
+      if (client == null) throw Exception('Not connected');
+      final StatusMessage res = await client!.setProfile(data);
       return res.success;
     } catch (error) {
       return false;
@@ -82,10 +73,10 @@ class ProfileWrapper extends ChangeNotifier {
 
   Future<bool> setGazeFilter(int value) async {
     try {
-      if (channel == null) throw Exception('Not connected');
+      if (client == null) throw Exception('Not connected');
       // ignore: parameter_assignments
       value = _validate(value);
-      final OptionsStateNotifier options = OptionsStateNotifier()..channel = channel;
+      final OptionsStateNotifier options = OptionsStateNotifier()..client = client;
       final Options res = await options.filter(gazeFilter: value);
       if (res.hasFilter()) {
         filter = res.filter;
@@ -100,10 +91,10 @@ class ProfileWrapper extends ChangeNotifier {
 
   Future<bool> setFixationFilter(int value) async {
     try {
-      if (channel == null) throw Exception('Not connected');
+      if (client == null) throw Exception('Not connected');
       // ignore: parameter_assignments
       value = _validate(value);
-      final OptionsStateNotifier options = OptionsStateNotifier()..channel = channel;
+      final OptionsStateNotifier options = OptionsStateNotifier()..client = client;
       final Options res = await options.filter(fixationFilter: value);
       if (res.hasFilter()) {
         filter = res.filter;
@@ -127,42 +118,44 @@ class ProfileWrapper extends ChangeNotifier {
 
 class Profiles extends ChangeNotifier {
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+  Widget Function(BuildContext context, ProfileWrapper profile, Animation<double> animation)? slideIt;
 
-  ClientChannelBase? _channel;
+  SkyleClient? _client;
   final List<ProfileWrapper> _profiles = [];
-  ProfileWrapper _currentProfile = ProfileWrapper(data: Profile.create()..iD = -1);
+  ProfileWrapper _current = ProfileWrapper(data: Profile.create()..iD = -1);
   GRPCFailed _error = GRPCFailed(error: '');
 
-  ProfileWrapper get currentProfile => _currentProfile;
+  ProfileWrapper get current => _current;
   List<ProfileWrapper> get profiles => _profiles;
   GRPCFailed get error => _error;
   // ignore: avoid_setters_without_getters
-  set channel(ClientChannelBase? channel) {
-    _channel = channel;
+  set client(SkyleClient? client) {
+    _client = client;
     for (final ProfileWrapper p in _profiles) {
-      p.channel = channel;
+      p.client = client;
     }
   }
 
   ResponseStream<Profile>? stream;
 
-  Future<List<ProfileWrapper>> getProfiles() async {
+  Future<List<ProfileWrapper>> get() async {
     try {
-      if (_channel == null) throw Exception('Not connected');
+      if (_client == null) throw Exception('Not connected');
       if (stream != null) throw Exception('Still streaming');
-      stream = SkyleClient(_channel!).getProfiles(Empty());
+      stream = _client!.getProfiles(Empty());
+
       final List<ProfileWrapper> changed = [];
       await for (final Profile event in stream!) {
-        final Iterable<ProfileWrapper> contains = _profiles.where((element) => element.data.iD == event.iD);
+        final contains = _profiles.where((e) => e.id == event.iD);
         if (contains.isEmpty) {
-          final profile = ProfileWrapper(data: event)..channel = _channel;
+          final profile = ProfileWrapper(data: event)..client = _client;
           _profiles.add(profile);
           changed.add(profile);
         }
       }
       if (changed.isNotEmpty) {
         SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
-          for (final element in changed) {
+          for (final _ in changed) {
             listKey.currentState?.insertItem(profiles.length - 1);
           }
           notifyListeners();
@@ -170,42 +163,66 @@ class Profiles extends ChangeNotifier {
       }
     } catch (error) {
       _error = GRPCFailed(error: error.toString());
-      await Future.delayed(Duration.zero);
       notifyListeners();
     }
     stream = null;
     return _profiles;
   }
 
-  Future<bool> deleteProfile(ProfileWrapper profile) async {
+  Future<ProfileWrapper> delete(ProfileWrapper profile) async {
     try {
-      if (_channel == null) throw Exception('Not connected');
+      if (_client == null) throw Exception('Not connected');
       if (stream != null) throw Exception('Still streaming');
-      final deleted = await profile.delete();
-      if (deleted) {
-        notifyListeners();
-        return true;
+      if (profiles.isEmpty) await get();
+      final StatusMessage res = await _client!.deleteProfile(profile.data);
+      if (res.success) {
+        final index = profiles.indexOf(profile);
+        final ProfileWrapper removed = profiles.removeAt(index);
+        if (slideIt != null) {
+          listKey.currentState?.removeItem(index, (c, a) => slideIt!(c, removed, a));
+        }
+        return await getCurrent();
       }
-      return false;
+      throw Exception('Could not delete profile');
     } catch (error) {
-      _error = GRPCFailed(error: error.toString());
-      notifyListeners();
-      return false;
+      rethrow;
     }
   }
 
-  Future<ProfileWrapper> getCurrentProfile() async {
+  Future<ProfileWrapper> add(ProfileWrapper profile) async {
     try {
-      if (_channel == null) throw Exception('Not connected');
-      final Profile temp = await SkyleClient(_channel!).currentProfile(Empty());
-      if (temp.iD != _currentProfile.data.iD) {
-        _currentProfile = ProfileWrapper(data: temp);
+      if (_client == null) throw Exception('Not connected');
+      if (stream != null) throw Exception('Still streaming');
+      if (profiles.isEmpty) await get();
+      final added = await profile.select();
+
+      if (added) {
+        final currentList = [..._profiles];
+        final newList = await get();
+        final difference = newList.where((element) => !currentList.contains(element));
+        if (difference.isNotEmpty && difference.length == 1) {
+          return await getCurrent();
+        }
+      }
+      throw Exception('Could not add profile');
+    } catch (error) {
+      rethrow;
+    }
+  }
+
+  Future<ProfileWrapper> getCurrent() async {
+    try {
+      if (_client == null) throw Exception('Not connected');
+      if (profiles.isEmpty) await get();
+      final Profile temp = await _client!.currentProfile(Empty());
+      if (temp.iD != _current.id) {
+        _current = _profiles.firstWhere((element) => element.id == temp.iD);
         notifyListeners();
       }
     } catch (error) {
       _error = GRPCFailed(error: error.toString());
       notifyListeners();
     }
-    return _currentProfile;
+    return _current;
   }
 }

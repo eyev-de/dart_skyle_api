@@ -1,4 +1,4 @@
-//  Skyle
+//  Skyle API
 //
 //  Created by Konstantin Wachendorff.
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
@@ -15,7 +15,7 @@ import 'generated/Skyle.proto/Skyle.pbgrpc.dart';
 class Calibration {
   StreamController<calibControlMessages> control = StreamController<calibControlMessages>();
   ResponseStream<CalibMessages>? stream;
-  ClientChannelBase? channel;
+  SkyleClient? client;
   Calibration();
 
   static double _calcX(int id, double width) {
@@ -64,8 +64,9 @@ class Calibration {
     required void Function(GRPCFailed event) onError,
   }) async {
     try {
+      if (client == null) throw Exception('Not connected');
       control = StreamController<calibControlMessages>();
-      stream = SkyleClient(channel!).calibrate(control.stream);
+      stream = client!.calibrate(control.stream);
       final calibControlMessages message = (calibControlMessages()
         ..calibControl = (CalibControl()
           ..stepByStep = stepped
@@ -77,9 +78,7 @@ class Calibration {
             ..height = height)));
       control.add(message);
       await for (final CalibMessages event in stream!) {
-        if (event is CalibMessages) {
-          onData(event);
-        }
+        onData(event);
       }
     } catch (error) {
       if (error is GrpcError && error.code == 1) return;

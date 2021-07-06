@@ -1,4 +1,4 @@
-//  Skyle
+//  Skyle API
 //
 //  Created by Konstantin Wachendorff.
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
@@ -12,7 +12,7 @@ import 'package:grpc/grpc_connection_interface.dart';
 import '../api.dart';
 
 class SwitchOptions extends ChangeNotifier {
-  ClientChannelBase? channel;
+  SkyleClient? client;
   Button _state = Button().createEmptyInstance();
   GRPCFailed _error = GRPCFailed(error: '');
 
@@ -43,8 +43,8 @@ class SwitchOptions extends ChangeNotifier {
 
   Future<Button> _getStateAsync() async {
     try {
-      if (channel == null) throw Exception('Not connected');
-      final Button ret = await SkyleClient(channel!).getButton(Empty());
+      if (client == null) throw Exception('Not connected');
+      final Button ret = await client!.getButton(Empty());
       if (_state != ret) {
         _state = ret;
         notifyListeners();
@@ -58,8 +58,8 @@ class SwitchOptions extends ChangeNotifier {
 
   Future<bool> setButton(ButtonActions request) async {
     try {
-      if (channel == null) throw Exception('Not connected');
-      final ButtonActions ret = await SkyleClient(channel!).setButton(request);
+      if (client == null) throw Exception('Not connected');
+      final ButtonActions ret = await client!.setButton(request);
       if (_state.buttonActions != ret) {
         _state.buttonActions = ret;
         notifyListeners();
