@@ -121,6 +121,24 @@ class Profiles extends ChangeNotifier {
   Widget Function(BuildContext context, ProfileWrapper profile, Animation<double> animation)? slideIt;
 
   SkyleClient? _client;
+  set client(SkyleClient? value) {
+    if (value == null) {
+      for (final ProfileWrapper p in _profiles) {
+        final index = profiles.indexOf(p);
+        final ProfileWrapper removed = profiles.removeAt(index);
+        if (slideIt != null) {
+          listKey.currentState?.removeItem(index, (c, a) => slideIt!(c, removed, a));
+        }
+      }
+    }
+    _client = value;
+    for (final ProfileWrapper p in _profiles) {
+      p.client = value;
+    }
+  }
+
+  SkyleClient? get client => _client;
+
   final List<ProfileWrapper> _profiles = [];
   ProfileWrapper _current = ProfileWrapper(data: Profile.create()..iD = -1);
   GRPCFailed _error = GRPCFailed(error: '');
@@ -128,13 +146,6 @@ class Profiles extends ChangeNotifier {
   ProfileWrapper get current => _current;
   List<ProfileWrapper> get profiles => _profiles;
   GRPCFailed get error => _error;
-  // ignore: avoid_setters_without_getters
-  set client(SkyleClient? client) {
-    _client = client;
-    for (final ProfileWrapper p in _profiles) {
-      p.client = client;
-    }
-  }
 
   ResponseStream<Profile>? stream;
 

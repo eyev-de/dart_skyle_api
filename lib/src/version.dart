@@ -5,12 +5,21 @@
 //
 
 import 'package:flutter/material.dart';
-import 'package:grpc/grpc_connection_interface.dart';
 
 import '../api.dart';
 
 class Version extends ChangeNotifier {
-  SkyleClient? client;
+  SkyleClient? _client;
+  set client(SkyleClient? value) {
+    if (value == null) {
+      _state = DeviceVersions.create();
+      notifyListeners();
+    }
+    _client = value;
+  }
+
+  SkyleClient? get client => _client;
+
   DeviceVersions _state = DeviceVersions.create();
   GRPCFailed _error = GRPCFailed(error: '');
 

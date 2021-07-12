@@ -24,7 +24,7 @@ class SkyleService extends SkyleServiceBase {
     await for (var msg in request) {
       if (msg.calibControl.calibrate) {
         for (var pt in List.generate(msg.calibControl.numberOfPoints, (index) => index)) {
-          await Future.delayed(Duration(milliseconds: 800));
+          await Future.delayed(Duration(milliseconds: 20));
           if (abort) return;
           yield CalibMessages()..calibPoint = CalibPoint(count: pt, currentPoint: Point(x: 0, y: 0));
         }
@@ -53,7 +53,7 @@ class SkyleService extends SkyleServiceBase {
   @override
   Future<StatusMessage> deleteProfile(ServiceCall call, Profile request) async {
     if (profiles.where((element) => element.iD == request.iD).isNotEmpty) {
-      if (request.iD == 0) return StatusMessage()..success = true;
+      if (request.iD == 0) return StatusMessage()..success = false;
       if (currentP.iD == request.iD) {
         currentP = defaultProfile;
       }

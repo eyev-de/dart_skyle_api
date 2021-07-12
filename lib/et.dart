@@ -162,6 +162,6 @@ class SkyleTestServer {
   }
 
   Future<void> main(List<String> args) async {
-    await server.serve(port: 8001, shared: true);
+    await server.serve(address: 'localhost', port: 8001, shared: true);
   }
 }

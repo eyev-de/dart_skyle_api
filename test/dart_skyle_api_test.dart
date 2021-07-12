@@ -30,11 +30,11 @@ void main() {
     server.server.shutdown();
   });
 
-  group('Idle', () {
-    test('Idle', () async {
-      await Future.delayed(Duration(seconds: 100));
-    });
-  });
+  // group('Idle', () {
+  //   test('Idle', () async {
+  //     await Future.delayed(Duration(seconds: 100));
+  //   });
+  // });
 
   group('Calibration', () {
     test('Test 1 point calibration', () async {
@@ -113,6 +113,7 @@ void main() {
       expect(newProfile.id, profile.id);
 
       List<ProfileWrapper> profiles = await client.et.profiles.get();
+      expect(profiles.length, equals(2));
 
       for (final p in profiles) {
         if (p.id == profile.id) {
@@ -128,8 +129,7 @@ void main() {
       expect(currentProfile.skill, equals(profile.skill));
 
       profile.client = client.et.client;
-      final deleted = await client.et.profiles.delete(currentProfile);
-      expect(deleted.id, profile.id);
+      final _ = await client.et.profiles.delete(currentProfile);
 
       profiles = await client.et.profiles.get();
       expect(profiles.length, equals(1));
