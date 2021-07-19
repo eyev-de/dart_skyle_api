@@ -123,8 +123,7 @@ class Profiles extends ChangeNotifier {
   SkyleClient? _client;
   set client(SkyleClient? value) {
     if (value == null) {
-      for (final ProfileWrapper p in _profiles) {
-        final index = profiles.indexOf(p);
+      for (int index = 0; index < _profiles.length; index++) {
         final ProfileWrapper removed = profiles.removeAt(index);
         if (slideIt != null) {
           listKey.currentState?.removeItem(index, (c, a) => slideIt!(c, removed, a));
