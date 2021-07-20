@@ -12,6 +12,7 @@ import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_connection_interface.dart';
 
 import 'src/calibration.dart';
+import 'src/client/clientchannelwrapper.dart';
 import 'src/connectivity/connectivityprovider.dart';
 import 'src/gaze.dart';
 import 'src/generated/Skyle.proto/Skyle.pbgrpc.dart';
@@ -108,16 +109,11 @@ class ET extends ChangeNotifier {
   }
 
   void _connectClients({required String url, required int port}) {
-    _channel = ClientChannel(
+    _channel = ClientChannelWrapper().getGRPCClient(
       url,
-      port: port,
-      options: const ChannelOptions(credentials: ChannelCredentials.insecure()),
+      port,
+      const ChannelOptions(credentials: ChannelCredentials.insecure()),
     );
-    // _channel = ClientChannelWrapper().getGRPCClient(
-    //   url,
-    //   port,
-    //   const ChannelOptions(credentials: ChannelCredentials.insecure()),
-    // );
     _client = SkyleClient(_channel!);
     _setClient();
   }
@@ -127,7 +123,7 @@ class ET extends ChangeNotifier {
     await gaze.stop(force: true);
     calibration.stop();
     switchOptions.stop();
-    await _channel?.shutdown();
+    await _channel?.terminate();
     _channel = null;
     _client = null;
     _setClient();
