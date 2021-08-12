@@ -183,7 +183,13 @@ Future<void> testCalib(Calibration calibration, int pts) async {
     onData: (data) {
       if (data.hasCalibPoint()) {
         count++;
-      } else if (data.hasCalibQuality()) {}
+      } else if (data.hasCalibQuality()) {
+        print('Calibration finished');
+        print('Overall Quality ${data.calibQuality.quality}');
+        print('Individual Quality:');
+        data.calibQuality.qualitys.asMap().forEach((index, value) => print('Pt #$index: $value'));
+        expect(count, equals(pts));
+      }
     },
     onError: (error) {},
   );
