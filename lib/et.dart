@@ -104,7 +104,7 @@ class ET extends ChangeNotifier {
   Future<void> testConnectClients({required String url, required int port}) async {
     _connectClients(url: url, port: port);
     await options.initAsync();
-    _state = state;
+    _state = Connection.connected;
     notifyListeners();
   }
 
