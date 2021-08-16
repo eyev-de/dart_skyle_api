@@ -38,16 +38,16 @@ void main() {
 
   group('Calibration', () {
     test('Test 1 point calibration', () async {
-      await testCalib(client.et.calibration, 1);
+      await testCalib(client.et.calibration, CalibrationPoints.one);
     });
     test('Test 2 point calibration', () async {
-      await testCalib(client.et.calibration, 2);
+      await testCalib(client.et.calibration, CalibrationPoints.two);
     });
     test('Test 5 point calibration', () async {
-      await testCalib(client.et.calibration, 5);
+      await testCalib(client.et.calibration, CalibrationPoints.five);
     });
     test('Test 9 point calibration', () async {
-      await testCalib(client.et.calibration, 9);
+      await testCalib(client.et.calibration, CalibrationPoints.nine);
     });
   });
 
@@ -176,7 +176,7 @@ void main() {
   });
 }
 
-Future<void> testCalib(Calibration calibration, int pts) async {
+Future<void> testCalib(Calibration calibration, CalibrationPoints pts) async {
   int count = 0;
   await calibration.start(
     points: pts,

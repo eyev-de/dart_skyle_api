@@ -23,12 +23,30 @@ class SkyleService extends SkyleServiceBase {
     bool abort = false;
     await for (var msg in request) {
       if (msg.calibControl.calibrate) {
-        for (var pt in List.generate(msg.calibControl.numberOfPoints, (index) => index)) {
-          await Future.delayed(Duration(milliseconds: 20));
+        final pts = CalibrationPointsExtension.fromInt(msg.calibControl.numberOfPoints);
+        for (var pt in List.generate(pts.value, (index) => index)) {
+          await Future.delayed(Duration(milliseconds: 300));
           if (abort) return;
-          yield CalibMessages()..calibPoint = CalibPoint(count: pt, currentPoint: Point(x: 0, y: 0));
+          final width = msg.calibControl.res.width.toDouble();
+          final height = msg.calibControl.res.height.toDouble();
+          yield CalibMessages()
+            ..calibPoint = CalibPoint(
+              count: pt,
+              currentPoint: Point(
+                x: Calibration.calcX(
+                  pts.array[pt],
+                  width,
+                ),
+                y: Calibration.calcY(
+                  pts.array[pt],
+                  width,
+                  height,
+                ),
+              ),
+            );
         }
         if (abort) return;
+        await Future.delayed(Duration(milliseconds: 300));
         final qualityMsg = CalibQuality(quality: 3, qualitys: List.generate(msg.calibControl.numberOfPoints, (index) => 3));
         yield CalibMessages()..calibQuality = qualityMsg;
         return;
@@ -53,7 +71,7 @@ class SkyleService extends SkyleServiceBase {
   @override
   Future<StatusMessage> deleteProfile(ServiceCall call, Profile request) async {
     if (profiles.where((element) => element.iD == request.iD).isNotEmpty) {
-      if (request.iD == 0) return StatusMessage()..success = false;
+      if (request.iD == 1) return StatusMessage()..success = false;
       if (currentP.iD == request.iD) {
         currentP = defaultProfile;
       }
@@ -108,7 +126,7 @@ class SkyleService extends SkyleServiceBase {
   @override
   Future<StatusMessage> setProfile(ServiceCall call, Profile request) async {
     if (profiles.where((element) => element.iD == request.iD).isNotEmpty) {
-      if (request.iD == 0) return StatusMessage()..success = true;
+      if (request.iD == 1) return StatusMessage()..success = true;
       int i = profiles.indexOf(request);
       profiles[i] = request;
       currentP = request;
@@ -118,6 +136,10 @@ class SkyleService extends SkyleServiceBase {
     request.iD = max.iD + 1;
     profiles.add(request);
     currentP = request;
+    // print('Current Profile ${currentP.iD}: ${currentP.name} -> ${currentP.skill}');
+    // for (final profile in profiles) {
+    //   print('${profile.iD}: ${profile.name} -> ${profile.skill}');
+    // }
     return StatusMessage()..success = true;
   }
 
@@ -142,7 +164,7 @@ final defaultOptions = Options(
 );
 
 final defaultProfile = Profile()
-  ..iD = 0
+  ..iD = 1
   ..name = 'Default'
   ..skill = Profile_Skill.Medium;
 
