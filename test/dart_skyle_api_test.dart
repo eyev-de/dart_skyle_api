@@ -107,7 +107,7 @@ void main() {
         print(client.et.profiles.error.error);
       });
 
-      final profile = ProfileWrapper(data: Profile(iD: 1, name: 'Test', skill: Profile_Skill.Low));
+      final profile = ProfileWrapper(data: Profile(iD: 2, name: 'Test', skill: Profile_Skill.Low));
       profile.client = client.et.client;
       final newProfile = await client.et.profiles.add(profile);
       expect(newProfile.id, profile.id);
@@ -193,5 +193,5 @@ Future<void> testCalib(Calibration calibration, CalibrationPoints pts) async {
     },
     onError: (error) {},
   );
-  expect(count, equals(pts));
+  expect(count, equals(pts.value));
 }
