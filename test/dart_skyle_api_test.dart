@@ -134,44 +134,43 @@ void main() {
       profiles = await client.et.profiles.get();
       expect(profiles.length, equals(1));
     });
-
-    group('Gaze', () {
-      test('Receive Gaze', () async {
-        for (var i = 0; i < 200; i++)
-          server.service.gazes.add(Point(
-            x: Random.secure().nextInt(1920).toDouble(),
-            y: Random.secure().nextInt(1080).toDouble(),
-          ));
-        var index = 0;
-        client.et.gaze.addListener(() {
-          // print('${client.et.gaze.point} == ${server.service.gazes[index]}');
-          expect(client.et.gaze.point, server.service.gazes[index++]);
-        });
-        await client.et.gaze.start();
+  });
+  group('Gaze', () {
+    test('Receive Gaze', () async {
+      for (var i = 0; i < 200; i++)
+        server.service.gazes.add(Point(
+          x: Random.secure().nextInt(1920).toDouble(),
+          y: Random.secure().nextInt(1080).toDouble(),
+        ));
+      var index = 0;
+      client.et.gaze.addListener(() {
+        // print('${client.et.gaze.point} == ${server.service.gazes[index]}');
+        expect(client.et.gaze.point, server.service.gazes[index++]);
       });
+      await client.et.gaze.start();
     });
-    group('Positioning', () {
-      test('Receive Positionings', () async {
-        for (var i = 0; i < 200; i++)
-          server.service.positionings.add(
-            PositioningMessage(
-              leftEye: Point(
-                x: Random.secure().nextInt(1920).toDouble(),
-                y: Random.secure().nextInt(1080).toDouble(),
-              ),
-              rightEye: Point(
-                x: Random.secure().nextInt(1920).toDouble(),
-                y: Random.secure().nextInt(1080).toDouble(),
-              ),
+  });
+  group('Positioning', () {
+    test('Receive Positionings', () async {
+      for (var i = 0; i < 200; i++)
+        server.service.positionings.add(
+          PositioningMessage(
+            leftEye: Point(
+              x: Random.secure().nextInt(1920).toDouble(),
+              y: Random.secure().nextInt(1080).toDouble(),
             ),
-          );
-        var index = 0;
-        client.et.gaze.addListener(() {
-          expect(client.et.positioning.data.leftEye, server.service.positionings[index].leftEye);
-          expect(client.et.positioning.data.rightEye, server.service.positionings[index++].rightEye);
-        });
-        await client.et.gaze.start();
+            rightEye: Point(
+              x: Random.secure().nextInt(1920).toDouble(),
+              y: Random.secure().nextInt(1080).toDouble(),
+            ),
+          ),
+        );
+      var index = 0;
+      client.et.gaze.addListener(() {
+        expect(client.et.positioning.data.leftEye, server.service.positionings[index].leftEye);
+        expect(client.et.positioning.data.rightEye, server.service.positionings[index++].rightEye);
       });
+      await client.et.gaze.start();
     });
   });
 }
