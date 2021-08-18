@@ -4,10 +4,15 @@
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
 //
 
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:fixnum/fixnum.dart';
+import 'package:flutter/services.dart';
 
 import 'package:grpc/grpc.dart';
 import 'package:skyle_api/api.dart';
+import 'package:skyle_api/src/test/positionings.dart';
 
 class SkyleService extends SkyleServiceBase {
   Options options = defaultOptions;
@@ -83,7 +88,9 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<Point> gaze(ServiceCall call, Empty request) async* {
-    for (var gaze in gazes) yield gaze;
+    for (var gaze in gazes) {
+      yield gaze;
+    }
   }
 
   @override
@@ -103,7 +110,23 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<PositioningMessage> positioning(ServiceCall call, Empty request) async* {
-    for (var positioning in positionings) yield positioning;
+    if (positionings.isEmpty) {
+      final positioningArray = jsonDecode(positioningsJSONString);
+      for (final position in positioningArray) {
+        final positioning = PositioningMessage(
+          leftEye: Point(x: position['left']['x'], y: position['left']['y']),
+          rightEye: Point(x: position['right']['x'], y: position['right']['y']),
+        );
+        positionings.add(positioning);
+        yield positioning;
+        Future.delayed(const Duration(milliseconds: 20));
+      }
+    } else {
+      for (var positioning in positionings) {
+        yield positioning;
+        Future.delayed(const Duration(milliseconds: 20));
+      }
+    }
   }
 
   @override

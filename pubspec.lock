@@ -94,7 +94,7 @@ packages:
       name: grpc
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.2"
   http:
     dependency: transitive
     description:
@@ -131,7 +131,7 @@ packages:
     source: hosted
     version: "1.3.0"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       url: "https://pub.dartlang.org"
@@ -143,7 +143,7 @@ packages:
       name: pedantic
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.11.0"
+    version: "1.11.1"
   protobuf:
     dependency: "direct main"
     description:

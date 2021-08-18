@@ -4,11 +4,13 @@
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
 //
 
+import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:skyle_api/skyle_service.dart';
+import 'package:skyle_api/src/test/skyle_service.dart';
 import 'package:skyle_api/api.dart';
 
 void main() {
@@ -152,25 +154,14 @@ void main() {
   });
   group('Positioning', () {
     test('Receive Positionings', () async {
-      for (var i = 0; i < 200; i++)
-        server.service.positionings.add(
-          PositioningMessage(
-            leftEye: Point(
-              x: Random.secure().nextInt(1920).toDouble(),
-              y: Random.secure().nextInt(1080).toDouble(),
-            ),
-            rightEye: Point(
-              x: Random.secure().nextInt(1920).toDouble(),
-              y: Random.secure().nextInt(1080).toDouble(),
-            ),
-          ),
-        );
       var index = 0;
-      client.et.gaze.addListener(() {
+      client.et.positioning.addListener(() {
+        // print('${client.et.positioning.data.leftEye} == ${server.service.positionings[index].leftEye}');
+        // print('${client.et.positioning.data.rightEye} == ${server.service.positionings[index].rightEye}');
         expect(client.et.positioning.data.leftEye, server.service.positionings[index].leftEye);
         expect(client.et.positioning.data.rightEye, server.service.positionings[index++].rightEye);
       });
-      await client.et.gaze.start();
+      await client.et.positioning.start();
     });
   });
 }
@@ -193,4 +184,20 @@ Future<void> testCalib(Calibration calibration, CalibrationPoints pts) async {
     onError: (error) {},
   );
   expect(count, equals(pts.value));
+}
+
+Future<R> expectNotifyListenerCalls<T extends ChangeNotifier, R>(
+  T notifier,
+  Future<R> Function() testFunction,
+  Function(T) testValue,
+  List<dynamic> matcherList,
+) async {
+  int i = 0;
+  notifier.addListener(() {
+    expect(testValue(notifier), matcherList[i]);
+    i++;
+  });
+  final R result = await testFunction();
+  expect(i, matcherList.length);
+  return result;
 }

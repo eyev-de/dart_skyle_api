@@ -10,6 +10,7 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_connection_interface.dart';
+import 'package:skyle_api/src/test/mjpeg_test_server.dart';
 
 import 'src/calibration.dart';
 import 'src/client/clientchannelwrapper.dart';
@@ -22,7 +23,7 @@ import 'src/profiles.dart';
 import 'src/reset.dart';
 import 'src/switchoptions.dart';
 import 'src/version.dart';
-import 'skyle_service.dart';
+import 'src/test/skyle_service.dart';
 
 String baseURL = !kIsWeb
     ? Platform.isAndroid
@@ -152,12 +153,15 @@ class SkyleTestClient {
 class SkyleTestServer {
   final service = SkyleService();
   late Server server;
+  MJPEGTestServer? mjpegTestServer;
 
-  SkyleTestServer() {
+  SkyleTestServer({String? pathToJPEGs}) {
     server = Server([service]);
+    if (pathToJPEGs != null) mjpegTestServer = MJPEGTestServer(path: pathToJPEGs);
   }
 
   Future<void> main(List<String> args) async {
     await server.serve(address: 'localhost', port: 8001, shared: true);
+    mjpegTestServer?.main(args);
   }
 }
