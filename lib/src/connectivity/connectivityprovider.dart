@@ -14,6 +14,7 @@ import 'connectivitystub.dart'
 
 abstract class ConnectivityProvider {
   Connection state = Connection.disconnected;
+  bool running = false;
   void start(void Function(Connection state) onConnectionChanged);
   void stop();
   factory ConnectivityProvider() => getConnectivityProvider();

@@ -8,6 +8,12 @@ import '../../../et.dart';
 import '../connectivityprovider.dart';
 
 class WebConnectivityProvider implements ConnectivityProvider {
+  static final WebConnectivityProvider _instance =
+      WebConnectivityProvider._internal();
+  factory WebConnectivityProvider() {
+    return _instance;
+  }
+  WebConnectivityProvider._internal();
   @override
   void start(void Function(Connection state) onConnectionChanged) {
     state = Connection.connected;
@@ -19,6 +25,9 @@ class WebConnectivityProvider implements ConnectivityProvider {
 
   @override
   Connection state = Connection.disconnected;
+
+  @override
+  bool running = false;
 }
 
 ConnectivityProvider getConnectivityProvider() => WebConnectivityProvider();

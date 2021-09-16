@@ -36,7 +36,7 @@ String baseIP = !kIsWeb
         : '192.168.137.1'
     : '127.0.0.1';
 
-enum Connection { connected, disconnected }
+enum Connection { disconnected, connecting, connected }
 
 class GRPCFailed {
   final String error;
@@ -57,9 +57,9 @@ class ET extends ChangeNotifier {
   SwitchOptions switchOptions = SwitchOptions();
   Reset reset = Reset();
 
-  Connection _state = Connection.disconnected;
+  Connection _connection = Connection.disconnected;
 
-  Connection get state => _state;
+  Connection get connection => _connection;
   SkyleClient? get client => _client;
 
   ET();
@@ -75,13 +75,15 @@ class ET extends ChangeNotifier {
   }
 
   Future<void> _onConnectionChanged(state) async {
-    if (state == Connection.connected) {
+    if (state == Connection.connecting) {
       try {
+        _connection = state;
+        notifyListeners();
         _connectClients(url: baseURL, port: 50052);
         for (var i = 0; i < 20; i++) {
           try {
             await options.initAsync();
-            _state = state;
+            _connection = Connection.connected;
             notifyListeners();
             switchOptions.start();
             break;
@@ -89,23 +91,25 @@ class ET extends ChangeNotifier {
             await Future.delayed(Duration(milliseconds: 1000 + 1000 * i));
           }
         }
-        if (_state == Connection.disconnected) throw Exception('Could not excecute initial GRPC');
+        if (_connection == Connection.disconnected)
+          throw Exception('Could not excecute initial GRPC');
       } catch (error) {
-        _state = Connection.disconnected;
+        _connection = Connection.disconnected;
         await _disconnectClients();
         notifyListeners();
       }
     } else {
       await _disconnectClients();
-      _state = state;
+      _connection = state;
       notifyListeners();
     }
   }
 
-  Future<void> testConnectClients({required String url, required int port}) async {
+  Future<void> testConnectClients(
+      {required String url, required int port}) async {
     _connectClients(url: url, port: port);
     await options.initAsync();
-    _state = Connection.connected;
+    _connection = Connection.connected;
     notifyListeners();
   }
 
@@ -157,7 +161,8 @@ class SkyleTestServer {
 
   SkyleTestServer({String? pathToJPEGs}) {
     server = Server([service]);
-    if (pathToJPEGs != null) mjpegTestServer = MJPEGTestServer(path: pathToJPEGs);
+    if (pathToJPEGs != null)
+      mjpegTestServer = MJPEGTestServer(path: pathToJPEGs);
   }
 
   Future<void> main(List<String> args) async {

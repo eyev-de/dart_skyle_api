@@ -11,13 +11,25 @@ import '../../../et.dart';
 import '../connectivityprovider.dart';
 
 class NetworkInterfaceProvider implements ConnectivityProvider {
+  static final NetworkInterfaceProvider _instance =
+      NetworkInterfaceProvider._internal();
+  factory NetworkInterfaceProvider() {
+    return _instance;
+  }
+  NetworkInterfaceProvider._internal();
+
   Isolate? _isolateNetworkInterface;
-  final ReceivePort _portNetworkInterface = ReceivePort();
+  ReceivePort? _portNetworkInterface;
 
   @override
-  Future<void> start(void Function(Connection state) onConnectionChanged) async {
-    _isolateNetworkInterface = await Isolate.spawn(_receivingIsolate, _portNetworkInterface.sendPort);
-    await for (final available in _portNetworkInterface) {
+  Future<void> start(
+      void Function(Connection state) onConnectionChanged) async {
+    if (running) return;
+    running = true;
+    _portNetworkInterface = ReceivePort();
+    _isolateNetworkInterface =
+        await Isolate.spawn(_receivingIsolate, _portNetworkInterface!.sendPort);
+    await for (final available in _portNetworkInterface!) {
       if (available is Connection) {
         if (state != available) {
           state = available;
@@ -35,7 +47,10 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
         Connection connected = Connection.disconnected;
         for (final NetworkInterface interface in interfaces) {
           for (final InternetAddress address in interface.addresses) {
-            if (address.type == InternetAddressType.IPv4 && address.address == baseIP) connected = Connection.connected;
+            if (address.type == InternetAddressType.IPv4 &&
+                address.address == baseIP) {
+              connected = Connection.connecting;
+            }
           }
         }
         portReceive.send(connected);
@@ -50,11 +65,15 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
   void stop() {
     state = Connection.disconnected;
     _isolateNetworkInterface?.kill(priority: Isolate.immediate);
-    _portNetworkInterface.close();
+    _portNetworkInterface?.close();
+    running = false;
   }
 
   @override
   Connection state = Connection.disconnected;
+
+  @override
+  bool running = false;
 }
 
 ConnectivityProvider getConnectivityProvider() => NetworkInterfaceProvider();
