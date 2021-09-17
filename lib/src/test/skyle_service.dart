@@ -55,9 +55,9 @@ class SkyleService extends SkyleServiceBase {
         if (abort) return;
         await Future.delayed(Duration(milliseconds: 300));
         final qualityMsg = CalibQuality(
-            quality: 3,
+            quality: 4,
             qualitys:
-                List.generate(msg.calibControl.numberOfPoints, (index) => 3));
+                List.generate(msg.calibControl.numberOfPoints, (index) => 4));
         yield CalibMessages()..calibQuality = qualityMsg;
         return;
       } else if (msg.calibControl.abort = true) {
