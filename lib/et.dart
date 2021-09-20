@@ -31,7 +31,7 @@ String baseURL = !kIsWeb
         : 'skyle.local'
     : '127.0.0.1';
 String baseIP = !kIsWeb
-    ? Platform.isAndroid || Platform.isIOS
+    ? Platform.isAndroid
         ? '10.0.0.1'
         : '192.168.137.1'
     : '127.0.0.1';
