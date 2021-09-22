@@ -1,0 +1,15 @@
+//  Skyle API
+//
+//  Created by Konstantin Wachendorff.
+//  Copyright © 2021 eyeV GmbH. All rights reserved.
+//
+
+import '../../api.dart';
+
+class SkyleTestClient {
+  final et = ET();
+
+  Future<void> main(List<String> args) async {
+    et.testConnectClients(url: 'localhost', port: 8001);
+  }
+}

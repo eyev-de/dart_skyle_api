@@ -17,3 +17,5 @@ export 'src/profiles.dart';
 export 'src/reset.dart';
 export 'src/switchoptions.dart';
 export 'src/version.dart';
+export 'src/test/test_server.dart';
+export 'src/test/test_client.dart';
