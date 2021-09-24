@@ -110,10 +110,6 @@ void main() {
     });
 
     test('Add profile, delete profile', () async {
-      client.et.profiles.addListener(() {
-        print(client.et.profiles.error.error);
-      });
-
       final profile = ProfileWrapper(
           data: Profile(iD: 2, name: 'Test', skill: Profile_Skill.Low));
       profile.client = client.et.client;

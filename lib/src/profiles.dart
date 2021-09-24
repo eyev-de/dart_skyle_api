@@ -76,7 +76,8 @@ class ProfileWrapper extends ChangeNotifier {
       if (client == null) throw Exception('Not connected');
       // ignore: parameter_assignments
       value = _validate(value);
-      final OptionsStateNotifier options = OptionsStateNotifier()..client = client;
+      final OptionsStateNotifier options = OptionsStateNotifier()
+        ..client = client;
       final Options res = await options.filter(gazeFilter: value);
       if (res.hasFilter()) {
         filter = res.filter;
@@ -94,7 +95,8 @@ class ProfileWrapper extends ChangeNotifier {
       if (client == null) throw Exception('Not connected');
       // ignore: parameter_assignments
       value = _validate(value);
-      final OptionsStateNotifier options = OptionsStateNotifier()..client = client;
+      final OptionsStateNotifier options = OptionsStateNotifier()
+        ..client = client;
       final Options res = await options.filter(fixationFilter: value);
       if (res.hasFilter()) {
         filter = res.filter;
@@ -118,7 +120,8 @@ class ProfileWrapper extends ChangeNotifier {
 
 class Profiles extends ChangeNotifier {
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
-  Widget Function(BuildContext context, ProfileWrapper profile, Animation<double> animation)? slideIt;
+  Widget Function(BuildContext context, ProfileWrapper profile,
+      Animation<double> animation)? slideIt;
 
   SkyleClient? _client;
   set client(SkyleClient? value) {
@@ -126,7 +129,8 @@ class Profiles extends ChangeNotifier {
       for (int index = 0; index < _profiles.length; index++) {
         final ProfileWrapper removed = profiles.removeAt(index);
         if (slideIt != null) {
-          listKey.currentState?.removeItem(index, (c, a) => slideIt!(c, removed, a));
+          listKey.currentState
+              ?.removeItem(index, (c, a) => slideIt!(c, removed, a));
         }
       }
     }
@@ -140,11 +144,9 @@ class Profiles extends ChangeNotifier {
 
   final List<ProfileWrapper> _profiles = [];
   ProfileWrapper _current = ProfileWrapper(data: Profile.create()..iD = -1);
-  GRPCFailed _error = GRPCFailed(error: '');
 
   ProfileWrapper get current => _current;
   List<ProfileWrapper> get profiles => _profiles;
-  GRPCFailed get error => _error;
 
   ResponseStream<Profile>? stream;
 
@@ -172,8 +174,7 @@ class Profiles extends ChangeNotifier {
         });
       }
     } catch (error) {
-      _error = GRPCFailed(error: error.toString());
-      notifyListeners();
+      rethrow;
     }
     stream = null;
     return _profiles;
@@ -189,7 +190,8 @@ class Profiles extends ChangeNotifier {
         final index = profiles.indexOf(profile);
         final ProfileWrapper removed = profiles.removeAt(index);
         if (slideIt != null) {
-          listKey.currentState?.removeItem(index, (c, a) => slideIt!(c, removed, a));
+          listKey.currentState
+              ?.removeItem(index, (c, a) => slideIt!(c, removed, a));
         }
         return await getCurrent();
       }
@@ -209,7 +211,8 @@ class Profiles extends ChangeNotifier {
       if (added) {
         final currentList = [..._profiles];
         final newList = await get();
-        final difference = newList.where((element) => !currentList.contains(element));
+        final difference =
+            newList.where((element) => !currentList.contains(element));
         if (difference.isNotEmpty && difference.length == 1) {
           return await getCurrent();
         }
@@ -230,8 +233,7 @@ class Profiles extends ChangeNotifier {
         notifyListeners();
       }
     } catch (error) {
-      _error = GRPCFailed(error: error.toString());
-      notifyListeners();
+      rethrow;
     }
     return _current;
   }
