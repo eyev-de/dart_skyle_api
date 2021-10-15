@@ -22,13 +22,11 @@ class SkyleService extends SkyleServiceBase {
   List<PositioningMessage> positionings = [];
 
   @override
-  Stream<CalibMessages> calibrate(
-      ServiceCall call, Stream<calibControlMessages> request) async* {
+  Stream<CalibMessages> calibrate(ServiceCall call, Stream<calibControlMessages> request) async* {
     bool abort = false;
     await for (var msg in request) {
       if (msg.calibControl.calibrate) {
-        final pts =
-            CalibrationPointsExtension.fromInt(msg.calibControl.numberOfPoints);
+        final pts = CalibrationPointsExtension.fromInt(msg.calibControl.numberOfPoints);
         for (var pt in List.generate(pts.value, (index) => index)) {
           await Future.delayed(Duration(milliseconds: 300));
           if (abort) return;
@@ -52,10 +50,7 @@ class SkyleService extends SkyleServiceBase {
         }
         if (abort) return;
         await Future.delayed(Duration(milliseconds: 300));
-        final qualityMsg = CalibQuality(
-            quality: 4,
-            qualitys:
-                List.generate(msg.calibControl.numberOfPoints, (index) => 4));
+        final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(msg.calibControl.numberOfPoints, (index) => 4));
         yield CalibMessages()..calibQuality = qualityMsg;
         return;
       } else if (msg.calibControl.abort = true) {
@@ -112,8 +107,7 @@ class SkyleService extends SkyleServiceBase {
   }
 
   @override
-  Stream<PositioningMessage> positioning(
-      ServiceCall call, Empty request) async* {
+  Stream<PositioningMessage> positioning(ServiceCall call, Empty request) async* {
     if (positionings.isEmpty) {
       final positioningArray = jsonDecode(positioningsJSONString);
       for (final position in positioningArray) {
@@ -151,8 +145,7 @@ class SkyleService extends SkyleServiceBase {
   }
 
   @override
-  Future<ButtonActions> setButton(
-      ServiceCall call, ButtonActions request) async {
+  Future<ButtonActions> setButton(ServiceCall call, ButtonActions request) async {
     button.buttonActions = request;
     return button.buttonActions;
   }
@@ -160,14 +153,14 @@ class SkyleService extends SkyleServiceBase {
   @override
   Future<StatusMessage> setProfile(ServiceCall call, Profile request) async {
     if (profiles.where((element) => element.iD == request.iD).isNotEmpty) {
-      if (request.iD == 1) return StatusMessage()..success = true;
-      int i = profiles.indexOf(request);
+      if (request.iD == 1) return StatusMessage()..success = false;
+      int i = profiles.indexWhere((element) => element.iD == request.iD);
+      if (i == -1) return StatusMessage()..success = false;
       profiles[i] = request;
       currentP = request;
       return StatusMessage()..success = true;
     }
-    Profile max = profiles.reduce((currentProfile, nextProfile) =>
-        currentProfile.iD > nextProfile.iD ? currentProfile : nextProfile);
+    Profile max = profiles.reduce((currentProfile, nextProfile) => currentProfile.iD > nextProfile.iD ? currentProfile : nextProfile);
     request.iD = max.iD + 1;
     profiles.add(request);
     currentP = request;
@@ -192,8 +185,7 @@ final defaultOptions = Options(
   pause: false,
   enableStandby: false,
   guidance: false,
-  res: ScreenResolution(
-      width: 1920, height: 1080, widthinMM: 560, heightinMM: 250),
+  res: ScreenResolution(width: 1920, height: 1080, widthinMM: 560, heightinMM: 250),
   filter: FilterOptions(gazeFilter: 5, fixationFilter: 11),
   iPadOptions: IPadOptions(isNotZommed: true, isOldiOS: false),
   hp: false,
