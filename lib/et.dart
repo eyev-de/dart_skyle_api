@@ -41,6 +41,8 @@ class GRPCFailed {
   GRPCFailed({required this.error});
 }
 
+class TimeoutException implements Exception {}
+
 class ET extends ChangeNotifier {
   ClientChannelBase? _channel;
 
@@ -89,8 +91,7 @@ class ET extends ChangeNotifier {
             await Future.delayed(Duration(milliseconds: 1000 + 1000 * i));
           }
         }
-        if (_connection == Connection.disconnected)
-          throw Exception('Could not excecute initial GRPC');
+        if (_connection == Connection.disconnected) throw Exception('Could not excecute initial GRPC');
       } catch (error) {
         _connection = Connection.disconnected;
         await _disconnectClients();
@@ -103,8 +104,7 @@ class ET extends ChangeNotifier {
     }
   }
 
-  Future<void> testConnectClients(
-      {required String url, required int port}) async {
+  Future<void> testConnectClients({required String url, required int port}) async {
     _connectClients(url: url, port: port);
     await options.initAsync();
     _connection = Connection.connected;
@@ -122,8 +122,8 @@ class ET extends ChangeNotifier {
   }
 
   Future<void> _disconnectClients() async {
-    await positioning.stop(force: true);
-    await gaze.stop(force: true);
+    // await positioning.stop(force: true);
+    // await gaze.stop(force: true);
     calibration.stop();
     switchOptions.stop();
     await _channel?.terminate();

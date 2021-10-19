@@ -7,8 +7,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:grpc/grpc_connection_interface.dart';
-import 'package:grpc/service_api.dart';
 
 import 'timer_provider.dart';
 import '../api.dart';
@@ -25,7 +23,7 @@ class Positioning extends ChangeNotifier {
   static double width = 1280;
   static double height = 720;
   SkyleClient? client;
-  ResponseStream<PositioningMessage>? _stream;
+  Stream<PositioningMessage>? _stream;
   final _timerProvider = TimerProvider();
 
   PositioningState _state = PositioningState.None;
@@ -37,20 +35,27 @@ class Positioning extends ChangeNotifier {
   GRPCFailed? _error;
   GRPCFailed? get error => _error;
 
-  Timer? _timer;
+  late final Timer _timer;
 
-  Positioning();
+  Positioning() {
+    _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) async {
+      _start();
+    });
+  }
 
-  Future<void> start() async {
+  Future<void> _start() async {
     try {
+      // Already streaming
       if (_stream != null) {
         return;
       }
+      // Disonnected
       if (client == null) {
         return;
       }
-      _stream = client!.positioning(Empty());
-      _timer = createTimeoutTimer();
+      _stream = client!.positioning(Empty()).timeout(Duration(seconds: 5), onTimeout: (sink) {
+        sink.addError(TimeoutException());
+      });
       await for (final PositioningMessage event in _stream!) {
         final PositioningMessage p = PositioningMessage()..mergeFromJson(event.writeToJson());
         _data = p;
@@ -72,32 +77,14 @@ class Positioning extends ChangeNotifier {
                   ? PositioningState.Close
                   : PositioningState.Normal;
         }
-        _timer?.cancel();
-        _timer = createTimeoutTimer();
         _error = null;
         notifyListeners();
       }
-    } catch (error) {
-      if (error is GrpcError && error.code == 1) return;
-      _error = GRPCFailed(error: error.toString());
-      notifyListeners();
-      await stop();
-    }
-  }
-
-  Timer createTimeoutTimer() {
-    return Timer(const Duration(seconds: 10), () async {
-      await stop(force: true);
-      await start();
-    });
-  }
-
-  Future<void> stop({bool force = false}) async {
-    if (!hasListeners || force) {
-      _data = PositioningMessage().createEmptyInstance();
-      await _stream?.cancel();
+    } catch (e) {
       _stream = null;
-      _timer?.cancel();
+      if (e is TimeoutException) return;
+      _error = GRPCFailed(error: e.toString());
+      notifyListeners();
     }
   }
 }

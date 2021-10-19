@@ -7,8 +7,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:grpc/grpc_connection_interface.dart';
-import 'package:grpc/service_api.dart';
 
 import '../api.dart';
 
@@ -19,7 +17,7 @@ class GazeData {
 
 class Gaze extends ChangeNotifier {
   SkyleClient? client;
-  ResponseStream<Point>? _stream;
+  Stream<Point>? _stream;
 
   final Point _point = Point();
   Point get point => _point;
@@ -27,47 +25,37 @@ class Gaze extends ChangeNotifier {
   GRPCFailed? _error;
   GRPCFailed? get error => _error;
 
-  Timer? _timer;
+  late final Timer _timer;
 
-  Gaze();
-
-  Future<void> start() async {
-    try {
-      if (_stream != null) {
-        return;
-      }
-      if (client == null) {
-        return;
-      }
-      _stream = client!.gaze(Empty());
-      _timer = createTimeoutTimer();
-      await for (final Point event in _stream!) {
-        _point.mergeFromJson(event.writeToJson());
-        _timer?.cancel();
-        _timer = createTimeoutTimer();
-        _error = null;
-        notifyListeners();
-      }
-    } catch (error) {
-      if (error is GrpcError && error.code == 1) return;
-      _error = GRPCFailed(error: error.toString());
-      notifyListeners();
-      await stop();
-    }
-  }
-
-  Timer createTimeoutTimer() {
-    return Timer(const Duration(seconds: 10), () async {
-      await stop(force: true);
-      await start();
+  Gaze() {
+    _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) async {
+      _start();
     });
   }
 
-  Future<void> stop({bool force = false}) async {
-    if (!hasListeners || force) {
-      await _stream?.cancel();
+  Future<void> _start() async {
+    try {
+      // Already streaming
+      if (_stream != null) {
+        return;
+      }
+      // Disconnected
+      if (client == null) {
+        return;
+      }
+      _stream = client!.gaze(Empty()).timeout(Duration(seconds: 5), onTimeout: (sink) {
+        sink.addError(TimeoutException());
+      });
+      await for (final Point event in _stream!) {
+        _point.mergeFromJson(event.writeToJson());
+        _error = null;
+        notifyListeners();
+      }
+    } catch (e) {
       _stream = null;
-      _timer?.cancel();
+      if (e is TimeoutException) return;
+      _error = GRPCFailed(error: e.toString());
+      notifyListeners();
     }
   }
 }
