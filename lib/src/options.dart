@@ -4,6 +4,8 @@
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
 //
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc_connection_interface.dart';
 

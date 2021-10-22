@@ -5,19 +5,27 @@
 //
 
 import 'dart:io';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:path/path.dart' as p;
 
 class MJPEGTestServer {
-  final String path;
+  final List<String> paths;
   HttpServer? server;
 
-  MJPEGTestServer({required this.path});
+  MJPEGTestServer({required this.paths});
 
   Stream<String> _buffer() async* {
-    final dir = Directory(path);
-    for (final jpeg in dir.listSync(recursive: true)) {
-      if (jpeg is File && p.extension(jpeg.path) == '.jpg') {
-        yield String.fromCharCodes(await jpeg.readAsBytes());
+    if (Platform.isIOS) {
+      for (var path in paths) {
+        final bytes = await rootBundle.load(path);
+        yield String.fromCharCodes(bytes.buffer.asUint8List());
+      }
+    } else {
+      final dir = Directory(paths.first);
+      for (final jpeg in dir.listSync(recursive: true)) {
+        if (jpeg is File && p.extension(jpeg.path) == '.jpg') {
+          yield String.fromCharCodes(await jpeg.readAsBytes());
+        }
       }
     }
   }

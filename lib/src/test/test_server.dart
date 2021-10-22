@@ -14,10 +14,9 @@ class SkyleTestServer {
   late Server server;
   MJPEGTestServer? mjpegTestServer;
 
-  SkyleTestServer({String? pathToJPEGs}) {
+  SkyleTestServer({List<String>? paths}) {
     server = Server([service]);
-    if (pathToJPEGs != null)
-      mjpegTestServer = MJPEGTestServer(path: pathToJPEGs);
+    if (paths != null) mjpegTestServer = MJPEGTestServer(paths: paths);
   }
 
   Future<void> main(List<String> args) async {
