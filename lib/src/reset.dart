@@ -4,8 +4,6 @@
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
 //
 
-import 'package:grpc/grpc_connection_interface.dart';
-
 import '../api.dart';
 
 class Reset {

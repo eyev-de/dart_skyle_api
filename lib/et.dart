@@ -4,9 +4,6 @@
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
 //
 
-import 'dart:io';
-
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_connection_interface.dart';
@@ -23,16 +20,7 @@ import 'src/reset.dart';
 import 'src/switchoptions.dart';
 import 'src/version.dart';
 
-String baseURL = !kIsWeb
-    ? Platform.isAndroid
-        ? '10.0.0.2'
-        : 'skyle.local'
-    : '127.0.0.1';
-String baseIP = !kIsWeb
-    ? Platform.isAndroid
-        ? '10.0.0.1'
-        : '192.168.137.1'
-    : '127.0.0.1';
+const List<String> possibleBaseIPs = ['10.0.0.1', '192.168.137.1'];
 
 enum Connection { disconnected, connecting, connected }
 
@@ -62,24 +50,28 @@ class ET extends ChangeNotifier {
   Connection get connection => _connection;
   SkyleClient? get client => _client;
 
+  static String baseURL = 'skyle.local';
+
   ET();
 
   ClientChannelBase? get channel => _channel;
 
   void startScanningForInterface() {
-    connectivityProvider.start(_onConnectionChanged);
+    connectivityProvider.start(_onConnectionMessageChanged);
   }
 
   void stopScanningForInterface() {
     connectivityProvider.stop();
   }
 
-  Future<void> _onConnectionChanged(state) async {
-    if (state == Connection.connecting) {
+  Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
+    if (message.connection == Connection.connecting) {
       try {
-        _connection = state;
+        _connection = message.connection;
+        ET.baseURL = message.url!.substring(0, message.url!.length - 1) + '2';
+        print(ET.baseURL);
         notifyListeners();
-        _connectClients(url: baseURL, port: 50052);
+        _connectClients(url: ET.baseURL, port: 50052);
         for (var i = 0; i < 20; i++) {
           try {
             await options.initAsync();
@@ -99,7 +91,7 @@ class ET extends ChangeNotifier {
       }
     } else {
       await _disconnectClients();
-      _connection = state;
+      _connection = message.connection;
       notifyListeners();
     }
   }

@@ -7,7 +7,6 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:grpc/grpc_connection_interface.dart';
 
 import '../api.dart';
 

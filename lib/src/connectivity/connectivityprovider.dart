@@ -15,7 +15,19 @@ import 'connectivitystub.dart'
 abstract class ConnectivityProvider {
   Connection state = Connection.disconnected;
   bool running = false;
-  void start(void Function(Connection state) onConnectionChanged);
+  void start(void Function(ConnectionMessage message) onConnectionMessageChanged);
   void stop();
   factory ConnectivityProvider() => getConnectivityProvider();
+}
+
+class ConnectionMessage {
+  final Connection connection;
+  final String? url;
+  ConnectionMessage({required this.connection, this.url});
+  factory ConnectionMessage.connecting(String url) {
+    return ConnectionMessage(connection: Connection.connecting, url: url);
+  }
+  factory ConnectionMessage.disconnected() {
+    return ConnectionMessage(connection: Connection.disconnected);
+  }
 }
