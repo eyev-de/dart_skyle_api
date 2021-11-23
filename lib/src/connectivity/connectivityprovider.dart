@@ -4,6 +4,8 @@
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
 //
 
+import 'dart:math';
+
 import '../../et.dart';
 
 import 'connectivitystub.dart'
@@ -32,5 +34,20 @@ class ConnectionMessage {
   }
   factory ConnectionMessage.connected(String url) {
     return ConnectionMessage(connection: Connection.connected, url: url);
+  }
+}
+
+class BackOffStrategy {
+  static const _initialBackoff = Duration(milliseconds: 500);
+  static const _maxBackoff = Duration(seconds: 7);
+  static const _multiplier = 1.6;
+  static const _jitter = 0.2;
+  static final _random = Random();
+
+  static Duration defaultBackoffStrategy(Duration? lastBackoff) {
+    if (lastBackoff == null) return _initialBackoff;
+    final jitter = _random.nextDouble() * 2 * _jitter - _jitter;
+    final nextBackoff = lastBackoff * (_multiplier + jitter);
+    return nextBackoff < _maxBackoff ? nextBackoff : _maxBackoff;
   }
 }

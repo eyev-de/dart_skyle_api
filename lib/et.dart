@@ -118,7 +118,10 @@ class ET extends ChangeNotifier {
     _channel = ClientChannelWrapper().getGRPCClient(
       url,
       port,
-      const ChannelOptions(credentials: ChannelCredentials.insecure()),
+      const ChannelOptions(
+        credentials: ChannelCredentials.insecure(),
+        backoffStrategy: BackOffStrategy.defaultBackoffStrategy,
+      ),
     );
     _client = SkyleClient(_channel!);
     _setClient();
