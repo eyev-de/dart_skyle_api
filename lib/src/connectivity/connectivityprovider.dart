@@ -13,7 +13,7 @@ import 'connectivitystub.dart'
     if (dart.library.html) './web/webconnectivityprovider.dart';
 
 abstract class ConnectivityProvider {
-  Connection state = Connection.disconnected;
+  ConnectionMessage state = ConnectionMessage.disconnected();
   bool running = false;
   void start(void Function(ConnectionMessage message) onConnectionMessageChanged);
   void stop();
@@ -29,5 +29,8 @@ class ConnectionMessage {
   }
   factory ConnectionMessage.disconnected() {
     return ConnectionMessage(connection: Connection.disconnected);
+  }
+  factory ConnectionMessage.connected(String url) {
+    return ConnectionMessage(connection: Connection.connected, url: url);
   }
 }

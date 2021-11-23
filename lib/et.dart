@@ -69,38 +69,40 @@ class ET extends ChangeNotifier {
 
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting) {
-      try {
-        _connection = message.connection;
-
-        ET.baseURL = message.url!;
-
-        ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
-        notifyListeners();
-        _connectClients(url: ET.baseURL, port: 50052);
-        for (var i = 0; i < 50; i++) {
-          try {
-            await options.initAsync();
-            _connection = Connection.connected;
-            notifyListeners();
-            switchOptions.start();
-            break;
-          } catch (error) {
-            final milliseconds = 500 + 500 * i;
-            ET.logger?.i('GRPC connection attempt $i/50 - Waiting ${milliseconds / 1000}s before retrying.');
-            await Future.delayed(Duration(milliseconds: milliseconds));
-          }
-        }
-        if (_connection == Connection.disconnected) throw Exception('Could not excecute initial GRPC');
-      } catch (error) {
-        ET.logger?.i('Skyle disconnected: $error');
-        _connection = Connection.disconnected;
-        await _disconnectClients();
-        notifyListeners();
-      }
+      ET.baseURL = message.url!;
+      _connection = message.connection;
+      notifyListeners();
+      await tryReconnect();
     } else {
       ET.logger?.i('Skyle disconnected.');
       await _disconnectClients();
       _connection = message.connection;
+      notifyListeners();
+    }
+  }
+
+  Future<void> tryReconnect() async {
+    try {
+      ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
+      _connectClients(url: ET.baseURL, port: 50052);
+      for (var i = 0; i < 50; i++) {
+        try {
+          await options.initAsync();
+          _connection = Connection.connected;
+          notifyListeners();
+          switchOptions.start();
+          break;
+        } catch (error) {
+          final milliseconds = 500 + 500 * i;
+          ET.logger?.i('GRPC connection attempt $i/50 - Waiting ${milliseconds / 1000}s before retrying.');
+          await Future.delayed(Duration(milliseconds: milliseconds));
+        }
+      }
+      if (_connection == Connection.disconnected) throw Exception('Could not excecute initial GRPC');
+    } catch (error) {
+      ET.logger?.i('Skyle disconnected: $error');
+      _connection = Connection.disconnected;
+      await _disconnectClients();
       notifyListeners();
     }
   }

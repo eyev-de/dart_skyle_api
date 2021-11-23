@@ -28,8 +28,8 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
     _isolateNetworkInterface = await Isolate.spawn(_receivingIsolate, _portNetworkInterface!.sendPort);
     await for (final message in _portNetworkInterface!) {
       if (message is ConnectionMessage) {
-        if (state != message.connection) {
-          state = message.connection;
+        if (state.connection != message.connection) {
+          state = message;
           onConnectionMessageChanged(message);
         }
       }
@@ -97,14 +97,14 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
 
   @override
   void stop() {
-    state = Connection.disconnected;
+    state = ConnectionMessage.disconnected();
     _isolateNetworkInterface?.kill(priority: Isolate.immediate);
     _portNetworkInterface?.close();
     running = false;
   }
 
   @override
-  Connection state = Connection.disconnected;
+  ConnectionMessage state = ConnectionMessage.disconnected();
 
   @override
   bool running = false;
