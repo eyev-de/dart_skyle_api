@@ -38,43 +38,61 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
 
   static Future<void> _receivingIsolate(SendPort portReceive) async {
     // ignore: literal_only_boolean_expressions
+    ConnectionMessage message = ConnectionMessage.disconnected();
     do {
-      ConnectionMessage message = ConnectionMessage.disconnected();
       try {
-        // Try to lookup skyle.local
-        try {
-          final list = await InternetAddress.lookup('skyle.local');
-          for (final address in list) {
-            if (address.type == InternetAddressType.IPv4) {
-              message = ConnectionMessage.connecting(address.address);
-              break;
-            }
-          }
-        } catch (error) {
-          message = ConnectionMessage.disconnected();
-        }
-        // Looking up skyle.local somehow failed
-        // Try various ip addresses
-        if (message.connection == Connection.disconnected) {
-          final List<NetworkInterface> interfaces = await NetworkInterface.list();
-          for (final NetworkInterface interface in interfaces) {
-            for (final InternetAddress address in interface.addresses) {
-              if (address.type == InternetAddressType.IPv4 && possibleBaseIPs.contains(address.address)) {
-                message = ConnectionMessage.connecting(address.address);
-                break;
-              }
-            }
-            if (message.connection == Connection.connecting) {
-              break;
-            }
+        if (message.connection == Connection.connecting) {
+          message = await detectIPs([message.url!]);
+        } else {
+          message = await lookupHost();
+          if (message.connection == Connection.disconnected) {
+            message = await detectIPs(possibleBaseIPs);
           }
         }
-        portReceive.send(message);
       } catch (error) {
-        portReceive.send(ConnectionMessage.disconnected());
+        message = ConnectionMessage.disconnected();
       }
+      portReceive.send(message);
       sleep(const Duration(milliseconds: 500));
     } while (true);
+  }
+
+  static Future<ConnectionMessage> detectIPs(List<String> urls) async {
+    ConnectionMessage message = ConnectionMessage.disconnected();
+    try {
+      final List<NetworkInterface> interfaces = await NetworkInterface.list();
+      for (final NetworkInterface interface in interfaces) {
+        for (final InternetAddress address in interface.addresses) {
+          final hostIP = address.address.substring(0, address.address.length - 1) + '2';
+          if (address.type == InternetAddressType.IPv4 && urls.contains(hostIP)) {
+            message = ConnectionMessage.connecting(hostIP);
+            break;
+          }
+        }
+        if (message.connection == Connection.connecting) {
+          break;
+        }
+      }
+    } catch (error) {
+      message = ConnectionMessage.disconnected();
+    }
+    return message;
+  }
+
+  static Future<ConnectionMessage> lookupHost() async {
+    ConnectionMessage message = ConnectionMessage.disconnected();
+    try {
+      final list = await InternetAddress.lookup('skyle.local');
+      for (final address in list) {
+        if (address.type == InternetAddressType.IPv4) {
+          message = ConnectionMessage.connecting(address.address);
+          break;
+        }
+      }
+    } catch (error) {
+      message = ConnectionMessage.disconnected();
+    }
+    return message;
   }
 
   @override

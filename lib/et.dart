@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_connection_interface.dart';
+import 'package:logger/logger.dart';
 
 import 'src/calibration.dart';
 import 'src/client/clientchannelwrapper.dart';
@@ -45,6 +46,8 @@ class ET extends ChangeNotifier {
   SwitchOptions switchOptions = SwitchOptions();
   Reset reset = Reset();
 
+  static Logger? logger;
+
   Connection _connection = Connection.disconnected;
 
   Connection get connection => _connection;
@@ -68,11 +71,13 @@ class ET extends ChangeNotifier {
     if (message.connection == Connection.connecting) {
       try {
         _connection = message.connection;
-        ET.baseURL = message.url!.substring(0, message.url!.length - 1) + '2';
-        print(ET.baseURL);
+
+        ET.baseURL = message.url!;
+
+        ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
         notifyListeners();
         _connectClients(url: ET.baseURL, port: 50052);
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 50; i++) {
           try {
             await options.initAsync();
             _connection = Connection.connected;
@@ -80,16 +85,20 @@ class ET extends ChangeNotifier {
             switchOptions.start();
             break;
           } catch (error) {
-            await Future.delayed(Duration(milliseconds: 1000 + 1000 * i));
+            final milliseconds = 500 + 500 * i;
+            ET.logger?.i('GRPC connection attempt $i/50 - Waiting ${milliseconds / 1000}s before retrying.');
+            await Future.delayed(Duration(milliseconds: milliseconds));
           }
         }
         if (_connection == Connection.disconnected) throw Exception('Could not excecute initial GRPC');
       } catch (error) {
+        ET.logger?.i('Skyle disconnected: $error');
         _connection = Connection.disconnected;
         await _disconnectClients();
         notifyListeners();
       }
     } else {
+      ET.logger?.i('Skyle disconnected.');
       await _disconnectClients();
       _connection = message.connection;
       notifyListeners();
@@ -114,8 +123,6 @@ class ET extends ChangeNotifier {
   }
 
   Future<void> _disconnectClients() async {
-    // await positioning.stop(force: true);
-    // await gaze.stop(force: true);
     calibration.stop();
     switchOptions.stop();
     await _channel?.terminate();
