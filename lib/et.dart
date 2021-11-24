@@ -4,6 +4,8 @@
 //  Copyright © 2021 eyeV GmbH. All rights reserved.
 //
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_connection_interface.dart';
@@ -51,7 +53,7 @@ class ET extends ChangeNotifier {
 
   static String baseURL = 'skyle.local';
   static const grpcPort = 50052;
-  static const List<String> possibleBaseIPs = ['10.0.0.1', '192.168.137.1'];
+  static const List<String> possibleBaseIPs = ['10.0.0.2', '192.168.137.2'];
 
   ET();
 
@@ -67,36 +69,57 @@ class ET extends ChangeNotifier {
 
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting && _connection == Connection.disconnected) {
-      ET.logger?.i('Skyle is trying to connect.');
-
       ET.baseURL = message.url!;
       _connection = message.connection;
       notifyListeners();
+      print('Connecting Skyle with base ip: ${ET.baseURL}...');
       await tryReconnect();
     } else if (message.connection == Connection.disconnected && _connection != Connection.disconnected) {
-      ET.logger?.i('Skyle disconnected.');
+      print('Skyle disconnected.');
       await terminateClient();
     }
+  }
+
+  Completer? _cancelConnectionCompleter;
+  bool _cancelConnectingGRPCs = false;
+
+  Future<void> _cancelPreviousReconnect() async {
+    if (_cancelConnectionCompleter == null) return;
+    _cancelConnectingGRPCs = true;
+    await _cancelConnectionCompleter!.future;
+    _cancelConnectingGRPCs = false;
   }
 
   Future<void> tryReconnect() async {
     try {
       if (_connection == Connection.connected || _connection == Connection.disconnected) return;
-      ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
+      // ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
+      await _cancelPreviousReconnect();
+      _cancelConnectionCompleter = Completer();
       createClient(url: ET.baseURL, port: ET.grpcPort);
       const maxRetries = 40;
       for (var i = 0; i < maxRetries; i++) {
         try {
-          options.client = client;
+          if (_cancelConnectingGRPCs) {
+            _cancelConnectionCompleter!.complete();
+            _cancelConnectionCompleter = null;
+            try {
+              await terminateClient();
+            } catch (e) {}
+            return;
+          }
           // First set options client to make the initial call
+          options.client = client;
           await options.initAsync();
+          // Set all clients
           _setClient();
           // Set the connection state and notify everyone
           _connection = Connection.connected;
           notifyListeners();
           // Start switch and break the loop
           switchOptions.start();
-          ET.logger?.i('Connected Skyle.');
+          // ET.logger?.i('Connected Skyle.');
+          print('Connected Skyle.');
           break;
         } catch (error) {
           final milliseconds = 1000 + 500 * i;
@@ -105,10 +128,16 @@ class ET extends ChangeNotifier {
           await Future.delayed(Duration(milliseconds: milliseconds));
         }
       }
-      if (_connection == Connection.disconnected) throw Exception('Could not excecute initial GRPC');
+      if (_connection == Connection.disconnected) {
+        throw Exception('Could not excecute initial GRPC');
+      }
     } catch (error) {
       ET.logger?.e('Skyle disconnected fatally:', error, StackTrace.current);
       await terminateClient();
+    } finally {
+      if (_cancelConnectionCompleter != null) {
+        _cancelConnectionCompleter!.complete();
+      }
     }
   }
 
@@ -135,7 +164,7 @@ class ET extends ChangeNotifier {
 
   Future<void> terminateClient() async {
     try {
-      ET.logger?.i('Disconnecting active Skyle grpcs...');
+      // ET.logger?.i('Disconnecting active Skyle grpcs...');
       calibration.stop();
       switchOptions.stop();
       await _channel?.terminate();
@@ -147,7 +176,7 @@ class ET extends ChangeNotifier {
       _setClient();
       _connection = Connection.disconnected;
       notifyListeners();
-      ET.logger?.i('Disconnected Skyle grpcs...');
+      // ET.logger?.i('Disconnected Skyle grpcs...');
     }
   }
 
