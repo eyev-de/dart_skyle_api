@@ -19,19 +19,19 @@ void main() {
   SkyleTestServer server = SkyleTestServer();
   SkyleTestClient client = SkyleTestClient();
 
-  setUpAll(() {
+  setUpAll(() async {
     print('Starting server...');
-    server.main([]);
+    await server.main([]);
     print('Connecting to server...');
-    client.main([]);
+    await client.main([]);
     print('Connected');
   });
 
-  tearDownAll(() {
+  tearDownAll(() async {
     print('Shutting down client...');
-    client.et.channel?.shutdown();
+    await client.et.channel?.shutdown();
     print('Shutting down server...');
-    server.server.shutdown();
+    await server.server.shutdown();
   });
 
   // group('Idle', () {

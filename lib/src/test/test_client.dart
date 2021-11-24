@@ -10,6 +10,6 @@ class SkyleTestClient {
   final et = ET();
 
   Future<void> main(List<String> args) async {
-    et.testConnectClients(url: 'localhost', port: 8001);
+    await et.testConnectClients(url: 'localhost', port: 8001);
   }
 }
