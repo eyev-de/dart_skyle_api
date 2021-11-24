@@ -20,7 +20,9 @@ class SkyleTestServer {
   }
 
   Future<void> main(List<String> args) async {
+    print('Starting API...');
     await server.serve(address: 'localhost', port: 8001, shared: true);
+    print('Starting MJPEG server...');
     mjpegTestServer?.main(args);
   }
 }

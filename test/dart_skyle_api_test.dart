@@ -29,16 +29,10 @@ void main() {
 
   tearDownAll(() async {
     print('Shutting down client...');
-    await client.et.channel?.shutdown();
+    await client.et.terminateClient();
     print('Shutting down server...');
     await server.server.shutdown();
   });
-
-  // group('Idle', () {
-  //   test('Idle', () async {
-  //     await Future.delayed(Duration(seconds: 100));
-  //   });
-  // });
 
   group('Calibration', () {
     test('Test 1 point calibration', () async {

@@ -87,8 +87,10 @@ class ET extends ChangeNotifier {
       const maxRetries = 40;
       for (var i = 0; i < maxRetries; i++) {
         try {
+          options.client = client;
           // First set options client to make the initial call
           await options.initAsync();
+          _setClient();
           // Set the connection state and notify everyone
           _connection = Connection.connected;
           notifyListeners();
@@ -121,15 +123,14 @@ class ET extends ChangeNotifier {
 
   void createClient({required String url, required int port}) {
     _channel = GrpcOrGrpcWebClientChannel.grpc(
-      ET.baseURL,
-      port: ET.grpcPort,
+      url,
+      port: port,
       options: const ChannelOptions(
         credentials: ChannelCredentials.insecure(),
         backoffStrategy: BackOffStrategy.defaultBackoffStrategy,
       ),
     );
     _client = SkyleClient(_channel!);
-    _setClient();
   }
 
   Future<void> terminateClient() async {
