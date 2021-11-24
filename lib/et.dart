@@ -75,7 +75,7 @@ class ET extends ChangeNotifier {
       await tryReconnect();
     } else {
       ET.logger?.i('Skyle disconnected.');
-      await _disconnectClients();
+      await terminateClient();
       _connection = message.connection;
       notifyListeners();
     }
@@ -84,37 +84,48 @@ class ET extends ChangeNotifier {
   Future<void> tryReconnect() async {
     try {
       ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
-      _connectClients(url: ET.baseURL, port: 50052);
-      for (var i = 0; i < 50; i++) {
+      createClient(url: ET.baseURL, port: 50052);
+      const maxRetries = 30;
+      for (var i = 0; i < maxRetries; i++) {
         try {
+          // First set options client to make the initial call
+          options.client = client;
           await options.initAsync();
+          // If call succeeds, connect all clients
+          _setClient();
+          // Set the connection state and notify everyone
           _connection = Connection.connected;
           notifyListeners();
+          // Start switch and break the loop
           switchOptions.start();
+          ET.logger?.i('Connected Skyle.');
           break;
         } catch (error) {
-          final milliseconds = 500 + 500 * i;
-          ET.logger?.i('GRPC connection attempt $i/50 - Waiting ${milliseconds / 1000}s before retrying.');
+          final milliseconds = 1000 + 1000 * i;
+          ET.logger?.w('Warning in tryReconnect():', error, StackTrace.current);
+          ET.logger?.i('GRPC connection attempt $i/$maxRetries - Waiting ${milliseconds / 1000}s before retrying.');
           await Future.delayed(Duration(milliseconds: milliseconds));
         }
       }
       if (_connection == Connection.disconnected) throw Exception('Could not excecute initial GRPC');
     } catch (error) {
-      ET.logger?.i('Skyle disconnected: $error');
+      ET.logger?.e('Skyle disconnected fatally:', error, StackTrace.current);
       _connection = Connection.disconnected;
-      await _disconnectClients();
+      await terminateClient();
       notifyListeners();
     }
   }
 
   Future<void> testConnectClients({required String url, required int port}) async {
-    _connectClients(url: url, port: port);
+    createClient(url: url, port: port);
+    options.client = client;
     await options.initAsync();
+    _setClient();
     _connection = Connection.connected;
     notifyListeners();
   }
 
-  void _connectClients({required String url, required int port}) {
+  void createClient({required String url, required int port}) {
     _channel = ClientChannelWrapper().getGRPCClient(
       url,
       port,
@@ -124,23 +135,27 @@ class ET extends ChangeNotifier {
       ),
     );
     _client = SkyleClient(_channel!);
-    _setClient();
   }
 
-  Future<void> _disconnectClients() async {
-    calibration.stop();
-    switchOptions.stop();
-    await _channel?.terminate();
-    _channel = null;
-    _client = null;
-    _setClient();
+  Future<void> terminateClient() async {
+    try {
+      ET.logger?.i('Disconnectiong active Skyle grpcs...');
+      calibration.stop();
+      switchOptions.stop();
+      await _channel?.terminate();
+      _channel = null;
+      _client = null;
+      _setClient();
+      ET.logger?.i('Disconnected Skyle grpcs...');
+    } catch (error) {
+      ET.logger?.e('Skyle disconnecting clients failed:', error, StackTrace.current);
+    }
   }
 
   void _setClient() {
     calibration.client = client;
     gaze.client = client;
     positioning.client = client;
-    options.client = client;
     version.client = client;
     profiles.client = client;
     switchOptions.client = client;

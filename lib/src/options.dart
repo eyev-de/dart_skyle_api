@@ -34,6 +34,7 @@ class OptionsStateNotifier extends ChangeNotifier {
       client!.configure(req).then((options) {
         _state = options;
       }).catchError((error) {
+        ET.logger?.e('Error in options:', error, StackTrace.current);
         _error = GRPCFailed(error: error.toString());
       }).whenComplete(notifyListeners);
     }
@@ -41,7 +42,7 @@ class OptionsStateNotifier extends ChangeNotifier {
 
   Future<Options> setStateAsync(Options value, {bool passError = false}) async {
     try {
-      if (client == null) throw Exception('Not connected');
+      if (client == null) throw NotConnectedException();
       _state.mergeFromJson(value.writeToJson());
       final req = OptionMessage()..options = _state;
       final options = await client!.configure(req);
@@ -49,6 +50,7 @@ class OptionsStateNotifier extends ChangeNotifier {
       notifyListeners();
     } catch (error) {
       if (error is GrpcError && passError) rethrow;
+      ET.logger?.e('Error in options', error, StackTrace.current);
       _error = GRPCFailed(error: error.toString());
       notifyListeners();
     }

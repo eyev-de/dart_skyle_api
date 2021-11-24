@@ -51,10 +51,13 @@ class Gaze extends ChangeNotifier {
         _error = null;
         notifyListeners();
       }
-    } catch (e) {
+    } on TimeoutException catch (_) {
       _stream = null;
-      if (e is TimeoutException) return;
-      _error = GRPCFailed(error: e.toString());
+      return;
+    } catch (error) {
+      _stream = null;
+      ET.logger?.e('Error in gaze stream:', error, StackTrace.current);
+      _error = GRPCFailed(error: error.toString());
       notifyListeners();
     }
   }

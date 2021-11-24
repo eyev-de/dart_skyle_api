@@ -63,7 +63,7 @@ class ProfileWrapper extends ChangeNotifier {
 
   Future<bool> select() async {
     try {
-      if (client == null) throw Exception('Not connected');
+      if (client == null) throw NotConnectedException();
       final StatusMessage res = await client!.setProfile(data);
       return res.success;
     } catch (error) {
@@ -73,11 +73,10 @@ class ProfileWrapper extends ChangeNotifier {
 
   Future<bool> setGazeFilter(int value) async {
     try {
-      if (client == null) throw Exception('Not connected');
+      if (client == null) throw NotConnectedException();
       // ignore: parameter_assignments
       value = _validate(value);
-      final OptionsStateNotifier options = OptionsStateNotifier()
-        ..client = client;
+      final OptionsStateNotifier options = OptionsStateNotifier()..client = client;
       final Options res = await options.filter(gazeFilter: value);
       if (res.hasFilter()) {
         filter = res.filter;
@@ -92,11 +91,10 @@ class ProfileWrapper extends ChangeNotifier {
 
   Future<bool> setFixationFilter(int value) async {
     try {
-      if (client == null) throw Exception('Not connected');
+      if (client == null) throw NotConnectedException();
       // ignore: parameter_assignments
       value = _validate(value);
-      final OptionsStateNotifier options = OptionsStateNotifier()
-        ..client = client;
+      final OptionsStateNotifier options = OptionsStateNotifier()..client = client;
       final Options res = await options.filter(fixationFilter: value);
       if (res.hasFilter()) {
         filter = res.filter;
@@ -120,8 +118,7 @@ class ProfileWrapper extends ChangeNotifier {
 
 class Profiles extends ChangeNotifier {
   final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
-  Widget Function(BuildContext context, ProfileWrapper profile,
-      Animation<double> animation)? slideIt;
+  Widget Function(BuildContext context, ProfileWrapper profile, Animation<double> animation)? slideIt;
 
   SkyleClient? _client;
   set client(SkyleClient? value) {
@@ -129,8 +126,7 @@ class Profiles extends ChangeNotifier {
       for (int index = 0; index < _profiles.length; index++) {
         final ProfileWrapper removed = profiles.removeAt(index);
         if (slideIt != null) {
-          listKey.currentState
-              ?.removeItem(index, (c, a) => slideIt!(c, removed, a));
+          listKey.currentState?.removeItem(index, (c, a) => slideIt!(c, removed, a));
         }
       }
     }
@@ -152,8 +148,8 @@ class Profiles extends ChangeNotifier {
 
   Future<List<ProfileWrapper>> get() async {
     try {
-      if (_client == null) throw Exception('Not connected');
-      if (stream != null) throw Exception('Still streaming');
+      if (_client == null) throw NotConnectedException();
+      if (stream != null) throw StillStreamingException();
       stream = _client!.getProfiles(Empty());
 
       final List<ProfileWrapper> changed = [];
@@ -173,7 +169,11 @@ class Profiles extends ChangeNotifier {
           notifyListeners();
         });
       }
+    } on StillStreamingException catch (error) {
+      ET.logger?.w('Warning in getting profiles:', error, StackTrace.current);
+      rethrow;
     } catch (error) {
+      ET.logger?.e('Error in getting profiles:', error, StackTrace.current);
       rethrow;
     }
     stream = null;
@@ -182,50 +182,56 @@ class Profiles extends ChangeNotifier {
 
   Future<ProfileWrapper> delete(ProfileWrapper profile) async {
     try {
-      if (_client == null) throw Exception('Not connected');
-      if (stream != null) throw Exception('Still streaming');
+      if (_client == null) throw NotConnectedException();
+      if (stream != null) throw StillStreamingException();
       if (profiles.isEmpty) await get();
       final StatusMessage res = await _client!.deleteProfile(profile.data);
       if (res.success) {
         final index = profiles.indexOf(profile);
         final ProfileWrapper removed = profiles.removeAt(index);
         if (slideIt != null) {
-          listKey.currentState
-              ?.removeItem(index, (c, a) => slideIt!(c, removed, a));
+          listKey.currentState?.removeItem(index, (c, a) => slideIt!(c, removed, a));
         }
         return await getCurrent();
       }
       throw Exception('Could not delete profile');
+    } on StillStreamingException catch (error) {
+      ET.logger?.w('Warning deleting profile ${profile.name}:', error, StackTrace.current);
+      rethrow;
     } catch (error) {
+      ET.logger?.e('Error deleting profile ${profile.name}:', error, StackTrace.current);
       rethrow;
     }
   }
 
   Future<ProfileWrapper> add(ProfileWrapper profile) async {
     try {
-      if (_client == null) throw Exception('Not connected');
-      if (stream != null) throw Exception('Still streaming');
+      if (_client == null) throw NotConnectedException();
+      if (stream != null) throw StillStreamingException();
       if (profiles.isEmpty) await get();
       final added = await profile.select();
 
       if (added) {
         final currentList = [..._profiles];
         final newList = await get();
-        final difference =
-            newList.where((element) => !currentList.contains(element));
+        final difference = newList.where((element) => !currentList.contains(element));
         if (difference.isNotEmpty && difference.length == 1) {
           return await getCurrent();
         }
       }
       throw Exception('Could not add profile');
+    } on StillStreamingException catch (error) {
+      ET.logger?.w('Warning adding profile ${profile.name}:', error, StackTrace.current);
+      rethrow;
     } catch (error) {
+      ET.logger?.e('Error adding profile ${profile.name}:', error, StackTrace.current);
       rethrow;
     }
   }
 
   Future<ProfileWrapper> getCurrent() async {
     try {
-      if (_client == null) throw Exception('Not connected');
+      if (_client == null) throw NotConnectedException();
       if (profiles.isEmpty) await get();
       final Profile temp = await _client!.currentProfile(Empty());
       if (temp.iD != _current.id) {
@@ -233,6 +239,7 @@ class Profiles extends ChangeNotifier {
         notifyListeners();
       }
     } catch (error) {
+      ET.logger?.e('Error getting current profile:', error, StackTrace.current);
       rethrow;
     }
     return _current;

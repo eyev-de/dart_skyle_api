@@ -42,7 +42,7 @@ class SwitchOptions extends ChangeNotifier {
 
   Future<Button> _getStateAsync() async {
     try {
-      if (client == null) throw Exception('Not connected');
+      if (client == null) throw NotConnectedException();
       final Button ret = await client!.getButton(Empty());
       if (_state != ret) {
         _state = ret;
@@ -50,6 +50,7 @@ class SwitchOptions extends ChangeNotifier {
       }
     } catch (error) {
       _error = GRPCFailed(error: error.toString());
+      ET.logger?.e(error, StackTrace.current);
       notifyListeners();
     }
     return _state;
@@ -57,7 +58,7 @@ class SwitchOptions extends ChangeNotifier {
 
   Future<bool> setButton(ButtonActions request) async {
     try {
-      if (client == null) throw Exception('Not connected');
+      if (client == null) throw NotConnectedException();
       final ButtonActions ret = await client!.setButton(request);
       if (_state.buttonActions != ret) {
         _state.buttonActions = ret;
@@ -65,6 +66,7 @@ class SwitchOptions extends ChangeNotifier {
       }
       return true;
     } catch (error) {
+      ET.logger?.e(error, StackTrace.current);
       return false;
     }
   }

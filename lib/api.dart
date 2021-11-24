@@ -8,6 +8,7 @@ library skyle_api;
 
 export 'et.dart';
 export 'src/calibration.dart';
+export 'src/exceptions.dart';
 export 'src/gaze.dart';
 export 'src/generated/Skyle.proto/Skyle.pbgrpc.dart';
 export 'src/generated/google/protobuf/empty.pb.dart';

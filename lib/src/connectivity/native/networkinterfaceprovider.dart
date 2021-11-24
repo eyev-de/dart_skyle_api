@@ -17,16 +17,16 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
   }
   NetworkInterfaceProvider._internal();
 
-  Isolate? _isolateNetworkInterface;
-  ReceivePort? _portNetworkInterface;
+  Isolate? _isolate;
+  ReceivePort? _port;
 
   @override
   Future<void> start(void Function(ConnectionMessage message) onConnectionMessageChanged) async {
     if (running) return;
     running = true;
-    _portNetworkInterface = ReceivePort();
-    _isolateNetworkInterface = await Isolate.spawn(_receivingIsolate, _portNetworkInterface!.sendPort);
-    await for (final message in _portNetworkInterface!) {
+    _port = ReceivePort();
+    _isolate = await Isolate.spawn(_isolateFunction, _port!.sendPort);
+    await for (final message in _port!) {
       if (message is ConnectionMessage) {
         if (state.connection != message.connection) {
           state = message;
@@ -36,7 +36,22 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
     }
   }
 
-  static Future<void> _receivingIsolate(SendPort portReceive) async {
+  @override
+  void stop() {
+    if (!running) return;
+    state = ConnectionMessage.disconnected();
+    _isolate?.kill(priority: Isolate.immediate);
+    _port?.close();
+    running = false;
+  }
+
+  @override
+  ConnectionMessage state = ConnectionMessage.disconnected();
+
+  @override
+  bool running = false;
+
+  static Future<void> _isolateFunction(SendPort portReceive) async {
     // ignore: literal_only_boolean_expressions
     ConnectionMessage message = ConnectionMessage.disconnected();
     do {
@@ -94,20 +109,6 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
     }
     return message;
   }
-
-  @override
-  void stop() {
-    state = ConnectionMessage.disconnected();
-    _isolateNetworkInterface?.kill(priority: Isolate.immediate);
-    _portNetworkInterface?.close();
-    running = false;
-  }
-
-  @override
-  ConnectionMessage state = ConnectionMessage.disconnected();
-
-  @override
-  bool running = false;
 }
 
 ConnectivityProvider getConnectivityProvider() => NetworkInterfaceProvider();

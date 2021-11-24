@@ -29,7 +29,7 @@ class Version extends ChangeNotifier {
 
   Future<DeviceVersions> getStateAsync() async {
     try {
-      if (client == null) throw Exception('Not connected');
+      if (client == null) throw NotConnectedException();
       final DeviceVersions versions = await client!.getVersions(Empty());
       if (_state != versions) {
         _state = versions;
@@ -37,6 +37,7 @@ class Version extends ChangeNotifier {
       }
     } catch (error) {
       _error = GRPCFailed(error: error.toString());
+      ET.logger?.e('Error getting version information:', error, StackTrace.current);
       notifyListeners();
     }
     return _state;

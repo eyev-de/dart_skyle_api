@@ -9,6 +9,7 @@ import 'dart:async';
 import 'package:grpc/grpc_connection_interface.dart';
 import 'package:grpc/service_api.dart';
 
+import '../api.dart';
 import '../et.dart';
 import 'generated/Skyle.proto/Skyle.pbgrpc.dart';
 
@@ -107,7 +108,7 @@ class Calibration {
     required void Function(GRPCFailed event) onError,
   }) async {
     try {
-      if (client == null) throw Exception('Not connected');
+      if (client == null) throw NotConnectedException();
       control = StreamController<calibControlMessages>();
       stream = client!.calibrate(control.stream);
       final calibControlMessages message = (calibControlMessages()
@@ -124,6 +125,7 @@ class Calibration {
         onData(event);
       }
     } catch (error) {
+      ET.logger?.e('Error in calibration:', error, StackTrace.current);
       if (error is GrpcError && error.code == 1) return;
       onError(GRPCFailed(error: error.toString()));
     }
