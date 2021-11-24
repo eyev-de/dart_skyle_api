@@ -11,8 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Stay on 3.0.0 some idiot patched a bug in 3.0.2
-  grpc: '3.0.0'
+  grpc: ^3.0.2
   protobuf: ^2.0.0
   path: ^1.8.0
   logger: ^1.1.0

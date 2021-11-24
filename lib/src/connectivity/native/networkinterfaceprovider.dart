@@ -61,7 +61,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
         } else {
           message = await lookupHost();
           if (message.connection == Connection.disconnected) {
-            message = await detectIPs(possibleBaseIPs);
+            message = await detectIPs(ET.possibleBaseIPs);
           }
         }
       } catch (error) {
@@ -85,6 +85,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
           }
         }
         if (message.connection == Connection.connecting) {
+          // print('Found Skyle with ip: ${message.url}');
           break;
         }
       }
@@ -101,6 +102,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
       for (final address in list) {
         if (address.type == InternetAddressType.IPv4) {
           message = ConnectionMessage.connecting(address.address);
+          // print('Found Skyle with host detection: ${message.url}');
           break;
         }
       }

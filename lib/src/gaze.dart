@@ -35,14 +35,8 @@ class Gaze extends ChangeNotifier {
 
   Future<void> _start() async {
     try {
-      // Already streaming
-      if (_stream != null) {
-        return;
-      }
-      // Disconnected
-      if (client == null) {
-        return;
-      }
+      if (_stream != null) throw StillStreamingException();
+      if (client == null) throw NotConnectedException();
       _stream = client!.gaze(Empty()).timeout(Duration(seconds: 5), onTimeout: (sink) {
         sink.addError(TimeoutException());
       });
@@ -51,9 +45,10 @@ class Gaze extends ChangeNotifier {
         _error = null;
         notifyListeners();
       }
+    } on StillStreamingException catch (_) {
+    } on NotConnectedException catch (_) {
     } on TimeoutException catch (_) {
       _stream = null;
-      return;
     } catch (error) {
       _stream = null;
       ET.logger?.e('Error in gaze stream:', error, StackTrace.current);

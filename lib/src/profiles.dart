@@ -169,6 +169,8 @@ class Profiles extends ChangeNotifier {
           notifyListeners();
         });
       }
+    } on NotConnectedException catch (_) {
+      rethrow;
     } on StillStreamingException catch (error) {
       ET.logger?.w('Warning in getting profiles:', error, StackTrace.current);
       rethrow;
@@ -195,6 +197,8 @@ class Profiles extends ChangeNotifier {
         return await getCurrent();
       }
       throw Exception('Could not delete profile');
+    } on NotConnectedException catch (_) {
+      rethrow;
     } on StillStreamingException catch (error) {
       ET.logger?.w('Warning deleting profile ${profile.name}:', error, StackTrace.current);
       rethrow;
@@ -220,6 +224,8 @@ class Profiles extends ChangeNotifier {
         }
       }
       throw Exception('Could not add profile');
+    } on NotConnectedException catch (_) {
+      rethrow;
     } on StillStreamingException catch (error) {
       ET.logger?.w('Warning adding profile ${profile.name}:', error, StackTrace.current);
       rethrow;
@@ -238,6 +244,8 @@ class Profiles extends ChangeNotifier {
         _current = _profiles.firstWhere((element) => element.id == temp.iD);
         notifyListeners();
       }
+    } on NotConnectedException catch (_) {
+      rethrow;
     } catch (error) {
       ET.logger?.e('Error getting current profile:', error, StackTrace.current);
       rethrow;

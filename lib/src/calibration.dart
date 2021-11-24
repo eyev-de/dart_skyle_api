@@ -124,6 +124,7 @@ class Calibration {
       await for (final CalibMessages event in stream!) {
         onData(event);
       }
+    } on NotConnectedException catch (_) {
     } catch (error) {
       ET.logger?.e('Error in calibration:', error, StackTrace.current);
       if (error is GrpcError && error.code == 1) return;

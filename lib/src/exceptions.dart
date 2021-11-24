@@ -7,3 +7,5 @@
 class StillStreamingException implements Exception {}
 
 class NotConnectedException implements Exception {}
+
+class TimeoutException implements Exception {}

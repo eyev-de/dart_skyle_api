@@ -45,14 +45,8 @@ class Positioning extends ChangeNotifier {
 
   Future<void> _start() async {
     try {
-      // Already streaming
-      if (_stream != null) {
-        return;
-      }
-      // Disonnected
-      if (client == null) {
-        return;
-      }
+      if (_stream != null) throw StillStreamingException();
+      if (client == null) throw NotConnectedException();
       _stream = client!.positioning(Empty()).timeout(Duration(seconds: 5), onTimeout: (sink) {
         sink.addError(TimeoutException());
       });
@@ -80,9 +74,10 @@ class Positioning extends ChangeNotifier {
         _error = null;
         notifyListeners();
       }
+    } on StillStreamingException catch (_) {
+    } on NotConnectedException catch (_) {
     } on TimeoutException catch (_) {
       _stream = null;
-      return;
     } catch (error) {
       _stream = null;
       ET.logger?.e('Error in positioning stream:', error, StackTrace.current);
