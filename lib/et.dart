@@ -69,10 +69,10 @@ class ET extends ChangeNotifier {
 
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting && _connection == Connection.disconnected) {
+      print('Try connecting Skyle: ${ET.baseURL}');
       ET.baseURL = message.url!;
       _connection = message.connection;
       notifyListeners();
-      print('Connecting Skyle with base ip: ${ET.baseURL}...');
       await tryReconnect();
     } else if (message.connection == Connection.disconnected && _connection != Connection.disconnected) {
       print('Skyle disconnected.');
@@ -80,34 +80,17 @@ class ET extends ChangeNotifier {
     }
   }
 
-  Completer? _cancelConnectionCompleter;
-  bool _cancelConnectingGRPCs = false;
-
-  Future<void> _cancelPreviousReconnect() async {
-    if (_cancelConnectionCompleter == null) return;
-    _cancelConnectingGRPCs = true;
-    await _cancelConnectionCompleter!.future;
-    _cancelConnectingGRPCs = false;
-  }
-
+  // TODO
+  // Add async cancellation if called again.
   Future<void> tryReconnect() async {
     try {
       if (_connection == Connection.connected || _connection == Connection.disconnected) return;
-      // ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
-      await _cancelPreviousReconnect();
-      _cancelConnectionCompleter = Completer();
       createClient(url: ET.baseURL, port: ET.grpcPort);
-      const maxRetries = 40;
+      // ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
+
+      const maxRetries = 10;
       for (var i = 0; i < maxRetries; i++) {
         try {
-          if (_cancelConnectingGRPCs) {
-            _cancelConnectionCompleter!.complete();
-            _cancelConnectionCompleter = null;
-            try {
-              await terminateClient();
-            } catch (e) {}
-            return;
-          }
           // First set options client to make the initial call
           options.client = client;
           await options.initAsync();
@@ -122,7 +105,7 @@ class ET extends ChangeNotifier {
           print('Connected Skyle.');
           break;
         } catch (error) {
-          final milliseconds = 1000 + 500 * i;
+          final milliseconds = 100 + 500 * i;
           ET.logger?.w('Warning in tryReconnect():', error, StackTrace.current);
           ET.logger?.i('GRPC connection attempt ${i + 1}/$maxRetries - Waiting ${milliseconds / 1000}s before retrying.');
           await Future.delayed(Duration(milliseconds: milliseconds));
@@ -134,10 +117,6 @@ class ET extends ChangeNotifier {
     } catch (error) {
       ET.logger?.e('Skyle disconnected fatally:', error, StackTrace.current);
       await terminateClient();
-    } finally {
-      if (_cancelConnectionCompleter != null) {
-        _cancelConnectionCompleter!.complete();
-      }
     }
   }
 
@@ -156,7 +135,7 @@ class ET extends ChangeNotifier {
       port: port,
       options: const ChannelOptions(
         credentials: ChannelCredentials.insecure(),
-        backoffStrategy: BackOffStrategy.defaultBackoffStrategy,
+        // backoffStrategy: BackOffStrategy.defaultBackoffStrategy,
       ),
     );
     _client = SkyleClient(_channel!);
@@ -165,7 +144,7 @@ class ET extends ChangeNotifier {
   Future<void> terminateClient() async {
     try {
       // ET.logger?.i('Disconnecting active Skyle grpcs...');
-      calibration.stop();
+      await calibration.stop();
       switchOptions.stop();
       await _channel?.terminate();
     } catch (error) {

@@ -11,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'timer_provider.dart';
 import '../api.dart';
 
-// ignore: constant_identifier_names
 enum PositioningState { None, Normal, Close, Far }
 
 class PositioningData {

@@ -137,9 +137,9 @@ class Calibration {
     control.add(message);
   }
 
-  void stop() {
+  Future<void> stop() async {
     final calibControlMessages message = (calibControlMessages()..calibControl = (CalibControl()..abort = true));
     control.add(message);
-    stream?.cancel();
+    await stream?.cancel();
   }
 }

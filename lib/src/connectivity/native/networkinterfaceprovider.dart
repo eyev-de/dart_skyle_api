@@ -57,14 +57,17 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
     do {
       try {
         if (message.connection == Connection.connecting) {
-          message = await detectIPs([message.url!]);
+          message = await _detectIPs([message.url!]);
         } else {
-          message = await lookupHost();
-          if (message.connection == Connection.disconnected) {
-            message = await detectIPs(ET.possibleBaseIPs);
-          }
+          // TODO
+          // _lookupHost() works but is slow and could cause issues.
+          // message = await _lookupHost();
+          // if (message.connection == Connection.disconnected) {
+          message = await _detectIPs(ET.possibleBaseIPs);
+          // }
         }
       } catch (error) {
+        ET.logger?.e('Connection Isolate reports error: ', error, StackTrace.current);
         message = ConnectionMessage.disconnected();
       }
       portReceive.send(message);
@@ -72,7 +75,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
     } while (true);
   }
 
-  static Future<ConnectionMessage> detectIPs(List<String> urls) async {
+  static Future<ConnectionMessage> _detectIPs(List<String> urls) async {
     ConnectionMessage message = ConnectionMessage.disconnected();
     try {
       final List<NetworkInterface> interfaces = await NetworkInterface.list();
@@ -95,7 +98,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
     return message;
   }
 
-  static Future<ConnectionMessage> lookupHost() async {
+  static Future<ConnectionMessage> _lookupHost() async {
     ConnectionMessage message = ConnectionMessage.disconnected();
     try {
       final list = await InternetAddress.lookup('skyle.local');

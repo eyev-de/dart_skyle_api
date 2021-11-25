@@ -45,8 +45,7 @@ class OptionsStateNotifier extends ChangeNotifier {
       if (client == null) throw NotConnectedException();
       _state.mergeFromJson(value.writeToJson());
       final req = OptionMessage()..options = _state;
-      // Skyle is not physically connected if this call takes longer than 3 seconds
-      final options = await client!.configure(req, options: CallOptions(timeout: const Duration(milliseconds: 3000)));
+      final options = await client!.configure(req);
       _state = options;
       notifyListeners();
     } catch (error) {
