@@ -42,12 +42,15 @@ class Positioning extends ChangeNotifier {
   }
 
   void start() {
-    _timer?.cancel();
     _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) async {
-      await _stream?.cancel();
-      _stream = null;
       _start();
     });
+  }
+
+  Future<void> stop() async {
+    _timer?.cancel();
+    await _stream?.cancel();
+    _stream = null;
   }
 
   Future<void> _start() async {
