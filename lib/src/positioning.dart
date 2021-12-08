@@ -35,14 +35,14 @@ class Positioning extends ChangeNotifier {
   GRPCFailed? _error;
   GRPCFailed? get error => _error;
 
-  late final Timer _timer;
+  Timer? _timer;
 
   Positioning() {
     start();
   }
 
   void start() {
-    _timer.cancel();
+    _timer?.cancel();
     _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) async {
       await _stream?.cancel();
       _stream = null;
