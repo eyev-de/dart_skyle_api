@@ -7,6 +7,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:grpc/grpc_or_grpcweb.dart';
 
 import '../api.dart';
 
@@ -17,7 +18,7 @@ class GazeData {
 
 class Gaze extends ChangeNotifier {
   SkyleClient? client;
-  Stream<Point>? _stream;
+  ResponseStream<Point>? _stream;
 
   final Point _point = Point();
   Point get point => _point;
@@ -28,7 +29,14 @@ class Gaze extends ChangeNotifier {
   late final Timer _timer;
 
   Gaze() {
+    start();
+  }
+
+  void start() {
+    _timer.cancel();
     _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) async {
+      await _stream?.cancel();
+      _stream = null;
       _start();
     });
   }
@@ -37,10 +45,11 @@ class Gaze extends ChangeNotifier {
     try {
       if (_stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
-      _stream = client!.gaze(Empty()).timeout(Duration(seconds: 5), onTimeout: (sink) {
+      _stream = client!.gaze(Empty());
+      final stream = _stream!.timeout(Duration(seconds: 5), onTimeout: (sink) {
         sink.addError(TimeoutException());
       });
-      await for (final Point event in _stream!) {
+      await for (final Point event in stream) {
         _point.mergeFromJson(event.writeToJson());
         _error = null;
         notifyListeners();

@@ -7,6 +7,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:grpc/grpc_or_grpcweb.dart';
 
 import 'timer_provider.dart';
 import '../api.dart';
@@ -22,7 +23,7 @@ class Positioning extends ChangeNotifier {
   static double width = 1280;
   static double height = 720;
   SkyleClient? client;
-  Stream<PositioningMessage>? _stream;
+  ResponseStream<PositioningMessage>? _stream;
   final _timerProvider = TimerProvider();
 
   PositioningState _state = PositioningState.None;
@@ -37,7 +38,14 @@ class Positioning extends ChangeNotifier {
   late final Timer _timer;
 
   Positioning() {
+    start();
+  }
+
+  void start() {
+    _timer.cancel();
     _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) async {
+      await _stream?.cancel();
+      _stream = null;
       _start();
     });
   }
@@ -46,10 +54,11 @@ class Positioning extends ChangeNotifier {
     try {
       if (_stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
-      _stream = client!.positioning(Empty()).timeout(Duration(seconds: 5), onTimeout: (sink) {
+      _stream = client!.positioning(Empty());
+      final stream = _stream!.timeout(Duration(seconds: 5), onTimeout: (sink) {
         sink.addError(TimeoutException());
       });
-      await for (final PositioningMessage event in _stream!) {
+      await for (final PositioningMessage event in stream) {
         final PositioningMessage p = PositioningMessage()..mergeFromJson(event.writeToJson());
         _data = p;
         if ((data.hasLeftEye() || data.hasRightEye()) && !_timerProvider.fired) {
