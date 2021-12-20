@@ -65,6 +65,7 @@ class ET extends ChangeNotifier {
 
   void stopScanningForInterface() {
     connectivityProvider.stop();
+    terminateClient();
   }
 
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
