@@ -1,10 +1,9 @@
 //  Skyle API
 //
 //  Created by Konstantin Wachendorff.
-//  Copyright © 2021 eyeV GmbH. All rights reserved.
+//  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -12,8 +11,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:skyle_api/src/test/skyle_service.dart';
 import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/test/test_client.dart';
-import 'package:skyle_api/src/test/test_server.dart';
 
 void main() {
   SkyleTestServer server = SkyleTestServer();

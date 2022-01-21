@@ -480,6 +480,86 @@ class calibControlMessages extends $pb.GeneratedMessage {
   CalibConfirm ensureCalibConfirm() => $_ensure(2);
 }
 
+enum calibCursorMessages_Message {
+  empty, 
+  calibConfirm, 
+  notSet
+}
+
+class calibCursorMessages extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, calibCursorMessages_Message> _calibCursorMessages_MessageByTag = {
+    1 : calibCursorMessages_Message.empty,
+    3 : calibCursorMessages_Message.calibConfirm,
+    0 : calibCursorMessages_Message.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'calibCursorMessages', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
+    ..oo(0, [1, 3])
+    ..aOM<$1.Empty>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'empty', subBuilder: $1.Empty.create)
+    ..aOM<CalibConfirm>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibConfirm', protoName: 'calibConfirm', subBuilder: CalibConfirm.create)
+    ..hasRequiredFields = false
+  ;
+
+  calibCursorMessages._() : super();
+  factory calibCursorMessages({
+    $1.Empty? empty,
+    CalibConfirm? calibConfirm,
+  }) {
+    final _result = create();
+    if (empty != null) {
+      _result.empty = empty;
+    }
+    if (calibConfirm != null) {
+      _result.calibConfirm = calibConfirm;
+    }
+    return _result;
+  }
+  factory calibCursorMessages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory calibCursorMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  calibCursorMessages clone() => calibCursorMessages()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  calibCursorMessages copyWith(void Function(calibCursorMessages) updates) => super.copyWith((message) => updates(message as calibCursorMessages)) as calibCursorMessages; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static calibCursorMessages create() => calibCursorMessages._();
+  calibCursorMessages createEmptyInstance() => create();
+  static $pb.PbList<calibCursorMessages> createRepeated() => $pb.PbList<calibCursorMessages>();
+  @$core.pragma('dart2js:noInline')
+  static calibCursorMessages getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<calibCursorMessages>(create);
+  static calibCursorMessages? _defaultInstance;
+
+  calibCursorMessages_Message whichMessage() => _calibCursorMessages_MessageByTag[$_whichOneof(0)]!;
+  void clearMessage() => clearField($_whichOneof(0));
+
+  @$pb.TagNumber(1)
+  $1.Empty get empty => $_getN(0);
+  @$pb.TagNumber(1)
+  set empty($1.Empty v) { setField(1, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasEmpty() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearEmpty() => clearField(1);
+  @$pb.TagNumber(1)
+  $1.Empty ensureEmpty() => $_ensure(0);
+
+  @$pb.TagNumber(3)
+  CalibConfirm get calibConfirm => $_getN(1);
+  @$pb.TagNumber(3)
+  set calibConfirm(CalibConfirm v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasCalibConfirm() => $_has(1);
+  @$pb.TagNumber(3)
+  void clearCalibConfirm() => clearField(3);
+  @$pb.TagNumber(3)
+  CalibConfirm ensureCalibConfirm() => $_ensure(1);
+}
+
 class CalibControl extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibControl', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibrate')

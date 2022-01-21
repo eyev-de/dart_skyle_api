@@ -1,7 +1,7 @@
 //  Skyle API
 //
 //  Created by Konstantin Wachendorff.
-//  Copyright © 2021 eyeV GmbH. All rights reserved.
+//  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
 import 'dart:async';
@@ -14,6 +14,7 @@ import 'package:logger/logger.dart';
 
 import 'src/calibration.dart';
 import 'src/connectivity/connectivityprovider.dart';
+import 'src/cursor_calibration.dart';
 import 'src/gaze.dart';
 import 'src/generated/Skyle.proto/Skyle.pbgrpc.dart';
 import 'src/options.dart';
@@ -43,6 +44,7 @@ class ET extends ChangeNotifier {
   Profiles profiles = Profiles();
   SwitchOptions switchOptions = SwitchOptions();
   Reset reset = Reset();
+  CursorCalibration cursorCalibration = CursorCalibration();
 
   static Logger? logger;
 
@@ -169,5 +171,6 @@ class ET extends ChangeNotifier {
     profiles.client = client;
     switchOptions.client = client;
     reset.client = client;
+    cursorCalibration.client = client;
   }
 }

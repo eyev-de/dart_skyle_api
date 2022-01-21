@@ -1,13 +1,14 @@
 //  Skyle API
 //
 //  Created by Konstantin Wachendorff.
-//  Copyright © 2021 eyeV GmbH. All rights reserved.
+//  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
 library skyle_api;
 
 export 'et.dart';
 export 'src/calibration.dart';
+export 'src/cursor_calibration.dart';
 export 'src/exceptions.dart';
 export 'src/gaze.dart';
 export 'src/generated/Skyle.proto/Skyle.pbgrpc.dart';

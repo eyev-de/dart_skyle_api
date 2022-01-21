@@ -1,7 +1,7 @@
 //  Skyle API
 //
 //  Created by Konstantin Wachendorff.
-//  Copyright © 2021 eyeV GmbH. All rights reserved.
+//  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
 import 'dart:convert';
@@ -174,6 +174,12 @@ class SkyleService extends SkyleServiceBase {
   @override
   Stream<TriggerMessage> trigger(ServiceCall call, Empty request) {
     // TODO: implement trigger
+    throw UnimplementedError();
+  }
+
+  @override
+  Stream<Point> cursorCalibration(ServiceCall call, Stream<calibCursorMessages> request) {
+    // TODO: implement cursorCalibration
     throw UnimplementedError();
   }
 }

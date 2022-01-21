@@ -95,6 +95,20 @@ const calibControlMessages$json = const {
 
 /// Descriptor for `calibControlMessages`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List calibControlMessagesDescriptor = $convert.base64Decode('ChRjYWxpYkNvbnRyb2xNZXNzYWdlcxI5CgxjYWxpYkNvbnRyb2wYASABKAsyEy5Ta3lsZS5DYWxpYkNvbnRyb2xIAFIMY2FsaWJDb250cm9sEjkKDGNhbGliSW1wcm92ZRgCIAEoCzITLlNreWxlLkNhbGliSW1wcm92ZUgAUgxjYWxpYkltcHJvdmUSOQoMY2FsaWJDb25maXJtGAMgASgLMhMuU2t5bGUuQ2FsaWJDb25maXJtSABSDGNhbGliQ29uZmlybUIJCgdtZXNzYWdl');
+@$core.Deprecated('Use calibCursorMessagesDescriptor instead')
+const calibCursorMessages$json = const {
+  '1': 'calibCursorMessages',
+  '2': const [
+    const {'1': 'empty', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Empty', '9': 0, '10': 'empty'},
+    const {'1': 'calibConfirm', '3': 3, '4': 1, '5': 11, '6': '.Skyle.CalibConfirm', '9': 0, '10': 'calibConfirm'},
+  ],
+  '8': const [
+    const {'1': 'message'},
+  ],
+};
+
+/// Descriptor for `calibCursorMessages`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List calibCursorMessagesDescriptor = $convert.base64Decode('ChNjYWxpYkN1cnNvck1lc3NhZ2VzEi4KBWVtcHR5GAEgASgLMhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5SABSBWVtcHR5EjkKDGNhbGliQ29uZmlybRgDIAEoCzITLlNreWxlLkNhbGliQ29uZmlybUgAUgxjYWxpYkNvbmZpcm1CCQoHbWVzc2FnZQ==');
 @$core.Deprecated('Use calibControlDescriptor instead')
 const CalibControl$json = const {
   '1': 'CalibControl',

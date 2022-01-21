@@ -72,6 +72,11 @@ class SkyleClient extends $grpc.Client {
       '/Skyle.Skyle/Reset',
       ($0.ResetMessage value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.StatusMessage.fromBuffer(value));
+  static final _$cursorCalibration =
+      $grpc.ClientMethod<$0.calibCursorMessages, $0.Point>(
+          '/Skyle.Skyle/CursorCalibration',
+          ($0.calibCursorMessages value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $0.Point.fromBuffer(value));
 
   SkyleClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -149,6 +154,12 @@ class SkyleClient extends $grpc.Client {
   $grpc.ResponseFuture<$0.StatusMessage> reset($0.ResetMessage request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$reset, request, options: options);
+  }
+
+  $grpc.ResponseStream<$0.Point> cursorCalibration(
+      $async.Stream<$0.calibCursorMessages> request,
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$cursorCalibration, request, options: options);
   }
 }
 
@@ -248,6 +259,14 @@ abstract class SkyleServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.ResetMessage.fromBuffer(value),
         ($0.StatusMessage value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.calibCursorMessages, $0.Point>(
+        'CursorCalibration',
+        cursorCalibration,
+        true,
+        true,
+        ($core.List<$core.int> value) =>
+            $0.calibCursorMessages.fromBuffer(value),
+        ($0.Point value) => value.writeToBuffer()));
   }
 
   $async.Stream<$0.PositioningMessage> positioning_Pre(
@@ -334,4 +353,6 @@ abstract class SkyleServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.Profile request);
   $async.Future<$0.StatusMessage> reset(
       $grpc.ServiceCall call, $0.ResetMessage request);
+  $async.Stream<$0.Point> cursorCalibration(
+      $grpc.ServiceCall call, $async.Stream<$0.calibCursorMessages> request);
 }

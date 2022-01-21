@@ -1,7 +1,7 @@
 //  Skyle API
 //
 //  Created by Konstantin Wachendorff.
-//  Copyright © 2021 eyeV GmbH. All rights reserved.
+//  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
 import 'dart:async';
@@ -10,8 +10,6 @@ import 'package:grpc/grpc_connection_interface.dart';
 import 'package:grpc/service_api.dart';
 
 import '../api.dart';
-import '../et.dart';
-import 'generated/Skyle.proto/Skyle.pbgrpc.dart';
 
 enum CalibrationPoints { one, two, five, nine }
 
