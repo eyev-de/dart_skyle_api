@@ -20,6 +20,7 @@ class CursorCalibration {
     required void Function(GRPCFailed event) onError,
   }) async {
     try {
+      if (stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
       control = StreamController<calibCursorMessages>();
       stream = client!.cursorCalibration(control.stream);
@@ -28,6 +29,7 @@ class CursorCalibration {
       }
     } on NotConnectedException catch (_) {
     } catch (error) {
+      stream = null;
       ET.logger?.e('Error in cursor calibration:', error, StackTrace.current);
       if (error is GrpcError && error.code == 1) return;
       onError(GRPCFailed(error: error.toString()));
@@ -46,5 +48,6 @@ class CursorCalibration {
 
   Future<void> stop() async {
     await stream?.cancel();
+    stream = null;
   }
 }

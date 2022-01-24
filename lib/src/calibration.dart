@@ -106,6 +106,7 @@ class Calibration {
     required void Function(GRPCFailed event) onError,
   }) async {
     try {
+      if (stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
       control = StreamController<calibControlMessages>();
       stream = client!.calibrate(control.stream);
@@ -124,6 +125,7 @@ class Calibration {
       }
     } on NotConnectedException catch (_) {
     } catch (error) {
+      stream = null;
       ET.logger?.e('Error in calibration:', error, StackTrace.current);
       if (error is GrpcError && error.code == 1) return;
       onError(GRPCFailed(error: error.toString()));
@@ -139,5 +141,6 @@ class Calibration {
     final calibControlMessages message = (calibControlMessages()..calibControl = (CalibControl()..abort = true));
     control.add(message);
     await stream?.cancel();
+    stream = null;
   }
 }
