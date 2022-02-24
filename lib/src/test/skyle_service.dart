@@ -24,38 +24,80 @@ class SkyleService extends SkyleServiceBase {
   @override
   Stream<CalibMessages> calibrate(ServiceCall call, Stream<calibControlMessages> request) async* {
     bool abort = false;
+    CalibrationPoints? pts;
+    int currentIndex = 0;
+    double width = 0;
+    double height = 0;
     await for (var msg in request) {
-      if (msg.calibControl.calibrate) {
-        final pts = CalibrationPointsExtension.fromInt(msg.calibControl.numberOfPoints);
-        for (var pt in List.generate(pts.value, (index) => index)) {
-          await Future.delayed(Duration(milliseconds: 300));
-          if (abort) return;
-          final width = msg.calibControl.res.width.toDouble();
-          final height = msg.calibControl.res.height.toDouble();
-          yield CalibMessages()
-            ..calibPoint = CalibPoint(
-              count: pt,
-              currentPoint: Point(
-                x: Calibration.calcX(
-                  pts.array[pt],
-                  width,
-                ),
-                y: Calibration.calcY(
-                  pts.array[pt],
-                  width,
-                  height,
-                ),
+      if (msg.hasCalibConfirm() && msg.calibConfirm.confirmed && pts != null) {
+        yield CalibMessages()
+          ..calibPoint = CalibPoint(
+            count: currentIndex,
+            currentPoint: Point(
+              x: Calibration.calcX(
+                pts.array[currentIndex],
+                width,
               ),
-            );
+              y: Calibration.calcY(
+                pts.array[currentIndex],
+                width,
+                height,
+              ),
+            ),
+          );
+        currentIndex++;
+        if (currentIndex == pts.value) {
+          if (abort) return;
+          await Future.delayed(Duration(milliseconds: 300));
+          final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(pts.value, (index) => 4));
+          yield CalibMessages()..calibQuality = qualityMsg;
+          return;
         }
-        if (abort) return;
-        await Future.delayed(Duration(milliseconds: 300));
-        final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(msg.calibControl.numberOfPoints, (index) => 4));
-        yield CalibMessages()..calibQuality = qualityMsg;
-        return;
-      } else if (msg.calibControl.abort = true) {
-        abort = true;
-        return;
+      }
+      if (msg.hasCalibControl()) {
+        if (msg.calibControl.hasAbort()) {
+          abort = msg.calibControl.abort;
+          return;
+        }
+        if (msg.calibControl.hasRes()) {
+          width = msg.calibControl.res.width.toDouble();
+          height = msg.calibControl.res.height.toDouble();
+        }
+        if (msg.calibControl.hasCalibrate() && msg.calibControl.calibrate) {
+          if (msg.calibControl.hasNumberOfPoints()) {
+            pts = CalibrationPointsExtension.fromInt(msg.calibControl.numberOfPoints);
+          } else {
+            pts = CalibrationPoints.nine;
+          }
+          if (msg.calibControl.hasStepByStep() && msg.calibControl.stepByStep) {
+            //
+          } else {
+            for (var pt in List.generate(pts.value, (index) => index)) {
+              await Future.delayed(Duration(milliseconds: 300));
+              if (abort) return;
+              yield CalibMessages()
+                ..calibPoint = CalibPoint(
+                  count: pt,
+                  currentPoint: Point(
+                    x: Calibration.calcX(
+                      pts.array[pt],
+                      width,
+                    ),
+                    y: Calibration.calcY(
+                      pts.array[pt],
+                      width,
+                      height,
+                    ),
+                  ),
+                );
+            }
+            if (abort) return;
+            await Future.delayed(Duration(milliseconds: 300));
+            final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(msg.calibControl.numberOfPoints, (index) => 4));
+            yield CalibMessages()..calibQuality = qualityMsg;
+            return;
+          }
+        }
       }
     }
   }
