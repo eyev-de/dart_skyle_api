@@ -5,6 +5,7 @@
 //
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
@@ -13,6 +14,10 @@ import 'timer_provider.dart';
 import '../api.dart';
 
 enum PositioningState { None, Normal, Close, Far }
+// 55cm = 25
+// 65cm = 0
+// 72cm = -10
+// 48cm = 40
 
 class PositioningData {
   final String data;
@@ -22,6 +27,8 @@ class PositioningData {
 class Positioning extends ChangeNotifier {
   static double width = 1280;
   static double height = 720;
+  static double maxDistance = Platform.isIOS ? 0 : -15;
+  static double minDistance = Platform.isIOS ? 40 : 35;
   SkyleClient? client;
   ResponseStream<PositioningMessage>? _stream;
   final _timerProvider = TimerProvider();
@@ -76,9 +83,10 @@ class Positioning extends ChangeNotifier {
           });
         }
         if (data.hasQualityDepth()) {
-          _state = data.qualityDepth < -10
+          print(data.qualityDepth);
+          _state = data.qualityDepth < maxDistance
               ? PositioningState.Far
-              : data.qualityDepth > 30
+              : data.qualityDepth > minDistance
                   ? PositioningState.Close
                   : PositioningState.Normal;
         }
