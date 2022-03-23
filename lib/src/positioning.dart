@@ -83,7 +83,6 @@ class Positioning extends ChangeNotifier {
           });
         }
         if (data.hasQualityDepth()) {
-          print(data.qualityDepth);
           _state = data.qualityDepth < maxDistance
               ? PositioningState.Far
               : data.qualityDepth > minDistance
