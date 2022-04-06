@@ -7,7 +7,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 
-class TimerProvider extends ChangeNotifier {
+class TimerNotifier {
   bool _fired = false;
   bool get fired => _fired;
   Timer? _timer;
@@ -18,7 +18,6 @@ class TimerProvider extends ChangeNotifier {
     _timer = Timer(duration, () async {
       if (_disposed) return;
       _fired = true;
-      notifyListeners();
       if (onFired != null) onFired(true);
       await Future.delayed(const Duration(milliseconds: 50));
       // ignore: invariant_booleans
@@ -32,16 +31,14 @@ class TimerProvider extends ChangeNotifier {
     _startTimer(duration: duration, onFired: onFired);
   }
 
-  @override
   void dispose() {
     _disposed = true;
-    super.dispose();
   }
 
-  TimerProvider();
+  TimerNotifier();
 
-  factory TimerProvider.start({Duration duration = const Duration(milliseconds: 1200), void Function(bool)? onFired}) {
-    return TimerProvider().._startTimer(duration: duration, onFired: onFired);
+  factory TimerNotifier.start({Duration duration = const Duration(milliseconds: 1200), void Function(bool)? onFired}) {
+    return TimerNotifier().._startTimer(duration: duration, onFired: onFired);
   }
 
   int _value = 0;
@@ -50,14 +47,13 @@ class TimerProvider extends ChangeNotifier {
   void _steppedFired(bool fired, int steps, Duration duration) {
     final _steps = steps - 1;
     _value += duration.inMilliseconds;
-    notifyListeners();
     if (_steps > 0) {
       restartTimer(duration: duration, onFired: (fired) => _steppedFired(fired, _steps, duration));
     }
   }
 
-  factory TimerProvider.stepped({int steps = 1, Duration duration = const Duration(milliseconds: 1200)}) {
-    final timerProvider = TimerProvider();
+  factory TimerNotifier.stepped({int steps = 1, Duration duration = const Duration(milliseconds: 1200)}) {
+    final timerProvider = TimerNotifier();
     timerProvider._startTimer(duration: duration, onFired: (fired) => timerProvider._steppedFired(fired, steps, duration));
     return timerProvider;
   }

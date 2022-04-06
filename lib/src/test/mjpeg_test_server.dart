@@ -16,7 +16,7 @@ class MJPEGTestServer {
 
   Stream<String> _buffer() async* {
     if (Platform.isIOS) {
-      for (var path in paths) {
+      for (final path in paths) {
         final bytes = await rootBundle.load(path);
         yield String.fromCharCodes(bytes.buffer.asUint8List());
       }
@@ -44,7 +44,7 @@ class MJPEGTestServer {
   }
 
   Future<void> _handleRequests(HttpServer server) async {
-    await for (HttpRequest request in server) {
+    await for (final HttpRequest request in server) {
       switch (request.method) {
         case 'GET':
           await _handleGETRequests(server, request);
@@ -68,7 +68,7 @@ class MJPEGTestServer {
         break;
       case '/close':
         await _handleSimpleSuccess(request);
-        server.close();
+        await server.close();
         break;
       default:
         await _handleDefault(request);
@@ -79,7 +79,7 @@ class MJPEGTestServer {
   Future<void> _handleGETRootRequests(HttpRequest request) async {
     request.response.headers.clear();
     Map<String, Object> headers = {
-      "Content-Type": "text/html;charset=utf-8",
+      'Content-Type': 'text/html;charset=utf-8',
     };
     headers.forEach((name, value) => request.response.headers.add(name, value));
 
@@ -108,14 +108,14 @@ class MJPEGTestServer {
       request.response.write(chunk);
       request.response.write('\r\n');
       await request.response.flush();
-      await Future.delayed(Duration(milliseconds: 20));
+      await Future.delayed(const Duration(milliseconds: 20));
     }
     await request.response.close();
   }
 
   Future<void> _handleSimpleSuccess(HttpRequest request) async {
     request.response.statusCode = HttpStatus.accepted;
-    request.response..write('Request was successful.');
+    request.response.write('Request was successful.');
     await request.response.close();
   }
 

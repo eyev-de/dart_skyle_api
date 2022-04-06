@@ -9,6 +9,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../api.dart';
+import 'core/exceptions.dart';
+import 'generated/Skyle.proto/Skyle.pbgrpc.dart';
+import 'generated/google/protobuf/empty.pb.dart';
 
 class SwitchOptions extends ChangeNotifier {
   SkyleClient? client;

@@ -12,17 +12,20 @@ import 'package:grpc/grpc_connection_interface.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 import 'package:logger/logger.dart';
 
-import 'src/calibration.dart';
 import 'src/connectivity/connectivityprovider.dart';
-import 'src/cursor_calibration.dart';
-import 'src/gaze.dart';
+import 'src/data/repositories/calibration_repository_impl.dart';
+import 'src/data/repositories/gaze_repository_impl.dart';
+import 'src/data/repositories/positioning_repository_impl.dart';
+import 'src/data/repositories/reset_repository_impl.dart';
+import 'src/data/repositories/settings_repository_impl.dart';
+import 'src/data/repositories/versions_repository_impl.dart';
+import 'src/domain/repositories/calibration_repository.dart';
+import 'src/domain/repositories/gaze_repository.dart';
+import 'src/domain/repositories/positioning_repository.dart';
+import 'src/domain/repositories/reset_repository.dart';
+import 'src/domain/repositories/settings_repository.dart';
+import 'src/domain/repositories/versions_repository.dart';
 import 'src/generated/Skyle.proto/Skyle.pbgrpc.dart';
-import 'src/options.dart';
-import 'src/positioning.dart';
-import 'src/profiles.dart';
-import 'src/reset.dart';
-import 'src/switchoptions.dart';
-import 'src/version.dart';
 
 enum Connection { disconnected, connecting, connected }
 
@@ -36,15 +39,21 @@ class ET extends ChangeNotifier {
 
   SkyleClient? _client;
   ConnectivityProvider connectivityProvider = ConnectivityProvider();
-  OptionsStateNotifier options = OptionsStateNotifier();
-  Calibration calibration = Calibration();
-  Gaze gaze = Gaze();
-  Positioning positioning = Positioning();
-  Version version = Version();
-  Profiles profiles = Profiles();
-  SwitchOptions switchOptions = SwitchOptions();
-  Reset reset = Reset();
-  CursorCalibration cursorCalibration = CursorCalibration();
+  CalibrationRepository calibration = CalibrationRepositoryImpl();
+  SettingsRepository settings = SettingsRepositoryImpl();
+  VersionsRepository versions = VersionsRepositoryImpl();
+  ResetRepository reset = ResetRepositoryImpl();
+  GazeRepository gaze = GazeRepositoryImpl();
+  PositioningRepository positioning = PositioningRepositoryImpl();
+  // OptionsStateNotifier options = OptionsStateNotifier();
+  // Calibration calibration = Calibration();
+  // Gaze gaze = Gaze();
+  // Positioning positioning = Positioning();
+  // Version version = Version();
+  // Profiles profiles = Profiles();
+  // SwitchOptions switchOptions = SwitchOptions();
+  // Reset reset = Reset();
+  // CursorCalibration cursorCalibration = CursorCalibration();
 
   static Logger? logger;
 
@@ -95,15 +104,15 @@ class ET extends ChangeNotifier {
       for (var i = 0; i < maxRetries; i++) {
         try {
           // First set options client to make the initial call
-          options.client = client;
-          await options.initAsync();
+          settings = SettingsRepositoryImpl(client: client);
+          await settings.get();
           // Set all clients
-          _setClient();
+          _init();
           // Set the connection state and notify everyone
           _connection = Connection.connected;
           notifyListeners();
           // Start switch and break the loop
-          switchOptions.start();
+          // switchOptions.start();
           // ET.logger?.i('Connected Skyle.');
           print('Connected Skyle.');
           break;
@@ -125,9 +134,9 @@ class ET extends ChangeNotifier {
 
   Future<void> testConnectClients({required String url, required int port}) async {
     createClient(url: url, port: port);
-    options.client = client;
-    await options.initAsync();
-    _setClient();
+    settings = SettingsRepositoryImpl(client: client);
+    await settings.get();
+    _init();
     _connection = Connection.connected;
     notifyListeners();
   }
@@ -147,30 +156,29 @@ class ET extends ChangeNotifier {
   Future<void> terminateClient() async {
     try {
       // ET.logger?.i('Disconnecting active Skyle grpcs...');
-      await calibration.stop();
-      switchOptions.stop();
+      await calibration.abort();
+      // switchOptions.stop();
       await _channel?.terminate();
     } catch (error) {
       ET.logger?.e('Skyle disconnecting clients failed:', error, StackTrace.current);
     } finally {
       _channel = null;
       _client = null;
-      _setClient();
+      _init();
       _connection = Connection.disconnected;
       notifyListeners();
       // ET.logger?.i('Disconnected Skyle grpcs...');
     }
   }
 
-  void _setClient() {
-    calibration.client = client;
-    gaze.client = client;
-    positioning.client = client;
-    options.client = client;
-    version.client = client;
-    profiles.client = client;
-    switchOptions.client = client;
-    reset.client = client;
-    cursorCalibration.client = client;
+  void _init() {
+    calibration = CalibrationRepositoryImpl(client: client);
+    versions = VersionsRepositoryImpl(client: client);
+    reset = ResetRepositoryImpl(client: client);
+    gaze = GazeRepositoryImpl(client: client);
+    positioning = PositioningRepositoryImpl(client: client);
+    // profiles.client = client;
+    // switchOptions.client = client;
+    // cursorCalibration.client = client;
   }
 }

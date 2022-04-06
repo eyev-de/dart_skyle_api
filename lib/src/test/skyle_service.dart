@@ -7,10 +7,13 @@
 import 'dart:convert';
 
 import 'package:fixnum/fixnum.dart';
-
 import 'package:grpc/grpc.dart';
-import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/test/positionings.dart';
+
+import '../domain/entities/calibration_points.dart';
+import '../domain/repositories/calibration_repository.dart';
+import '../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../generated/google/protobuf/empty.pb.dart';
+import 'positionings.dart';
 
 class SkyleService extends SkyleServiceBase {
   Options options = defaultOptions;
@@ -34,11 +37,11 @@ class SkyleService extends SkyleServiceBase {
           ..calibPoint = CalibPoint(
             count: currentIndex,
             currentPoint: Point(
-              x: Calibration.calcX(
+              x: CalibrationRepository.calcX(
                 pts.array[currentIndex],
                 width,
               ),
-              y: Calibration.calcY(
+              y: CalibrationRepository.calcY(
                 pts.array[currentIndex],
                 width,
                 height,
@@ -48,7 +51,7 @@ class SkyleService extends SkyleServiceBase {
         currentIndex++;
         if (currentIndex == pts.value) {
           if (abort) return;
-          await Future.delayed(Duration(milliseconds: 300));
+          await Future.delayed(const Duration(milliseconds: 100));
           final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(pts.value, (index) => 4));
           yield CalibMessages()..calibQuality = qualityMsg;
           return;
@@ -73,17 +76,17 @@ class SkyleService extends SkyleServiceBase {
             //
           } else {
             for (var pt in List.generate(pts.value, (index) => index)) {
-              await Future.delayed(Duration(milliseconds: 300));
+              await Future.delayed(const Duration(milliseconds: 100));
               if (abort) return;
               yield CalibMessages()
                 ..calibPoint = CalibPoint(
                   count: pt,
                   currentPoint: Point(
-                    x: Calibration.calcX(
+                    x: CalibrationRepository.calcX(
                       pts.array[pt],
                       width,
                     ),
-                    y: Calibration.calcY(
+                    y: CalibrationRepository.calcY(
                       pts.array[pt],
                       width,
                       height,
@@ -92,7 +95,7 @@ class SkyleService extends SkyleServiceBase {
                 );
             }
             if (abort) return;
-            await Future.delayed(Duration(milliseconds: 300));
+            await Future.delayed(const Duration(milliseconds: 100));
             final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(msg.calibControl.numberOfPoints, (index) => 4));
             yield CalibMessages()..calibQuality = qualityMsg;
             return;
@@ -128,7 +131,7 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<Point> gaze(ServiceCall call, Empty request) async* {
-    for (var gaze in gazes) {
+    for (final gaze in gazes) {
       yield gaze;
     }
   }
@@ -140,7 +143,9 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<Profile> getProfiles(ServiceCall call, Empty request) async* {
-    for (var profile in profiles) yield profile;
+    for (final profile in profiles) {
+      yield profile;
+    }
   }
 
   @override
@@ -159,12 +164,12 @@ class SkyleService extends SkyleServiceBase {
         );
         positionings.add(positioning);
         yield positioning;
-        Future.delayed(const Duration(milliseconds: 20));
+        await Future.delayed(const Duration(milliseconds: 20));
       }
     } else {
       for (var positioning in positionings) {
         yield positioning;
-        Future.delayed(const Duration(milliseconds: 20));
+        await Future.delayed(const Duration(milliseconds: 20));
       }
     }
     // int counter = 0;
@@ -202,7 +207,7 @@ class SkyleService extends SkyleServiceBase {
       currentP = request;
       return StatusMessage()..success = true;
     }
-    Profile max = profiles.reduce((currentProfile, nextProfile) => currentProfile.iD > nextProfile.iD ? currentProfile : nextProfile);
+    final Profile max = profiles.reduce((currentProfile, nextProfile) => currentProfile.iD > nextProfile.iD ? currentProfile : nextProfile);
     request.iD = max.iD + 1;
     profiles.add(request);
     currentP = request;
