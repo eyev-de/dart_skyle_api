@@ -72,8 +72,8 @@ class ET extends ChangeNotifier {
 
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting && _connection == Connection.disconnected) {
-      print('Try connecting Skyle: ${ET.baseURL}');
       ET.baseURL = message.url!;
+      print('Try connecting Skyle: ${ET.baseURL}');
       _connection = message.connection;
       notifyListeners();
       await tryReconnect();
