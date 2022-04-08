@@ -23,7 +23,7 @@ linter:
     - avoid_js_rounded_ints
     - avoid_null_checks_in_equality_operators
     - avoid_positional_boolean_parameters
-    - avoid_print
+    # - avoid_print
     - avoid_private_typedef_functions
     - avoid_redundant_argument_values
     - avoid_relative_lib_imports
@@ -63,7 +63,7 @@ linter:
     - empty_statements
     - exhaustive_cases
     - file_names
-    - flutter_style_todos
+    # - flutter_style_todos
     - hash_and_equals
     - implementation_imports
     - invariant_booleans
@@ -177,7 +177,4 @@ linter:
   
 analyzer:
   exclude:
-    - lib/oss_licenses.dart
-    - lib/skyle_api/src/generated/*
-    - test/
-    - test_driver/
+    - lib/src/generated/

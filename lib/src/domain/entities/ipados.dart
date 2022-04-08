@@ -11,4 +11,12 @@ class IPadOS {
     required this.isOld,
     required this.isNotZommed,
   });
+  IPadOS.fromJson(Map<String, dynamic> json)
+      : isOld = json['isOld'],
+        isNotZommed = json['isNotZommed'];
+
+  Map<String, dynamic> toJson() => {
+        'isOld': isOld,
+        'isNotZommed': isNotZommed,
+      };
 }

@@ -6,18 +6,21 @@
 
 import 'dart:math';
 
-import 'package:flutter_test/flutter_test.dart';
 import 'package:skyle_api/src/domain/entities/calibration_message.dart';
 import 'package:skyle_api/src/domain/entities/calibration_points.dart';
+import 'package:skyle_api/src/domain/entities/switch.dart';
 import 'package:skyle_api/src/domain/repositories/calibration_repository.dart';
 import 'package:skyle_api/src/generated/Skyle.proto/Skyle.pbgrpc.dart';
 import 'package:skyle_api/src/test/skyle_service.dart';
 import 'package:skyle_api/src/test/test_client.dart';
 import 'package:skyle_api/src/test/test_server.dart';
+import 'package:test/test.dart';
+
+import 'switch_matcher.dart';
 
 void main() {
-  SkyleTestServer server = SkyleTestServer();
-  SkyleTestClient client = SkyleTestClient();
+  final SkyleTestServer server = SkyleTestServer();
+  final SkyleTestClient client = SkyleTestClient();
 
   setUpAll(() async {
     print('Starting server...');
@@ -29,7 +32,7 @@ void main() {
 
   tearDownAll(() async {
     print('Shutting down client...');
-    await client.et.terminateClient();
+    await client.et.disconnect();
     print('Shutting down server...');
     await server.server.shutdown();
   });
@@ -145,11 +148,6 @@ void main() {
         expect(coordinates.data!.x, server.service.gazes[index].x);
         expect(coordinates.data!.y, server.service.gazes[index++].y);
       }
-      // client.et.gaze.addListener(() {
-      // print('${client.et.gaze.point} == ${server.service.gazes[index]}');
-      // expect(client.et.gaze.point, server.service.gazes[index++]);
-      // });
-      // await client.et.gaze.start();
     });
   });
   group('Positioning', () {
@@ -169,6 +167,27 @@ void main() {
         expect(positioningMessage.data!.data!.eyes.right.x, server.service.positionings[index].rightEye.x);
         expect(positioningMessage.data!.data!.eyes.right.y, server.service.positionings[index++].rightEye.y);
       }
+    });
+  });
+
+  group('Switch', () {
+    test('Simulate switch polling', () async {
+      final stream = client.et.switchSettings.start();
+      // ignore: unawaited_futures
+      expectLater(
+        stream,
+        emitsInOrder(
+          [
+            SwitchMatcher(Switch.create()),
+            SwitchMatcher(Switch.create(isPresent: true)),
+            SwitchMatcher(Switch.create()),
+          ],
+        ),
+      );
+      await Future.delayed(const Duration(milliseconds: 700));
+      server.service.button.isPresent = true;
+      await Future.delayed(const Duration(milliseconds: 500));
+      server.service.button.isPresent = false;
     });
   });
 }

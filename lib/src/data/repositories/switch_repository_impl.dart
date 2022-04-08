@@ -1,67 +1,87 @@
-// //  Skyle API
-// //
-// //  Created by Konstantin Wachendorff.
-// //  Copyright © 2022 eyeV GmbH. All rights reserved.
-// //
+//  Skyle API
+//
+//  Created by Konstantin Wachendorff.
+//  Copyright © 2022 eyeV GmbH. All rights reserved.
+//
 
-// import 'dart:async';
+import 'dart:async';
 
-// import '../../core/data_state.dart';
-// import '../../core/exceptions.dart';
-// import '../../domain/repositories/switch_repository.dart';
-// import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
-// import '../../generated/google/protobuf/empty.pb.dart';
+import '../../core/data_state.dart';
+import '../../core/exceptions.dart';
+import '../../domain/entities/switch.dart';
+import '../../domain/repositories/switch_repository.dart';
+import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../../generated/google/protobuf/empty.pb.dart';
+import '../models/switch_model.dart';
 
-// class SwitchRepositoryImpl implements SwitchRepository {
-//   SkyleClient? client;
-//   SwitchRepositoryImpl({this.client});
-//   Timer? _timer;
+class SwitchRepositoryImpl implements SwitchRepository {
+  SkyleClient? client;
+  SwitchRepositoryImpl({this.client});
+  StreamController<DataState<Switch>>? controller;
+  Timer? timer;
 
-//   @override
-//   Future<DataState<ButtonActions>> setButton(ButtonActions request) async {
-//     try {
-//       if (client == null) throw NotConnectedException();
-//       final ButtonActions ret = await client!.setButton(request);
-//       return DataSuccess(ret);
-//     } catch (error) {
-//       return DataFailed(error.toString());
-//     }
-//   }
+  @override
+  Future<DataState<SwitchActions>> setButton(SwitchActions switchActions) async {
+    try {
+      if (client == null) throw NotConnectedException();
+      final ButtonActions buttonActions = await client!.setButton(ButtonActions(
+        singleClick: switchActions.singleClick,
+        doubleClick: switchActions.doubleClick,
+        holdClick: switchActions.holdClick,
+      ));
 
-//   @override
-//   void start() {
-//     // Maybe limit?
-//     // if (_timer == null || _timer != null && !_timer!.isActive)
-//     _timer = Timer.periodic(const Duration(milliseconds: 500), (t) async {
-//       try {
-//         await _getStateAsync();
-//       } catch (error) {
-//         // if (state.isPresent) {
-//         //   state.isPresent = false;
-//         //   notifyListeners();
-//         // }
-//       }
-//     });
-//   }
+      return DataSuccess(SwitchActionsModel.fromButtonActions(buttonActions));
+    } catch (error) {
+      return DataFailed(error.toString());
+    }
+  }
 
-//   @override
-//   void stop() {
-//     // TODO: implement stop
-//   }
+  @override
+  Stream<DataState<Switch>> start() {
+    if (client == null) throw NotConnectedException();
+    if (controller != null || timer != null) throw StillStreamingException();
 
-//   Future<Button> _getStateAsync() async {
-//     try {
-//       if (client == null) throw NotConnectedException();
-//       final Button ret = await client!.getButton(Empty());
-//       // if (_state != ret) {
-//       //   _state = ret;
-//       //   notifyListeners();
-//       // }
-//     } catch (error) {
-//       // _error = GRPCFailed(error: error.toString());
-//       // ET.logger?.e(error, StackTrace.current);
-//       // notifyListeners();
-//     }
-//     // return _state;
-//   }
-// }
+    controller = StreamController<DataState<Switch>>();
+    final Stopwatch watch = Stopwatch();
+    controller?.onListen = () {
+      Future<void> sendEvent(_) async {
+        watch.reset();
+        try {
+          final button = await client!.getButton(Empty());
+          controller?.add(DataSuccess(SwitchModel.fromButton(button)));
+        } catch (e, s) {
+          controller?.addError(e, s);
+          return;
+        }
+      }
+
+      const period = Duration(milliseconds: 500);
+      timer = Timer.periodic(period, sendEvent);
+      controller
+        ?..onCancel = () {
+          timer?.cancel();
+        }
+        ..onPause = () {
+          watch.stop();
+          timer?.cancel();
+        }
+        ..onResume = () {
+          final Duration elapsed = watch.elapsed;
+          watch.start();
+          timer = Timer(period - elapsed, () {
+            timer = Timer.periodic(period, sendEvent);
+            sendEvent(null);
+          });
+        };
+    };
+    return controller!.stream;
+  }
+
+  @override
+  void stop() {
+    timer?.cancel();
+    controller?.close();
+    timer = null;
+    controller = null;
+  }
+}

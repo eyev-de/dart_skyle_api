@@ -11,4 +11,12 @@ class Point {
   factory Point.zero() {
     return const Point(x: 0, y: 0);
   }
+  Point.fromJson(Map<String, dynamic> json)
+      : x = json['x'],
+        y = json['y'];
+
+  Map<String, dynamic> toJson() => {
+        'x': x,
+        'y': y,
+      };
 }

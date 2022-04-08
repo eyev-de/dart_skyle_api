@@ -5,27 +5,30 @@ homepage:
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
+  # flutter: ">=1.17.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
+  # equatable: ^2.0.3
   fixnum: ^1.0.0
+
+  # flutter:
+  #   sdk: flutter
+
   grpc: ^3.0.2
-  protobuf: ^2.0.0
-  path: ^1.8.0
   logger: ^1.1.0
+  path: ^1.8.0
+  protobuf: ^2.0.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  # flutter_test:
+  #   sdk: flutter
+  test: ^1.20.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
-flutter:
+# flutter:
 
   # To add assets to your package, add an assets section, like this:
   # assets:

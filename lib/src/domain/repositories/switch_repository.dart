@@ -5,10 +5,10 @@
 //
 
 import '../../core/data_state.dart';
-import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../entities/switch.dart';
 
 abstract class SwitchRepository {
-  void start();
+  Stream<DataState<Switch>> start();
   void stop();
-  Future<DataState<ButtonActions>> setButton(ButtonActions request);
+  Future<DataState<SwitchActions>> setButton(SwitchActions switchActions);
 }

@@ -9,7 +9,9 @@ import 'dart:convert';
 import 'package:fixnum/fixnum.dart';
 import 'package:grpc/grpc.dart';
 
+import '../data/models/switch_model.dart';
 import '../domain/entities/calibration_points.dart';
+import '../domain/entities/switch.dart';
 import '../domain/repositories/calibration_repository.dart';
 import '../generated/Skyle.proto/Skyle.pbgrpc.dart';
 import '../generated/google/protobuf/empty.pb.dart';
@@ -19,7 +21,7 @@ class SkyleService extends SkyleServiceBase {
   Options options = defaultOptions;
   List<Profile> profiles = [defaultProfile];
   Profile currentP = defaultProfile;
-  Button button = defaultButton;
+  Button button = SwitchModel.toButton(Switch.create());
 
   List<Point> gazes = [];
   List<PositioningMessage> positionings = [];
@@ -31,7 +33,7 @@ class SkyleService extends SkyleServiceBase {
     int currentIndex = 0;
     double width = 0;
     double height = 0;
-    await for (var msg in request) {
+    await for (final msg in request) {
       if (msg.hasCalibConfirm() && msg.calibConfirm.confirmed && pts != null) {
         yield CalibMessages()
           ..calibPoint = CalibPoint(
@@ -75,7 +77,7 @@ class SkyleService extends SkyleServiceBase {
           if (msg.calibControl.hasStepByStep() && msg.calibControl.stepByStep) {
             //
           } else {
-            for (var pt in List.generate(pts.value, (index) => index)) {
+            for (final pt in List.generate(pts.value, (index) => index)) {
               await Future.delayed(const Duration(milliseconds: 100));
               if (abort) return;
               yield CalibMessages()
@@ -107,8 +109,7 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Future<Options> configure(ServiceCall call, OptionMessage request) async {
-    options = request.options;
-    return options;
+    return options = request.options;
   }
 
   @override
@@ -159,7 +160,9 @@ class SkyleService extends SkyleServiceBase {
       final positioningArray = jsonDecode(positioningsJSONString);
       for (final position in positioningArray) {
         final positioning = PositioningMessage(
+          // ignore: avoid_dynamic_calls
           leftEye: Point(x: position['left']['x'], y: position['left']['y']),
+          // ignore: avoid_dynamic_calls
           rightEye: Point(x: position['right']['x'], y: position['right']['y']),
         );
         positionings.add(positioning);
@@ -167,7 +170,7 @@ class SkyleService extends SkyleServiceBase {
         await Future.delayed(const Duration(milliseconds: 20));
       }
     } else {
-      for (var positioning in positionings) {
+      for (final positioning in positionings) {
         yield positioning;
         await Future.delayed(const Duration(milliseconds: 20));
       }
@@ -185,7 +188,7 @@ class SkyleService extends SkyleServiceBase {
     if (request.data) {
       profiles = [defaultProfile];
       currentP = defaultProfile;
-      button = defaultButton;
+      button = SwitchModel.toButton(Switch.create());
       options = defaultOptions;
     }
     return StatusMessage()..success = true;
@@ -193,15 +196,14 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Future<ButtonActions> setButton(ServiceCall call, ButtonActions request) async {
-    button.buttonActions = request;
-    return button.buttonActions;
+    return button.buttonActions = request;
   }
 
   @override
   Future<StatusMessage> setProfile(ServiceCall call, Profile request) async {
     if (profiles.where((element) => element.iD == request.iD).isNotEmpty) {
       if (request.iD == 1) return StatusMessage()..success = false;
-      int i = profiles.indexWhere((element) => element.iD == request.iD);
+      final int i = profiles.indexWhere((element) => element.iD == request.iD);
       if (i == -1) return StatusMessage()..success = false;
       profiles[i] = request;
       currentP = request;
@@ -238,7 +240,7 @@ final defaultOptions = Options(
   pause: false,
   enableStandby: false,
   guidance: false,
-  res: ScreenResolution(width: 1920, height: 1080, widthinMM: 560, heightinMM: 250),
+  res: ScreenResolution(width: 1920, height: 1080, widthinMM: 560, heightinMM: 350),
   filter: FilterOptions(gazeFilter: 5, fixationFilter: 11),
   iPadOptions: IPadOptions(isNotZommed: true, isOldiOS: false),
   hp: false,
@@ -249,21 +251,21 @@ final defaultProfile = Profile()
   ..name = 'Default'
   ..skill = Profile_Skill.Medium;
 
-final defaultButton = Button(
-  availableActions: [
-    'None',
-    'Tap',
-    'Context',
-    'Scroll',
-    'Calibrate',
-  ],
-  buttonActions: ButtonActions(
-    singleClick: 'Tap',
-    doubleClick: 'Context',
-    holdClick: 'Scroll',
-  ),
-  isPresent: true,
-);
+// final defaultButton = Button(
+//   availableActions: [
+//     'None',
+//     'Tap',
+//     'Context',
+//     'Scroll',
+//     'Calibrate',
+//   ],
+//   buttonActions: ButtonActions(
+//     singleClick: 'Tap',
+//     doubleClick: 'Context',
+//     holdClick: 'Scroll',
+//   ),
+//   isPresent: false,
+// );
 
 final defaultVersions = DeviceVersions()
   ..base = '1.0'

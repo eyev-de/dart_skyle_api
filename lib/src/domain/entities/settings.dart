@@ -4,6 +4,8 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+import 'dart:convert';
+
 import 'filter.dart';
 import 'ipados.dart';
 import 'screen_sizes.dart';
@@ -31,4 +33,29 @@ class Settings {
     required this.screenSizes,
     required this.hp,
   });
+
+  Settings.fromJson(Map<String, dynamic> json)
+      : video = json['video'],
+        enablePause = json['enablePause'],
+        pause = json['pause'],
+        guidance = json['guidance'],
+        enableStandby = json['enableStandby'],
+        disableMouse = json['disableMouse'],
+        filter = jsonDecode(json['filter']),
+        iPadOS = jsonDecode(json['iPadOS']),
+        screenSizes = jsonDecode(json['screenSizes']),
+        hp = json['hp'];
+
+  Map<String, dynamic> toJson() => {
+        'video': video,
+        'enablePause': enablePause,
+        'pause': pause,
+        'guidance': guidance,
+        'enableStandby': enableStandby,
+        'disableMouse': disableMouse,
+        'filter': jsonEncode(filter),
+        'iPadOS': jsonEncode(iPadOS),
+        'screenSizes': jsonEncode(screenSizes),
+        'hp': hp,
+      };
 }

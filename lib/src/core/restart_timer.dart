@@ -5,9 +5,8 @@
 //
 
 import 'dart:async';
-import 'package:flutter/foundation.dart';
 
-class TimerProvider extends ChangeNotifier {
+class RestartTimer {
   bool _fired = false;
   bool get fired => _fired;
   Timer? _timer;
@@ -18,11 +17,8 @@ class TimerProvider extends ChangeNotifier {
     _timer = Timer(duration, () async {
       if (_disposed) return;
       _fired = true;
-      notifyListeners();
-      if (onFired != null) onFired(true);
+      onFired?.call(true);
       await Future.delayed(const Duration(milliseconds: 50));
-      // ignore: invariant_booleans
-      if (_disposed) return;
       _fired = false;
     });
   }
@@ -32,16 +28,14 @@ class TimerProvider extends ChangeNotifier {
     _startTimer(duration: duration, onFired: onFired);
   }
 
-  @override
   void dispose() {
     _disposed = true;
-    super.dispose();
   }
 
-  TimerProvider();
+  RestartTimer();
 
-  factory TimerProvider.start({Duration duration = const Duration(milliseconds: 1200), void Function(bool)? onFired}) {
-    return TimerProvider().._startTimer(duration: duration, onFired: onFired);
+  factory RestartTimer.start({Duration duration = const Duration(milliseconds: 1200), void Function(bool)? onFired}) {
+    return RestartTimer().._startTimer(duration: duration, onFired: onFired);
   }
 
   int _value = 0;
@@ -50,14 +44,13 @@ class TimerProvider extends ChangeNotifier {
   void _steppedFired(bool fired, int steps, Duration duration) {
     final _steps = steps - 1;
     _value += duration.inMilliseconds;
-    notifyListeners();
     if (_steps > 0) {
       restartTimer(duration: duration, onFired: (fired) => _steppedFired(fired, _steps, duration));
     }
   }
 
-  factory TimerProvider.stepped({int steps = 1, Duration duration = const Duration(milliseconds: 1200)}) {
-    final timerProvider = TimerProvider();
+  factory RestartTimer.stepped({int steps = 1, Duration duration = const Duration(milliseconds: 1200)}) {
+    final timerProvider = RestartTimer();
     timerProvider._startTimer(duration: duration, onFired: (fired) => timerProvider._steppedFired(fired, steps, duration));
     return timerProvider;
   }

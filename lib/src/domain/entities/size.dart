@@ -8,4 +8,12 @@ class Size {
   final double width;
   final double height;
   const Size({required this.width, required this.height});
+  Size.fromJson(Map<String, dynamic> json)
+      : width = json['width'],
+        height = json['height'];
+
+  Map<String, dynamic> toJson() => {
+        'width': width,
+        'height': height,
+      };
 }

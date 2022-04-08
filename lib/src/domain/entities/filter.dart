@@ -22,4 +22,13 @@ class Filter {
   const Filter.create()
       : gaze = 11,
         fixation = 5;
+
+  Filter.fromJson(Map<String, dynamic> json)
+      : gaze = json['gaze'],
+        fixation = json['fixation'];
+
+  Map<String, dynamic> toJson() => {
+        'gaze': gaze,
+        'fixation': fixation,
+      };
 }

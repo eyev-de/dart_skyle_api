@@ -9,10 +9,10 @@ import '../../domain/entities/positioning_message.dart';
 import '../../generated/Skyle.proto/Skyle.pb.dart' as grpc;
 import 'point_model.dart';
 
-class PositioningModel extends PositioningDataMessage {
-  PositioningModel({required PositioningData data}) : super(data: data);
-  factory PositioningModel.fromPositioningMessage(grpc.PositioningMessage positioningMessage) {
-    return PositioningModel(
+class PositioningDataMessageModel extends PositioningDataMessage {
+  PositioningDataMessageModel({required PositioningData data}) : super(data: data);
+  factory PositioningDataMessageModel.fromPositioningMessage(grpc.PositioningMessage positioningMessage) {
+    return PositioningDataMessageModel(
       data: PositioningData(
         eyes: PositioningEyes(
           left: PointModel.fromPoint(positioningMessage.leftEye),

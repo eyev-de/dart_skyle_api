@@ -24,4 +24,23 @@ class Versions {
     required this.skyleType,
     required this.isDemo,
   });
+
+  Versions.fromJson(Map<String, dynamic> json)
+      : firmware = json['firmware'],
+        eyetracker = json['eyetracker'],
+        calib = json['calib'],
+        base = json['base'],
+        serial = Int64.parseInt(json['serial']),
+        skyleType = json['skyleType'],
+        isDemo = json['isDemo'];
+
+  Map<String, dynamic> toJson() => {
+        'firmware': firmware,
+        'eyetracker': eyetracker,
+        'calib': calib,
+        'base': base,
+        'serial': serial.toString(),
+        'skyleType': skyleType,
+        'isDemo': isDemo,
+      };
 }
