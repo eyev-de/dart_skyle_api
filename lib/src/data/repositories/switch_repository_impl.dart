@@ -21,7 +21,7 @@ class SwitchRepositoryImpl implements SwitchRepository {
   Timer? timer;
 
   @override
-  Future<DataState<SwitchActions>> setButton(SwitchActions switchActions) async {
+  Future<DataState<SwitchActions>> setSwitch(SwitchActions switchActions) async {
     try {
       if (client == null) throw NotConnectedException();
       final ButtonActions buttonActions = await client!.setButton(ButtonActions(

@@ -11,24 +11,24 @@ import 'package:grpc/grpc_connection_interface.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 import 'package:logger/logger.dart';
 
-import 'src/connectivity/connectivityprovider.dart';
-import 'src/core/data_state.dart';
-import 'src/core/exceptions.dart';
-import 'src/data/repositories/calibration_repository_impl.dart';
-import 'src/data/repositories/gaze_repository_impl.dart';
-import 'src/data/repositories/positioning_repository_impl.dart';
-import 'src/data/repositories/reset_repository_impl.dart';
-import 'src/data/repositories/settings_repository_impl.dart';
-import 'src/data/repositories/switch_repository_impl.dart';
-import 'src/data/repositories/versions_repository_impl.dart';
-import 'src/domain/repositories/calibration_repository.dart';
-import 'src/domain/repositories/gaze_repository.dart';
-import 'src/domain/repositories/positioning_repository.dart';
-import 'src/domain/repositories/reset_repository.dart';
-import 'src/domain/repositories/settings_repository.dart';
-import 'src/domain/repositories/switch_repository.dart';
-import 'src/domain/repositories/versions_repository.dart';
-import 'src/generated/Skyle.proto/Skyle.pbgrpc.dart';
+import 'connectivity/connectivityprovider.dart';
+import 'core/data_state.dart';
+import 'core/exceptions.dart';
+import 'data/repositories/calibration_repository_impl.dart';
+import 'data/repositories/gaze_repository_impl.dart';
+import 'data/repositories/positioning_repository_impl.dart';
+import 'data/repositories/reset_repository_impl.dart';
+import 'data/repositories/settings_repository_impl.dart';
+import 'data/repositories/switch_repository_impl.dart';
+import 'data/repositories/versions_repository_impl.dart';
+import 'domain/repositories/calibration_repository.dart';
+import 'domain/repositories/gaze_repository.dart';
+import 'domain/repositories/positioning_repository.dart';
+import 'domain/repositories/reset_repository.dart';
+import 'domain/repositories/settings_repository.dart';
+import 'domain/repositories/switch_repository.dart';
+import 'domain/repositories/versions_repository.dart';
+import 'generated/Skyle.proto/Skyle.pbgrpc.dart';
 
 enum Connection { disconnected, connecting, connected }
 
@@ -67,6 +67,10 @@ class ET {
 
   ET();
 
+  /// Starts the connection process of Skyle. First the ethernet interfaces are scanned for the right
+  /// IP address. If the correct IP address is found, the grpc client is created. One API call is tested
+  /// until the grpc library does not throw an exception anymore. This function blocks until Skyle is connected
+  /// but it can also be called and not awaited which results in an async re/connection cycle.
   Future<void> connect() async {
     if (connectivityProvider.running) throw StillRunningException();
     print('Scanning for Skyle ethernet interface for possible IPs: $possibleIPs');
@@ -76,6 +80,7 @@ class ET {
     }
   }
 
+  /// Disconnects Skyle and shuts down the reconnection cycle.
   Future<void> disconnect() async {
     if (!connectivityProvider.running) throw NotRunningException();
     connectivityProvider.stop();
@@ -95,8 +100,8 @@ class ET {
     }
   }
 
-  // TODO
-  // Add async cancellation if called again.
+  /// TODO(krjw-eyev):  Add async cancellation if called again.
+  /// Trys to reconnect the grpc connection. Is only needed after calling [softDisconnect]
   Future<void> trySoftReconnect() async {
     try {
       if (_connection == Connection.connected || _connection == Connection.disconnected) return;
@@ -147,6 +152,8 @@ class ET {
     _client = SkyleClient(_channel!);
   }
 
+  /// Disconnects only the grpc client and makes it unusable. All connections will throw a [NotConnectedException].
+  /// To reconnect the grpcs call [trySoftReconnect]
   Future<void> softDisconnect() async {
     try {
       ET.logger?.i('Disconnecting active Skyle grpcs...');
@@ -176,10 +183,13 @@ class ET {
     switchSettings = SwitchRepositoryImpl(client: client);
   }
 
+  /// Disposes the instance of [ET] completely.
   void dispose() {
+    disconnect();
     _connectionStreamController.close();
   }
 
+  /// Simulates a connection. This is only used for tests with the [SkyleTestServer] which is located in lib/src/test/test_server.dart
   Future<void> testConnectClients({required String url, required int port}) async {
     _createClient(url: url, port: port);
     settings = SettingsRepositoryImpl(client: client);

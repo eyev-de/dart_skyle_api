@@ -7,7 +7,7 @@
 import 'dart:io';
 import 'dart:isolate';
 
-import '../../../et.dart';
+import '../../et.dart';
 import '../connectivityprovider.dart';
 
 class NetworkInterfaceProvider implements ConnectivityProvider {

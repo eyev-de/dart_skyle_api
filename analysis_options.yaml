@@ -177,4 +177,4 @@ linter:
   
 analyzer:
   exclude:
-    - lib/src/generated/
+    - lib/src/generated/*

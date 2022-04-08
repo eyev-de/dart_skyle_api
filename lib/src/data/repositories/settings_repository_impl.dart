@@ -35,7 +35,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }
 
   @override
-  Future<DataState<Settings>> autoPause({bool on = true}) {
+  Future<DataState<Settings>> enablePause({bool on = true}) {
     final Options options = Options.fromJson(_state.writeToJson())..enablePause = on;
     return _setStateAsync(options);
   }

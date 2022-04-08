@@ -9,12 +9,12 @@ import 'package:grpc/grpc.dart';
 import 'mjpeg_test_server.dart';
 import 'skyle_service.dart';
 
-class SkyleTestServer {
+class TestServer {
   final service = SkyleService();
   late Server server;
   MJPEGTestServer? mjpegTestServer;
 
-  SkyleTestServer({List<String>? paths}) {
+  TestServer({List<String>? paths}) {
     server = Server([service]);
     if (paths != null) mjpegTestServer = MJPEGTestServer(paths: paths);
   }

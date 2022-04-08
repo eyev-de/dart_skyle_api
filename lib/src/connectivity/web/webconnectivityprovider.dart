@@ -4,7 +4,7 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import '../../../et.dart';
+import '../../et.dart';
 import '../connectivityprovider.dart';
 
 class WebConnectivityProvider implements ConnectivityProvider {

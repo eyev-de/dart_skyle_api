@@ -15,12 +15,12 @@ class SwitchMatcher extends Matcher {
 
   @override
   Description describe(Description description) {
-    return description.add("has expected Switch = '${expected.toString()}'");
+    return description.add("has expected Switch = '${expected.toJson()}'");
   }
 
   @override
   Description describeMismatch(item, Description mismatchDescription, Map<dynamic, dynamic> matchState, bool verbose) {
-    return mismatchDescription.add("has actual emitted Switch = '${matchState['actual'].toString()}'");
+    return mismatchDescription.add("has actual emitted Switch = '${matchState['actual'].toJson()}'");
   }
 
   @override

@@ -6,6 +6,7 @@
 
 import '../../core/data_state.dart';
 
+/// Interface for resetting Skyle.
 abstract class ResetRepository {
   Future<DataState<bool>> restartServices();
   Future<DataState<bool>> restartDevice();

@@ -19,8 +19,8 @@ import 'package:test/test.dart';
 import 'switch_matcher.dart';
 
 void main() {
-  final SkyleTestServer server = SkyleTestServer();
-  final SkyleTestClient client = SkyleTestClient();
+  final TestServer server = TestServer();
+  final TestClient client = TestClient();
 
   setUpAll(() async {
     print('Starting server...');
@@ -66,8 +66,8 @@ void main() {
       expect((await client.et.settings.video(on: false)).data!.video, isFalse);
     });
     test('Auto Pause', () async {
-      expect((await client.et.settings.autoPause()).data!.enablePause, isTrue);
-      expect((await client.et.settings.autoPause(on: false)).data!.enablePause, isFalse);
+      expect((await client.et.settings.enablePause()).data!.enablePause, isTrue);
+      expect((await client.et.settings.enablePause(on: false)).data!.enablePause, isFalse);
     });
     test('Pause', () async {
       expect((await client.et.settings.pause()).data!.pause, isTrue);

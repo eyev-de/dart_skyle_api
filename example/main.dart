@@ -6,7 +6,7 @@
 
 import 'dart:io';
 
-import '../lib/et.dart';
+import '../lib/src/et.dart';
 import '../lib/src/core/data_state.dart';
 import '../lib/src/domain/entities/positioning_message.dart';
 

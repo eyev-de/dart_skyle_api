@@ -4,6 +4,8 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+import 'dart:convert';
+
 class SwitchActions {
   final String singleClick;
   final String doubleClick;
@@ -20,10 +22,16 @@ class SwitchActions {
       holdClick: 'Scroll',
     );
   }
-  @override
-  String toString() {
-    return 'actions: {\n    singleClick:\t$singleClick\n    doubleClick:\t$doubleClick\n    holdClick:  \t$holdClick\n}';
-  }
+  SwitchActions.fromJson(Map<String, dynamic> json)
+      : singleClick = json['singleClick'],
+        doubleClick = json['doubleClick'],
+        holdClick = json['holdClick'];
+
+  Map<String, dynamic> toJson() => {
+        'singleClick': singleClick,
+        'doubleClick': doubleClick,
+        'holdClick': holdClick,
+      };
 }
 
 class Switch {
@@ -52,8 +60,14 @@ class Switch {
       availableActions: availableActions,
     );
   }
-  @override
-  String toString() {
-    return 'isPresent:\t\t$isPresent\n${actions.toString()}\navailableActions:\t$availableActions\n';
-  }
+  Switch.fromJson(Map<String, dynamic> json)
+      : isPresent = json['isPresent'],
+        actions = jsonDecode(json['actions']),
+        availableActions = json['availableActions'];
+
+  Map<String, dynamic> toJson() => {
+        'isPresent': isPresent,
+        'actions': jsonEncode(actions),
+        'availableActions': availableActions,
+      };
 }
