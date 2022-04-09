@@ -6,6 +6,10 @@
 
 library skyle_api;
 
+export 'src/core/data_state.dart' show DataState, DataSuccess, DataFailed;
+export 'src/core/exceptions.dart' show TimeoutException, NotConnectedException, NotRunningException, StillRunningException, StillStreamingException;
+export 'src/core/restart_timer.dart' show RestartTimer;
+
 export 'src/domain/entities/calibration_message.dart' show CalibrationMessage;
 export 'src/domain/entities/calibration_points.dart' show CalibrationPoints, CalibrationPointsExtension;
 export 'src/domain/entities/filter.dart' show Filter;
@@ -25,6 +29,8 @@ export 'src/domain/repositories/reset_repository.dart' show ResetRepository;
 export 'src/domain/repositories/settings_repository.dart' show SettingsRepository;
 export 'src/domain/repositories/switch_repository.dart' show SwitchRepository;
 export 'src/domain/repositories/versions_repository.dart' show VersionsRepository;
+
 export 'src/et.dart' show ET;
+
 export 'src/test/test_client.dart' show TestClient;
 export 'src/test/test_server.dart' show TestServer;

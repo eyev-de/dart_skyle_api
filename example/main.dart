@@ -6,9 +6,7 @@
 
 import 'dart:io';
 
-import '../lib/src/et.dart';
-import '../lib/src/core/data_state.dart';
-import '../lib/src/domain/entities/positioning_message.dart';
+import 'package:skyle_api/api.dart';
 
 Future<void> main(List<String> args) async {
   final et = ET();
