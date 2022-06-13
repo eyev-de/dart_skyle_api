@@ -6,6 +6,8 @@
 
 import 'dart:convert';
 
+import '../../generated/Skyle.proto/Skyle.pb.dart';
+
 import 'filter.dart';
 import 'ipados.dart';
 import 'screen_sizes.dart';
@@ -58,4 +60,34 @@ class Settings {
         'screenSizes': jsonEncode(screenSizes),
         'hp': hp,
       };
+
+  factory Settings.fromOptions(Options options) {
+    return Settings(
+      video: options.stream,
+      enablePause: options.enablePause,
+      pause: options.pause,
+      guidance: options.guidance,
+      enableStandby: options.enableStandby,
+      disableMouse: options.disableMouse,
+      filter: Filter.fromFilterOptions(options.filter),
+      iPadOS: IPadOS.fromIPadOptions(options.iPadOptions),
+      screenSizes: ScreenSizes.fromScreenResolution(options.res),
+      hp: options.hp,
+    );
+  }
+
+  factory Settings.create() {
+    return const Settings(
+      video: false,
+      enablePause: false,
+      pause: false,
+      guidance: false,
+      enableStandby: false,
+      disableMouse: false,
+      filter: Filter.create(),
+      iPadOS: IPadOS.create(),
+      screenSizes: ScreenSizes.create(),
+      hp: false,
+    );
+  }
 }

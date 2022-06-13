@@ -5,10 +5,10 @@
 //
 
 import '../../core/data_state.dart';
-import '../entities/filter.dart';
-import '../entities/ipados.dart';
-import '../entities/screen_sizes.dart';
-import '../entities/settings.dart';
+import '../../data/models/filter.dart';
+import '../../data/models/ipados.dart';
+import '../../data/models/screen_sizes.dart';
+import '../../data/models/settings.dart';
 
 /// Interface for the settings of Skyle.
 abstract class SettingsRepository {

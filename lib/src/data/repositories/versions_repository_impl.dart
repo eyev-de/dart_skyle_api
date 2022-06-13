@@ -6,7 +6,7 @@
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../domain/entities/versions.dart';
+import '../../data/models/versions.dart';
 import '../../domain/repositories/versions_repository.dart';
 import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
 import '../../generated/google/protobuf/empty.pb.dart';
@@ -25,7 +25,7 @@ class VersionsRepositoryImpl implements VersionsRepository {
           eyetracker: versions.eyetracker,
           calib: versions.calib,
           base: versions.base,
-          serial: versions.serial,
+          serial: BigInt.parse(versions.serial.toString()),
           skyleType: versions.skyleType,
           isDemo: versions.isDemo,
         ),

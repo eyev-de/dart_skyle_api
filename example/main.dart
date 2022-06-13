@@ -34,8 +34,9 @@ Future<void> main(List<String> args) async {
   /// The later is also used to determine the presence of the user.
   et.positioning.start().listen((event) {
     if (event is DataSuccess) {
-      if (event.data! is PositioningDataMessage) print(event.data!.data!.toJson());
-      if (event.data! is PositioningDistanceMessage) print(event.data!.distance!.name);
+      print(event.data!.eyes.toJson());
+      print(event.data!.quality.toJson());
+      print(event.data!.distance.name);
     }
     if (event is DataFailed) print(event.error);
   });

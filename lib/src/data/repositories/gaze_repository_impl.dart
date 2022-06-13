@@ -10,7 +10,7 @@ import 'package:grpc/grpc.dart';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../domain/entities/point.dart';
+import '../../data/models/point.dart';
 import '../../domain/repositories/gaze_repository.dart';
 import '../../generated/Skyle.proto/Skyle.pbgrpc.dart' as grpc;
 import '../../generated/google/protobuf/empty.pb.dart';

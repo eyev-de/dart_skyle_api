@@ -5,7 +5,9 @@
 //
 
 import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/domain/entities/calibration_message.dart';
+import 'package:skyle_api/src/data/models/profile.dart';
+import 'package:skyle_api/src/generated/Skyle.proto/Skyle.pb.dart' as grpc;
+import 'package:skyle_api/src/test/skyle_service.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -31,49 +33,47 @@ void main() {
 
 class ProfilesTester {
   static void run(TestClient client, TestServer server) {
-    // group('Profiles', () {
-    //   test('Get profiles', () async {
-    //     final profiles = await client.et.profiles.get();
-    //     expect(profiles.first.id, equals(defaultProfile.iD));
-    //     expect(profiles.first.name, equals(defaultProfile.name));
-    //     expect(profiles.first.skill, equals(defaultProfile.skill));
-    //   });
+    group('Profiles', () {
+      test('Get profiles', () async {
+        final profiles = await client.et.profiles.get().toList();
+        expect(profiles.first.id, equals(defaultProfile.iD));
+        expect(profiles.first.name, equals(defaultProfile.name));
+        expect(profiles.first.skill, equals(defaultProfile.skill));
+      });
 
-    //   test('Get current profile', () async {
-    //     final currentProfile = await client.et.profiles.getCurrent();
-    //     expect(currentProfile.id, equals(defaultProfile.iD));
-    //     expect(currentProfile.name, equals(defaultProfile.name));
-    //     expect(currentProfile.skill, equals(defaultProfile.skill));
-    //   });
+      test('Get current profile', () async {
+        final currentProfile = await client.et.profiles.getCurrent();
+        expect(currentProfile.id, equals(defaultProfile.iD));
+        expect(currentProfile.name, equals(defaultProfile.name));
+        expect(currentProfile.skill, equals(defaultProfile.skill));
+      });
 
-    //   test('Add profile, delete profile', () async {
-    //     final profile = ProfileWrapper(data: Profile(iD: 2, name: 'Test', skill: Profile_Skill.Low));
-    //     profile.client = client.et.client;
-    //     final newProfile = await client.et.profiles.add(profile);
-    //     expect(newProfile.id, profile.id);
+      test('Add profile, delete profile', () async {
+        final profile = Profile.fromProfile(grpc.Profile(iD: 2, name: 'Test', skill: grpc.Profile_Skill.Low));
+        final newProfile = await client.et.profiles.add(profile);
+        expect(newProfile.id, profile.id);
 
-    //     List<ProfileWrapper> profiles = await client.et.profiles.get();
-    //     expect(profiles.length, equals(2));
+        List<Profile> profiles = await client.et.profiles.get().toList();
+        expect(profiles.length, equals(2));
 
-    //     for (final p in profiles) {
-    //       if (p.id == profile.id) {
-    //         expect(p.id, equals(profile.id));
-    //         expect(p.name, equals(profile.name));
-    //         expect(p.skill, equals(profile.skill));
-    //       }
-    //     }
+        for (final p in profiles) {
+          if (p.id == profile.id) {
+            expect(p.id, equals(profile.id));
+            expect(p.name, equals(profile.name));
+            expect(p.skill, equals(profile.skill));
+          }
+        }
 
-    //     final currentProfile = await client.et.profiles.getCurrent();
-    //     expect(currentProfile.id, equals(profile.id));
-    //     expect(currentProfile.name, equals(profile.name));
-    //     expect(currentProfile.skill, equals(profile.skill));
+        final currentProfile = await client.et.profiles.getCurrent();
+        expect(currentProfile.id, equals(profile.id));
+        expect(currentProfile.name, equals(profile.name));
+        expect(currentProfile.skill, equals(profile.skill));
 
-    //     profile.client = client.et.client;
-    //     final _ = await client.et.profiles.delete(currentProfile);
+        final _ = await client.et.profiles.delete(currentProfile);
 
-    //     profiles = await client.et.profiles.get();
-    //     expect(profiles.length, equals(1));
-    //   });
-    // });
+        profiles = await client.et.profiles.get().toList();
+        expect(profiles.length, equals(1));
+      });
+    });
   }
 }

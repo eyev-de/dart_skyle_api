@@ -5,7 +5,7 @@
 //
 
 import 'package:skyle_api/src/core/data_state.dart';
-import 'package:skyle_api/src/domain/entities/switch.dart';
+import 'package:skyle_api/src/data/models/switch.dart';
 import 'package:test/test.dart';
 
 class SwitchMatcher extends Matcher {

@@ -6,6 +6,8 @@
 
 import 'dart:convert';
 
+import '../../generated/Skyle.proto/Skyle.pb.dart';
+
 class SwitchActions {
   final String singleClick;
   final String doubleClick;
@@ -32,6 +34,22 @@ class SwitchActions {
         'doubleClick': doubleClick,
         'holdClick': holdClick,
       };
+
+  factory SwitchActions.fromButtonActions(ButtonActions buttonActions) {
+    return SwitchActions(
+      singleClick: buttonActions.singleClick,
+      doubleClick: buttonActions.doubleClick,
+      holdClick: buttonActions.holdClick,
+    );
+  }
+
+  static ButtonActions toButtonActions(SwitchActions actions) {
+    return ButtonActions(
+      singleClick: actions.singleClick,
+      doubleClick: actions.doubleClick,
+      holdClick: actions.holdClick,
+    );
+  }
 }
 
 class Switch {
@@ -70,4 +88,20 @@ class Switch {
         'actions': jsonEncode(actions),
         'availableActions': availableActions,
       };
+
+  factory Switch.fromButton(Button button) {
+    return Switch(
+      isPresent: button.isPresent,
+      actions: SwitchActions.fromButtonActions(button.buttonActions),
+      availableActions: button.availableActions,
+    );
+  }
+
+  static Button toButton(Switch s) {
+    return Button(
+      isPresent: s.isPresent,
+      buttonActions: SwitchActions.toButtonActions(s.actions),
+      availableActions: s.availableActions,
+    );
+  }
 }

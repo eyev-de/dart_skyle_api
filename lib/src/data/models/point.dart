@@ -4,6 +4,8 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+import '../../generated/Skyle.proto/Skyle.pb.dart' as grpc;
+
 class Point {
   final double x;
   final double y;
@@ -19,4 +21,7 @@ class Point {
         'x': x,
         'y': y,
       };
+  factory Point.fromPoint(grpc.Point point) {
+    return Point(x: point.x, y: point.y);
+  }
 }

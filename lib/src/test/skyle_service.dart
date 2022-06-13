@@ -9,9 +9,8 @@ import 'dart:convert';
 import 'package:fixnum/fixnum.dart';
 import 'package:grpc/grpc.dart';
 
-import '../data/models/switch_model.dart';
-import '../domain/entities/calibration_points.dart';
-import '../domain/entities/switch.dart';
+import '../data/models/calibration_points.dart';
+import '../data/models/switch.dart';
 import '../domain/repositories/calibration_repository.dart';
 import '../generated/Skyle.proto/Skyle.pbgrpc.dart';
 import '../generated/google/protobuf/empty.pb.dart';
@@ -21,7 +20,7 @@ class SkyleService extends SkyleServiceBase {
   Options options = defaultOptions;
   List<Profile> profiles = [defaultProfile];
   Profile currentP = defaultProfile;
-  Button button = SwitchModel.toButton(Switch.create());
+  Button button = Switch.toButton(Switch.create());
 
   List<Point> gazes = [];
   List<PositioningMessage> positionings = [];
@@ -188,7 +187,7 @@ class SkyleService extends SkyleServiceBase {
     if (request.data) {
       profiles = [defaultProfile];
       currentP = defaultProfile;
-      button = SwitchModel.toButton(Switch.create());
+      button = Switch.toButton(Switch.create());
       options = defaultOptions;
     }
     return StatusMessage()..success = true;
@@ -251,21 +250,21 @@ final defaultProfile = Profile()
   ..name = 'Default'
   ..skill = Profile_Skill.Medium;
 
-// final defaultButton = Button(
-//   availableActions: [
-//     'None',
-//     'Tap',
-//     'Context',
-//     'Scroll',
-//     'Calibrate',
-//   ],
-//   buttonActions: ButtonActions(
-//     singleClick: 'Tap',
-//     doubleClick: 'Context',
-//     holdClick: 'Scroll',
-//   ),
-//   isPresent: false,
-// );
+final defaultButton = Button(
+  availableActions: [
+    'None',
+    'Tap',
+    'Context',
+    'Scroll',
+    'Calibrate',
+  ],
+  buttonActions: ButtonActions(
+    singleClick: 'Tap',
+    doubleClick: 'Context',
+    holdClick: 'Scroll',
+  ),
+  isPresent: false,
+);
 
 final defaultVersions = DeviceVersions()
   ..base = '1.0'

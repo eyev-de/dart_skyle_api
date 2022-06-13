@@ -4,14 +4,12 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import 'package:fixnum/fixnum.dart';
-
 class Versions {
   final String firmware;
   final String eyetracker;
   final String calib;
   final String base;
-  final Int64 serial;
+  final BigInt serial;
   final int skyleType;
   final bool isDemo;
 
@@ -30,7 +28,7 @@ class Versions {
         eyetracker = json['eyetracker'],
         calib = json['calib'],
         base = json['base'],
-        serial = Int64.parseInt(json['serial']),
+        serial = json['serial'],
         skyleType = json['skyleType'],
         isDemo = json['isDemo'];
 
@@ -43,4 +41,8 @@ class Versions {
         'skyleType': skyleType,
         'isDemo': isDemo,
       };
+
+  factory Versions.empty() {
+    return Versions(firmware: '', eyetracker: '', calib: '', base: '', serial: BigInt.zero, skyleType: 0, isDemo: false);
+  }
 }

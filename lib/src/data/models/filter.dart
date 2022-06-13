@@ -4,6 +4,8 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+import '../../generated/Skyle.proto/Skyle.pb.dart';
+
 class Filter {
   final int gaze;
   final int fixation;
@@ -31,4 +33,8 @@ class Filter {
         'gaze': gaze,
         'fixation': fixation,
       };
+
+  factory Filter.fromFilterOptions(FilterOptions filterOptions) {
+    return Filter(gaze: filterOptions.gazeFilter, fixation: filterOptions.fixationFilter);
+  }
 }

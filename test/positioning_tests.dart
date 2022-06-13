@@ -5,7 +5,6 @@
 //
 
 import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/domain/entities/calibration_message.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -37,16 +36,16 @@ class PositioningTester {
         final stream = client.et.positioning.start();
         await for (final positioningMessage in stream) {
           expect(positioningMessage.data, isNotNull);
-          final leftX = positioningMessage.data!.data!.eyes.left.x;
-          final rightX = positioningMessage.data!.data!.eyes.right.x;
-          final leftY = positioningMessage.data!.data!.eyes.left.y;
-          final rightY = positioningMessage.data!.data!.eyes.right.y;
+          final leftX = positioningMessage.data!.eyes.left.x;
+          final rightX = positioningMessage.data!.eyes.right.x;
+          final leftY = positioningMessage.data!.eyes.left.y;
+          final rightY = positioningMessage.data!.eyes.right.y;
           print('$leftX, $leftY == ${server.service.positionings[index].leftEye.x}, ${server.service.positionings[index].leftEye.y}');
           print('$rightX, $rightY == ${server.service.positionings[index].rightEye.x}, ${server.service.positionings[index].rightEye.y}');
-          expect(positioningMessage.data!.data!.eyes.left.x, server.service.positionings[index].leftEye.x);
-          expect(positioningMessage.data!.data!.eyes.left.y, server.service.positionings[index].leftEye.y);
-          expect(positioningMessage.data!.data!.eyes.right.x, server.service.positionings[index].rightEye.x);
-          expect(positioningMessage.data!.data!.eyes.right.y, server.service.positionings[index++].rightEye.y);
+          expect(positioningMessage.data!.eyes.left.x, server.service.positionings[index].leftEye.x);
+          expect(positioningMessage.data!.eyes.left.y, server.service.positionings[index].leftEye.y);
+          expect(positioningMessage.data!.eyes.right.x, server.service.positionings[index].rightEye.x);
+          expect(positioningMessage.data!.eyes.right.y, server.service.positionings[index++].rightEye.y);
         }
       });
     });

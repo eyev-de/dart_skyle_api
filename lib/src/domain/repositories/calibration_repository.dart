@@ -5,9 +5,9 @@
 //
 
 import '../../core/data_state.dart';
-import '../entities/calibration_message.dart';
-import '../entities/calibration_points.dart';
-import '../entities/screen_sizes.dart';
+import '../../data/models/calibration_message.dart';
+import '../../data/models/calibration_points.dart';
+import '../../data/models/screen_sizes.dart';
 
 /// Interface for calibrating Skyle.
 abstract class CalibrationRepository {

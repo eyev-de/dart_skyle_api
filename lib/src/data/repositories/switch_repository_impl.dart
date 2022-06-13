@@ -8,11 +8,10 @@ import 'dart:async';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../domain/entities/switch.dart';
+import '../../data/models/switch.dart';
 import '../../domain/repositories/switch_repository.dart';
 import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
 import '../../generated/google/protobuf/empty.pb.dart';
-import '../models/switch_model.dart';
 
 class SwitchRepositoryImpl implements SwitchRepository {
   SkyleClient? client;
@@ -30,7 +29,7 @@ class SwitchRepositoryImpl implements SwitchRepository {
         holdClick: switchActions.holdClick,
       ));
 
-      return DataSuccess(SwitchActionsModel.fromButtonActions(buttonActions));
+      return DataSuccess(SwitchActions.fromButtonActions(buttonActions));
     } catch (error) {
       return DataFailed(error.toString());
     }
@@ -48,7 +47,7 @@ class SwitchRepositoryImpl implements SwitchRepository {
         watch.reset();
         try {
           final button = await client!.getButton(Empty());
-          controller?.add(DataSuccess(SwitchModel.fromButton(button)));
+          controller?.add(DataSuccess(Switch.fromButton(button)));
         } catch (e, s) {
           controller?.addError(e, s);
           return;

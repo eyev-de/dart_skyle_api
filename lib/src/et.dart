@@ -17,6 +17,7 @@ import 'core/exceptions.dart';
 import 'data/repositories/calibration_repository_impl.dart';
 import 'data/repositories/gaze_repository_impl.dart';
 import 'data/repositories/positioning_repository_impl.dart';
+import 'data/repositories/profiles_repository_imp.dart';
 import 'data/repositories/reset_repository_impl.dart';
 import 'data/repositories/settings_repository_impl.dart';
 import 'data/repositories/switch_repository_impl.dart';
@@ -24,6 +25,7 @@ import 'data/repositories/versions_repository_impl.dart';
 import 'domain/repositories/calibration_repository.dart';
 import 'domain/repositories/gaze_repository.dart';
 import 'domain/repositories/positioning_repository.dart';
+import 'domain/repositories/profiles_repository.dart';
 import 'domain/repositories/reset_repository.dart';
 import 'domain/repositories/settings_repository.dart';
 import 'domain/repositories/switch_repository.dart';
@@ -52,6 +54,7 @@ class ET {
   GazeRepository gaze = GazeRepositoryImpl();
   PositioningRepository positioning = PositioningRepositoryImpl();
   SwitchRepository switchSettings = SwitchRepositoryImpl();
+  ProfilesRepository profiles = ProfilesRepositoryImpl();
 
   Connection _connection = Connection.disconnected;
   Connection get connection => _connection;

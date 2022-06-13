@@ -5,7 +5,7 @@
 //
 
 import '../../core/data_state.dart';
-import '../entities/point.dart';
+import '../../data/models/point.dart';
 
 /// Interface for receiving the gaze stream coordinates.
 abstract class GazeRepository {

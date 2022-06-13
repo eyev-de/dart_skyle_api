@@ -25,6 +25,9 @@ class PositioningQuality {
         'vertical': vertical,
         'depth': depth,
       };
+  factory PositioningQuality.zero() {
+    return PositioningQuality(horizontal: 0, vertical: 0, depth: 0);
+  }
 }
 
 class PositioningEyes {
@@ -39,22 +42,7 @@ class PositioningEyes {
         'left': jsonEncode(left),
         'right': jsonEncode(right),
       };
-}
-
-class PositioningData {
-  final PositioningEyes eyes;
-  final PositioningQuality quality;
-
-  const PositioningData({
-    required this.eyes,
-    required this.quality,
-  });
-  PositioningData.fromJson(Map<String, dynamic> json)
-      : eyes = jsonDecode(json['eyes']),
-        quality = jsonDecode(json['quality']);
-
-  Map<String, dynamic> toJson() => {
-        'eyes': jsonEncode(eyes),
-        'quality': jsonEncode(quality),
-      };
+  factory PositioningEyes.zero() {
+    return PositioningEyes(left: Point.zero(), right: Point.zero());
+  }
 }

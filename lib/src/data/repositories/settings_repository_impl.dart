@@ -6,11 +6,10 @@
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../data/models/settings_model.dart';
-import '../../domain/entities/filter.dart';
-import '../../domain/entities/ipados.dart';
-import '../../domain/entities/screen_sizes.dart';
-import '../../domain/entities/settings.dart';
+import '../../data/models/filter.dart';
+import '../../data/models/ipados.dart';
+import '../../data/models/screen_sizes.dart';
+import '../../data/models/settings.dart';
 import '../../domain/repositories/settings_repository.dart';
 import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
 
@@ -27,7 +26,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
       final req = OptionMessage()..options = _state;
       final options = await client!.configure(req);
       _state = options;
-      return DataSuccess(SettingsModel.fromOptions(options));
+      return DataSuccess(Settings.fromOptions(options));
     } catch (error) {
       // ET.logger?.e('Error in options', error, StackTrace.current);
       return DataFailed(error.toString());
