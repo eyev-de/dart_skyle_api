@@ -162,7 +162,7 @@ class Profiles extends ChangeNotifier {
         }
       }
       if (changed.isNotEmpty) {
-        SchedulerBinding.instance?.addPostFrameCallback((timeStamp) {
+        SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
           for (final _ in changed) {
             listKey.currentState?.insertItem(profiles.length - 1);
           }
