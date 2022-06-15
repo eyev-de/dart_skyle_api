@@ -13,6 +13,7 @@ import 'package:skyle_api/src/test/skyle_service.dart';
 import 'package:skyle_api/api.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   SkyleTestServer server = SkyleTestServer();
   SkyleTestClient client = SkyleTestClient();
 
