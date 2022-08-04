@@ -5,7 +5,6 @@
 //
 
 import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/data/models/calibration_message.dart';
 import 'package:test/test.dart';
 
 void main() {

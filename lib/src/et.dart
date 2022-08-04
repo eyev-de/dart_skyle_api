@@ -31,6 +31,7 @@ import 'domain/repositories/settings_repository.dart';
 import 'domain/repositories/switch_repository.dart';
 import 'domain/repositories/versions_repository.dart';
 import 'generated/Skyle.proto/Skyle.pbgrpc.dart';
+import 'test/test_server.dart';
 
 enum Connection { disconnected, connecting, connected }
 
@@ -46,7 +47,7 @@ class ET {
   SkyleClient? _client;
   SkyleClient? get client => _client;
 
-  ConnectivityProvider connectivityProvider = ConnectivityProvider();
+  ConnectivityProvider _connectivityProvider = ConnectivityProvider();
   CalibrationRepository calibration = CalibrationRepositoryImpl();
   SettingsRepository settings = SettingsRepositoryImpl();
   VersionsRepository versions = VersionsRepositoryImpl();
@@ -60,9 +61,9 @@ class ET {
   Connection get connection => _connection;
 
   static Logger? logger;
-  static String baseURL = 'skyle.local';
-  static const _grpcPort = 50052;
-  static const List<String> possibleIPs = ['10.0.0.2', '192.168.137.2'];
+  static const String baseURL = 'skyle.local';
+  static int _grpcPort = 50052;
+  static List<String> possibleIPs = ['10.0.0.2', '192.168.137.2'];
   static const _maxRetries = 10;
 
   final StreamController<Connection> _connectionStreamController = StreamController<Connection>.broadcast();
@@ -70,33 +71,38 @@ class ET {
 
   ET();
 
-  /// Starts the connection process of Skyle. First the ethernet interfaces are scanned for the right
-  /// IP address. If the correct IP address is found, the grpc client is created. One API call is tested
-  /// until the grpc library does not throw an exception anymore. This function blocks until Skyle is connected
-  /// but it can also be called and not awaited which results in an async re/connection cycle.
-  Future<void> connect() async {
-    if (connectivityProvider.running) throw StillRunningException();
+  /// Starts the connection process of Skyle.
+  ///
+  /// First the ethernet interfaces are scanned for the right IP address. If the correct IP address is found,
+  /// the grpc client is created. One API call is tested until the grpc library does not throw an exception anymore.
+  /// This function blocks until Skyle is connected but it can also be called and not awaited which results in an async re/connection cycle.
+  /// Accepts [additionalIps] to be added to scan for an ET and a new [grpcPort]. Should only be set if you really know what you are doing.
+  Future<void> connect({List<String> additionalIps = const [], int grpcPort = 50052}) async {
+    if (_connectivityProvider.running) throw StillRunningException();
+    possibleIPs.addAll(additionalIps);
+    _grpcPort = grpcPort;
     print('Scanning for Skyle ethernet interface for possible IPs: $possibleIPs');
-    connectivityProvider.start(_onConnectionMessageChanged);
+    _connectivityProvider.start(_onConnectionMessageChanged);
     await for (final message in connectionStream) {
       if (message == Connection.connected || message == Connection.disconnected) break;
     }
   }
 
   /// Disconnects Skyle and shuts down the reconnection cycle.
+  ///
+  /// This should be called if you want to reconfigure a completely new connection.
   Future<void> disconnect() async {
-    if (!connectivityProvider.running) throw NotRunningException();
-    connectivityProvider.stop();
+    if (!_connectivityProvider.running) throw NotRunningException();
+    _connectivityProvider.stop();
     await softDisconnect();
   }
 
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting && _connection == Connection.disconnected) {
       print('Interface connected: Try connecting Skyle: ${ET.baseURL}');
-      ET.baseURL = message.url!;
       _connection = message.connection;
       _connectionStreamController.add(_connection);
-      await trySoftReconnect();
+      await trySoftReconnect(baseUrl: message.url ?? ET.baseURL);
     } else if (message.connection == Connection.disconnected && _connection != Connection.disconnected) {
       print('Skyle interface disconnected.');
       await softDisconnect();
@@ -105,9 +111,12 @@ class ET {
 
   /// TODO(krjw-eyev):  Add async cancellation if called again.
   /// Trys to reconnect the grpc connection. Is only needed after calling [softDisconnect]
-  Future<void> trySoftReconnect() async {
+  ///
+  /// Accepts a new [baseURL] and a new [grpcPort]. Should only be set if you really know what you are doing.
+  Future<void> trySoftReconnect({String baseUrl = ET.baseURL, int grpcPort = 50052}) async {
     try {
       if (_connection == Connection.connected || _connection == Connection.disconnected) return;
+      _grpcPort = grpcPort;
       _createClient(url: ET.baseURL, port: ET._grpcPort);
       // ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
       print('Connecting Skyle with base ip: ${ET.baseURL}...');
@@ -155,7 +164,9 @@ class ET {
     _client = SkyleClient(_channel!);
   }
 
-  /// Disconnects only the grpc client and makes it unusable. All connections will throw a [NotConnectedException].
+  /// Disconnects only the grpc client and makes it unusable.
+  ///
+  /// All connections will throw a [NotConnectedException].
   /// To reconnect the grpcs call [trySoftReconnect]
   Future<void> softDisconnect() async {
     try {
@@ -184,6 +195,7 @@ class ET {
     gaze = GazeRepositoryImpl(client: client);
     positioning = PositioningRepositoryImpl(client: client);
     switchSettings = SwitchRepositoryImpl(client: client);
+    profiles = ProfilesRepositoryImpl(client: client);
   }
 
   /// Disposes the instance of [ET] completely.
@@ -192,8 +204,9 @@ class ET {
     _connectionStreamController.close();
   }
 
-  /// Simulates a connection. This is only used for tests with the [SkyleTestServer] which is located in lib/src/test/test_server.dart
+  /// Simulates a connection. This is only used for tests with the [TestServer] which is located in lib/src/test/test_server.dart
   Future<void> testConnectClients({required String url, required int port}) async {
+    _connectivityProvider.running = true;
     _createClient(url: url, port: port);
     settings = SettingsRepositoryImpl(client: client);
     await settings.get();

@@ -221,13 +221,13 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<TriggerMessage> trigger(ServiceCall call, Empty request) {
-    // TODO: implement trigger
+    // TODO(krjw-eyev): implement trigger
     throw UnimplementedError();
   }
 
   @override
   Stream<Point> cursorCalibration(ServiceCall call, Stream<calibCursorMessages> request) {
-    // TODO: implement cursorCalibration
+    // TODO(krjw-eyev): implement cursorCalibration
     throw UnimplementedError();
   }
 }

@@ -36,6 +36,8 @@ class ProfilesRepositoryImpl implements ProfilesRepository {
     } catch (error) {
       ET.logger?.e('Error in getting profiles:', error, StackTrace.current);
       rethrow;
+    } finally {
+      _stream = null;
     }
   }
 

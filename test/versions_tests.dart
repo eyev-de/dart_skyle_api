@@ -39,7 +39,7 @@ class VersionsTester {
         expect(versions.data!.calib, equals(defaultVersions.calib));
         expect(versions.data!.eyetracker, equals(defaultVersions.eyetracker));
         expect(versions.data!.firmware, equals(defaultVersions.firmware));
-        expect(versions.data!.serial, equals(defaultVersions.serial));
+        expect(versions.data!.serial, equals(BigInt.parse(defaultVersions.serial.toString())));
         expect(versions.data!.isDemo, equals(defaultVersions.isDemo));
         expect(versions.data!.skyleType, equals(defaultVersions.skyleType));
       });

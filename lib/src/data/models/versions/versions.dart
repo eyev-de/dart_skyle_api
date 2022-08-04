@@ -6,8 +6,6 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../generated/Skyle.proto/Skyle.pb.dart';
-
 part 'versions.freezed.dart';
 part 'versions.g.dart';
 

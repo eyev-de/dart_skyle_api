@@ -60,7 +60,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
         if (message.connection == Connection.connecting) {
           message = await _detectIPs([message.url!]);
         } else {
-          // TODO
+          // TODO(krjw-eyev)
           // _lookupHost() works but is slow and could cause issues.
           // message = await _lookupHost();
           // if (message.connection == Connection.disconnected) {

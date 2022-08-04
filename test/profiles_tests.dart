@@ -36,16 +36,18 @@ class ProfilesTester {
     group('Profiles', () {
       test('Get profiles', () async {
         final profiles = await client.et.profiles.get().toList();
-        expect(profiles.first.id, equals(defaultProfile.iD));
-        expect(profiles.first.name, equals(defaultProfile.name));
-        expect(profiles.first.skill, equals(defaultProfile.skill));
+        final profile = profiles.first.toProfile();
+        expect(profile.iD, equals(defaultProfile.iD));
+        expect(profile.name, equals(defaultProfile.name));
+        expect(profile.skill, equals(defaultProfile.skill));
       });
 
       test('Get current profile', () async {
         final currentProfile = await client.et.profiles.getCurrent();
-        expect(currentProfile.id, equals(defaultProfile.iD));
-        expect(currentProfile.name, equals(defaultProfile.name));
-        expect(currentProfile.skill, equals(defaultProfile.skill));
+        final profile = currentProfile.toProfile();
+        expect(profile.iD, equals(defaultProfile.iD));
+        expect(profile.name, equals(defaultProfile.name));
+        expect(profile.skill, equals(defaultProfile.skill));
       });
 
       test('Add profile, delete profile', () async {

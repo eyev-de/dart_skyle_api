@@ -21,6 +21,7 @@ abstract class PositioningRepository {
   static double minDistance = Platform.isIOS ? 40 : 35;
 
   /// Starts the positioning stream which lives until a disconnect happens.
+  ///
   /// Returns a [Stream] with either a [DataSuccess] or a [DataFailed] message indicating the stream failed.
   /// In case of a [DataSuccess] message containing a [PositioningMessage] which contains of
   /// a [PositioningEyes] containing two [Point] objects, a [PositioningQuality] object, containing vertical,

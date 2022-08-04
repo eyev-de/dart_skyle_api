@@ -12,6 +12,8 @@ import '../../data/models/settings/settings.dart';
 
 /// Interface for the settings of Skyle.
 abstract class SettingsRepository {
+  /// Gets the current [Settings].
+  ///
   /// Returns a [Future] which either contains a [DataSuccess] or a [DataFailed].
   /// In case of [DataSuccess], a [Settings] object is returned with the current
   /// settings configuration of Skyle. In case of [DataFailed] a [String] is returned
@@ -22,20 +24,24 @@ abstract class SettingsRepository {
   Future<DataState<Settings>> video({bool on = true});
 
   /// Sets the autoPause setting and behaves like [get].
+  ///
   /// If [enablePause] is on, the user can switch off the HID stream by looking into the
   /// camera placed in the center of Skyle for a couple of seconds.
   /// Also [pause] can be triggered manually.
   Future<DataState<Settings>> enablePause({bool on = true});
 
   /// Sets the pause setting and behaves like [get].
+  ///
   /// If [pause] is on, the HID stream is swiched off.
   Future<DataState<Settings>> pause({bool on = true});
 
   /// Sets the standby setting and behaves like [get].
+  ///
   /// If [standby] is on, Skyle will go into standby mode when the iPad is locked / not reachable.
   Future<DataState<Settings>> standby({bool on = true});
 
   /// Sets the HID stream setting and behaves like [get].
+  ///
   /// If [disableMouse] is on, the HID stream is swiched off.
   Future<DataState<Settings>> disableMouse({bool on = true});
 
