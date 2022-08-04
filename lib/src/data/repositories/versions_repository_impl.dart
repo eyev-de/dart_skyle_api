@@ -6,7 +6,7 @@
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../data/models/versions.dart';
+import '../../data/models/versions/versions.dart';
 import '../../domain/repositories/versions_repository.dart';
 import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
 import '../../generated/google/protobuf/empty.pb.dart';

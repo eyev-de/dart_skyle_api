@@ -12,9 +12,9 @@ import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
 import '../../data/models/calibration_message.dart';
 import '../../data/models/calibration_points.dart';
-import '../../data/models/screen_sizes.dart';
 import '../../domain/repositories/calibration_repository.dart';
 import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../models/settings/screen_sizes.dart';
 
 class CalibrationRepositoryImpl extends CalibrationRepository {
   StreamController<calibControlMessages> control = StreamController<calibControlMessages>();
@@ -26,7 +26,7 @@ class CalibrationRepositoryImpl extends CalibrationRepository {
   @override
   Stream<DataState<CalibrationMessage>> calibrate(
     CalibrationPoints points, {
-    ScreenSizes screenSizes = const ScreenSizes.create(),
+    ScreenSizes screenSizes = const ScreenSizes(),
     bool stepped = false,
   }) async* {
     try {
@@ -40,7 +40,7 @@ class CalibrationRepositoryImpl extends CalibrationRepository {
           ..calibrate = true
           ..numberOfPoints = points.value
           ..stopHID = true
-          ..res = ScreenSizes(resolution: screenSizes.resolution, dimensions: screenSizes.dimensions).toScreenResolution()));
+          ..res = ScreenSizes.toScreenResolution(screenSizes)));
       control.add(message);
       final List<CalibrationPointQuality> qualities = [];
       await for (final CalibMessages event in stream!) {

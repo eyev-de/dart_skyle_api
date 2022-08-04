@@ -5,10 +5,10 @@
 //
 
 import '../../core/data_state.dart';
-import '../../data/models/filter.dart';
-import '../../data/models/ipados.dart';
-import '../../data/models/screen_sizes.dart';
-import '../../data/models/settings.dart';
+import '../../data/models/settings/filter.dart';
+import '../../data/models/settings/ipados.dart';
+import '../../data/models/settings/screen_sizes.dart';
+import '../../data/models/settings/settings.dart';
 
 /// Interface for the settings of Skyle.
 abstract class SettingsRepository {
@@ -40,11 +40,11 @@ abstract class SettingsRepository {
   Future<DataState<Settings>> disableMouse({bool on = true});
 
   /// Sets the [Filter] settings and behaves like [get].
-  Future<DataState<Settings>> setFilter({Filter filter = const Filter.create()});
+  Future<DataState<Settings>> setFilter({Filter filter = const Filter()});
 
   /// Sets the [iPadOS] settings and behaves like [get].
   Future<DataState<Settings>> setIPadOS({IPadOS iPadOS = const IPadOS(isOld: true, isNotZommed: true)});
 
   /// Sets the [ScreenSizes] and behaves like [get].
-  Future<DataState<Settings>> setResolution({ScreenSizes screenSizes = const ScreenSizes.create()});
+  Future<DataState<Settings>> setResolution({ScreenSizes screenSizes = const ScreenSizes()});
 }

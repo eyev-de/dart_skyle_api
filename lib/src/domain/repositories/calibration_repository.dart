@@ -7,7 +7,7 @@
 import '../../core/data_state.dart';
 import '../../data/models/calibration_message.dart';
 import '../../data/models/calibration_points.dart';
-import '../../data/models/screen_sizes.dart';
+import '../../data/models/settings/screen_sizes.dart';
 
 /// Interface for calibrating Skyle.
 abstract class CalibrationRepository {
@@ -16,7 +16,7 @@ abstract class CalibrationRepository {
   /// calibrated point.
   Stream<DataState<CalibrationMessage>> calibrate(
     CalibrationPoints points, {
-    ScreenSizes screenSizes = const ScreenSizes.create(),
+    ScreenSizes screenSizes = const ScreenSizes(),
     bool stepped = false,
   });
 
@@ -27,7 +27,7 @@ abstract class CalibrationRepository {
   /// being set to true.
   void next();
 
-  /// Calculates the calibration point x-axis coordinate value from the [CalibrationPointsExtension.array] id and the width
+  /// Calculates the calibration point x-axis coordinate value from the [CalibrationPoints.array] id and the width
   /// of the screen in pixels.
   static double calcX(int id, double width) {
     final double offset = width * 0.08;
@@ -36,7 +36,7 @@ abstract class CalibrationRepository {
     return ret;
   }
 
-  /// Calculates the calibration point y-axis coordinate value from the [CalibrationPointsExtension.array] id and the width
+  /// Calculates the calibration point y-axis coordinate value from the [CalibrationPoints.array] id and the width
   /// of the screen in pixels.
   static double calcY(int id, double width, double height) {
     final double offset = width * 0.08 * 3.0 / 4.0;

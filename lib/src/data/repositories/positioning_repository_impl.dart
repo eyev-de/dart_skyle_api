@@ -10,11 +10,13 @@ import 'package:grpc/grpc.dart';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../data/models/positioning_data.dart';
-import '../../data/models/positioning_message.dart';
 import '../../domain/repositories/positioning_repository.dart';
 import '../../generated/Skyle.proto/Skyle.pbgrpc.dart' as grpc;
 import '../../generated/google/protobuf/empty.pb.dart';
+import '../models/positioning/positioning_distance.dart';
+import '../models/positioning/positioning_eyes.dart';
+import '../models/positioning/positioning_message.dart';
+import '../models/positioning/positioning_quality.dart';
 
 class PositioningRepositoryImpl extends PositioningRepository {
   grpc.SkyleClient? client;

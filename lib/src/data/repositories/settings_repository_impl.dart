@@ -6,12 +6,12 @@
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../data/models/filter.dart';
-import '../../data/models/ipados.dart';
-import '../../data/models/screen_sizes.dart';
-import '../../data/models/settings.dart';
+import '../../data/models/settings/filter.dart';
+import '../../data/models/settings/ipados.dart';
 import '../../domain/repositories/settings_repository.dart';
 import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../models/settings/screen_sizes.dart';
+import '../models/settings/settings.dart';
 
 class SettingsRepositoryImpl implements SettingsRepository {
   SkyleClient? client;
@@ -57,7 +57,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }
 
   @override
-  Future<DataState<Settings>> setFilter({Filter filter = const Filter.create()}) {
+  Future<DataState<Settings>> setFilter({Filter filter = const Filter()}) {
     final FilterOptions filterOptions = FilterOptions()
       ..fixationFilter = filter.fixation
       ..gazeFilter = filter.gaze;
@@ -75,7 +75,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }
 
   @override
-  Future<DataState<Settings>> setResolution({ScreenSizes screenSizes = const ScreenSizes.create()}) {
+  Future<DataState<Settings>> setResolution({ScreenSizes screenSizes = const ScreenSizes()}) {
     final Options options = Options.fromJson(_state.writeToJson());
     if (screenSizes.dimensions != null) {
       options.res = ScreenResolution(

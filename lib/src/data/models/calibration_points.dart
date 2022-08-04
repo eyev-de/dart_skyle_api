@@ -4,21 +4,15 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-enum CalibrationPoints { one, two, five, nine }
+enum CalibrationPoints {
+  one(1),
+  two(2),
+  five(5),
+  nine(9);
 
-extension CalibrationPointsExtension on CalibrationPoints {
-  int get value {
-    switch (this) {
-      case CalibrationPoints.one:
-        return 1;
-      case CalibrationPoints.two:
-        return 2;
-      case CalibrationPoints.five:
-        return 5;
-      case CalibrationPoints.nine:
-        return 9;
-    }
-  }
+  final int _value;
+  int get value => _value;
+  const CalibrationPoints(this._value);
 
   static CalibrationPoints fromInt(int value) {
     switch (value) {

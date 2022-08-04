@@ -5,7 +5,8 @@
 //
 
 import '../../core/data_state.dart';
-import '../../data/models/switch.dart';
+import '../../data/models/switch/switch.dart';
+import '../../data/models/switch/switch_actions.dart';
 
 /// Interface for the switch which can be connected to Skyle.
 abstract class SwitchRepository {

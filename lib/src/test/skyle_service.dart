@@ -10,7 +10,7 @@ import 'package:fixnum/fixnum.dart';
 import 'package:grpc/grpc.dart';
 
 import '../data/models/calibration_points.dart';
-import '../data/models/switch.dart';
+import '../data/models/switch/switch.dart';
 import '../domain/repositories/calibration_repository.dart';
 import '../generated/Skyle.proto/Skyle.pbgrpc.dart';
 import '../generated/google/protobuf/empty.pb.dart';
@@ -69,7 +69,7 @@ class SkyleService extends SkyleServiceBase {
         }
         if (msg.calibControl.hasCalibrate() && msg.calibControl.calibrate) {
           if (msg.calibControl.hasNumberOfPoints()) {
-            pts = CalibrationPointsExtension.fromInt(msg.calibControl.numberOfPoints);
+            pts = CalibrationPoints.fromInt(msg.calibControl.numberOfPoints);
           } else {
             pts = CalibrationPoints.nine;
           }

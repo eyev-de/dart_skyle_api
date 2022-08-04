@@ -8,7 +8,8 @@ import 'dart:async';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../data/models/switch.dart';
+import '../../data/models/switch/switch.dart';
+import '../../data/models/switch/switch_actions.dart';
 import '../../domain/repositories/switch_repository.dart';
 import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
 import '../../generated/google/protobuf/empty.pb.dart';

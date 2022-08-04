@@ -5,7 +5,7 @@
 //
 
 import '../../core/data_state.dart';
-import '../../data/models/versions.dart';
+import '../../data/models/versions/versions.dart';
 
 /// Interface for the software versions and other information of Skyle.
 abstract class VersionsRepository {
