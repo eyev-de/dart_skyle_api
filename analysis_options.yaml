@@ -178,3 +178,5 @@ linter:
 analyzer:
   exclude:
     - lib/src/generated/*
+  errors:
+    invalid_annotation_target: ignore
