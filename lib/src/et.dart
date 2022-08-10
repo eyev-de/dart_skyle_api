@@ -207,9 +207,13 @@ class ET {
   /// Simulates a connection. This is only used for tests with the [TestServer] which is located in lib/src/test/test_server.dart
   Future<void> testConnectClients({required String url, required int port}) async {
     _connectivityProvider.running = true;
+    _connection = Connection.connecting;
+    _connectionStreamController.add(_connection);
+    await Future.delayed(const Duration(milliseconds: 200));
     _createClient(url: url, port: port);
     settings = SettingsRepositoryImpl(client: client);
     await settings.get();
+    await Future.delayed(const Duration(milliseconds: 200));
     _setClients();
     _connection = Connection.connected;
     _connectionStreamController.add(_connection);

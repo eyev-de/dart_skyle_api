@@ -6,7 +6,7 @@
 
 library skyle_api;
 
-export 'src/core/data_state.dart' show DataState, DataSuccess, DataFailed;
+export 'src/core/data_state.dart' show DataState, DataSuccess, DataFailed, DataLoading;
 export 'src/core/exceptions.dart' show TimeoutException, NotConnectedException, NotRunningException, StillRunningException, StillStreamingException;
 export 'src/core/restart_timer.dart' show RestartTimer;
 export 'src/data/models/calibration_message.dart'

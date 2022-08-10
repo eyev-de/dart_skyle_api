@@ -7,8 +7,9 @@
 abstract class DataState<T> {
   final T? data;
   final String? error;
+  final double? progress;
 
-  const DataState({this.data, this.error});
+  const DataState({this.data, this.error, this.progress});
 }
 
 class DataSuccess<T> extends DataState<T> {
@@ -17,4 +18,8 @@ class DataSuccess<T> extends DataState<T> {
 
 class DataFailed<T> extends DataState<T> {
   const DataFailed(String error) : super(error: error);
+}
+
+class DataLoading<T> extends DataState<T> {
+  const DataLoading(double progress) : super(progress: progress);
 }

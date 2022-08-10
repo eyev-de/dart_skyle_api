@@ -267,10 +267,10 @@ final defaultButton = Button(
 );
 
 final defaultVersions = DeviceVersions()
-  ..base = '1.0'
-  ..calib = '1.0'
-  ..eyetracker = '1.0'
-  ..firmware = '1.0'
+  ..base = 'v2.0-22-g971c7df'
+  ..calib = 'v3.1-138-gf06f9e1'
+  ..eyetracker = 'v3.1-117-ga7924ad'
+  ..firmware = 'v2.1-19-g91f1bf8'
   ..isDemo = false
-  ..serial = Int64.fromInts(7777777, 7777777)
-  ..skyleType = 7;
+  ..serial = Int64.parseInt('50006867312652526')
+  ..skyleType = 2;

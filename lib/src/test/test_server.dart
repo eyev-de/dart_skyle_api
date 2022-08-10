@@ -23,6 +23,6 @@ class TestServer {
     print('Starting API...');
     await server.serve(address: 'localhost', port: 8001, shared: true);
     print('Starting MJPEG server...');
-    mjpegTestServer?.main(args);
+    await mjpegTestServer?.main(args);
   }
 }
