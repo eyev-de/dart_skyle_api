@@ -4,6 +4,8 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+import 'dart:async';
+
 import 'package:grpc/grpc.dart';
 
 import 'mjpeg_test_server.dart';
@@ -23,6 +25,6 @@ class TestServer {
     print('Starting API...');
     await server.serve(address: 'localhost', port: 8001, shared: true);
     print('Starting MJPEG server...');
-    await mjpegTestServer?.main(args);
+    unawaited(mjpegTestServer?.main(args));
   }
 }
