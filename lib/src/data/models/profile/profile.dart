@@ -4,7 +4,7 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import '../../generated/Skyle.proto/Skyle.pbgrpc.dart' as grpc;
+import '../../../generated/Skyle.pbgrpc.dart' as grpc;
 
 import 'skill.dart';
 

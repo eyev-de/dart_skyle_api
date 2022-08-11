@@ -1,16 +1,16 @@
 ///
 //  Generated code. Do not modify.
-//  source: Skyle.proto/Skyle.proto
+//  source: Skyle.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../google/protobuf/empty.pb.dart' as $1;
+import 'google/protobuf/empty.pb.dart' as $1;
 
 import 'Skyle.pbenum.dart';
 
@@ -1101,7 +1101,7 @@ class CalibPoint extends $pb.GeneratedMessage {
 class CalibQuality extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibQuality', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
     ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'quality', $pb.PbFieldType.OD)
-    ..p<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qualitys', $pb.PbFieldType.PD)
+    ..p<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qualitys', $pb.PbFieldType.KD)
     ..hasRequiredFields = false
   ;
 
@@ -1457,6 +1457,7 @@ class IPadOptions extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IPadOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isOldiOS', protoName: 'isOldiOS')
     ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isNotZommed', protoName: 'isNotZommed')
+    ..e<IPadOptions_iPadModel>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'model', $pb.PbFieldType.OE, defaultOrMaker: IPadOptions_iPadModel.iPadPro12_9, valueOf: IPadOptions_iPadModel.valueOf, enumValues: IPadOptions_iPadModel.values)
     ..hasRequiredFields = false
   ;
 
@@ -1464,6 +1465,7 @@ class IPadOptions extends $pb.GeneratedMessage {
   factory IPadOptions({
     $core.bool? isOldiOS,
     $core.bool? isNotZommed,
+    IPadOptions_iPadModel? model,
   }) {
     final _result = create();
     if (isOldiOS != null) {
@@ -1471,6 +1473,9 @@ class IPadOptions extends $pb.GeneratedMessage {
     }
     if (isNotZommed != null) {
       _result.isNotZommed = isNotZommed;
+    }
+    if (model != null) {
+      _result.model = model;
     }
     return _result;
   }
@@ -1512,6 +1517,15 @@ class IPadOptions extends $pb.GeneratedMessage {
   $core.bool hasIsNotZommed() => $_has(1);
   @$pb.TagNumber(2)
   void clearIsNotZommed() => clearField(2);
+
+  @$pb.TagNumber(3)
+  IPadOptions_iPadModel get model => $_getN(2);
+  @$pb.TagNumber(3)
+  set model(IPadOptions_iPadModel v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasModel() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearModel() => clearField(3);
 }
 
 class DeviceVersions extends $pb.GeneratedMessage {

@@ -7,7 +7,7 @@
 import 'dart:math';
 
 import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/generated/Skyle.proto/Skyle.pbgrpc.dart' as grpc;
+import 'package:skyle_api/src/generated/Skyle.pbgrpc.dart' as grpc;
 import 'package:test/test.dart';
 
 void main() {

@@ -6,7 +6,8 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../generated/Skyle.proto/Skyle.pb.dart';
+import '../../../generated/Skyle.pb.dart';
+import 'ipad_model.dart';
 
 part 'ipados.freezed.dart';
 part 'ipados.g.dart';
@@ -16,11 +17,12 @@ class IPadOS with _$IPadOS {
   const factory IPadOS({
     @Default(false) bool isOld,
     @Default(false) bool isNotZommed,
+    @Default(IPadModel.iPadPro12_9) IPadModel iPadModel,
   }) = _IPadOS;
 
   factory IPadOS.fromJson(Map<String, Object?> json) => _$IPadOSFromJson(json);
 
   factory IPadOS.fromIPadOptions(IPadOptions iPadOptions) {
-    return IPadOS(isOld: iPadOptions.isOldiOS, isNotZommed: iPadOptions.isNotZommed);
+    return IPadOS(isOld: iPadOptions.isOldiOS, isNotZommed: iPadOptions.isNotZommed, iPadModel: IPadModel.fromIPadOptionsIPadModel(iPadOptions.model));
   }
 }

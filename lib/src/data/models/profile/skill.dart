@@ -4,8 +4,7 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import '../../generated/Skyle.proto/Skyle.pb.dart';
-import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../../../generated/Skyle.pb.dart';
 
 enum Skill {
   beginner,

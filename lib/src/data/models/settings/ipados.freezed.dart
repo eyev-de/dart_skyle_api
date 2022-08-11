@@ -22,6 +22,7 @@ IPadOS _$IPadOSFromJson(Map<String, dynamic> json) {
 mixin _$IPadOS {
   bool get isOld => throw _privateConstructorUsedError;
   bool get isNotZommed => throw _privateConstructorUsedError;
+  IPadModel get iPadModel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -32,7 +33,7 @@ mixin _$IPadOS {
 abstract class $IPadOSCopyWith<$Res> {
   factory $IPadOSCopyWith(IPadOS value, $Res Function(IPadOS) then) =
       _$IPadOSCopyWithImpl<$Res>;
-  $Res call({bool isOld, bool isNotZommed});
+  $Res call({bool isOld, bool isNotZommed, IPadModel iPadModel});
 }
 
 /// @nodoc
@@ -47,6 +48,7 @@ class _$IPadOSCopyWithImpl<$Res> implements $IPadOSCopyWith<$Res> {
   $Res call({
     Object? isOld = freezed,
     Object? isNotZommed = freezed,
+    Object? iPadModel = freezed,
   }) {
     return _then(_value.copyWith(
       isOld: isOld == freezed
@@ -57,6 +59,10 @@ class _$IPadOSCopyWithImpl<$Res> implements $IPadOSCopyWith<$Res> {
           ? _value.isNotZommed
           : isNotZommed // ignore: cast_nullable_to_non_nullable
               as bool,
+      iPadModel: iPadModel == freezed
+          ? _value.iPadModel
+          : iPadModel // ignore: cast_nullable_to_non_nullable
+              as IPadModel,
     ));
   }
 }
@@ -66,7 +72,7 @@ abstract class _$$_IPadOSCopyWith<$Res> implements $IPadOSCopyWith<$Res> {
   factory _$$_IPadOSCopyWith(_$_IPadOS value, $Res Function(_$_IPadOS) then) =
       __$$_IPadOSCopyWithImpl<$Res>;
   @override
-  $Res call({bool isOld, bool isNotZommed});
+  $Res call({bool isOld, bool isNotZommed, IPadModel iPadModel});
 }
 
 /// @nodoc
@@ -82,6 +88,7 @@ class __$$_IPadOSCopyWithImpl<$Res> extends _$IPadOSCopyWithImpl<$Res>
   $Res call({
     Object? isOld = freezed,
     Object? isNotZommed = freezed,
+    Object? iPadModel = freezed,
   }) {
     return _then(_$_IPadOS(
       isOld: isOld == freezed
@@ -92,6 +99,10 @@ class __$$_IPadOSCopyWithImpl<$Res> extends _$IPadOSCopyWithImpl<$Res>
           ? _value.isNotZommed
           : isNotZommed // ignore: cast_nullable_to_non_nullable
               as bool,
+      iPadModel: iPadModel == freezed
+          ? _value.iPadModel
+          : iPadModel // ignore: cast_nullable_to_non_nullable
+              as IPadModel,
     ));
   }
 }
@@ -99,7 +110,10 @@ class __$$_IPadOSCopyWithImpl<$Res> extends _$IPadOSCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_IPadOS implements _IPadOS {
-  const _$_IPadOS({this.isOld = false, this.isNotZommed = false});
+  const _$_IPadOS(
+      {this.isOld = false,
+      this.isNotZommed = false,
+      this.iPadModel = IPadModel.iPadPro12_9});
 
   factory _$_IPadOS.fromJson(Map<String, dynamic> json) =>
       _$$_IPadOSFromJson(json);
@@ -110,10 +124,13 @@ class _$_IPadOS implements _IPadOS {
   @override
   @JsonKey()
   final bool isNotZommed;
+  @override
+  @JsonKey()
+  final IPadModel iPadModel;
 
   @override
   String toString() {
-    return 'IPadOS(isOld: $isOld, isNotZommed: $isNotZommed)';
+    return 'IPadOS(isOld: $isOld, isNotZommed: $isNotZommed, iPadModel: $iPadModel)';
   }
 
   @override
@@ -123,7 +140,8 @@ class _$_IPadOS implements _IPadOS {
             other is _$_IPadOS &&
             const DeepCollectionEquality().equals(other.isOld, isOld) &&
             const DeepCollectionEquality()
-                .equals(other.isNotZommed, isNotZommed));
+                .equals(other.isNotZommed, isNotZommed) &&
+            const DeepCollectionEquality().equals(other.iPadModel, iPadModel));
   }
 
   @JsonKey(ignore: true)
@@ -131,7 +149,8 @@ class _$_IPadOS implements _IPadOS {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(isOld),
-      const DeepCollectionEquality().hash(isNotZommed));
+      const DeepCollectionEquality().hash(isNotZommed),
+      const DeepCollectionEquality().hash(iPadModel));
 
   @JsonKey(ignore: true)
   @override
@@ -147,7 +166,10 @@ class _$_IPadOS implements _IPadOS {
 }
 
 abstract class _IPadOS implements IPadOS {
-  const factory _IPadOS({final bool isOld, final bool isNotZommed}) = _$_IPadOS;
+  const factory _IPadOS(
+      {final bool isOld,
+      final bool isNotZommed,
+      final IPadModel iPadModel}) = _$_IPadOS;
 
   factory _IPadOS.fromJson(Map<String, dynamic> json) = _$_IPadOS.fromJson;
 
@@ -155,6 +177,8 @@ abstract class _IPadOS implements IPadOS {
   bool get isOld;
   @override
   bool get isNotZommed;
+  @override
+  IPadModel get iPadModel;
   @override
   @JsonKey(ignore: true)
   _$$_IPadOSCopyWith<_$_IPadOS> get copyWith =>

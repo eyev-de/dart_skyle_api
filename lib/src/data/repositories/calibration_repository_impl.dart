@@ -10,10 +10,10 @@ import 'package:grpc/grpc.dart';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../data/models/calibration_message.dart';
-import '../../data/models/calibration_points.dart';
+import '../models/calibration/calibration_message.dart';
+import '../models/calibration/calibration_points.dart';
 import '../../domain/repositories/calibration_repository.dart';
-import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../../generated/Skyle.pbgrpc.dart';
 import '../models/settings/screen_sizes.dart';
 
 class CalibrationRepositoryImpl extends CalibrationRepository {

@@ -5,8 +5,8 @@
 //
 
 import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/data/models/profile.dart';
-import 'package:skyle_api/src/generated/Skyle.proto/Skyle.pb.dart' as grpc;
+import 'package:skyle_api/src/data/models/profile/profile.dart';
+import 'package:skyle_api/src/generated/Skyle.pb.dart' as grpc;
 import 'package:skyle_api/src/test/skyle_service.dart';
 import 'package:test/test.dart';
 

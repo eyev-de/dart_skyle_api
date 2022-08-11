@@ -9,10 +9,10 @@ import 'dart:convert';
 import 'package:fixnum/fixnum.dart';
 import 'package:grpc/grpc.dart';
 
-import '../data/models/calibration_points.dart';
+import '../data/models/calibration/calibration_points.dart';
 import '../data/models/switch/switch.dart';
 import '../domain/repositories/calibration_repository.dart';
-import '../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../generated/Skyle.pbgrpc.dart';
 import '../generated/google/protobuf/empty.pb.dart';
 import 'positionings.dart';
 

@@ -4,8 +4,8 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import '../../generated/Skyle.proto/Skyle.pb.dart' as grpc;
-import 'point.dart';
+import '../../../generated/Skyle.pb.dart' as grpc;
+import '../point.dart';
 
 class CalibrationPoint {
   final Point coordinates;

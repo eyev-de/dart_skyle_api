@@ -9,7 +9,7 @@ import '../../core/exceptions.dart';
 import '../../data/models/settings/filter.dart';
 import '../../data/models/settings/ipados.dart';
 import '../../domain/repositories/settings_repository.dart';
-import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../../generated/Skyle.pbgrpc.dart';
 import '../models/settings/screen_sizes.dart';
 import '../models/settings/settings.dart';
 

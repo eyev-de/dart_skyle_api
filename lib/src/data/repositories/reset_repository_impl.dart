@@ -7,7 +7,7 @@
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
 import '../../domain/repositories/reset_repository.dart';
-import '../../generated/Skyle.proto/Skyle.pbgrpc.dart';
+import '../../generated/Skyle.pbgrpc.dart';
 
 class ResetRepositoryImpl implements ResetRepository {
   SkyleClient? client;

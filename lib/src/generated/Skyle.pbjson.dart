@@ -1,9 +1,9 @@
 ///
 //  Generated code. Do not modify.
-//  source: Skyle.proto/Skyle.proto
+//  source: Skyle.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
+// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,deprecated_member_use_from_same_package,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
 
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
@@ -246,11 +246,22 @@ const IPadOptions$json = const {
   '2': const [
     const {'1': 'isOldiOS', '3': 1, '4': 1, '5': 8, '10': 'isOldiOS'},
     const {'1': 'isNotZommed', '3': 2, '4': 1, '5': 8, '10': 'isNotZommed'},
+    const {'1': 'model', '3': 3, '4': 1, '5': 14, '6': '.Skyle.IPadOptions.iPadModel', '10': 'model'},
+  ],
+  '4': const [IPadOptions_iPadModel$json],
+};
+
+@$core.Deprecated('Use iPadOptionsDescriptor instead')
+const IPadOptions_iPadModel$json = const {
+  '1': 'iPadModel',
+  '2': const [
+    const {'1': 'iPadPro12_9', '2': 0},
+    const {'1': 'iPadAir2022', '2': 1},
   ],
 };
 
 /// Descriptor for `IPadOptions`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab21tZWQYAiABKAhSC2lzTm90Wm9tbWVk');
+final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab21tZWQYAiABKAhSC2lzTm90Wm9tbWVkEjIKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMuaVBhZE1vZGVsUgVtb2RlbCItCglpUGFkTW9kZWwSDwoLaVBhZFBybzEyXzkQABIPCgtpUGFkQWlyMjAyMhAB');
 @$core.Deprecated('Use deviceVersionsDescriptor instead')
 const DeviceVersions$json = const {
   '1': 'DeviceVersions',

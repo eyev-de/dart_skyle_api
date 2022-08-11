@@ -30,7 +30,7 @@ import 'domain/repositories/reset_repository.dart';
 import 'domain/repositories/settings_repository.dart';
 import 'domain/repositories/switch_repository.dart';
 import 'domain/repositories/versions_repository.dart';
-import 'generated/Skyle.proto/Skyle.pbgrpc.dart';
+import 'generated/Skyle.pbgrpc.dart';
 import 'test/test_server.dart';
 
 enum Connection { disconnected, connecting, connected }

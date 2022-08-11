@@ -6,7 +6,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../generated/Skyle.proto/Skyle.pb.dart';
+import '../../../generated/Skyle.pb.dart';
 import 'switch_actions.dart';
 
 part 'switch.freezed.dart';

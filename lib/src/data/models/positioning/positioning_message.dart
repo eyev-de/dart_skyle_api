@@ -7,7 +7,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/repositories/positioning_repository.dart';
-import '../../../generated/Skyle.proto/Skyle.pb.dart' as grpc;
+import '../../../generated/Skyle.pb.dart' as grpc;
 
 import '../point.dart';
 

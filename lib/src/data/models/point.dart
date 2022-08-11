@@ -6,7 +6,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../generated/Skyle.proto/Skyle.pb.dart' as grpc;
+import '../../generated/Skyle.pb.dart' as grpc;
 
 part 'point.freezed.dart';
 part 'point.g.dart';

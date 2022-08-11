@@ -5,8 +5,8 @@
 //
 
 import '../../core/data_state.dart';
-import '../../data/models/calibration_message.dart';
-import '../../data/models/calibration_points.dart';
+import '../../data/models/calibration/calibration_message.dart';
+import '../../data/models/calibration/calibration_points.dart';
 import '../../data/models/settings/screen_sizes.dart';
 
 /// Interface for calibrating Skyle.

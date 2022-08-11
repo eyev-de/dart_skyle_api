@@ -4,7 +4,7 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import '../../data/models/profile.dart';
+import '../../data/models/profile/profile.dart';
 
 abstract class ProfilesRepository {
   @Deprecated('The Profiles API is deprecated')

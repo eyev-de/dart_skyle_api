@@ -9,9 +9,9 @@ import 'package:grpc/grpc.dart';
 import '../../core/exceptions.dart';
 import '../../domain/repositories/profiles_repository.dart';
 import '../../et.dart';
-import '../../generated/Skyle.proto/Skyle.pbgrpc.dart' as grpc;
+import '../../generated/Skyle.pbgrpc.dart' as grpc;
 import '../../generated/google/protobuf/empty.pb.dart';
-import '../models/profile.dart';
+import '../models/profile/profile.dart';
 
 class ProfilesRepositoryImpl implements ProfilesRepository {
   grpc.SkyleClient? client;

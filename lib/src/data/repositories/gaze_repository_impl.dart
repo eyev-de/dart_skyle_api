@@ -12,7 +12,7 @@ import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
 import '../../data/models/point.dart';
 import '../../domain/repositories/gaze_repository.dart';
-import '../../generated/Skyle.proto/Skyle.pbgrpc.dart' as grpc;
+import '../../generated/Skyle.pbgrpc.dart' as grpc;
 import '../../generated/google/protobuf/empty.pb.dart';
 
 class GazeRepositoryImpl implements GazeRepository {
