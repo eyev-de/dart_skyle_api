@@ -113,7 +113,7 @@ class _$_IPadOS implements _IPadOS {
   const _$_IPadOS(
       {this.isOld = false,
       this.isNotZommed = false,
-      this.iPadModel = IPadModel.iPadPro12_9});
+      this.iPadModel = IPadModel.iPad13_10});
 
   factory _$_IPadOS.fromJson(Map<String, dynamic> json) =>
       _$$_IPadOSFromJson(json);
