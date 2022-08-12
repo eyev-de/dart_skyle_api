@@ -1457,7 +1457,7 @@ class IPadOptions extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IPadOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isOldiOS', protoName: 'isOldiOS')
     ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isNotZommed', protoName: 'isNotZommed')
-    ..e<IPadOptions_iPadModel>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'model', $pb.PbFieldType.OE, defaultOrMaker: IPadOptions_iPadModel.iPadPro12_9, valueOf: IPadOptions_iPadModel.valueOf, enumValues: IPadOptions_iPadModel.values)
+    ..e<IPadOptions_iPadModel>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'model', $pb.PbFieldType.OE, defaultOrMaker: IPadOptions_iPadModel.iPad8_5, valueOf: IPadOptions_iPadModel.valueOf, enumValues: IPadOptions_iPadModel.values)
     ..hasRequiredFields = false
   ;
 

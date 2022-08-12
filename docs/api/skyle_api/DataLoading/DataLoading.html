@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the main method from the TestServer class, for the Dart programming language.">
-  <title>main method - TestServer class - skyle_api library - Dart API</title>
+  <meta name="description" content="API docs for the DataLoading constructor from Class DataLoading from the skyle_api library, for the Dart programming language.">
+  <title>DataLoading constructor - DataLoading - skyle_api library - Dart API</title>
 
 
   
@@ -31,10 +31,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">skyle_api</a></li>
     <li><a href="../../skyle_api/skyle_api-library.html">skyle_api</a></li>
-    <li><a href="../../skyle_api/TestServer-class.html">TestServer</a></li>
-    <li class="self-crumb">main method</li>
+    <li><a href="../../skyle_api/DataLoading-class.html">DataLoading<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
+    <li class="self-crumb">DataLoading const constructor</li>
   </ol>
-  <div class="self-name">main</div>
+  <div class="self-name">DataLoading</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,32 +45,22 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">main</span> method 
+<h1><span class="kind-constructor">DataLoading&lt;<wbr><span class="type-parameter">T</span>&gt;</span> constructor 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
-    <section class="multi-line-signature">
-      
-
-<span class="returntype"><a href="https://api.dart.dev/stable/2.17.6/dart-async/Future-class.html">Future</a><span class="signature">&lt;<wbr><span class="type-parameter">void</span>&gt;</span></span>
-<span class="name ">main</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="main-param-args"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.17.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/2.17.6/dart-core/String-class.html">String</a></span>&gt;</span></span> <span class="parameter-name">args</span></span></li>
+    <section class="multi-line-signature">const
+      <span class="name ">DataLoading&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-progress"><span class="type-annotation"><a href="https://api.dart.dev/stable/2.17.6/dart-core/double-class.html">double</a></span> <span class="parameter-name">progress</span></span></li>
 </ol>)
-
-      
-
     </section>
+
     
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; main(List&lt;String&gt; args) async {
-  print(&#39;Starting API...&#39;);
-  await server.serve(address: &#39;localhost&#39;, port: 8001, shared: true);
-  print(&#39;Starting MJPEG server...&#39;);
-  unawaited(mjpegTestServer?.main(args));
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">const DataLoading(double progress) : super(progress: progress);</code></pre>
 </section>
 
 
@@ -86,33 +76,32 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../../index.html">skyle_api</a></li>
   <li><a href="../../skyle_api/skyle_api-library.html">skyle_api</a></li>
-  <li><a href="../../skyle_api/TestServer-class.html">TestServer</a></li>
-  <li class="self-crumb">main method</li>
+  <li><a href="../../skyle_api/DataLoading-class.html">DataLoading<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
+  <li class="self-crumb">DataLoading const constructor</li>
 </ol>
 
 
-    <h5>TestServer class</h5>
+    <h5>DataLoading class</h5>
     <ol>
 
-        <li class="section-title"><a href="../../skyle_api/TestServer-class.html#constructors">Constructors</a></li>
-          <li><a href="../../skyle_api/TestServer/TestServer.html">TestServer</a></li>
+        <li class="section-title"><a href="../../skyle_api/DataLoading-class.html#constructors">Constructors</a></li>
+          <li><a href="../../skyle_api/DataLoading/DataLoading.html">DataLoading</a></li>
 
 
-    <li class="section-title">
-      <a href="../../skyle_api/TestServer-class.html#instance-properties">Properties</a>
+    <li class="section-title inherited">
+      <a href="../../skyle_api/DataLoading-class.html#instance-properties">Properties</a>
     </li>
+    <li class="inherited"><a href="../../skyle_api/DataState/data.html">data</a></li>
+    <li class="inherited"><a href="../../skyle_api/DataState/error.html">error</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.6/dart-core/Object/hashCode.html">hashCode</a></li>
-    <li><a href="../../skyle_api/TestServer/mjpegTestServer.html">mjpegTestServer</a></li>
+    <li class="inherited"><a href="../../skyle_api/DataState/progress.html">progress</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.6/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li><a href="../../skyle_api/TestServer/server.html">server</a></li>
-    <li><a href="../../skyle_api/TestServer/service.html">service</a></li>
 
-    <li class="section-title"><a href="../../skyle_api/TestServer-class.html#instance-methods">Methods</a></li>
-    <li><a href="../../skyle_api/TestServer/main.html">main</a></li>
+    <li class="section-title inherited"><a href="../../skyle_api/DataLoading-class.html#instance-methods">Methods</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.6/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.6/dart-core/Object/toString.html">toString</a></li>
 
-    <li class="section-title inherited"><a href="../../skyle_api/TestServer-class.html#operators">Operators</a></li>
+    <li class="section-title inherited"><a href="../../skyle_api/DataLoading-class.html#operators">Operators</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.6/dart-core/Object/operator_equals.html">operator ==</a></li>
 
 
@@ -120,7 +109,7 @@
 
 </ol>
 
-  </div><!--/.sidebar-offcanvas-->
+  </div><!--/.sidebar-offcanvas-left-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->

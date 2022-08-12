@@ -27,12 +27,36 @@ class Profile_Skill extends $pb.ProtobufEnum {
 }
 
 class IPadOptions_iPadModel extends $pb.ProtobufEnum {
-  static const IPadOptions_iPadModel iPadPro12_9 = IPadOptions_iPadModel._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPadPro12_9');
-  static const IPadOptions_iPadModel iPadAir2022 = IPadOptions_iPadModel._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPadAir2022');
+  static const IPadOptions_iPadModel iPad8_5 = IPadOptions_iPadModel._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad8_5');
+  static const IPadOptions_iPadModel iPad8_6 = IPadOptions_iPadModel._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad8_6');
+  static const IPadOptions_iPadModel iPad8_7 = IPadOptions_iPadModel._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad8_7');
+  static const IPadOptions_iPadModel iPad8_8 = IPadOptions_iPadModel._(3, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad8_8');
+  static const IPadOptions_iPadModel iPad8_11 = IPadOptions_iPadModel._(4, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad8_11');
+  static const IPadOptions_iPadModel iPad8_12 = IPadOptions_iPadModel._(5, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad8_12');
+  static const IPadOptions_iPadModel iPad13_1 = IPadOptions_iPadModel._(6, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad13_1');
+  static const IPadOptions_iPadModel iPad13_2 = IPadOptions_iPadModel._(7, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad13_2');
+  static const IPadOptions_iPadModel iPad13_8 = IPadOptions_iPadModel._(8, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad13_8');
+  static const IPadOptions_iPadModel iPad13_9 = IPadOptions_iPadModel._(9, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad13_9');
+  static const IPadOptions_iPadModel iPad13_10 = IPadOptions_iPadModel._(10, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad13_10');
+  static const IPadOptions_iPadModel iPad13_11 = IPadOptions_iPadModel._(11, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad13_11');
+  static const IPadOptions_iPadModel iPad13_16 = IPadOptions_iPadModel._(12, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad13_16');
+  static const IPadOptions_iPadModel iPad13_17 = IPadOptions_iPadModel._(13, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'iPad13_17');
 
   static const $core.List<IPadOptions_iPadModel> values = <IPadOptions_iPadModel> [
-    iPadPro12_9,
-    iPadAir2022,
+    iPad8_5,
+    iPad8_6,
+    iPad8_7,
+    iPad8_8,
+    iPad8_11,
+    iPad8_12,
+    iPad13_1,
+    iPad13_2,
+    iPad13_8,
+    iPad13_9,
+    iPad13_10,
+    iPad13_11,
+    iPad13_16,
+    iPad13_17,
   ];
 
   static final $core.Map<$core.int, IPadOptions_iPadModel> _byValue = $pb.ProtobufEnum.initByValue(values);

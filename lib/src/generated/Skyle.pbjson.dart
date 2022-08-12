@@ -255,13 +255,25 @@ const IPadOptions$json = const {
 const IPadOptions_iPadModel$json = const {
   '1': 'iPadModel',
   '2': const [
-    const {'1': 'iPadPro12_9', '2': 0},
-    const {'1': 'iPadAir2022', '2': 1},
+    const {'1': 'iPad8_5', '2': 0},
+    const {'1': 'iPad8_6', '2': 1},
+    const {'1': 'iPad8_7', '2': 2},
+    const {'1': 'iPad8_8', '2': 3},
+    const {'1': 'iPad8_11', '2': 4},
+    const {'1': 'iPad8_12', '2': 5},
+    const {'1': 'iPad13_1', '2': 6},
+    const {'1': 'iPad13_2', '2': 7},
+    const {'1': 'iPad13_8', '2': 8},
+    const {'1': 'iPad13_9', '2': 9},
+    const {'1': 'iPad13_10', '2': 10},
+    const {'1': 'iPad13_11', '2': 11},
+    const {'1': 'iPad13_16', '2': 12},
+    const {'1': 'iPad13_17', '2': 13},
   ],
 };
 
 /// Descriptor for `IPadOptions`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab21tZWQYAiABKAhSC2lzTm90Wm9tbWVkEjIKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMuaVBhZE1vZGVsUgVtb2RlbCItCglpUGFkTW9kZWwSDwoLaVBhZFBybzEyXzkQABIPCgtpUGFkQWlyMjAyMhAB');
+final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab21tZWQYAiABKAhSC2lzTm90Wm9tbWVkEjIKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMuaVBhZE1vZGVsUgVtb2RlbCLPAQoJaVBhZE1vZGVsEgsKB2lQYWQ4XzUQABILCgdpUGFkOF82EAESCwoHaVBhZDhfNxACEgsKB2lQYWQ4XzgQAxIMCghpUGFkOF8xMRAEEgwKCGlQYWQ4XzEyEAUSDAoIaVBhZDEzXzEQBhIMCghpUGFkMTNfMhAHEgwKCGlQYWQxM184EAgSDAoIaVBhZDEzXzkQCRINCglpUGFkMTNfMTAQChINCglpUGFkMTNfMTEQCxINCglpUGFkMTNfMTYQDBINCglpUGFkMTNfMTcQDQ==');
 @$core.Deprecated('Use deviceVersionsDescriptor instead')
 const DeviceVersions$json = const {
   '1': 'DeviceVersions',

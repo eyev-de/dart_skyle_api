@@ -74,11 +74,11 @@ Accepts <code>additionalIps</code> to be added to scan for an ET and a new <code
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; connect({List&lt;String&gt; additionalIps = const [], int grpcPort = 50052}) async {
-  if (connectivityProvider.running) throw StillRunningException();
+  if (_connectivityProvider.running) throw StillRunningException();
   possibleIPs.addAll(additionalIps);
   _grpcPort = grpcPort;
   print(&#39;Scanning for Skyle ethernet interface for possible IPs: $possibleIPs&#39;);
-  connectivityProvider.start(_onConnectionMessageChanged);
+  _connectivityProvider.start(_onConnectionMessageChanged);
   await for (final message in connectionStream) {
     if (message == Connection.connected || message == Connection.disconnected) break;
   }
@@ -118,7 +118,6 @@ Accepts <code>additionalIps</code> to be added to scan for an ET and a new <code
     <li><a href="../../skyle_api/ET/client.html">client</a></li>
     <li><a href="../../skyle_api/ET/connection.html">connection</a></li>
     <li><a href="../../skyle_api/ET/connectionStream.html">connectionStream</a></li>
-    <li><a href="../../skyle_api/ET/connectivityProvider.html">connectivityProvider</a></li>
     <li><a href="../../skyle_api/ET/gaze.html">gaze</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.6/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../../skyle_api/ET/positioning.html">positioning</a></li>

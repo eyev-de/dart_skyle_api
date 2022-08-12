@@ -17,7 +17,7 @@ class IPadOS with _$IPadOS {
   const factory IPadOS({
     @Default(false) bool isOld,
     @Default(false) bool isNotZommed,
-    @Default(IPadModel.iPadPro12_9) IPadModel iPadModel,
+    @Default(IPadModel.iPad13_10) IPadModel iPadModel,
   }) = _IPadOS;
 
   factory IPadOS.fromJson(Map<String, Object?> json) => _$IPadOSFromJson(json);

@@ -70,9 +70,14 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">Future&lt;void&gt; testConnectClients({required String url, required int port}) async {
+  _connectivityProvider.running = true;
+  _connection = Connection.connecting;
+  _connectionStreamController.add(_connection);
+  await Future.delayed(const Duration(milliseconds: 200));
   _createClient(url: url, port: port);
   settings = SettingsRepositoryImpl(client: client);
   await settings.get();
+  await Future.delayed(const Duration(milliseconds: 200));
   _setClients();
   _connection = Connection.connected;
   _connectionStreamController.add(_connection);
@@ -112,7 +117,6 @@
     <li><a href="../../skyle_api/ET/client.html">client</a></li>
     <li><a href="../../skyle_api/ET/connection.html">connection</a></li>
     <li><a href="../../skyle_api/ET/connectionStream.html">connectionStream</a></li>
-    <li><a href="../../skyle_api/ET/connectivityProvider.html">connectivityProvider</a></li>
     <li><a href="../../skyle_api/ET/gaze.html">gaze</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.6/dart-core/Object/hashCode.html">hashCode</a></li>
     <li><a href="../../skyle_api/ET/positioning.html">positioning</a></li>
