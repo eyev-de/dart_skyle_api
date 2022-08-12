@@ -36,6 +36,7 @@ export 'src/domain/repositories/reset_repository.dart' show ResetRepository;
 export 'src/domain/repositories/settings_repository.dart' show SettingsRepository;
 export 'src/domain/repositories/switch_repository.dart' show SwitchRepository;
 export 'src/domain/repositories/versions_repository.dart' show VersionsRepository;
+export 'src/domain/repositories/video_stream_repository.dart' show VideoStreamRepository;
 export 'src/et.dart' show ET, Connection;
 export 'src/test/test_client.dart' show TestClient;
 export 'src/test/test_server.dart' show TestServer;

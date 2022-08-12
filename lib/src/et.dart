@@ -22,6 +22,7 @@ import 'data/repositories/reset_repository_impl.dart';
 import 'data/repositories/settings_repository_impl.dart';
 import 'data/repositories/switch_repository_impl.dart';
 import 'data/repositories/versions_repository_impl.dart';
+import 'data/repositories/video_stream_repository_impl.dart';
 import 'domain/repositories/calibration_repository.dart';
 import 'domain/repositories/gaze_repository.dart';
 import 'domain/repositories/positioning_repository.dart';
@@ -30,6 +31,7 @@ import 'domain/repositories/reset_repository.dart';
 import 'domain/repositories/settings_repository.dart';
 import 'domain/repositories/switch_repository.dart';
 import 'domain/repositories/versions_repository.dart';
+import 'domain/repositories/video_stream_repository.dart';
 import 'generated/Skyle.pbgrpc.dart';
 import 'test/test_server.dart';
 
@@ -47,7 +49,7 @@ class ET {
   SkyleClient? _client;
   SkyleClient? get client => _client;
 
-  ConnectivityProvider _connectivityProvider = ConnectivityProvider();
+  final ConnectivityProvider _connectivityProvider = ConnectivityProvider();
   CalibrationRepository calibration = CalibrationRepositoryImpl();
   SettingsRepository settings = SettingsRepositoryImpl();
   VersionsRepository versions = VersionsRepositoryImpl();
@@ -55,6 +57,7 @@ class ET {
   GazeRepository gaze = GazeRepositoryImpl();
   PositioningRepository positioning = PositioningRepositoryImpl();
   SwitchRepository switchSettings = SwitchRepositoryImpl();
+  final VideoStreamRepository stream = VideoStreamRepositoryImpl();
   ProfilesRepository profiles = ProfilesRepositoryImpl();
 
   Connection _connection = Connection.disconnected;
