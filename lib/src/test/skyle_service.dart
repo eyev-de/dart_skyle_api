@@ -29,6 +29,7 @@ class SkyleService extends SkyleServiceBase {
       y: Random.secure().nextInt(1080).toDouble(),
     );
   });
+
   List<PositioningMessage> positionings = (jsonDecode(positioningsJSONString) as Iterable).map((position) {
     return PositioningMessage(
       // ignore: avoid_dynamic_calls
@@ -144,8 +145,11 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<Point> gaze(ServiceCall call, Empty request) async* {
-    for (final gaze in gazes) {
-      yield gaze;
+    while (!call.isCanceled) {
+      for (final gaze in gazes) {
+        yield gaze;
+        await Future.delayed(const Duration(milliseconds: 20));
+      }
     }
   }
 

@@ -35,9 +35,15 @@ class GazeTester {
         var index = 0;
         final stream = client.et.gaze.start();
         await for (final coordinates in stream) {
+          if (coordinates is DataFailed) {
+            break;
+          }
           expect(coordinates.data, isNotNull);
           expect(coordinates.data!.x, server.service.gazes[index].x);
           expect(coordinates.data!.y, server.service.gazes[index++].y);
+          if (index == server.service.gazes.length) {
+            await client.et.gaze.stop();
+          }
         }
         expect(index, server.service.gazes.length);
       });
