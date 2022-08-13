@@ -5,6 +5,7 @@
 //
 
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:fixnum/fixnum.dart';
 import 'package:grpc/grpc.dart';
@@ -22,8 +23,20 @@ class SkyleService extends SkyleServiceBase {
   Profile currentP = defaultProfile;
   Button button = Switch.toButton(Switch.create());
 
-  List<Point> gazes = [];
-  List<PositioningMessage> positionings = [];
+  List<Point> gazes = List.generate(200, (index) {
+    return Point(
+      x: Random.secure().nextInt(1920).toDouble(),
+      y: Random.secure().nextInt(1080).toDouble(),
+    );
+  });
+  List<PositioningMessage> positionings = (jsonDecode(positioningsJSONString) as Iterable).map((position) {
+    return PositioningMessage(
+      // ignore: avoid_dynamic_calls
+      leftEye: Point(x: position['left']['x'], y: position['left']['y']),
+      // ignore: avoid_dynamic_calls
+      rightEye: Point(x: position['right']['x'], y: position['right']['y']),
+    );
+  }).toList();
 
   @override
   Stream<CalibMessages> calibrate(ServiceCall call, Stream<calibControlMessages> request) async* {
@@ -155,31 +168,16 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<PositioningMessage> positioning(ServiceCall call, Empty request) async* {
-    if (positionings.isEmpty) {
-      final positioningArray = jsonDecode(positioningsJSONString);
-      for (final position in positioningArray) {
-        final positioning = PositioningMessage(
-          // ignore: avoid_dynamic_calls
-          leftEye: Point(x: position['left']['x'], y: position['left']['y']),
-          // ignore: avoid_dynamic_calls
-          rightEye: Point(x: position['right']['x'], y: position['right']['y']),
-        );
-        positionings.add(positioning);
-        yield positioning;
-        await Future.delayed(const Duration(milliseconds: 20));
-      }
-    } else {
-      for (final positioning in positionings) {
-        yield positioning;
-        await Future.delayed(const Duration(milliseconds: 20));
-      }
+    for (final positioning in positionings) {
+      yield positioning;
+      await Future.delayed(const Duration(milliseconds: 20));
     }
-    // int counter = 0;
-    // while (true) {
-    //   yield positionings[counter++];
-    //   if (counter == positionings.length - 1) counter = 0;
-    //   Future.delayed(const Duration(milliseconds: 20));
-    // }
+    int counter = 0;
+    while (!call.isCanceled) {
+      yield positionings[counter++];
+      if (counter == positionings.length) counter = 0;
+      await Future.delayed(const Duration(milliseconds: 20));
+    }
   }
 
   @override

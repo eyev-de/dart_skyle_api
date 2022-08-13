@@ -4,10 +4,7 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import 'dart:math';
-
 import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/generated/Skyle.pbgrpc.dart' as grpc;
 import 'package:test/test.dart';
 
 void main() {
@@ -35,12 +32,6 @@ class GazeTester {
   static void run(TestClient client, TestServer server) {
     group('Gaze', () {
       test('Receive Gaze', () async {
-        for (var i = 0; i < 200; i++) {
-          server.service.gazes.add(grpc.Point(
-            x: Random.secure().nextInt(1920).toDouble(),
-            y: Random.secure().nextInt(1080).toDouble(),
-          ));
-        }
         var index = 0;
         final stream = client.et.gaze.start();
         await for (final coordinates in stream) {
@@ -48,6 +39,7 @@ class GazeTester {
           expect(coordinates.data!.x, server.service.gazes[index].x);
           expect(coordinates.data!.y, server.service.gazes[index++].y);
         }
+        expect(index, server.service.gazes.length);
       });
     });
   }
