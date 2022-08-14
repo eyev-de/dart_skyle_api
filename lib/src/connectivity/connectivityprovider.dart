@@ -6,7 +6,7 @@
 
 import 'dart:math';
 
-import '../../et.dart';
+import '../et.dart';
 
 import 'connectivitystub.dart'
     // ignore: uri_does_not_exist

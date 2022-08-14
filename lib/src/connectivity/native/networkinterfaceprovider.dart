@@ -7,7 +7,7 @@
 import 'dart:io';
 import 'dart:isolate';
 
-import '../../../et.dart';
+import '../../et.dart';
 import '../connectivityprovider.dart';
 
 class NetworkInterfaceProvider implements ConnectivityProvider {
@@ -54,16 +54,17 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
   static Future<void> _isolateFunction(SendPort portReceive) async {
     // ignore: literal_only_boolean_expressions
     ConnectionMessage message = ConnectionMessage.disconnected();
+    // ignore: literal_only_boolean_expressions
     do {
       try {
         if (message.connection == Connection.connecting) {
           message = await _detectIPs([message.url!]);
         } else {
-          // TODO
+          // TODO(krjw-eyev)
           // _lookupHost() works but is slow and could cause issues.
           // message = await _lookupHost();
           // if (message.connection == Connection.disconnected) {
-          message = await _detectIPs(ET.possibleBaseIPs);
+          message = await _detectIPs(ET.possibleIPs);
           // }
         }
       } catch (error) {
@@ -81,7 +82,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
       final List<NetworkInterface> interfaces = await NetworkInterface.list();
       for (final NetworkInterface interface in interfaces) {
         for (final InternetAddress address in interface.addresses) {
-          final hostIP = address.address.substring(0, address.address.length - 1) + '2';
+          final hostIP = '${address.address.substring(0, address.address.length - 1)}2';
           if (address.type == InternetAddressType.IPv4 && urls.contains(hostIP)) {
             message = ConnectionMessage.connecting(hostIP);
             break;
@@ -98,22 +99,22 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
     return message;
   }
 
-  static Future<ConnectionMessage> _lookupHost() async {
-    ConnectionMessage message = ConnectionMessage.disconnected();
-    try {
-      final list = await InternetAddress.lookup('skyle.local');
-      for (final address in list) {
-        if (address.type == InternetAddressType.IPv4) {
-          message = ConnectionMessage.connecting(address.address);
-          // print('Found Skyle with host detection: ${message.url}');
-          break;
-        }
-      }
-    } catch (error) {
-      message = ConnectionMessage.disconnected();
-    }
-    return message;
-  }
+  // static Future<ConnectionMessage> _lookupHost() async {
+  //   ConnectionMessage message = ConnectionMessage.disconnected();
+  //   try {
+  //     final list = await InternetAddress.lookup('skyle.local');
+  //     for (final address in list) {
+  //       if (address.type == InternetAddressType.IPv4) {
+  //         message = ConnectionMessage.connecting(address.address);
+  //         // print('Found Skyle with host detection: ${message.url}');
+  //         break;
+  //       }
+  //     }
+  //   } catch (error) {
+  //     message = ConnectionMessage.disconnected();
+  //   }
+  //   return message;
+  // }
 }
 
 ConnectivityProvider getConnectivityProvider() => NetworkInterfaceProvider();

@@ -4,6 +4,8 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+// ignore_for_file: leading_newlines_in_multiline_strings
+
 const String positioningsJSONString = '''[
     { "left": { "x": 602.1295471191406, "y": 325.4113655090332 }, "right": { "x": 1000.2580795288086, "y": 282.8972854614258 } },
     { "left": { "x": 606.3601837158203, "y": 316.26873779296875 }, "right": { "x": 1003.2927398681641, "y": 273.8414192199707 } },

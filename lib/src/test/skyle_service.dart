@@ -5,21 +5,39 @@
 //
 
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:fixnum/fixnum.dart';
-
 import 'package:grpc/grpc.dart';
-import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/test/positionings.dart';
+
+import '../data/models/calibration/calibration_points.dart';
+import '../data/models/switch/switch.dart';
+import '../domain/repositories/calibration_repository.dart';
+import '../generated/Skyle.pbgrpc.dart';
+import '../generated/google/protobuf/empty.pb.dart';
+import 'positionings.dart';
 
 class SkyleService extends SkyleServiceBase {
   Options options = defaultOptions;
   List<Profile> profiles = [defaultProfile];
   Profile currentP = defaultProfile;
-  Button button = defaultButton;
+  Button button = Switch.toButton(Switch.create());
 
-  List<Point> gazes = [];
-  List<PositioningMessage> positionings = [];
+  List<Point> gazes = List.generate(200, (index) {
+    return Point(
+      x: Random.secure().nextInt(1920).toDouble(),
+      y: Random.secure().nextInt(1080).toDouble(),
+    );
+  });
+
+  List<PositioningMessage> positionings = (jsonDecode(positioningsJSONString) as Iterable).map((position) {
+    return PositioningMessage(
+      // ignore: avoid_dynamic_calls
+      leftEye: Point(x: position['left']['x'], y: position['left']['y']),
+      // ignore: avoid_dynamic_calls
+      rightEye: Point(x: position['right']['x'], y: position['right']['y']),
+    );
+  }).toList();
 
   @override
   Stream<CalibMessages> calibrate(ServiceCall call, Stream<calibControlMessages> request) async* {
@@ -28,17 +46,17 @@ class SkyleService extends SkyleServiceBase {
     int currentIndex = 0;
     double width = 0;
     double height = 0;
-    await for (var msg in request) {
+    await for (final msg in request) {
       if (msg.hasCalibConfirm() && msg.calibConfirm.confirmed && pts != null) {
         yield CalibMessages()
           ..calibPoint = CalibPoint(
             count: currentIndex,
             currentPoint: Point(
-              x: Calibration.calcX(
+              x: CalibrationRepository.calcX(
                 pts.array[currentIndex],
                 width,
               ),
-              y: Calibration.calcY(
+              y: CalibrationRepository.calcY(
                 pts.array[currentIndex],
                 width,
                 height,
@@ -48,7 +66,7 @@ class SkyleService extends SkyleServiceBase {
         currentIndex++;
         if (currentIndex == pts.value) {
           if (abort) return;
-          await Future.delayed(Duration(milliseconds: 300));
+          await Future.delayed(const Duration(milliseconds: 100));
           final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(pts.value, (index) => 4));
           yield CalibMessages()..calibQuality = qualityMsg;
           return;
@@ -65,25 +83,25 @@ class SkyleService extends SkyleServiceBase {
         }
         if (msg.calibControl.hasCalibrate() && msg.calibControl.calibrate) {
           if (msg.calibControl.hasNumberOfPoints()) {
-            pts = CalibrationPointsExtension.fromInt(msg.calibControl.numberOfPoints);
+            pts = CalibrationPoints.fromInt(msg.calibControl.numberOfPoints);
           } else {
             pts = CalibrationPoints.nine;
           }
           if (msg.calibControl.hasStepByStep() && msg.calibControl.stepByStep) {
             //
           } else {
-            for (var pt in List.generate(pts.value, (index) => index)) {
-              await Future.delayed(Duration(milliseconds: 300));
+            for (final pt in List.generate(pts.value, (index) => index)) {
+              await Future.delayed(const Duration(milliseconds: 100));
               if (abort) return;
               yield CalibMessages()
                 ..calibPoint = CalibPoint(
                   count: pt,
                   currentPoint: Point(
-                    x: Calibration.calcX(
+                    x: CalibrationRepository.calcX(
                       pts.array[pt],
                       width,
                     ),
-                    y: Calibration.calcY(
+                    y: CalibrationRepository.calcY(
                       pts.array[pt],
                       width,
                       height,
@@ -92,7 +110,7 @@ class SkyleService extends SkyleServiceBase {
                 );
             }
             if (abort) return;
-            await Future.delayed(Duration(milliseconds: 300));
+            await Future.delayed(const Duration(milliseconds: 100));
             final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(msg.calibControl.numberOfPoints, (index) => 4));
             yield CalibMessages()..calibQuality = qualityMsg;
             return;
@@ -104,8 +122,7 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Future<Options> configure(ServiceCall call, OptionMessage request) async {
-    options = request.options;
-    return options;
+    return options = request.options;
   }
 
   @override
@@ -128,8 +145,11 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<Point> gaze(ServiceCall call, Empty request) async* {
-    for (var gaze in gazes) {
-      yield gaze;
+    while (!call.isCanceled) {
+      for (final gaze in gazes) {
+        yield gaze;
+        await Future.delayed(const Duration(milliseconds: 20));
+      }
     }
   }
 
@@ -140,7 +160,9 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<Profile> getProfiles(ServiceCall call, Empty request) async* {
-    for (var profile in profiles) yield profile;
+    for (final profile in profiles) {
+      yield profile;
+    }
   }
 
   @override
@@ -150,29 +172,16 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<PositioningMessage> positioning(ServiceCall call, Empty request) async* {
-    if (positionings.isEmpty) {
-      final positioningArray = jsonDecode(positioningsJSONString);
-      for (final position in positioningArray) {
-        final positioning = PositioningMessage(
-          leftEye: Point(x: position['left']['x'], y: position['left']['y']),
-          rightEye: Point(x: position['right']['x'], y: position['right']['y']),
-        );
-        positionings.add(positioning);
-        yield positioning;
-        Future.delayed(const Duration(milliseconds: 20));
-      }
-    } else {
-      for (var positioning in positionings) {
-        yield positioning;
-        Future.delayed(const Duration(milliseconds: 20));
-      }
+    for (final positioning in positionings) {
+      yield positioning;
+      await Future.delayed(const Duration(milliseconds: 20));
     }
-    // int counter = 0;
-    // while (true) {
-    //   yield positionings[counter++];
-    //   if (counter == positionings.length - 1) counter = 0;
-    //   Future.delayed(const Duration(milliseconds: 20));
-    // }
+    int counter = 0;
+    while (!call.isCanceled) {
+      yield positionings[counter++];
+      if (counter == positionings.length) counter = 0;
+      await Future.delayed(const Duration(milliseconds: 20));
+    }
   }
 
   @override
@@ -180,7 +189,7 @@ class SkyleService extends SkyleServiceBase {
     if (request.data) {
       profiles = [defaultProfile];
       currentP = defaultProfile;
-      button = defaultButton;
+      button = Switch.toButton(Switch.create());
       options = defaultOptions;
     }
     return StatusMessage()..success = true;
@@ -188,21 +197,20 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Future<ButtonActions> setButton(ServiceCall call, ButtonActions request) async {
-    button.buttonActions = request;
-    return button.buttonActions;
+    return button.buttonActions = request;
   }
 
   @override
   Future<StatusMessage> setProfile(ServiceCall call, Profile request) async {
     if (profiles.where((element) => element.iD == request.iD).isNotEmpty) {
       if (request.iD == 1) return StatusMessage()..success = false;
-      int i = profiles.indexWhere((element) => element.iD == request.iD);
+      final int i = profiles.indexWhere((element) => element.iD == request.iD);
       if (i == -1) return StatusMessage()..success = false;
       profiles[i] = request;
       currentP = request;
       return StatusMessage()..success = true;
     }
-    Profile max = profiles.reduce((currentProfile, nextProfile) => currentProfile.iD > nextProfile.iD ? currentProfile : nextProfile);
+    final Profile max = profiles.reduce((currentProfile, nextProfile) => currentProfile.iD > nextProfile.iD ? currentProfile : nextProfile);
     request.iD = max.iD + 1;
     profiles.add(request);
     currentP = request;
@@ -215,13 +223,13 @@ class SkyleService extends SkyleServiceBase {
 
   @override
   Stream<TriggerMessage> trigger(ServiceCall call, Empty request) {
-    // TODO: implement trigger
+    // TODO(krjw-eyev): implement trigger
     throw UnimplementedError();
   }
 
   @override
   Stream<Point> cursorCalibration(ServiceCall call, Stream<calibCursorMessages> request) {
-    // TODO: implement cursorCalibration
+    // TODO(krjw-eyev): implement cursorCalibration
     throw UnimplementedError();
   }
 }
@@ -233,7 +241,7 @@ final defaultOptions = Options(
   pause: false,
   enableStandby: false,
   guidance: false,
-  res: ScreenResolution(width: 1920, height: 1080, widthinMM: 560, heightinMM: 250),
+  res: ScreenResolution(width: 1920, height: 1080, widthinMM: 560, heightinMM: 350),
   filter: FilterOptions(gazeFilter: 5, fixationFilter: 11),
   iPadOptions: IPadOptions(isNotZommed: true, isOldiOS: false),
   hp: false,
@@ -257,14 +265,14 @@ final defaultButton = Button(
     doubleClick: 'Context',
     holdClick: 'Scroll',
   ),
-  isPresent: true,
+  isPresent: false,
 );
 
 final defaultVersions = DeviceVersions()
-  ..base = '1.0'
-  ..calib = '1.0'
-  ..eyetracker = '1.0'
-  ..firmware = '1.0'
+  ..base = 'v2.0-22-g971c7df'
+  ..calib = 'v3.1-138-gf06f9e1'
+  ..eyetracker = 'v3.1-117-ga7924ad'
+  ..firmware = 'v2.1-19-g91f1bf8'
   ..isDemo = false
-  ..serial = Int64.fromInts(7777777, 7777777)
-  ..skyleType = 7;
+  ..serial = Int64.parseInt('50006867312652526')
+  ..skyleType = 2;

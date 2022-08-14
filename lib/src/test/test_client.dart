@@ -6,7 +6,7 @@
 
 import '../../api.dart';
 
-class SkyleTestClient {
+class TestClient {
   final et = ET();
 
   Future<void> main(List<String> args) async {
