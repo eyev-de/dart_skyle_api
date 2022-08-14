@@ -35,7 +35,7 @@ class VersionsTester {
       test('Versions', () async {
         final versions = await client.et.versions.get();
         expect(versions.data, isNotNull);
-        expect(versions.data!.firmware, equals(defaultVersions.base));
+        expect(versions.data!.base, equals(defaultVersions.base));
         expect(versions.data!.calib, equals(defaultVersions.calib));
         expect(versions.data!.eyetracker, equals(defaultVersions.eyetracker));
         expect(versions.data!.firmware, equals(defaultVersions.firmware));
