@@ -8,13 +8,13 @@ import 'package:skyle_api/src/test/test_client.dart';
 import 'package:skyle_api/src/test/test_server.dart';
 import 'package:test/test.dart';
 
-import 'calibration_tests.dart';
-import 'gaze_tester.dart';
-import 'positioning_tests.dart';
-import 'profiles_tests.dart';
-import 'settings_tests.dart';
-import 'switch_tests.dart';
-import 'versions_tests.dart';
+import 'calibration_test.dart';
+import 'gaze_test.dart';
+import 'positioning_test.dart';
+import 'profiles_test.dart';
+import 'settings_test.dart';
+import 'switch_test.dart';
+import 'versions_test.dart';
 
 void main() {
   final TestServer server = TestServer();
