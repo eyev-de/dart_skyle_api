@@ -13,17 +13,17 @@ void main() {
 
   setUpAll(() async {
     print('Starting server...');
-    await server.main([]);
+    await server.start();
     print('Connecting to server...');
-    await client.main([]);
+    await client.start();
     print('Connected');
   });
 
   tearDownAll(() async {
     print('Shutting down client...');
-    await client.et.disconnect();
+    await client.stop();
     print('Shutting down server...');
-    await server.server.shutdown();
+    await server.stop();
   });
   GazeTester.run(client, server);
 }

@@ -17,7 +17,7 @@ import '../generated/Skyle.pbgrpc.dart';
 import '../generated/google/protobuf/empty.pb.dart';
 import 'positionings.dart';
 
-class SkyleService extends SkyleServiceBase {
+class SkyleSimulatedService extends SkyleServiceBase {
   Options options = defaultOptions;
   List<Profile> profiles = [defaultProfile];
   Profile currentP = defaultProfile;

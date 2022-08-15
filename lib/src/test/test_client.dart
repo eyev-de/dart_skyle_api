@@ -5,11 +5,16 @@
 //
 
 import '../../api.dart';
+import 'constants.dart';
 
 class TestClient {
   final et = ET();
 
-  Future<void> main(List<String> args) async {
-    await et.testConnectClients(url: 'localhost', port: 8001);
+  Future<void> start() async {
+    await et.testConnectClients(url: 'localhost', port: grpcServerPort);
+  }
+
+  Future<void> stop() async {
+    await et.disconnect();
   }
 }

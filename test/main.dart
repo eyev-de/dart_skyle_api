@@ -15,6 +15,7 @@ import 'profiles_test.dart';
 import 'settings_test.dart';
 import 'switch_test.dart';
 import 'versions_test.dart';
+import 'video_stream_test.dart';
 
 void main() {
   final TestServer server = TestServer();
@@ -22,17 +23,17 @@ void main() {
 
   setUpAll(() async {
     print('Starting server...');
-    await server.main([]);
+    await server.start();
     print('Connecting to server...');
-    await client.main([]);
+    await client.start();
     print('Connected');
   });
 
   tearDownAll(() async {
     print('Shutting down client...');
-    await client.et.disconnect();
+    await client.stop();
     print('Shutting down server...');
-    await server.server.shutdown();
+    await server.stop();
   });
   CalibrationTester.run(client, server);
   GazeTester.run(client, server);
@@ -41,21 +42,5 @@ void main() {
   SwitchTester.run(client, server);
   VersionsTester.run(client, server);
   ProfilesTester.run(client, server);
+  VideoStreamTester.run(client, server);
 }
-
-
-// Future<R> expectNotifyListenerCalls<T extends ChangeNotifier, R>(
-//   T notifier,
-//   Future<R> Function() testFunction,
-//   Function(T) testValue,
-//   List<dynamic> matcherList,
-// ) async {
-//   int i = 0;
-//   notifier.addListener(() {
-//     expect(testValue(notifier), matcherList[i]);
-//     i++;
-//   });
-//   final R result = await testFunction();
-//   expect(i, matcherList.length);
-//   return result;
-// }

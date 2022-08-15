@@ -15,10 +15,6 @@ import '../../domain/repositories/video_stream_repository.dart';
 import '../../et.dart';
 
 class VideoStreamRepositoryImpl implements VideoStreamRepository {
-  static const _trigger = 0xFF;
-  static const _soi = 0xD8;
-  static const _eoi = 0xD9;
-
   final Client _httpClient = Client();
 
   StreamSubscription? _subscription;
@@ -58,11 +54,8 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
     try {
       if (!running) await startParsingIsolate();
       await for (final message in _port!.asBroadcastStream()) {
-        if (message is DataSuccess<List<int>>) {
-          // final imageMemory = MemoryImage(Uint8List.fromList(message.data));
-          // await precacheImage(imageMemory, context);
-          // if (!_disposed) state.update(imageMemory, null);
-          yield message;
+        if (message is List<int>) {
+          yield DataSuccess(message);
         } else if (message is SendPort) {
           _sendPort = message;
           final request = Request('GET', Uri.parse(url));
@@ -81,9 +74,6 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
             yield DataFailed('Stream returned ${response.statusCode} status and is canceled.');
             await cancel();
           }
-        } else if (message is DataFailed) {
-          ET.logger?.e(message.error, null, StackTrace.current);
-          yield DataFailed(message.error!);
         }
       }
     } catch (error) {
@@ -106,30 +96,8 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
   static Future<void> _parse(SendPort sendPort) async {
     final ReceivePort receivePort = ReceivePort();
     sendPort.send(receivePort.sendPort);
-    var chunks = <int>[];
-    await for (final List<int> data in receivePort) {
-      if (chunks.isEmpty) {
-        final startIndex = data.indexOf(_trigger);
-        if (startIndex >= 0 && startIndex + 1 < data.length && data[startIndex + 1] == _soi) {
-          final slicedData = data.sublist(startIndex, data.length);
-          chunks.addAll(slicedData);
-        }
-      } else {
-        final startIndex = data.lastIndexOf(_trigger);
-        if (startIndex + 1 < data.length && data[startIndex + 1] == _eoi) {
-          final slicedData = data.sublist(0, startIndex + 2);
-          chunks.addAll(slicedData);
-          try {
-            sendPort.send(DataSuccess(chunks));
-          } catch (error) {
-            ET.logger?.e('Error in mjpeg stream.', error, StackTrace.current);
-            sendPort.send(DataFailed(error.toString()));
-          }
-          chunks = <int>[];
-        } else {
-          chunks.addAll(data);
-        }
-      }
-    }
+    VideoStreamRepository.parse(receivePort).listen((message) {
+      sendPort.send(message);
+    });
   }
 }

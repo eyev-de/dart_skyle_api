@@ -5,7 +5,7 @@
 //
 
 import 'package:skyle_api/api.dart';
-import 'package:skyle_api/src/test/skyle_service.dart';
+import 'package:skyle_api/src/test/skyle_simulated_service.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -14,17 +14,17 @@ void main() {
 
   setUpAll(() async {
     print('Starting server...');
-    await server.main([]);
+    await server.start();
     print('Connecting to server...');
-    await client.main([]);
+    await client.start();
     print('Connected');
   });
 
   tearDownAll(() async {
     print('Shutting down client...');
-    await client.et.disconnect();
+    await client.stop();
     print('Shutting down server...');
-    await server.server.shutdown();
+    await server.stop();
   });
   VersionsTester.run(client, server);
 }
