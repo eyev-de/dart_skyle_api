@@ -21,5 +21,5 @@ class DataFailed<T> extends DataState<T> {
 }
 
 class DataLoading<T> extends DataState<T> {
-  const DataLoading(double progress) : super(progress: progress);
+  const DataLoading(double progress, {T? data}) : super(progress: progress, data: data);
 }
