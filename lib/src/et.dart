@@ -184,7 +184,7 @@ class ET {
       _channel = null;
       _client = null;
       _setClients();
-      _connection = Connection.disconnected;
+      _connection = Connection.connecting;
       _connectionStreamController.add(_connection);
       ET.logger?.i('Disconnected Skyle grpcs...');
       print('Disconnected Skyle grpcs...');
