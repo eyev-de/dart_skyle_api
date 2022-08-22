@@ -10,10 +10,10 @@ import 'package:grpc/grpc.dart';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../models/calibration/calibration_message.dart';
-import '../models/calibration/calibration_points.dart';
 import '../../domain/repositories/calibration_repository.dart';
 import '../../generated/Skyle.pbgrpc.dart';
+import '../models/calibration/calibration_message.dart';
+import '../models/calibration/calibration_points.dart';
 import '../models/settings/screen_sizes.dart';
 
 class CalibrationRepositoryImpl extends CalibrationRepository {
@@ -51,7 +51,7 @@ class CalibrationRepositoryImpl extends CalibrationRepository {
         } else if (event.hasCalibQuality()) {
           event.calibQuality.qualitys.asMap().forEach((i, e) {
             final index = qualities.indexWhere((element) => element.point.index == i);
-            qualities[index].quality = e;
+            if (index != -1) qualities[index].quality = e;
           });
           yield DataSuccess(
             CalibrationQualityMessage(
