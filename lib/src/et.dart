@@ -81,10 +81,10 @@ class ET {
   /// This function blocks until Skyle is connected but it can also be called and not awaited which results in an async re/connection cycle.
   /// Accepts [additionalIps] to be added to scan for an ET and a new [grpcPort]. Should only be set if you really know what you are doing.
   Future<void> connect({List<String> additionalIps = const [], int grpcPort = 50052}) async {
-    if (_connectivityProvider.running) throw StillRunningException();
+    if (_connectivityProvider.state != ConnectivityProviderState.disposed) throw StillRunningException();
     possibleIPs.addAll(additionalIps);
     _grpcPort = grpcPort;
-    print('Scanning for Skyle ethernet interface for possible IPs: $possibleIPs');
+    logger?.i('Scanning for Skyle ethernet interface for possible IPs: $possibleIPs');
     _connectivityProvider.start(_onConnectionMessageChanged);
     await for (final message in connectionStream) {
       if (message == Connection.connected || message == Connection.disconnected) break;
@@ -95,20 +95,22 @@ class ET {
   ///
   /// This should be called if you want to reconfigure a completely new connection.
   Future<void> disconnect() async {
-    if (!_connectivityProvider.running) throw NotRunningException();
+    if (_connectivityProvider.state != ConnectivityProviderState.running) throw NotRunningException();
     _connectivityProvider.stop();
-    await softDisconnect();
+    logger?.i('Disconnected Skyle...');
   }
 
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting && _connection == Connection.disconnected) {
-      print('Interface connected: Try connecting Skyle: ${ET.baseURL}');
+      logger?.i('Interface connected: Try connecting Skyle: ${ET.baseURL}');
       _connection = message.connection;
       _connectionStreamController.add(_connection);
       await trySoftReconnect(baseUrl: message.url ?? ET.baseURL);
-    } else if (message.connection == Connection.disconnected && _connection != Connection.disconnected) {
-      print('Skyle interface disconnected.');
+    } else if (message.connection == Connection.disconnected) {
       await softDisconnect();
+      _connection = message.connection;
+      _connectionStreamController.add(_connection);
+      logger?.i('Skyle interface disconnected.');
     }
   }
 
@@ -121,8 +123,7 @@ class ET {
       if (_connection == Connection.connected || _connection == Connection.disconnected) return;
       _grpcPort = grpcPort;
       _createClient(url: ET.baseURL, port: ET._grpcPort);
-      // ET.logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
-      print('Connecting Skyle with base ip: ${ET.baseURL}...');
+      logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
 
       for (var i = 0; i < _maxRetries; i++) {
         try {
@@ -134,23 +135,20 @@ class ET {
           // Set the connection state and notify everyone
           _connection = Connection.connected;
           _connectionStreamController.add(_connection);
-          // ET.logger?.i('Connected Skyle.');
-          print('Connected Skyle.');
+          ET.logger?.i('Connected Skyle.');
           break;
         } catch (error) {
           final milliseconds = 100 + 500 * i;
-          ET.logger?.w('Warning in tryReconnect():', error, StackTrace.current);
-          print('Warning in tryReconnect(): ${error.toString()}');
-          ET.logger?.i('GRPC connection attempt ${i + 1}/$_maxRetries - Waiting ${milliseconds / 1000}s before retrying.');
-          print('GRPC connection attempt ${i + 1}/$_maxRetries - Waiting ${milliseconds / 1000}s before retrying.');
+          logger?.w('Warning in tryReconnect():', error, StackTrace.current);
+          logger?.i('GRPC connection attempt ${i + 1}/$_maxRetries - Waiting ${milliseconds / 1000}s before retrying.');
           await Future.delayed(Duration(milliseconds: milliseconds));
         }
       }
       if (_connection == Connection.disconnected) {
         throw Exception('Could not excecute initial GRPC');
       }
-    } catch (error) {
-      ET.logger?.e('Skyle disconnected fatally:', error, StackTrace.current);
+    } catch (e, st) {
+      logger?.e('Skyle disconnected fatally:', e, st);
       await softDisconnect();
     }
   }
@@ -173,21 +171,19 @@ class ET {
   /// To reconnect the grpcs call [trySoftReconnect]
   Future<void> softDisconnect() async {
     try {
-      ET.logger?.i('Disconnecting active Skyle grpcs...');
-      print('Disconnecting active Skyle grpcs...');
+      logger?.i('Disconnecting active Skyle grpcs...');
       await calibration.abort();
       switchSettings.stop();
       await _channel?.terminate();
-    } catch (error) {
-      ET.logger?.e('Skyle disconnecting clients failed:', error, StackTrace.current);
+    } catch (e, st) {
+      logger?.e('Skyle disconnecting clients failed:', e, st);
     } finally {
       _channel = null;
       _client = null;
       _setClients();
       _connection = Connection.connecting;
       _connectionStreamController.add(_connection);
-      ET.logger?.i('Disconnected Skyle grpcs...');
-      print('Disconnected Skyle grpcs...');
+      logger?.i('Disconnected Skyle grpcs...');
     }
   }
 
@@ -209,7 +205,7 @@ class ET {
 
   /// Simulates a connection. This is only used for tests with the [TestServer] which is located in lib/src/test/test_server.dart
   Future<void> testConnectClients({required String url, required int port}) async {
-    _connectivityProvider.running = true;
+    _connectivityProvider.state = ConnectivityProviderState.running;
     _connection = Connection.connecting;
     _connectionStreamController.add(_connection);
     await Future.delayed(const Duration(milliseconds: 200));

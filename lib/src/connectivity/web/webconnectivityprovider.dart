@@ -15,7 +15,7 @@ class WebConnectivityProvider implements ConnectivityProvider {
   WebConnectivityProvider._internal();
   @override
   void start(void Function(ConnectionMessage message) onConnectionMessageChanged) {
-    state = ConnectionMessage.connected('');
+    connection = ConnectionMessage.connected('');
     onConnectionMessageChanged(ConnectionMessage(connection: Connection.connected));
   }
 
@@ -23,10 +23,10 @@ class WebConnectivityProvider implements ConnectivityProvider {
   void stop() {}
 
   @override
-  ConnectionMessage state = ConnectionMessage.disconnected();
+  ConnectionMessage connection = ConnectionMessage.disconnected();
 
   @override
-  bool running = false;
+  ConnectivityProviderState state = ConnectivityProviderState.disposed;
 }
 
 ConnectivityProvider getConnectivityProvider() => WebConnectivityProvider();

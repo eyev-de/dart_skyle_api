@@ -19,18 +19,21 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
 
   Isolate? _isolate;
   ReceivePort? _port;
+  void Function(ConnectionMessage message)? _onConnectionMessageChanged;
 
   @override
   Future<void> start(void Function(ConnectionMessage message) onConnectionMessageChanged) async {
-    if (running) return;
-    running = true;
+    if (state != ConnectivityProviderState.disposed) return;
+    state = ConnectivityProviderState.initializing;
     _port = ReceivePort();
     _isolate = await Isolate.spawn(_isolateFunction, _port!.sendPort);
+    _onConnectionMessageChanged = onConnectionMessageChanged;
+    state = ConnectivityProviderState.running;
     await for (final message in _port!) {
       if (message is ConnectionMessage) {
-        if (state.connection != message.connection) {
-          state = message;
-          onConnectionMessageChanged(message);
+        if (connection.connection != message.connection) {
+          connection = message;
+          _onConnectionMessageChanged?.call(connection);
         }
       }
     }
@@ -38,18 +41,21 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
 
   @override
   void stop() {
-    if (!running) return;
-    state = ConnectionMessage.disconnected();
+    if (state != ConnectivityProviderState.running) return;
     _isolate?.kill(priority: Isolate.immediate);
+    _isolate = null;
     _port?.close();
-    running = false;
+    _port = null;
+    state = ConnectivityProviderState.disposed;
+    connection = ConnectionMessage.disconnected();
+    _onConnectionMessageChanged?.call(connection);
   }
 
   @override
-  ConnectionMessage state = ConnectionMessage.disconnected();
+  ConnectionMessage connection = ConnectionMessage.disconnected();
 
   @override
-  bool running = false;
+  ConnectivityProviderState state = ConnectivityProviderState.disposed;
 
   static Future<void> _isolateFunction(SendPort portReceive) async {
     // ignore: literal_only_boolean_expressions
@@ -72,7 +78,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
         message = ConnectionMessage.disconnected();
       }
       portReceive.send(message);
-      sleep(const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 500));
     } while (true);
   }
 
@@ -89,7 +95,6 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
           }
         }
         if (message.connection == Connection.connecting) {
-          // print('Found Skyle with ip: ${message.url}');
           break;
         }
       }
