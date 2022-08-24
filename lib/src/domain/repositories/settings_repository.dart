@@ -6,6 +6,7 @@
 
 import '../../core/data_state.dart';
 import '../../data/models/settings/filter.dart';
+import '../../data/models/settings/ipad_model.dart';
 import '../../data/models/settings/ipados.dart';
 import '../../data/models/settings/screen_sizes.dart';
 import '../../data/models/settings/settings.dart';
@@ -49,7 +50,7 @@ abstract class SettingsRepository {
   Future<DataState<Settings>> setFilter({Filter filter = const Filter()});
 
   /// Sets the [iPadOS] settings and behaves like [get].
-  Future<DataState<Settings>> setIPadOS({IPadOS iPadOS = const IPadOS(isOld: true, isNotZommed: true)});
+  Future<DataState<Settings>> setIPadOS({IPadOS iPadOS = const IPadOS(isOld: true, isNotZommed: true, iPadModel: IPadModel.iPad13_10)});
 
   /// Sets the [ScreenSizes] and behaves like [get].
   Future<DataState<Settings>> setResolution({ScreenSizes screenSizes = const ScreenSizes()});

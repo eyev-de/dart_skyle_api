@@ -15,9 +15,9 @@ part 'ipados.g.dart';
 @freezed
 class IPadOS with _$IPadOS {
   const factory IPadOS({
-    @Default(false) bool isOld,
-    @Default(false) bool isNotZommed,
-    @Default(IPadModel.iPad13_10) IPadModel iPadModel,
+    @Default(false) bool? isOld,
+    @Default(false) bool? isNotZommed,
+    @Default(IPadModel.iPad13_10) IPadModel? iPadModel,
   }) = _IPadOS;
 
   factory IPadOS.fromJson(Map<String, Object?> json) => _$IPadOSFromJson(json);

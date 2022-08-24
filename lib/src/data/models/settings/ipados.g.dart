@@ -16,7 +16,7 @@ _$_IPadOS _$$_IPadOSFromJson(Map<String, dynamic> json) => _$_IPadOS(
 Map<String, dynamic> _$$_IPadOSToJson(_$_IPadOS instance) => <String, dynamic>{
       'isOld': instance.isOld,
       'isNotZommed': instance.isNotZommed,
-      'iPadModel': _$IPadModelEnumMap[instance.iPadModel]!,
+      'iPadModel': _$IPadModelEnumMap[instance.iPadModel],
     };
 
 const _$IPadModelEnumMap = {

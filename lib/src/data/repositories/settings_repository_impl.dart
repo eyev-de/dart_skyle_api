@@ -4,6 +4,7 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+import '../../../api.dart';
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
 import '../../data/models/settings/filter.dart';
@@ -66,10 +67,11 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }
 
   @override
-  Future<DataState<Settings>> setIPadOS({IPadOS iPadOS = const IPadOS(isOld: true, isNotZommed: true)}) {
-    final IPadOptions iPadOptions = IPadOptions()
-      ..isOldiOS = iPadOS.isOld
-      ..isNotZommed = iPadOS.isNotZommed;
+  Future<DataState<Settings>> setIPadOS({IPadOS iPadOS = const IPadOS(isOld: true, isNotZommed: true, iPadModel: IPadModel.iPad13_10)}) {
+    final IPadOptions iPadOptions = IPadOptions();
+    if (iPadOS.isOld != null) iPadOptions.isOldiOS = iPadOS.isOld!;
+    if (iPadOS.isNotZommed != null) iPadOptions.isNotZommed = iPadOS.isNotZommed!;
+    if (iPadOS.iPadModel != null) iPadOptions.model = iPadOS.iPadModel!.toIPadOptionsIPadModel();
     final Options options = Options.fromJson(_state.writeToJson())..iPadOptions = iPadOptions;
     return _setStateAsync(options);
   }
