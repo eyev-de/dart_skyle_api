@@ -23,6 +23,10 @@ class IPadOS with _$IPadOS {
   factory IPadOS.fromJson(Map<String, Object?> json) => _$IPadOSFromJson(json);
 
   factory IPadOS.fromIPadOptions(IPadOptions iPadOptions) {
-    return IPadOS(isOld: iPadOptions.isOldiOS, isNotZommed: iPadOptions.isNotZommed, iPadModel: IPadModel.fromIPadOptionsIPadModel(iPadOptions.model));
+    return IPadOS(
+      isOld: iPadOptions.isOldiOS,
+      isNotZommed: iPadOptions.isNotZommed,
+      iPadModel: iPadOptions.hasModel() ? IPadModel.fromIPadOptionsIPadModel(iPadOptions.model) : null,
+    );
   }
 }
