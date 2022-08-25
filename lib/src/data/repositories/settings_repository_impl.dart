@@ -16,6 +16,7 @@ import '../models/settings/settings.dart';
 
 class SettingsRepositoryImpl implements SettingsRepository {
   SkyleClient? client;
+  Options _state = Options.create();
 
   SettingsRepositoryImpl({this.client});
 
@@ -24,9 +25,11 @@ class SettingsRepositoryImpl implements SettingsRepository {
       if (client == null) throw NotConnectedException();
       final req = OptionMessage();
       if (options != null) {
-        req.options = options;
+        _state.mergeFromJson(options.writeToJson());
+        req.options = _state;
       }
       final ret = await client!.configure(req);
+      _state = ret;
       return DataSuccess(Settings.fromOptions(ret));
     } catch (error) {
       // ET.logger?.e('Error in options', error, StackTrace.current);
@@ -36,13 +39,13 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   @override
   Future<DataState<Settings>> enablePause({bool on = true}) {
-    final Options options = Options()..enablePause = on;
+    final Options options = Options.fromJson(_state.writeToJson())..enablePause = on;
     return _setStateAsync(options: options);
   }
 
   @override
   Future<DataState<Settings>> disableMouse({bool on = true}) {
-    final Options options = Options()..disableMouse = on;
+    final Options options = Options.fromJson(_state.writeToJson())..disableMouse = on;
     return _setStateAsync(options: options);
   }
 
@@ -53,7 +56,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   @override
   Future<DataState<Settings>> pause({bool on = true}) {
-    final Options options = Options()..pause = on;
+    final Options options = Options.fromJson(_state.writeToJson())..pause = on;
     return _setStateAsync(options: options);
   }
 
@@ -62,7 +65,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
     final FilterOptions filterOptions = FilterOptions()
       ..fixationFilter = filter.fixation
       ..gazeFilter = filter.gaze;
-    final Options options = Options()..filter = filterOptions;
+    final Options options = Options.fromJson(_state.writeToJson())..filter = filterOptions;
     return _setStateAsync(options: options);
   }
 
@@ -72,13 +75,13 @@ class SettingsRepositoryImpl implements SettingsRepository {
     if (iPadOS.isOld != null) iPadOptions.isOldiOS = iPadOS.isOld!;
     if (iPadOS.isNotZommed != null) iPadOptions.isNotZommed = iPadOS.isNotZommed!;
     if (iPadOS.iPadModel != null) iPadOptions.model = iPadOS.iPadModel!.toIPadOptionsIPadModel();
-    final Options options = Options()..iPadOptions = iPadOptions;
+    final Options options = Options.fromJson(_state.writeToJson())..iPadOptions = iPadOptions;
     return _setStateAsync(options: options);
   }
 
   @override
   Future<DataState<Settings>> setResolution({ScreenSizes screenSizes = const ScreenSizes()}) {
-    final Options options = Options();
+    final Options options = Options.fromJson(_state.writeToJson());
     if (screenSizes.dimensions != null) {
       options.res = ScreenResolution(
         width: screenSizes.resolution.width.round(),
@@ -94,13 +97,13 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   @override
   Future<DataState<Settings>> standby({bool on = true}) {
-    final Options options = Options()..enableStandby = on;
+    final Options options = Options.fromJson(_state.writeToJson())..enableStandby = on;
     return _setStateAsync(options: options);
   }
 
   @override
   Future<DataState<Settings>> video({bool on = true}) {
-    final Options options = Options()..stream = on;
+    final Options options = Options.fromJson(_state.writeToJson())..stream = on;
     return _setStateAsync(options: options);
   }
 }
