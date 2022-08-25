@@ -14,8 +14,8 @@ part 'point.g.dart';
 @freezed
 class Point with _$Point {
   const factory Point({
-    required double x,
-    required double y,
+    @Default(0.0) double x,
+    @Default(0.0) double y,
   }) = _Point;
 
   factory Point.fromJson(Map<String, Object?> json) => _$PointFromJson(json);
@@ -23,7 +23,11 @@ class Point with _$Point {
     return Point(x: point.x, y: point.y);
   }
 
-  factory Point.zero() {
-    return const Point(x: 0, y: 0);
+  bool isEqualTo(grpc.Point point) {
+    return point.x == x && point.y == y;
+  }
+
+  bool isZero() {
+    return x == 0 && y == 0;
   }
 }

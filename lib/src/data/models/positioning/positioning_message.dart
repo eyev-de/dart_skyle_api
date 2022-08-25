@@ -21,9 +21,9 @@ part 'positioning_message.g.dart';
 @freezed
 class PositioningMessage with _$PositioningMessage {
   const factory PositioningMessage({
-    required PositioningEyes eyes,
-    required PositioningQuality quality,
-    required PositioningDistance distance,
+    @Default(PositioningEyes()) PositioningEyes eyes,
+    @Default(PositioningQuality()) PositioningQuality quality,
+    @Default(PositioningDistance.none) PositioningDistance distance,
   }) = _PositioningMessage;
 
   factory PositioningMessage.fromJson(Map<String, Object?> json) => _$PositioningMessageFromJson(json);

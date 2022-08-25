@@ -9,9 +9,9 @@ part of 'positioning_quality.dart';
 _$_PositioningQuality _$$_PositioningQualityFromJson(
         Map<String, dynamic> json) =>
     _$_PositioningQuality(
-      horizontal: json['horizontal'] as int,
-      vertical: json['vertical'] as int,
-      depth: json['depth'] as int,
+      horizontal: json['horizontal'] as int? ?? 0,
+      vertical: json['vertical'] as int? ?? 0,
+      depth: json['depth'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$_PositioningQualityToJson(

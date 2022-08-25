@@ -9,10 +9,16 @@ part of 'positioning_message.dart';
 _$_PositioningMessage _$$_PositioningMessageFromJson(
         Map<String, dynamic> json) =>
     _$_PositioningMessage(
-      eyes: PositioningEyes.fromJson(json['eyes'] as Map<String, dynamic>),
-      quality:
-          PositioningQuality.fromJson(json['quality'] as Map<String, dynamic>),
-      distance: $enumDecode(_$PositioningDistanceEnumMap, json['distance']),
+      eyes: json['eyes'] == null
+          ? const PositioningEyes()
+          : PositioningEyes.fromJson(json['eyes'] as Map<String, dynamic>),
+      quality: json['quality'] == null
+          ? const PositioningQuality()
+          : PositioningQuality.fromJson(
+              json['quality'] as Map<String, dynamic>),
+      distance:
+          $enumDecodeNullable(_$PositioningDistanceEnumMap, json['distance']) ??
+              PositioningDistance.none,
     );
 
 Map<String, dynamic> _$$_PositioningMessageToJson(

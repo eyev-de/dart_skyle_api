@@ -146,16 +146,21 @@ class __$$_PositioningMessageCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PositioningMessage implements _PositioningMessage {
   const _$_PositioningMessage(
-      {required this.eyes, required this.quality, required this.distance});
+      {this.eyes = const PositioningEyes(),
+      this.quality = const PositioningQuality(),
+      this.distance = PositioningDistance.none});
 
   factory _$_PositioningMessage.fromJson(Map<String, dynamic> json) =>
       _$$_PositioningMessageFromJson(json);
 
   @override
+  @JsonKey()
   final PositioningEyes eyes;
   @override
+  @JsonKey()
   final PositioningQuality quality;
   @override
+  @JsonKey()
   final PositioningDistance distance;
 
   @override
@@ -197,9 +202,9 @@ class _$_PositioningMessage implements _PositioningMessage {
 
 abstract class _PositioningMessage implements PositioningMessage {
   const factory _PositioningMessage(
-      {required final PositioningEyes eyes,
-      required final PositioningQuality quality,
-      required final PositioningDistance distance}) = _$_PositioningMessage;
+      {final PositioningEyes eyes,
+      final PositioningQuality quality,
+      final PositioningDistance distance}) = _$_PositioningMessage;
 
   factory _PositioningMessage.fromJson(Map<String, dynamic> json) =
       _$_PositioningMessage.fromJson;

@@ -5,6 +5,7 @@
 //
 
 import 'dart:async';
+import 'dart:math';
 
 import 'package:grpc/grpc.dart';
 
@@ -27,7 +28,7 @@ class PositioningRepositoryImpl extends PositioningRepository {
   @override
   Stream<DataState<PositioningMessage>> start() async* {
     yield* _generateStream().timeout(const Duration(milliseconds: 1200), onTimeout: (sink) {
-      sink.add(DataSuccess(PositioningMessage(eyes: PositioningEyes.zero(), quality: PositioningQuality.zero(), distance: PositioningDistance.none)));
+      sink.add(const DataSuccess(PositioningMessage(eyes: PositioningEyes(), quality: PositioningQuality(), distance: PositioningDistance.none)));
     });
   }
 
@@ -36,10 +37,19 @@ class PositioningRepositoryImpl extends PositioningRepository {
       if (_stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
       _stream = client!.positioning(Empty());
+      var previousPositioningMessage = const PositioningMessage();
       await for (final grpc.PositioningMessage event in _stream!) {
         final grpc.PositioningMessage positioningMessage = grpc.PositioningMessage()..mergeFromJson(event.writeToJson());
         if (positioningMessage.hasLeftEye() || positioningMessage.hasRightEye()) {
-          yield DataSuccess(PositioningMessage.fromPositioningMessage(positioningMessage));
+          var message = PositioningMessage.fromPositioningMessage(positioningMessage);
+          if (message.eyes.left.isZero() && !previousPositioningMessage.eyes.left.isZero()) {
+            message = message.copyWith(eyes: PositioningEyes(left: previousPositioningMessage.eyes.left, right: message.eyes.right));
+          }
+          if (message.eyes.right.isZero() && !previousPositioningMessage.eyes.right.isZero()) {
+            message = message.copyWith(eyes: PositioningEyes(right: previousPositioningMessage.eyes.right, left: message.eyes.left));
+          }
+          yield DataSuccess(message);
+          previousPositioningMessage = message;
         }
       }
     } on StillStreamingException catch (_) {

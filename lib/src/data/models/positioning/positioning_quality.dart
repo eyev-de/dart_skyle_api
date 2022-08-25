@@ -12,14 +12,10 @@ part 'positioning_quality.g.dart';
 @freezed
 class PositioningQuality with _$PositioningQuality {
   const factory PositioningQuality({
-    required int horizontal,
-    required int vertical,
-    required int depth,
+    @Default(0) int horizontal,
+    @Default(0) int vertical,
+    @Default(0) int depth,
   }) = _PositioningQuality;
 
   factory PositioningQuality.fromJson(Map<String, Object?> json) => _$PositioningQualityFromJson(json);
-
-  factory PositioningQuality.zero() {
-    return const PositioningQuality(horizontal: 0, vertical: 0, depth: 0);
-  }
 }

@@ -128,14 +128,17 @@ class __$$_PositioningEyesCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_PositioningEyes implements _PositioningEyes {
-  const _$_PositioningEyes({required this.left, required this.right});
+  const _$_PositioningEyes(
+      {this.left = const Point(), this.right = const Point()});
 
   factory _$_PositioningEyes.fromJson(Map<String, dynamic> json) =>
       _$$_PositioningEyesFromJson(json);
 
   @override
+  @JsonKey()
   final Point left;
   @override
+  @JsonKey()
   final Point right;
 
   @override
@@ -173,9 +176,8 @@ class _$_PositioningEyes implements _PositioningEyes {
 }
 
 abstract class _PositioningEyes implements PositioningEyes {
-  const factory _PositioningEyes(
-      {required final Point left,
-      required final Point right}) = _$_PositioningEyes;
+  const factory _PositioningEyes({final Point left, final Point right}) =
+      _$_PositioningEyes;
 
   factory _PositioningEyes.fromJson(Map<String, dynamic> json) =
       _$_PositioningEyes.fromJson;

@@ -99,14 +99,16 @@ class __$$_PointCopyWithImpl<$Res> extends _$PointCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Point implements _Point {
-  const _$_Point({required this.x, required this.y});
+  const _$_Point({this.x = 0.0, this.y = 0.0});
 
   factory _$_Point.fromJson(Map<String, dynamic> json) =>
       _$$_PointFromJson(json);
 
   @override
+  @JsonKey()
   final double x;
   @override
+  @JsonKey()
   final double y;
 
   @override
@@ -144,8 +146,7 @@ class _$_Point implements _Point {
 }
 
 abstract class _Point implements Point {
-  const factory _Point({required final double x, required final double y}) =
-      _$_Point;
+  const factory _Point({final double x, final double y}) = _$_Point;
 
   factory _Point.fromJson(Map<String, dynamic> json) = _$_Point.fromJson;
 

@@ -14,13 +14,9 @@ part 'positioning_eyes.g.dart';
 @freezed
 class PositioningEyes with _$PositioningEyes {
   const factory PositioningEyes({
-    required Point left,
-    required Point right,
+    @Default(Point()) Point left,
+    @Default(Point()) Point right,
   }) = _PositioningEyes;
 
   factory PositioningEyes.fromJson(Map<String, Object?> json) => _$PositioningEyesFromJson(json);
-
-  factory PositioningEyes.zero() {
-    return PositioningEyes(left: Point.zero(), right: Point.zero());
-  }
 }

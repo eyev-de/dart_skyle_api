@@ -118,16 +118,19 @@ class __$$_PositioningQualityCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PositioningQuality implements _PositioningQuality {
   const _$_PositioningQuality(
-      {required this.horizontal, required this.vertical, required this.depth});
+      {this.horizontal = 0, this.vertical = 0, this.depth = 0});
 
   factory _$_PositioningQuality.fromJson(Map<String, dynamic> json) =>
       _$$_PositioningQualityFromJson(json);
 
   @override
+  @JsonKey()
   final int horizontal;
   @override
+  @JsonKey()
   final int vertical;
   @override
+  @JsonKey()
   final int depth;
 
   @override
@@ -170,9 +173,9 @@ class _$_PositioningQuality implements _PositioningQuality {
 
 abstract class _PositioningQuality implements PositioningQuality {
   const factory _PositioningQuality(
-      {required final int horizontal,
-      required final int vertical,
-      required final int depth}) = _$_PositioningQuality;
+      {final int horizontal,
+      final int vertical,
+      final int depth}) = _$_PositioningQuality;
 
   factory _PositioningQuality.fromJson(Map<String, dynamic> json) =
       _$_PositioningQuality.fromJson;

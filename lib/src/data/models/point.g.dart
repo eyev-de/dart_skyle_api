@@ -7,8 +7,8 @@ part of 'point.dart';
 // **************************************************************************
 
 _$_Point _$$_PointFromJson(Map<String, dynamic> json) => _$_Point(
-      x: (json['x'] as num).toDouble(),
-      y: (json['y'] as num).toDouble(),
+      x: (json['x'] as num?)?.toDouble() ?? 0.0,
+      y: (json['y'] as num?)?.toDouble() ?? 0.0,
     );
 
 Map<String, dynamic> _$$_PointToJson(_$_Point instance) => <String, dynamic>{

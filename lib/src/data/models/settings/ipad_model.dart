@@ -32,25 +32,4 @@ enum IPadModel {
   IPadOptions_iPadModel toIPadOptionsIPadModel() {
     return IPadOptions_iPadModel.values.firstWhere((element) => element.name == name, orElse: () => IPadOptions_iPadModel.iPad13_10);
   }
-
-  bool isIPadPro12_9() {
-    switch (this) {
-      case IPadModel.iPad8_5:
-      case IPadModel.iPad8_6:
-      case IPadModel.iPad8_7:
-      case IPadModel.iPad8_8:
-      case IPadModel.iPad8_11:
-      case IPadModel.iPad8_12:
-      case IPadModel.iPad13_8:
-      case IPadModel.iPad13_9:
-      case IPadModel.iPad13_10:
-      case IPadModel.iPad13_11:
-        return true;
-      case IPadModel.iPad13_1:
-      case IPadModel.iPad13_2:
-      case IPadModel.iPad13_16:
-      case IPadModel.iPad13_17:
-        return false;
-    }
-  }
 }
