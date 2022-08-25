@@ -98,8 +98,8 @@ class __$$_PointCopyWithImpl<$Res> extends _$PointCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Point implements _Point {
-  const _$_Point({this.x = 0.0, this.y = 0.0});
+class _$_Point extends _Point {
+  const _$_Point({this.x = 0.0, this.y = 0.0}) : super._();
 
   factory _$_Point.fromJson(Map<String, dynamic> json) =>
       _$$_PointFromJson(json);
@@ -145,8 +145,9 @@ class _$_Point implements _Point {
   }
 }
 
-abstract class _Point implements Point {
+abstract class _Point extends Point {
   const factory _Point({final double x, final double y}) = _$_Point;
+  const _Point._() : super._();
 
   factory _Point.fromJson(Map<String, dynamic> json) = _$_Point.fromJson;
 

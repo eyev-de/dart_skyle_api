@@ -18,6 +18,8 @@ class Point with _$Point {
     @Default(0.0) double y,
   }) = _Point;
 
+  const Point._();
+
   factory Point.fromJson(Map<String, Object?> json) => _$PointFromJson(json);
   factory Point.fromPoint(grpc.Point point) {
     return Point(x: point.x, y: point.y);
