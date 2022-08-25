@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the SwitchActions.fromButtonActions constructor from Class SwitchActions from the skyle_api library, for the Dart programming language.">
-  <title>SwitchActions.fromButtonActions constructor - SwitchActions - skyle_api library - Dart API</title>
+  <meta name="description" content="API docs for the isEqualTo method from the Point class, for the Dart programming language.">
+  <title>isEqualTo method - Point class - skyle_api library - Dart API</title>
 
 
   
@@ -31,10 +31,10 @@
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">skyle_api</a></li>
     <li><a href="../../skyle_api/skyle_api-library.html">skyle_api</a></li>
-    <li><a href="../../skyle_api/SwitchActions-class.html">SwitchActions</a></li>
-    <li class="self-crumb">SwitchActions.fromButtonActions factory constructor</li>
+    <li><a href="../../skyle_api/Point-class.html">Point</a></li>
+    <li class="self-crumb">isEqualTo method</li>
   </ol>
-  <div class="self-name">SwitchActions.fromButtonActions</div>
+  <div class="self-name">isEqualTo</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -45,27 +45,28 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-constructor">SwitchActions.fromButtonActions</span> constructor 
+<h1><span class="kind-method">isEqualTo</span> method 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
     <section class="multi-line-signature">
-      <span class="name ">SwitchActions.fromButtonActions</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="fromButtonActions-param-buttonActions"><span class="type-annotation">ButtonActions</span> <span class="parameter-name">buttonActions</span></span></li>
-</ol>)
-    </section>
+      
 
+<span class="returntype"><a href="https://api.dart.dev/stable/2.17.7/dart-core/bool-class.html">bool</a></span>
+<span class="name ">isEqualTo</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="isEqualTo-param-point"><span class="type-annotation">Point</span> <span class="parameter-name">point</span></span></li>
+</ol>)
+
+      
+
+    </section>
     
 
 
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">factory SwitchActions.fromButtonActions(ButtonActions buttonActions) {
-  return SwitchActions(
-    singleClick: buttonActions.singleClick,
-    doubleClick: buttonActions.doubleClick,
-    holdClick: buttonActions.holdClick,
-  );
+  <pre class="language-dart"><code class="language-dart">bool isEqualTo(grpc.Point point) {
+  return point.x == x &amp;&amp; point.y == y;
 }</code></pre>
 </section>
 
@@ -82,47 +83,45 @@
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../../index.html">skyle_api</a></li>
   <li><a href="../../skyle_api/skyle_api-library.html">skyle_api</a></li>
-  <li><a href="../../skyle_api/SwitchActions-class.html">SwitchActions</a></li>
-  <li class="self-crumb">SwitchActions.fromButtonActions factory constructor</li>
+  <li><a href="../../skyle_api/Point-class.html">Point</a></li>
+  <li class="self-crumb">isEqualTo method</li>
 </ol>
 
 
-    <h5>SwitchActions class</h5>
+    <h5>Point class</h5>
     <ol>
 
-        <li class="section-title"><a href="../../skyle_api/SwitchActions-class.html#constructors">Constructors</a></li>
-          <li><a href="../../skyle_api/SwitchActions/SwitchActions.html">SwitchActions</a></li>
-          <li><a href="../../skyle_api/SwitchActions/SwitchActions.create.html">create</a></li>
-          <li><a href="../../skyle_api/SwitchActions/SwitchActions.fromButtonActions.html">fromButtonActions</a></li>
-          <li><a href="../../skyle_api/SwitchActions/SwitchActions.fromJson.html">fromJson</a></li>
+        <li class="section-title"><a href="../../skyle_api/Point-class.html#constructors">Constructors</a></li>
+          <li><a href="../../skyle_api/Point/Point.html">Point</a></li>
+          <li><a href="../../skyle_api/Point/Point.fromJson.html">fromJson</a></li>
+          <li><a href="../../skyle_api/Point/Point.fromPoint.html">fromPoint</a></li>
 
 
     <li class="section-title inherited">
-      <a href="../../skyle_api/SwitchActions-class.html#instance-properties">Properties</a>
+      <a href="../../skyle_api/Point-class.html#instance-properties">Properties</a>
     </li>
-    <li class="inherited"><a href="../../skyle_api/SwitchActions/copyWith.html">copyWith</a></li>
-    <li class="inherited"><a href="../../skyle_api/SwitchActions/doubleClick.html">doubleClick</a></li>
+    <li class="inherited"><a href="../../skyle_api/Point/copyWith.html">copyWith</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.7/dart-core/Object/hashCode.html">hashCode</a></li>
-    <li class="inherited"><a href="../../skyle_api/SwitchActions/holdClick.html">holdClick</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.7/dart-core/Object/runtimeType.html">runtimeType</a></li>
-    <li class="inherited"><a href="../../skyle_api/SwitchActions/singleClick.html">singleClick</a></li>
+    <li class="inherited"><a href="../../skyle_api/Point/x.html">x</a></li>
+    <li class="inherited"><a href="../../skyle_api/Point/y.html">y</a></li>
 
-    <li class="section-title inherited"><a href="../../skyle_api/SwitchActions-class.html#instance-methods">Methods</a></li>
+    <li class="section-title"><a href="../../skyle_api/Point-class.html#instance-methods">Methods</a></li>
+    <li><a href="../../skyle_api/Point/isEqualTo.html">isEqualTo</a></li>
+    <li><a href="../../skyle_api/Point/isZero.html">isZero</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.7/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
-    <li class="inherited"><a href="../../skyle_api/SwitchActions/toJson.html">toJson</a></li>
+    <li class="inherited"><a href="../../skyle_api/Point/toJson.html">toJson</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.7/dart-core/Object/toString.html">toString</a></li>
 
-    <li class="section-title inherited"><a href="../../skyle_api/SwitchActions-class.html#operators">Operators</a></li>
+    <li class="section-title inherited"><a href="../../skyle_api/Point-class.html#operators">Operators</a></li>
     <li class="inherited"><a href="https://api.dart.dev/stable/2.17.7/dart-core/Object/operator_equals.html">operator ==</a></li>
 
 
 
-        <li class="section-title"><a href="../../skyle_api/SwitchActions-class.html#static-methods">Static methods</a></li>
-          <li><a href="../../skyle_api/SwitchActions/toButtonActions.html">toButtonActions</a></li>
 
 </ol>
 
-  </div><!--/.sidebar-offcanvas-left-->
+  </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->
