@@ -19,12 +19,15 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   SettingsRepositoryImpl({this.client});
 
-  Future<DataState<Settings>> _setStateAsync(Options value) async {
+  Future<DataState<Settings>> _setStateAsync({Options? options}) async {
     try {
       if (client == null) throw NotConnectedException();
-      final req = OptionMessage()..options = value;
-      final options = await client!.configure(req);
-      return DataSuccess(Settings.fromOptions(options));
+      final req = OptionMessage();
+      if (options != null) {
+        req.options = options;
+      }
+      final ret = await client!.configure(req);
+      return DataSuccess(Settings.fromOptions(ret));
     } catch (error) {
       // ET.logger?.e('Error in options', error, StackTrace.current);
       return DataFailed(error.toString());
@@ -34,24 +37,24 @@ class SettingsRepositoryImpl implements SettingsRepository {
   @override
   Future<DataState<Settings>> enablePause({bool on = true}) {
     final Options options = Options()..enablePause = on;
-    return _setStateAsync(options);
+    return _setStateAsync(options: options);
   }
 
   @override
   Future<DataState<Settings>> disableMouse({bool on = true}) {
     final Options options = Options()..disableMouse = on;
-    return _setStateAsync(options);
+    return _setStateAsync(options: options);
   }
 
   @override
   Future<DataState<Settings>> get() {
-    return _setStateAsync(Options.create());
+    return _setStateAsync();
   }
 
   @override
   Future<DataState<Settings>> pause({bool on = true}) {
     final Options options = Options()..pause = on;
-    return _setStateAsync(options);
+    return _setStateAsync(options: options);
   }
 
   @override
@@ -60,7 +63,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
       ..fixationFilter = filter.fixation
       ..gazeFilter = filter.gaze;
     final Options options = Options()..filter = filterOptions;
-    return _setStateAsync(options);
+    return _setStateAsync(options: options);
   }
 
   @override
@@ -70,7 +73,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
     if (iPadOS.isNotZommed != null) iPadOptions.isNotZommed = iPadOS.isNotZommed!;
     if (iPadOS.iPadModel != null) iPadOptions.model = iPadOS.iPadModel!.toIPadOptionsIPadModel();
     final Options options = Options()..iPadOptions = iPadOptions;
-    return _setStateAsync(options);
+    return _setStateAsync(options: options);
   }
 
   @override
@@ -86,18 +89,18 @@ class SettingsRepositoryImpl implements SettingsRepository {
     } else {
       options.res = ScreenResolution(width: screenSizes.resolution.width.round(), height: screenSizes.resolution.height.round());
     }
-    return _setStateAsync(options);
+    return _setStateAsync(options: options);
   }
 
   @override
   Future<DataState<Settings>> standby({bool on = true}) {
     final Options options = Options()..enableStandby = on;
-    return _setStateAsync(options);
+    return _setStateAsync(options: options);
   }
 
   @override
   Future<DataState<Settings>> video({bool on = true}) {
     final Options options = Options()..stream = on;
-    return _setStateAsync(options);
+    return _setStateAsync(options: options);
   }
 }
