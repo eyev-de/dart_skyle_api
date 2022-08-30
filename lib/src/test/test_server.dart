@@ -25,9 +25,9 @@ class TestServer {
 
   Future<void> start() async {
     try {
-      print('Starting API...');
+      print('Starting grpc api on localhost:$grpcServerPort');
       await _server.serve(address: 'localhost', port: grpcServerPort, shared: true);
-      print('Starting MJPEG server...');
+      print('Starting MJPEG server');
       unawaited(_mjpegTestServer?.start());
     } catch (e) {
       print(e);
@@ -66,7 +66,7 @@ class _MJPEGTestServer {
   Future<void> start() async {
     final address = InternetAddress.loopbackIPv4;
     _server = await HttpServer.bind(address, mjpegServerPort, shared: true);
-    print('Serving MJPEG...');
+    print('Serving MJPEG');
     _server!.autoCompress = true;
     await _handleRequests(_server!);
   }

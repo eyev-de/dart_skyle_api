@@ -19,6 +19,7 @@ class SwitchRepositoryImpl implements SwitchRepository {
   SwitchRepositoryImpl({this.client});
   StreamController<DataState<Switch>>? controller;
   Timer? timer;
+  Switch? currentSwitch;
 
   @override
   Future<DataState<SwitchActions>> setSwitch(SwitchActions switchActions) async {
@@ -48,7 +49,9 @@ class SwitchRepositoryImpl implements SwitchRepository {
         watch.reset();
         try {
           final button = await client!.getButton(Empty());
-          controller?.add(DataSuccess(Switch.fromButton(button)));
+          final newSwitch = Switch.fromButton(button);
+          if (currentSwitch == null || currentSwitch != newSwitch) controller?.add(DataSuccess(newSwitch));
+          currentSwitch = newSwitch;
         } catch (e, s) {
           controller?.addError(e, s);
           return;
