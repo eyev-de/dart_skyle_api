@@ -1453,8 +1453,18 @@ class Options extends $pb.GeneratedMessage {
   void clearHp() => clearField(10);
 }
 
+enum IPadOptions_OptionalModel {
+  model, 
+  notSet
+}
+
 class IPadOptions extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, IPadOptions_OptionalModel> _IPadOptions_OptionalModelByTag = {
+    3 : IPadOptions_OptionalModel.model,
+    0 : IPadOptions_OptionalModel.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IPadOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
+    ..oo(0, [3])
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isOldiOS', protoName: 'isOldiOS')
     ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isNotZommed', protoName: 'isNotZommed')
     ..e<IPadOptions_iPadModel>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'model', $pb.PbFieldType.OE, defaultOrMaker: IPadOptions_iPadModel.iPad8_5, valueOf: IPadOptions_iPadModel.valueOf, enumValues: IPadOptions_iPadModel.values)
@@ -1499,6 +1509,9 @@ class IPadOptions extends $pb.GeneratedMessage {
   @$core.pragma('dart2js:noInline')
   static IPadOptions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IPadOptions>(create);
   static IPadOptions? _defaultInstance;
+
+  IPadOptions_OptionalModel whichOptionalModel() => _IPadOptions_OptionalModelByTag[$_whichOneof(0)]!;
+  void clearOptionalModel() => clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   $core.bool get isOldiOS => $_getBF(0);
