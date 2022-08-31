@@ -246,9 +246,12 @@ const IPadOptions$json = const {
   '2': const [
     const {'1': 'isOldiOS', '3': 1, '4': 1, '5': 8, '10': 'isOldiOS'},
     const {'1': 'isNotZommed', '3': 2, '4': 1, '5': 8, '10': 'isNotZommed'},
-    const {'1': 'model', '3': 3, '4': 1, '5': 14, '6': '.Skyle.IPadOptions.iPadModel', '10': 'model'},
+    const {'1': 'model', '3': 3, '4': 1, '5': 14, '6': '.Skyle.IPadOptions.iPadModel', '9': 0, '10': 'model', '17': true},
   ],
   '4': const [IPadOptions_iPadModel$json],
+  '8': const [
+    const {'1': '_model'},
+  ],
 };
 
 @$core.Deprecated('Use iPadOptionsDescriptor instead')
@@ -273,7 +276,7 @@ const IPadOptions_iPadModel$json = const {
 };
 
 /// Descriptor for `IPadOptions`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab21tZWQYAiABKAhSC2lzTm90Wm9tbWVkEjIKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMuaVBhZE1vZGVsUgVtb2RlbCLPAQoJaVBhZE1vZGVsEgsKB2lQYWQ4XzUQABILCgdpUGFkOF82EAESCwoHaVBhZDhfNxACEgsKB2lQYWQ4XzgQAxIMCghpUGFkOF8xMRAEEgwKCGlQYWQ4XzEyEAUSDAoIaVBhZDEzXzEQBhIMCghpUGFkMTNfMhAHEgwKCGlQYWQxM184EAgSDAoIaVBhZDEzXzkQCRINCglpUGFkMTNfMTAQChINCglpUGFkMTNfMTEQCxINCglpUGFkMTNfMTYQDBINCglpUGFkMTNfMTcQDQ==');
+final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab21tZWQYAiABKAhSC2lzTm90Wm9tbWVkEjcKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMuaVBhZE1vZGVsSABSBW1vZGVsiAEBIs8BCglpUGFkTW9kZWwSCwoHaVBhZDhfNRAAEgsKB2lQYWQ4XzYQARILCgdpUGFkOF83EAISCwoHaVBhZDhfOBADEgwKCGlQYWQ4XzExEAQSDAoIaVBhZDhfMTIQBRIMCghpUGFkMTNfMRAGEgwKCGlQYWQxM18yEAcSDAoIaVBhZDEzXzgQCBIMCghpUGFkMTNfORAJEg0KCWlQYWQxM18xMBAKEg0KCWlQYWQxM18xMRALEg0KCWlQYWQxM18xNhAMEg0KCWlQYWQxM18xNxANQggKBl9tb2RlbA==');
 @$core.Deprecated('Use deviceVersionsDescriptor instead')
 const DeviceVersions$json = const {
   '1': 'DeviceVersions',

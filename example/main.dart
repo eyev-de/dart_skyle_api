@@ -41,6 +41,12 @@ Future<void> main(List<String> args) async {
     if (event is DataFailed) print(event.error);
   });
 
+  await for (final profile in et.profiles.get()) {
+    print(profile.id);
+    print(profile.name);
+    print(profile.skill);
+  }
+
   final settings = await et.settings.get();
   if (settings is DataSuccess) print(settings.data!.toJson());
   if (settings is DataFailed) print(settings.error!.toString());
