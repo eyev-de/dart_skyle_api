@@ -29,25 +29,32 @@ abstract class VideoStreamRepository {
   /// The [inputStream] parameter should contain [List] of [int] but is [dynamic]
   /// due to the [ReceivePort] being a [Stream] of [dynamic] elements.
   static Stream<List<int>> parse(Stream<dynamic> inputStream) async* {
-    List<int> chunks = [];
-    await for (final List<int> data in inputStream) {
-      if (chunks.isEmpty) {
-        final startIndex = data.indexOf(_trigger);
-        if (startIndex >= 0 && startIndex + 1 < data.length && data[startIndex + 1] == _soi) {
-          final slicedData = data.sublist(startIndex, data.length);
-          chunks.addAll(slicedData);
-          yield chunks;
-          chunks = [];
+    List<int> _carry = [];
+    await for (final List<int> chunk in inputStream) {
+      if (_carry.isNotEmpty && _carry.last == _trigger) {
+        if (chunk.first == _eoi) {
+          _carry.add(chunk.first);
+          yield _carry;
+          _carry = [];
         }
-      } else {
-        final startIndex = data.lastIndexOf(_trigger);
-        if (startIndex + 1 < data.length && data[startIndex + 1] == _eoi) {
-          final slicedData = data.sublist(0, startIndex + 2);
-          chunks.addAll(slicedData);
-          yield chunks;
-          chunks = [];
-        } else {
-          chunks.addAll(data);
+      }
+      for (var i = 0; i < chunk.length - 1; i++) {
+        final d = chunk[i];
+        final d1 = chunk[i + 1];
+
+        if (d == _trigger && d1 == _soi) {
+          _carry.add(d);
+        } else if (d == _trigger && d1 == _eoi && _carry.isNotEmpty) {
+          _carry
+            ..add(d)
+            ..add(d1);
+          yield _carry;
+          _carry = [];
+        } else if (_carry.isNotEmpty) {
+          _carry.add(d);
+          if (i == chunk.length - 2) {
+            _carry.add(d1);
+          }
         }
       }
     }
