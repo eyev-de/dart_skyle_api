@@ -62,7 +62,6 @@ class VideoStreamTester {
         });
         await Future.delayed(const Duration(seconds: 1));
         await client.et.stream.cancel();
-        await client.et.stream.stopParsingIsolate();
         await stream.cancel();
         await client.et.settings.video(on: false);
         expect(counter, greaterThan(0));

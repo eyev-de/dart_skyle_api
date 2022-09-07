@@ -15,20 +15,6 @@ abstract class VideoStreamRepository {
 
   bool running = false;
 
-  /// Starts the parsing isolate. This is also called on [request].
-  ///
-  /// This isolate is receiving a [Stream] of [List] of [int] and converting it
-  /// to a different [Stream] of [List] of [int] containing only the image data
-  /// which can be used to display an image in flutter by doing the following:
-  /// ```dart
-  /// final memoryImage = MemoryImage(Uint8List.fromList(streamedImageData));
-  /// ```
-  /// The parsing logic lives in [parse].
-  Future<void> startParsingIsolate();
-
-  /// Stops the parsing isolate to shutdown the whole video streaming process.
-  Future<void> stopParsingIsolate();
-
   /// Reqests a stream of images in form of a [List] of [int], encapsuled in [DataState].
   ///
   /// The [url] parameter shall look like so: `http://localhost:8080`. The [headers] parameter

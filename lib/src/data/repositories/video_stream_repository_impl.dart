@@ -10,12 +10,10 @@ import 'dart:isolate';
 
 import 'package:http/http.dart';
 
-import '../../core/data_state.dart';
-import '../../domain/repositories/video_stream_repository.dart';
-import '../../et.dart';
+import '../../../api.dart';
 
 class VideoStreamRepositoryImpl implements VideoStreamRepository {
-  final Client _httpClient = Client();
+  Client _httpClient = Client();
 
   StreamSubscription? _subscription;
   Isolate? _isolate;
@@ -27,23 +25,31 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
   @override
   bool running = false;
 
-  @override
-  Future<void> startParsingIsolate() async {
+  /// Starts the parsing isolate. This is also called on [request].
+  ///
+  /// This isolate is receiving a [Stream] of [List] of [int] and converting it
+  /// to a different [Stream] of [List] of [int] containing only the image data
+  /// which can be used to display an image in flutter by doing the following:
+  /// ```dart
+  /// final memoryImage = MemoryImage(Uint8List.fromList(streamedImageData));
+  /// ```
+  /// The parsing logic lives in [VideoStreamRepository.parse].
+  Future<void> _startParsingIsolate() async {
     if (running) return;
     running = true;
     _port = ReceivePort();
     _isolate = await Isolate.spawn(_parse, _port!.sendPort);
   }
 
-  @override
-  Future<void> stopParsingIsolate() async {
-    if (!running) return;
+  /// Stops the parsing isolate to shutdown the whole video streaming process.
+  Future<void> _stopParsingIsolate() async {
     try {
-      await cancel();
       _isolate?.kill(priority: Isolate.immediate);
       _port?.close();
       _isolate = null;
       _port = null;
+      _sendPort = null;
+      running = false;
     } catch (error) {
       ET.logger?.e('Error stopping parsing isolate.', error, StackTrace.current);
     }
@@ -52,14 +58,16 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
   @override
   Stream<DataState<List<int>>> request({required String url, Map<String, String>? headers}) async* {
     try {
-      if (!running) await startParsingIsolate();
-      await for (final message in _port!.asBroadcastStream()) {
+      if (running) throw StillRunningException();
+      await _startParsingIsolate();
+      await for (final message in _port!) {
         if (message is List<int>) {
           yield DataSuccess(message);
         } else if (message is SendPort) {
           _sendPort = message;
           final request = Request('GET', Uri.parse(url));
           request.headers.addAll(headers ?? <String, String>{});
+          _httpClient = Client();
           final response = await _httpClient.send(request).timeout(const Duration(seconds: 5));
 
           if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -71,8 +79,8 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
             }, cancelOnError: true);
           } else {
             ET.logger?.e('Error in mjpeg stream.', HttpException('Stream returned ${response.statusCode} status'), StackTrace.current);
-            yield DataFailed('Stream returned ${response.statusCode} status and is canceled.');
             await cancel();
+            yield DataFailed('Stream returned ${response.statusCode} status and is canceled.');
           }
         }
       }
@@ -85,9 +93,11 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
   @override
   Future<void> cancel() async {
     try {
+      if (!running) throw NotRunningException();
       await _subscription?.cancel();
       _subscription = null;
       _httpClient.close();
+      await _stopParsingIsolate();
     } catch (error) {
       ET.logger?.e('Error canceling mjpeg stream request.', error, StackTrace.current);
     }
@@ -96,8 +106,6 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
   static Future<void> _parse(SendPort sendPort) async {
     final ReceivePort receivePort = ReceivePort();
     sendPort.send(receivePort.sendPort);
-    VideoStreamRepository.parse(receivePort).listen((message) {
-      sendPort.send(message);
-    });
+    VideoStreamRepository.parse(receivePort).listen(sendPort.send);
   }
 }
