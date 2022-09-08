@@ -6,8 +6,6 @@
 
 import 'dart:async';
 
-import 'package:grpc/grpc.dart';
-import 'package:grpc/grpc_connection_interface.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 import 'package:logger/logger.dart';
 
@@ -43,8 +41,8 @@ class GRPCFailed {
 }
 
 class ET {
-  ClientChannelBase? _channel;
-  ClientChannelBase? get channel => _channel;
+  GrpcOrGrpcWebClientChannel? _channel;
+  GrpcOrGrpcWebClientChannel? get channel => _channel;
 
   SkyleClient? _client;
   SkyleClient? get client => _client;
@@ -154,13 +152,10 @@ class ET {
   }
 
   void _createClient({required String url, required int port}) {
-    _channel = GrpcOrGrpcWebClientChannel.grpc(
-      url,
+    _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(
+      host: url,
       port: port,
-      options: const ChannelOptions(
-        credentials: ChannelCredentials.insecure(),
-        // backoffStrategy: BackOffStrategy.defaultBackoffStrategy,
-      ),
+      transportSecure: false,
     );
     _client = SkyleClient(_channel!);
   }

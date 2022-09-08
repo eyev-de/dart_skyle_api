@@ -16,7 +16,7 @@ class WebConnectivityProvider implements ConnectivityProvider {
   @override
   void start(void Function(ConnectionMessage message) onConnectionMessageChanged) {
     connection = ConnectionMessage.connected('');
-    onConnectionMessageChanged(ConnectionMessage(connection: Connection.connected));
+    onConnectionMessageChanged(ConnectionMessage(connection: Connection.connecting, url: 'skyle.local'));
   }
 
   @override
