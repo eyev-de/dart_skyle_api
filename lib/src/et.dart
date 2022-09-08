@@ -62,7 +62,7 @@ class ET {
   Connection get connection => _connection;
 
   static Logger? logger;
-  static const String baseURL = 'skyle.local';
+  static String baseURL = 'skyle.local';
   static int _grpcPort = 50052;
   static List<String> possibleIPs = ['10.0.0.2', '192.168.137.2'];
   static const _maxRetries = 10;
@@ -100,10 +100,10 @@ class ET {
 
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting && _connection == Connection.disconnected) {
-      logger?.i('Interface connected: Try connecting Skyle: ${ET.baseURL}');
+      logger?.i('Interface connected: Try connecting Skyle: ${message.url ?? ET.baseURL}');
       _connection = message.connection;
       _connectionStreamController.add(_connection);
-      await trySoftReconnect(baseUrl: message.url ?? ET.baseURL);
+      await trySoftReconnect(url: message.url ?? ET.baseURL);
     } else if (message.connection == Connection.disconnected) {
       await softDisconnect();
       _connection = message.connection;
@@ -115,13 +115,14 @@ class ET {
   /// TODO(krjw-eyev):  Add async cancellation if called again.
   /// Trys to reconnect the grpc connection. Is only needed after calling [softDisconnect]
   ///
-  /// Accepts a new [baseURL] and a new [grpcPort]. Should only be set if you really know what you are doing.
-  Future<void> trySoftReconnect({String baseUrl = ET.baseURL, int grpcPort = 50052}) async {
+  /// Accepts a new [url] and a new [port]. Should only be set if you really know what you are doing.
+  Future<void> trySoftReconnect({String url = 'skyle.local', int port = 50052}) async {
     try {
       if (_connection == Connection.connected || _connection == Connection.disconnected) return;
-      _grpcPort = grpcPort;
-      _createClient(url: ET.baseURL, port: ET._grpcPort);
-      logger?.i('Connecting Skyle with base ip: ${ET.baseURL}...');
+      _grpcPort = port;
+      ET.baseURL = url;
+      _createClient(url: url, port: ET._grpcPort);
+      logger?.i('Connecting Skyle with base ip: $url...');
 
       for (var i = 0; i < _maxRetries; i++) {
         try {
