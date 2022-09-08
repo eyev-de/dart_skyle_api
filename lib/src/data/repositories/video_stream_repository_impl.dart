@@ -5,7 +5,6 @@
 //
 
 import 'dart:async';
-import 'dart:io';
 import 'dart:isolate';
 
 import 'package:http/http.dart';
@@ -78,7 +77,7 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
               await cancel();
             }, cancelOnError: true);
           } else {
-            ET.logger?.e('Error in mjpeg stream.', HttpException('Stream returned ${response.statusCode} status'), StackTrace.current);
+            ET.logger?.e('Error in mjpeg stream.', Exception('Stream returned ${response.statusCode} status'), StackTrace.current);
             await cancel();
             yield DataFailed('Stream returned ${response.statusCode} status and is canceled.');
           }

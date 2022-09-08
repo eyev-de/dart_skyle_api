@@ -4,7 +4,7 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import 'dart:io';
+import 'package:universal_platform/universal_platform.dart';
 
 import '../../core/data_state.dart';
 import '../../data/models/point.dart';
@@ -17,8 +17,8 @@ import '../../data/models/positioning/positioning_quality.dart';
 abstract class PositioningRepository {
   static double width = 1280;
   static double height = 800;
-  static double maxDistance = Platform.isIOS ? 0 : -15;
-  static double minDistance = Platform.isIOS ? 40 : 35;
+  static double maxDistance = UniversalPlatform.isDesktop ? -15 : 0;
+  static double minDistance = UniversalPlatform.isDesktop ? 35 : 40;
 
   /// Starts the positioning stream which lives until a disconnect happens.
   ///
