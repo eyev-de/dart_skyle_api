@@ -63,7 +63,7 @@ class ET {
 
   static Logger? logger;
   static String baseURL = 'skyle.local';
-  static int _grpcPort = 50052;
+  static int _grpcPort = 50051;
   static List<String> possibleIPs = ['10.0.0.2', '192.168.137.2'];
   static const _maxRetries = 10;
 
@@ -78,12 +78,13 @@ class ET {
   /// the grpc client is created. One API call is tested until the grpc library does not throw an exception anymore.
   /// This function blocks until Skyle is connected but it can also be called and not awaited which results in an async re/connection cycle.
   /// Accepts [additionalIps] to be added to scan for an ET and a new [grpcPort]. Should only be set if you really know what you are doing.
-  Future<void> connect({List<String> additionalIps = const [], int grpcPort = 50052}) async {
+  /// The Skyle Integration Kit [grpcPort] is 50051, for Skyle for Windows and Skyle for iPad use 50052. The default is 50051.
+  Future<void> connect({List<String> additionalIps = const [], int grpcPort = 50051}) async {
     if (_connectivityProvider.state != ConnectivityProviderState.disposed) throw StillRunningException();
     possibleIPs.addAll(additionalIps);
     _grpcPort = grpcPort;
     logger?.i('Scanning for Skyle ethernet interface for possible IPs: $possibleIPs');
-    _connectivityProvider.start(_onConnectionMessageChanged);
+    await _connectivityProvider.start(_onConnectionMessageChanged);
     await for (final message in connectionStream) {
       if (message == Connection.connected || message == Connection.disconnected) break;
     }
@@ -94,7 +95,7 @@ class ET {
   /// This should be called if you want to reconfigure a completely new connection.
   Future<void> disconnect() async {
     if (_connectivityProvider.state != ConnectivityProviderState.running) throw NotRunningException();
-    _connectivityProvider.stop();
+    await _connectivityProvider.stop();
     logger?.i('Disconnected Skyle...');
   }
 
@@ -116,7 +117,7 @@ class ET {
   /// Trys to reconnect the grpc connection. Is only needed after calling [softDisconnect]
   ///
   /// Accepts a new [url] and a new [port]. Should only be set if you really know what you are doing.
-  Future<void> trySoftReconnect({String url = 'skyle.local', int port = 50052}) async {
+  Future<void> trySoftReconnect({String url = 'skyle.local', int port = 50051}) async {
     try {
       if (_connection == Connection.connected || _connection == Connection.disconnected) return;
       _grpcPort = port;

@@ -19,8 +19,8 @@ enum ConnectivityProviderState { initializing, running, disposed }
 abstract class ConnectivityProvider {
   ConnectionMessage connection = ConnectionMessage.disconnected();
   ConnectivityProviderState state = ConnectivityProviderState.disposed;
-  void start(void Function(ConnectionMessage message) onConnectionMessageChanged);
-  void stop();
+  Future<void> start(void Function(ConnectionMessage message) onConnectionMessageChanged);
+  Future<void> stop();
   factory ConnectivityProvider() => getConnectivityProvider();
 }
 

@@ -14,13 +14,13 @@ class WebConnectivityProvider implements ConnectivityProvider {
   }
   WebConnectivityProvider._internal();
   @override
-  void start(void Function(ConnectionMessage message) onConnectionMessageChanged) {
+  Future<void> start(void Function(ConnectionMessage message) onConnectionMessageChanged) async {
     connection = ConnectionMessage.connected('');
     onConnectionMessageChanged(ConnectionMessage(connection: Connection.connecting, url: 'skyle.local'));
   }
 
   @override
-  void stop() {}
+  Future<void> stop() async {}
 
   @override
   ConnectionMessage connection = ConnectionMessage.disconnected();

@@ -4,10 +4,11 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+import 'dart:async';
 import 'dart:io';
 import 'dart:isolate';
 
-import 'package:universal_platform/universal_platform.dart';
+// import 'package:universal_platform/universal_platform.dart';
 
 import '../../et.dart';
 import '../connectivityprovider.dart';
@@ -21,6 +22,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
 
   Isolate? _isolate;
   ReceivePort? _port;
+  ReceivePort? _onExit;
   void Function(ConnectionMessage message)? _onConnectionMessageChanged;
 
   @override
@@ -28,23 +30,26 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
     if (state != ConnectivityProviderState.disposed) return;
     state = ConnectivityProviderState.initializing;
     _port = ReceivePort();
-    _isolate = await Isolate.spawn(_isolateFunction, _port!.sendPort);
+    _onExit = ReceivePort();
+    _isolate = await Isolate.spawn(_isolateFunction, _port!.sendPort, onExit: _onExit!.sendPort);
     _onConnectionMessageChanged = onConnectionMessageChanged;
     state = ConnectivityProviderState.running;
-    await for (final message in _port!) {
+    unawaited(_port!.forEach((message) {
       if (message is ConnectionMessage) {
         if (connection.connection != message.connection) {
           connection = message;
           _onConnectionMessageChanged?.call(connection);
         }
       }
-    }
+    }));
   }
 
   @override
-  void stop() {
+  Future<void> stop() async {
     if (state != ConnectivityProviderState.running) return;
     _isolate?.kill(priority: Isolate.immediate);
+    // Wait for the isolate to terminate
+    await _onExit?.first;
     _isolate = null;
     _port?.close();
     _port = null;
@@ -60,7 +65,6 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
   ConnectivityProviderState state = ConnectivityProviderState.disposed;
 
   static Future<void> _isolateFunction(SendPort portReceive) async {
-    // ignore: literal_only_boolean_expressions
     ConnectionMessage message = ConnectionMessage.disconnected();
     // ignore: literal_only_boolean_expressions
     do {
@@ -89,22 +93,19 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
     try {
       final List<NetworkInterface> interfaces = await NetworkInterface.list();
       for (final NetworkInterface interface in interfaces) {
-        // TODO(krjw-eyev)
-        // This is a shady hack for Android and should be fixed as soon as possible
-        // Since we cannot check the MAC address nor find out which IP address is used
-        // (there are multible), we need this hack to make it work for Android FOR NOW
-        // TODO(JK-eyeV) Thanks to you this hacky solution is implemented :)
-        if (UniversalPlatform.isAndroid && interface.name == 'eth0') {
-          for (final InternetAddress address in interface.addresses) {
-            final addressParts = address.address.split('.');
-            final hostIP = '${addressParts[0]}.${addressParts[1]}.${addressParts[2]}.243';
-            message = ConnectionMessage.connecting(hostIP);
-            break;
-          }
-          if (message.connection == Connection.connecting) {
-            break;
-          }
-        }
+        // TODO(krjw-eyev) Document Android < 12 solution
+        // This is a shady hack for Android < 12
+        // if (UniversalPlatform.isAndroid && interface.name == 'eth0') {
+        //   for (final InternetAddress address in interface.addresses) {
+        //     final addressParts = address.address.split('.');
+        //     final hostIP = '${addressParts[0]}.${addressParts[1]}.${addressParts[2]}.243';
+        //     message = ConnectionMessage.connecting(hostIP);
+        //     break;
+        //   }
+        //   if (message.connection == Connection.connecting) {
+        //     break;
+        //   }
+        // }
         // END OF HACKY ANDROID SOLUTION
         for (final InternetAddress address in interface.addresses) {
           final hostIP = '${address.address.substring(0, address.address.length - 1)}2';
