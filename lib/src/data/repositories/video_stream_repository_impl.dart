@@ -5,14 +5,16 @@
 //
 
 import 'dart:async';
+import 'dart:io';
 import 'dart:isolate';
 
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
+import 'package:retry/retry.dart';
 
 import '../../../api.dart';
 
 class VideoStreamRepositoryImpl implements VideoStreamRepository {
-  Client _httpClient = Client();
+  // http.Client _httpClient = http.Client();
 
   StreamSubscription? _subscription;
   Isolate? _isolate;
@@ -64,10 +66,27 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
           yield DataSuccess(message);
         } else if (message is SendPort) {
           _sendPort = message;
-          final request = Request('GET', Uri.parse(url));
-          request.headers.addAll(headers ?? <String, String>{});
-          _httpClient = Client();
-          final response = await _httpClient.send(request).timeout(const Duration(seconds: 5));
+          // final request = http.Request('GET', Uri.parse(url));
+          // _httpClient = http.Client();
+          // final response = await _httpClient.send(request).timeout(const Duration(seconds: 5));
+          const r = RetryOptions(
+            maxAttempts: 7,
+            delayFactor: Duration(milliseconds: 100),
+            maxDelay: Duration(seconds: 10),
+          );
+          final response = await r.retry(
+            () {
+              // _httpClient.close();
+              final httpClient = http.Client();
+              final request = http.Request('GET', Uri.parse(url));
+              request.headers.addAll(headers ?? <String, String>{});
+              return httpClient.send(request).timeout(const Duration(seconds: 5));
+            },
+            retryIf: (e) => e is SocketException || e is TimeoutException,
+            onRetry: (e) {
+              print(e);
+            },
+          );
 
           if (response.statusCode >= 200 && response.statusCode < 300) {
             _subscription = response.stream.listen((data) async {
@@ -95,7 +114,7 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
       if (!running) throw NotRunningException();
       await _subscription?.cancel();
       _subscription = null;
-      _httpClient.close();
+      // _httpClient.close();
       await _stopParsingIsolate();
     } catch (error) {
       ET.logger?.e('Error canceling mjpeg stream request.', error, StackTrace.current);

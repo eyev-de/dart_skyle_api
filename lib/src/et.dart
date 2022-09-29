@@ -104,7 +104,7 @@ class ET {
       logger?.i('Interface connected: Try connecting Skyle: ${message.url ?? ET.baseURL}');
       _connection = message.connection;
       _connectionStreamController.add(_connection);
-      await trySoftReconnect(url: message.url ?? ET.baseURL);
+      await trySoftReconnect(url: message.url ?? ET.baseURL, grpcPort: _grpcPort);
     } else if (message.connection == Connection.disconnected) {
       await softDisconnect();
       _connection = message.connection;
@@ -116,11 +116,11 @@ class ET {
   /// TODO(krjw-eyev):  Add async cancellation if called again.
   /// Trys to reconnect the grpc connection. Is only needed after calling [softDisconnect]
   ///
-  /// Accepts a new [url] and a new [port]. Should only be set if you really know what you are doing.
-  Future<void> trySoftReconnect({String url = 'skyle.local', int port = 50051}) async {
+  /// Accepts a new [url] and a new [grpcPort]. Should only be set if you really know what you are doing.
+  Future<void> trySoftReconnect({String url = 'skyle.local', int grpcPort = 50051}) async {
     try {
       if (_connection == Connection.connected || _connection == Connection.disconnected) return;
-      _grpcPort = port;
+      _grpcPort = grpcPort;
       ET.baseURL = url;
       _createClient(url: url, port: ET._grpcPort);
       logger?.i('Connecting Skyle with base ip: $url...');
