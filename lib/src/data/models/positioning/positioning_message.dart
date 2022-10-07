@@ -35,13 +35,13 @@ class PositioningMessage with _$PositioningMessage {
           right: Point.fromPoint(positioningMessage.rightEye),
         ),
         quality: PositioningQuality(
-          horizontal: positioningMessage.qualityXAxis,
-          vertical: positioningMessage.qualityYAxis,
-          depth: positioningMessage.qualityDepth,
+          horizontal: positioningMessage.horizontalQuality,
+          vertical: positioningMessage.verticalQuality,
+          depth: positioningMessage.positioningQuality,
         ),
-        distance: positioningMessage.qualityDepth < PositioningRepository.maxDistance
+        distance: positioningMessage.distanceQuality < PositioningRepository.maxDistance
             ? PositioningDistance.far
-            : positioningMessage.qualityDepth > PositioningRepository.minDistance
+            : positioningMessage.distanceQuality > PositioningRepository.minDistance
                 ? PositioningDistance.close
                 : PositioningDistance.normal);
   }

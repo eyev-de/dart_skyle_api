@@ -8,14 +8,14 @@ part of 'ipados.dart';
 
 _$_IPadOS _$$_IPadOSFromJson(Map<String, dynamic> json) => _$_IPadOS(
       isOld: json['isOld'] as bool? ?? false,
-      isNotZommed: json['isNotZommed'] as bool? ?? false,
+      isNotZoomed: json['isNotZoomed'] as bool? ?? false,
       iPadModel: $enumDecodeNullable(_$IPadModelEnumMap, json['iPadModel']) ??
           IPadModel.iPad13_10,
     );
 
 Map<String, dynamic> _$$_IPadOSToJson(_$_IPadOS instance) => <String, dynamic>{
       'isOld': instance.isOld,
-      'isNotZommed': instance.isNotZommed,
+      'isNotZoomed': instance.isNotZoomed,
       'iPadModel': _$IPadModelEnumMap[instance.iPadModel],
     };
 

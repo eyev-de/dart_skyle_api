@@ -26,10 +26,10 @@ class Profile {
       };
 
   factory Profile.fromProfile(grpc.Profile profile) {
-    return Profile(id: profile.iD, name: profile.name, skill: Skill.fromProfileSkill(profile.skill));
+    return Profile(id: profile.id, name: profile.name, skill: Skill.fromProfileSkill(profile.skill));
   }
 
   grpc.Profile toProfile() {
-    return grpc.Profile(iD: id, name: name, skill: skill.toProfileSkill());
+    return grpc.Profile(id: id, name: name, skill: skill.toProfileSkill());
   }
 }

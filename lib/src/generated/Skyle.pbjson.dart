@@ -37,7 +37,7 @@ final $typed_data.Uint8List resetMessageDescriptor = $convert.base64Decode('CgxS
 const Profile$json = const {
   '1': 'Profile',
   '2': const [
-    const {'1': 'ID', '3': 1, '4': 1, '5': 5, '10': 'ID'},
+    const {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
     const {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
     const {'1': 'skill', '3': 3, '4': 1, '5': 14, '6': '.Skyle.Profile.Skill', '10': 'skill'},
   ],
@@ -48,14 +48,14 @@ const Profile$json = const {
 const Profile_Skill$json = const {
   '1': 'Skill',
   '2': const [
-    const {'1': 'Low', '2': 0},
-    const {'1': 'Medium', '2': 1},
-    const {'1': 'High', '2': 2},
+    const {'1': 'low', '2': 0},
+    const {'1': 'medium', '2': 1},
+    const {'1': 'high', '2': 2},
   ],
 };
 
 /// Descriptor for `Profile`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List profileDescriptor = $convert.base64Decode('CgdQcm9maWxlEg4KAklEGAEgASgFUgJJRBISCgRuYW1lGAIgASgJUgRuYW1lEioKBXNraWxsGAMgASgOMhQuU2t5bGUuUHJvZmlsZS5Ta2lsbFIFc2tpbGwiJgoFU2tpbGwSBwoDTG93EAASCgoGTWVkaXVtEAESCAoESGlnaBAC');
+final $typed_data.Uint8List profileDescriptor = $convert.base64Decode('CgdQcm9maWxlEg4KAmlkGAEgASgFUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEioKBXNraWxsGAMgASgOMhQuU2t5bGUuUHJvZmlsZS5Ta2lsbFIFc2tpbGwiJgoFU2tpbGwSBwoDbG93EAASCgoGbWVkaXVtEAESCAoEaGlnaBAC');
 @$core.Deprecated('Use statusMessageDescriptor instead')
 const StatusMessage$json = const {
   '1': 'StatusMessage',
@@ -130,13 +130,13 @@ const ScreenResolution$json = const {
   '2': const [
     const {'1': 'width', '3': 5, '4': 1, '5': 5, '10': 'width'},
     const {'1': 'height', '3': 6, '4': 1, '5': 5, '10': 'height'},
-    const {'1': 'widthinMM', '3': 7, '4': 1, '5': 5, '10': 'widthinMM'},
-    const {'1': 'heightinMM', '3': 8, '4': 1, '5': 5, '10': 'heightinMM'},
+    const {'1': 'widthInMM', '3': 7, '4': 1, '5': 5, '10': 'widthInMM'},
+    const {'1': 'heightInMM', '3': 8, '4': 1, '5': 5, '10': 'heightInMM'},
   ],
 };
 
 /// Descriptor for `ScreenResolution`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List screenResolutionDescriptor = $convert.base64Decode('ChBTY3JlZW5SZXNvbHV0aW9uEhQKBXdpZHRoGAUgASgFUgV3aWR0aBIWCgZoZWlnaHQYBiABKAVSBmhlaWdodBIcCgl3aWR0aGluTU0YByABKAVSCXdpZHRoaW5NTRIeCgpoZWlnaHRpbk1NGAggASgFUgpoZWlnaHRpbk1N');
+final $typed_data.Uint8List screenResolutionDescriptor = $convert.base64Decode('ChBTY3JlZW5SZXNvbHV0aW9uEhQKBXdpZHRoGAUgASgFUgV3aWR0aBIWCgZoZWlnaHQYBiABKAVSBmhlaWdodBIcCgl3aWR0aEluTU0YByABKAVSCXdpZHRoSW5NTRIeCgpoZWlnaHRJbk1NGAggASgFUgpoZWlnaHRJbk1N');
 @$core.Deprecated('Use calibImproveDescriptor instead')
 const CalibImprove$json = const {
   '1': 'CalibImprove',
@@ -200,27 +200,27 @@ const CalibQuality$json = const {
   '1': 'CalibQuality',
   '2': const [
     const {'1': 'quality', '3': 1, '4': 1, '5': 1, '10': 'quality'},
-    const {'1': 'qualitys', '3': 2, '4': 3, '5': 1, '10': 'qualitys'},
+    const {'1': 'qualities', '3': 2, '4': 3, '5': 1, '10': 'qualities'},
   ],
 };
 
 /// Descriptor for `CalibQuality`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List calibQualityDescriptor = $convert.base64Decode('CgxDYWxpYlF1YWxpdHkSGAoHcXVhbGl0eRgBIAEoAVIHcXVhbGl0eRIaCghxdWFsaXR5cxgCIAMoAVIIcXVhbGl0eXM=');
+final $typed_data.Uint8List calibQualityDescriptor = $convert.base64Decode('CgxDYWxpYlF1YWxpdHkSGAoHcXVhbGl0eRgBIAEoAVIHcXVhbGl0eRIcCglxdWFsaXRpZXMYAiADKAFSCXF1YWxpdGllcw==');
 @$core.Deprecated('Use positioningMessageDescriptor instead')
 const PositioningMessage$json = const {
   '1': 'PositioningMessage',
   '2': const [
     const {'1': 'leftEye', '3': 1, '4': 1, '5': 11, '6': '.Skyle.Point', '10': 'leftEye'},
     const {'1': 'rightEye', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Point', '10': 'rightEye'},
-    const {'1': 'qualityDepth', '3': 3, '4': 1, '5': 5, '10': 'qualityDepth'},
-    const {'1': 'qualitySides', '3': 4, '4': 1, '5': 5, '10': 'qualitySides'},
-    const {'1': 'qualityXAxis', '3': 5, '4': 1, '5': 5, '10': 'qualityXAxis'},
-    const {'1': 'qualityYAxis', '3': 6, '4': 1, '5': 5, '10': 'qualityYAxis'},
+    const {'1': 'distanceQuality', '3': 3, '4': 1, '5': 5, '10': 'distanceQuality'},
+    const {'1': 'positioningQuality', '3': 4, '4': 1, '5': 5, '10': 'positioningQuality'},
+    const {'1': 'horizontalQuality', '3': 5, '4': 1, '5': 5, '10': 'horizontalQuality'},
+    const {'1': 'verticalQuality', '3': 6, '4': 1, '5': 5, '10': 'verticalQuality'},
   ],
 };
 
 /// Descriptor for `PositioningMessage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List positioningMessageDescriptor = $convert.base64Decode('ChJQb3NpdGlvbmluZ01lc3NhZ2USJgoHbGVmdEV5ZRgBIAEoCzIMLlNreWxlLlBvaW50UgdsZWZ0RXllEigKCHJpZ2h0RXllGAIgASgLMgwuU2t5bGUuUG9pbnRSCHJpZ2h0RXllEiIKDHF1YWxpdHlEZXB0aBgDIAEoBVIMcXVhbGl0eURlcHRoEiIKDHF1YWxpdHlTaWRlcxgEIAEoBVIMcXVhbGl0eVNpZGVzEiIKDHF1YWxpdHlYQXhpcxgFIAEoBVIMcXVhbGl0eVhBeGlzEiIKDHF1YWxpdHlZQXhpcxgGIAEoBVIMcXVhbGl0eVlBeGlz');
+final $typed_data.Uint8List positioningMessageDescriptor = $convert.base64Decode('ChJQb3NpdGlvbmluZ01lc3NhZ2USJgoHbGVmdEV5ZRgBIAEoCzIMLlNreWxlLlBvaW50UgdsZWZ0RXllEigKCHJpZ2h0RXllGAIgASgLMgwuU2t5bGUuUG9pbnRSCHJpZ2h0RXllEigKD2Rpc3RhbmNlUXVhbGl0eRgDIAEoBVIPZGlzdGFuY2VRdWFsaXR5Ei4KEnBvc2l0aW9uaW5nUXVhbGl0eRgEIAEoBVIScG9zaXRpb25pbmdRdWFsaXR5EiwKEWhvcml6b250YWxRdWFsaXR5GAUgASgFUhFob3Jpem9udGFsUXVhbGl0eRIoCg92ZXJ0aWNhbFF1YWxpdHkYBiABKAVSD3ZlcnRpY2FsUXVhbGl0eQ==');
 @$core.Deprecated('Use optionsDescriptor instead')
 const Options$json = const {
   '1': 'Options',
@@ -245,7 +245,7 @@ const IPadOptions$json = const {
   '1': 'IPadOptions',
   '2': const [
     const {'1': 'isOldiOS', '3': 1, '4': 1, '5': 8, '10': 'isOldiOS'},
-    const {'1': 'isNotZommed', '3': 2, '4': 1, '5': 8, '10': 'isNotZommed'},
+    const {'1': 'isNotZoomed', '3': 2, '4': 1, '5': 8, '10': 'isNotZoomed'},
     const {'1': 'model', '3': 3, '4': 1, '5': 14, '6': '.Skyle.IPadOptions.iPadModel', '9': 0, '10': 'model'},
   ],
   '4': const [IPadOptions_iPadModel$json],
@@ -276,7 +276,7 @@ const IPadOptions_iPadModel$json = const {
 };
 
 /// Descriptor for `IPadOptions`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab21tZWQYAiABKAhSC2lzTm90Wm9tbWVkEjQKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMuaVBhZE1vZGVsSABSBW1vZGVsIs8BCglpUGFkTW9kZWwSCwoHaVBhZDhfNRAAEgsKB2lQYWQ4XzYQARILCgdpUGFkOF83EAISCwoHaVBhZDhfOBADEgwKCGlQYWQ4XzExEAQSDAoIaVBhZDhfMTIQBRIMCghpUGFkMTNfMRAGEgwKCGlQYWQxM18yEAcSDAoIaVBhZDEzXzgQCBIMCghpUGFkMTNfORAJEg0KCWlQYWQxM18xMBAKEg0KCWlQYWQxM18xMRALEg0KCWlQYWQxM18xNhAMEg0KCWlQYWQxM18xNxANQhAKDm9wdGlvbmFsX21vZGVs');
+final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab29tZWQYAiABKAhSC2lzTm90Wm9vbWVkEjQKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMuaVBhZE1vZGVsSABSBW1vZGVsIs8BCglpUGFkTW9kZWwSCwoHaVBhZDhfNRAAEgsKB2lQYWQ4XzYQARILCgdpUGFkOF83EAISCwoHaVBhZDhfOBADEgwKCGlQYWQ4XzExEAQSDAoIaVBhZDhfMTIQBRIMCghpUGFkMTNfMRAGEgwKCGlQYWQxM18yEAcSDAoIaVBhZDEzXzgQCBIMCghpUGFkMTNfORAJEg0KCWlQYWQxM18xMBAKEg0KCWlQYWQxM18xMRALEg0KCWlQYWQxM18xNhAMEg0KCWlQYWQxM18xNxANQhAKDm9wdGlvbmFsX21vZGVs');
 @$core.Deprecated('Use deviceVersionsDescriptor instead')
 const DeviceVersions$json = const {
   '1': 'DeviceVersions',

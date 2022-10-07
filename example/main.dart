@@ -20,7 +20,7 @@ Future<void> main(List<String> args) async {
   /// ```dart
   /// et.connect();
   /// ````
-  await et.connect();
+  await et.connect(grpcPort: 50052);
 
   /// Example on how to listen to the gaze position stream.
   et.gaze.start().listen((event) {

@@ -49,7 +49,7 @@ class CalibrationRepositoryImpl extends CalibrationRepository {
           qualities.add(CalibrationPointQuality(point: point));
           yield DataSuccess(CalibrationPointMessage(point: point));
         } else if (event.hasCalibQuality()) {
-          event.calibQuality.qualitys.asMap().forEach((i, e) {
+          event.calibQuality.qualities.asMap().forEach((i, e) {
             final index = qualities.indexWhere((element) => element.point.index == i);
             if (index != -1) qualities[index].quality = e;
           });

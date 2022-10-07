@@ -67,7 +67,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
         if (currentIndex == pts.value) {
           if (abort) return;
           await Future.delayed(const Duration(milliseconds: 100));
-          final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(pts.value, (index) => 4));
+          final qualityMsg = CalibQuality(quality: 4, qualities: List.generate(pts.value, (index) => 4));
           yield CalibMessages()..calibQuality = qualityMsg;
           return;
         }
@@ -111,7 +111,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
             }
             if (abort) return;
             await Future.delayed(const Duration(milliseconds: 100));
-            final qualityMsg = CalibQuality(quality: 4, qualitys: List.generate(msg.calibControl.numberOfPoints, (index) => 4));
+            final qualityMsg = CalibQuality(quality: 4, qualities: List.generate(msg.calibControl.numberOfPoints, (index) => 4));
             yield CalibMessages()..calibQuality = qualityMsg;
             return;
           }
@@ -132,12 +132,12 @@ class SkyleSimulatedService extends SkyleServiceBase {
 
   @override
   Future<StatusMessage> deleteProfile(ServiceCall call, Profile request) async {
-    if (profiles.where((element) => element.iD == request.iD).isNotEmpty) {
-      if (request.iD == 1) return StatusMessage()..success = false;
-      if (currentP.iD == request.iD) {
+    if (profiles.where((element) => element.id == request.id).isNotEmpty) {
+      if (request.id == 1) return StatusMessage()..success = false;
+      if (currentP.id == request.id) {
         currentP = defaultProfile;
       }
-      profiles.removeWhere((element) => element.iD == request.iD);
+      profiles.removeWhere((element) => element.id == request.id);
       return StatusMessage()..success = true;
     }
     return StatusMessage()..success = false;
@@ -202,16 +202,16 @@ class SkyleSimulatedService extends SkyleServiceBase {
 
   @override
   Future<StatusMessage> setProfile(ServiceCall call, Profile request) async {
-    if (profiles.where((element) => element.iD == request.iD).isNotEmpty) {
-      if (request.iD == 1) return StatusMessage()..success = false;
-      final int i = profiles.indexWhere((element) => element.iD == request.iD);
+    if (profiles.where((element) => element.id == request.id).isNotEmpty) {
+      if (request.id == 1) return StatusMessage()..success = false;
+      final int i = profiles.indexWhere((element) => element.id == request.id);
       if (i == -1) return StatusMessage()..success = false;
       profiles[i] = request;
       currentP = request;
       return StatusMessage()..success = true;
     }
-    final Profile max = profiles.reduce((currentProfile, nextProfile) => currentProfile.iD > nextProfile.iD ? currentProfile : nextProfile);
-    request.iD = max.iD + 1;
+    final Profile max = profiles.reduce((currentProfile, nextProfile) => currentProfile.id > nextProfile.id ? currentProfile : nextProfile);
+    request.id = max.id + 1;
     profiles.add(request);
     currentP = request;
     // print('Current Profile ${currentP.iD}: ${currentP.name} -> ${currentP.skill}');
@@ -241,16 +241,16 @@ final defaultOptions = Options(
   pause: false,
   enableStandby: false,
   guidance: false,
-  res: ScreenResolution(width: 1920, height: 1080, widthinMM: 560, heightinMM: 350),
+  res: ScreenResolution(width: 1920, height: 1080, widthInMM: 560, heightInMM: 350),
   filter: FilterOptions(gazeFilter: 5, fixationFilter: 11),
-  iPadOptions: IPadOptions(isNotZommed: true, isOldiOS: false),
+  iPadOptions: IPadOptions(isNotZoomed: true, isOldiOS: false),
   hp: false,
 );
 
 final defaultProfile = Profile()
-  ..iD = 1
+  ..id = 1
   ..name = 'Default'
-  ..skill = Profile_Skill.Medium;
+  ..skill = Profile_Skill.medium;
 
 final defaultButton = Button(
   availableActions: [

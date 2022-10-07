@@ -29,8 +29,8 @@ class ScreenSizes with _$ScreenSizes {
         height: screenResolution.height.toDouble(),
       ),
       dimensions: Size(
-        width: screenResolution.widthinMM.toDouble(),
-        height: screenResolution.heightinMM.toDouble(),
+        width: screenResolution.widthInMM.toDouble(),
+        height: screenResolution.heightInMM.toDouble(),
       ),
     );
   }
@@ -39,8 +39,8 @@ class ScreenSizes with _$ScreenSizes {
     return ScreenResolution(
       width: screenSizes.resolution.width.round(),
       height: screenSizes.resolution.height.round(),
-      widthinMM: screenSizes.dimensions != null ? screenSizes.dimensions!.width.round() : null,
-      heightinMM: screenSizes.dimensions != null ? screenSizes.dimensions!.height.round() : null,
+      widthInMM: screenSizes.dimensions != null ? screenSizes.dimensions!.width.round() : null,
+      heightInMM: screenSizes.dimensions != null ? screenSizes.dimensions!.height.round() : null,
     );
   }
 }

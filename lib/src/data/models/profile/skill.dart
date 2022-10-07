@@ -27,11 +27,11 @@ enum Skill {
   Profile_Skill toProfileSkill() {
     switch (this) {
       case Skill.beginner:
-        return Profile_Skill.Low;
+        return Profile_Skill.low;
       case Skill.medium:
-        return Profile_Skill.Medium;
+        return Profile_Skill.medium;
       case Skill.advanced:
-        return Profile_Skill.High;
+        return Profile_Skill.high;
     }
   }
 

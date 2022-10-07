@@ -10,14 +10,14 @@ import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 class Profile_Skill extends $pb.ProtobufEnum {
-  static const Profile_Skill Low = Profile_Skill._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Low');
-  static const Profile_Skill Medium = Profile_Skill._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'Medium');
-  static const Profile_Skill High = Profile_Skill._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'High');
+  static const Profile_Skill low = Profile_Skill._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'low');
+  static const Profile_Skill medium = Profile_Skill._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'medium');
+  static const Profile_Skill high = Profile_Skill._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'high');
 
   static const $core.List<Profile_Skill> values = <Profile_Skill> [
-    Low,
-    Medium,
-    High,
+    low,
+    medium,
+    high,
   ];
 
   static final $core.Map<$core.int, Profile_Skill> _byValue = $pb.ProtobufEnum.initByValue(values);

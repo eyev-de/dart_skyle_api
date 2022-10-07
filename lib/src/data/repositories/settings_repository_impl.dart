@@ -70,10 +70,10 @@ class SettingsRepositoryImpl implements SettingsRepository {
   }
 
   @override
-  Future<DataState<Settings>> setIPadOS({IPadOS iPadOS = const IPadOS(isOld: true, isNotZommed: true, iPadModel: IPadModel.iPad13_10)}) {
+  Future<DataState<Settings>> setIPadOS({IPadOS iPadOS = const IPadOS(isOld: true, isNotZoomed: true, iPadModel: IPadModel.iPad13_10)}) {
     final IPadOptions iPadOptions = IPadOptions();
     if (iPadOS.isOld != null) iPadOptions.isOldiOS = iPadOS.isOld!;
-    if (iPadOS.isNotZommed != null) iPadOptions.isNotZommed = iPadOS.isNotZommed!;
+    if (iPadOS.isNotZoomed != null) iPadOptions.isNotZoomed = iPadOS.isNotZoomed!;
     if (iPadOS.iPadModel != null) iPadOptions.model = iPadOS.iPadModel!.toIPadOptionsIPadModel();
     final Options options = Options.fromJson(_state.writeToJson())..iPadOptions = iPadOptions;
     return _setStateAsync(options: options);
@@ -86,8 +86,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
       options.res = ScreenResolution(
         width: screenSizes.resolution.width.round(),
         height: screenSizes.resolution.height.round(),
-        widthinMM: screenSizes.dimensions!.width.round(),
-        heightinMM: screenSizes.dimensions!.height.round(),
+        widthInMM: screenSizes.dimensions!.width.round(),
+        heightInMM: screenSizes.dimensions!.height.round(),
       );
     } else {
       options.res = ScreenResolution(width: screenSizes.resolution.width.round(), height: screenSizes.resolution.height.round());

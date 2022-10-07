@@ -16,7 +16,7 @@ part 'ipados.g.dart';
 class IPadOS with _$IPadOS {
   const factory IPadOS({
     @Default(false) bool? isOld,
-    @Default(false) bool? isNotZommed,
+    @Default(false) bool? isNotZoomed,
     @Default(IPadModel.iPad13_10) IPadModel? iPadModel,
   }) = _IPadOS;
 
@@ -25,7 +25,7 @@ class IPadOS with _$IPadOS {
   factory IPadOS.fromIPadOptions(IPadOptions iPadOptions) {
     return IPadOS(
       isOld: iPadOptions.isOldiOS,
-      isNotZommed: iPadOptions.isNotZommed,
+      isNotZoomed: iPadOptions.isNotZoomed,
       iPadModel: iPadOptions.hasModel() ? IPadModel.fromIPadOptionsIPadModel(iPadOptions.model) : null,
     );
   }

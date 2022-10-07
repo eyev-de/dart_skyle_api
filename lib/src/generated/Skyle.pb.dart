@@ -182,21 +182,21 @@ class ResetMessage extends $pb.GeneratedMessage {
 
 class Profile extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Profile', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ID', $pb.PbFieldType.O3, protoName: 'ID')
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..e<Profile_Skill>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skill', $pb.PbFieldType.OE, defaultOrMaker: Profile_Skill.Low, valueOf: Profile_Skill.valueOf, enumValues: Profile_Skill.values)
+    ..e<Profile_Skill>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skill', $pb.PbFieldType.OE, defaultOrMaker: Profile_Skill.low, valueOf: Profile_Skill.valueOf, enumValues: Profile_Skill.values)
     ..hasRequiredFields = false
   ;
 
   Profile._() : super();
   factory Profile({
-    $core.int? iD,
+    $core.int? id,
     $core.String? name,
     Profile_Skill? skill,
   }) {
     final _result = create();
-    if (iD != null) {
-      _result.iD = iD;
+    if (id != null) {
+      _result.id = id;
     }
     if (name != null) {
       _result.name = name;
@@ -228,13 +228,13 @@ class Profile extends $pb.GeneratedMessage {
   static Profile? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get iD => $_getIZ(0);
+  $core.int get id => $_getIZ(0);
   @$pb.TagNumber(1)
-  set iD($core.int v) { $_setSignedInt32(0, v); }
+  set id($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasID() => $_has(0);
+  $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearID() => clearField(1);
+  void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
@@ -683,8 +683,8 @@ class ScreenResolution extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ScreenResolution', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
     ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'width', $pb.PbFieldType.O3)
     ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'height', $pb.PbFieldType.O3)
-    ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'widthinMM', $pb.PbFieldType.O3, protoName: 'widthinMM')
-    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'heightinMM', $pb.PbFieldType.O3, protoName: 'heightinMM')
+    ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'widthInMM', $pb.PbFieldType.O3, protoName: 'widthInMM')
+    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'heightInMM', $pb.PbFieldType.O3, protoName: 'heightInMM')
     ..hasRequiredFields = false
   ;
 
@@ -692,8 +692,8 @@ class ScreenResolution extends $pb.GeneratedMessage {
   factory ScreenResolution({
     $core.int? width,
     $core.int? height,
-    $core.int? widthinMM,
-    $core.int? heightinMM,
+    $core.int? widthInMM,
+    $core.int? heightInMM,
   }) {
     final _result = create();
     if (width != null) {
@@ -702,11 +702,11 @@ class ScreenResolution extends $pb.GeneratedMessage {
     if (height != null) {
       _result.height = height;
     }
-    if (widthinMM != null) {
-      _result.widthinMM = widthinMM;
+    if (widthInMM != null) {
+      _result.widthInMM = widthInMM;
     }
-    if (heightinMM != null) {
-      _result.heightinMM = heightinMM;
+    if (heightInMM != null) {
+      _result.heightInMM = heightInMM;
     }
     return _result;
   }
@@ -750,22 +750,22 @@ class ScreenResolution extends $pb.GeneratedMessage {
   void clearHeight() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.int get widthinMM => $_getIZ(2);
+  $core.int get widthInMM => $_getIZ(2);
   @$pb.TagNumber(7)
-  set widthinMM($core.int v) { $_setSignedInt32(2, v); }
+  set widthInMM($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(7)
-  $core.bool hasWidthinMM() => $_has(2);
+  $core.bool hasWidthInMM() => $_has(2);
   @$pb.TagNumber(7)
-  void clearWidthinMM() => clearField(7);
+  void clearWidthInMM() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.int get heightinMM => $_getIZ(3);
+  $core.int get heightInMM => $_getIZ(3);
   @$pb.TagNumber(8)
-  set heightinMM($core.int v) { $_setSignedInt32(3, v); }
+  set heightInMM($core.int v) { $_setSignedInt32(3, v); }
   @$pb.TagNumber(8)
-  $core.bool hasHeightinMM() => $_has(3);
+  $core.bool hasHeightInMM() => $_has(3);
   @$pb.TagNumber(8)
-  void clearHeightinMM() => clearField(8);
+  void clearHeightInMM() => clearField(8);
 }
 
 class CalibImprove extends $pb.GeneratedMessage {
@@ -1101,21 +1101,21 @@ class CalibPoint extends $pb.GeneratedMessage {
 class CalibQuality extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibQuality', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
     ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'quality', $pb.PbFieldType.OD)
-    ..p<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qualitys', $pb.PbFieldType.KD)
+    ..p<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qualities', $pb.PbFieldType.KD)
     ..hasRequiredFields = false
   ;
 
   CalibQuality._() : super();
   factory CalibQuality({
     $core.double? quality,
-    $core.Iterable<$core.double>? qualitys,
+    $core.Iterable<$core.double>? qualities,
   }) {
     final _result = create();
     if (quality != null) {
       _result.quality = quality;
     }
-    if (qualitys != null) {
-      _result.qualitys.addAll(qualitys);
+    if (qualities != null) {
+      _result.qualities.addAll(qualities);
     }
     return _result;
   }
@@ -1150,17 +1150,17 @@ class CalibQuality extends $pb.GeneratedMessage {
   void clearQuality() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.double> get qualitys => $_getList(1);
+  $core.List<$core.double> get qualities => $_getList(1);
 }
 
 class PositioningMessage extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PositioningMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
     ..aOM<Point>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'leftEye', protoName: 'leftEye', subBuilder: Point.create)
     ..aOM<Point>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rightEye', protoName: 'rightEye', subBuilder: Point.create)
-    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qualityDepth', $pb.PbFieldType.O3, protoName: 'qualityDepth')
-    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qualitySides', $pb.PbFieldType.O3, protoName: 'qualitySides')
-    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qualityXAxis', $pb.PbFieldType.O3, protoName: 'qualityXAxis')
-    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qualityYAxis', $pb.PbFieldType.O3, protoName: 'qualityYAxis')
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'distanceQuality', $pb.PbFieldType.O3, protoName: 'distanceQuality')
+    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'positioningQuality', $pb.PbFieldType.O3, protoName: 'positioningQuality')
+    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'horizontalQuality', $pb.PbFieldType.O3, protoName: 'horizontalQuality')
+    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'verticalQuality', $pb.PbFieldType.O3, protoName: 'verticalQuality')
     ..hasRequiredFields = false
   ;
 
@@ -1168,10 +1168,10 @@ class PositioningMessage extends $pb.GeneratedMessage {
   factory PositioningMessage({
     Point? leftEye,
     Point? rightEye,
-    $core.int? qualityDepth,
-    $core.int? qualitySides,
-    $core.int? qualityXAxis,
-    $core.int? qualityYAxis,
+    $core.int? distanceQuality,
+    $core.int? positioningQuality,
+    $core.int? horizontalQuality,
+    $core.int? verticalQuality,
   }) {
     final _result = create();
     if (leftEye != null) {
@@ -1180,17 +1180,17 @@ class PositioningMessage extends $pb.GeneratedMessage {
     if (rightEye != null) {
       _result.rightEye = rightEye;
     }
-    if (qualityDepth != null) {
-      _result.qualityDepth = qualityDepth;
+    if (distanceQuality != null) {
+      _result.distanceQuality = distanceQuality;
     }
-    if (qualitySides != null) {
-      _result.qualitySides = qualitySides;
+    if (positioningQuality != null) {
+      _result.positioningQuality = positioningQuality;
     }
-    if (qualityXAxis != null) {
-      _result.qualityXAxis = qualityXAxis;
+    if (horizontalQuality != null) {
+      _result.horizontalQuality = horizontalQuality;
     }
-    if (qualityYAxis != null) {
-      _result.qualityYAxis = qualityYAxis;
+    if (verticalQuality != null) {
+      _result.verticalQuality = verticalQuality;
     }
     return _result;
   }
@@ -1238,40 +1238,40 @@ class PositioningMessage extends $pb.GeneratedMessage {
   Point ensureRightEye() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $core.int get qualityDepth => $_getIZ(2);
+  $core.int get distanceQuality => $_getIZ(2);
   @$pb.TagNumber(3)
-  set qualityDepth($core.int v) { $_setSignedInt32(2, v); }
+  set distanceQuality($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasQualityDepth() => $_has(2);
+  $core.bool hasDistanceQuality() => $_has(2);
   @$pb.TagNumber(3)
-  void clearQualityDepth() => clearField(3);
+  void clearDistanceQuality() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.int get qualitySides => $_getIZ(3);
+  $core.int get positioningQuality => $_getIZ(3);
   @$pb.TagNumber(4)
-  set qualitySides($core.int v) { $_setSignedInt32(3, v); }
+  set positioningQuality($core.int v) { $_setSignedInt32(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasQualitySides() => $_has(3);
+  $core.bool hasPositioningQuality() => $_has(3);
   @$pb.TagNumber(4)
-  void clearQualitySides() => clearField(4);
+  void clearPositioningQuality() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.int get qualityXAxis => $_getIZ(4);
+  $core.int get horizontalQuality => $_getIZ(4);
   @$pb.TagNumber(5)
-  set qualityXAxis($core.int v) { $_setSignedInt32(4, v); }
+  set horizontalQuality($core.int v) { $_setSignedInt32(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasQualityXAxis() => $_has(4);
+  $core.bool hasHorizontalQuality() => $_has(4);
   @$pb.TagNumber(5)
-  void clearQualityXAxis() => clearField(5);
+  void clearHorizontalQuality() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.int get qualityYAxis => $_getIZ(5);
+  $core.int get verticalQuality => $_getIZ(5);
   @$pb.TagNumber(6)
-  set qualityYAxis($core.int v) { $_setSignedInt32(5, v); }
+  set verticalQuality($core.int v) { $_setSignedInt32(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasQualityYAxis() => $_has(5);
+  $core.bool hasVerticalQuality() => $_has(5);
   @$pb.TagNumber(6)
-  void clearQualityYAxis() => clearField(6);
+  void clearVerticalQuality() => clearField(6);
 }
 
 class Options extends $pb.GeneratedMessage {
@@ -1466,7 +1466,7 @@ class IPadOptions extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IPadOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
     ..oo(0, [3])
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isOldiOS', protoName: 'isOldiOS')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isNotZommed', protoName: 'isNotZommed')
+    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isNotZoomed', protoName: 'isNotZoomed')
     ..e<IPadOptions_iPadModel>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'model', $pb.PbFieldType.OE, defaultOrMaker: IPadOptions_iPadModel.iPad8_5, valueOf: IPadOptions_iPadModel.valueOf, enumValues: IPadOptions_iPadModel.values)
     ..hasRequiredFields = false
   ;
@@ -1474,15 +1474,15 @@ class IPadOptions extends $pb.GeneratedMessage {
   IPadOptions._() : super();
   factory IPadOptions({
     $core.bool? isOldiOS,
-    $core.bool? isNotZommed,
+    $core.bool? isNotZoomed,
     IPadOptions_iPadModel? model,
   }) {
     final _result = create();
     if (isOldiOS != null) {
       _result.isOldiOS = isOldiOS;
     }
-    if (isNotZommed != null) {
-      _result.isNotZommed = isNotZommed;
+    if (isNotZoomed != null) {
+      _result.isNotZoomed = isNotZoomed;
     }
     if (model != null) {
       _result.model = model;
@@ -1523,13 +1523,13 @@ class IPadOptions extends $pb.GeneratedMessage {
   void clearIsOldiOS() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get isNotZommed => $_getBF(1);
+  $core.bool get isNotZoomed => $_getBF(1);
   @$pb.TagNumber(2)
-  set isNotZommed($core.bool v) { $_setBool(1, v); }
+  set isNotZoomed($core.bool v) { $_setBool(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasIsNotZommed() => $_has(1);
+  $core.bool hasIsNotZoomed() => $_has(1);
   @$pb.TagNumber(2)
-  void clearIsNotZommed() => clearField(2);
+  void clearIsNotZoomed() => clearField(2);
 
   @$pb.TagNumber(3)
   IPadOptions_iPadModel get model => $_getN(2);
