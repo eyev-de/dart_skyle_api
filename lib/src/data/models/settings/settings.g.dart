@@ -23,6 +23,9 @@ _$_Settings _$$_SettingsFromJson(Map<String, dynamic> json) => _$_Settings(
           ? const ScreenSizes()
           : ScreenSizes.fromJson(json['screenSizes'] as Map<String, dynamic>),
       hp: json['hp'] as bool? ?? false,
+      trackingMode:
+          $enumDecodeNullable(_$TrackingModeEnumMap, json['trackingMode']) ??
+              TrackingMode.both,
     );
 
 Map<String, dynamic> _$$_SettingsToJson(_$_Settings instance) =>
@@ -37,4 +40,11 @@ Map<String, dynamic> _$$_SettingsToJson(_$_Settings instance) =>
       'iPadOS': instance.iPadOS,
       'screenSizes': instance.screenSizes,
       'hp': instance.hp,
+      'trackingMode': _$TrackingModeEnumMap[instance.trackingMode]!,
     };
+
+const _$TrackingModeEnumMap = {
+  TrackingMode.both: 'both',
+  TrackingMode.left: 'left',
+  TrackingMode.right: 'right',
+};

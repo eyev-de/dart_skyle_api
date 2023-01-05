@@ -10,9 +10,8 @@ enum CalibrationPoints {
   five(5),
   nine(9);
 
-  final int _value;
-  int get value => _value;
-  const CalibrationPoints(this._value);
+  final int value;
+  const CalibrationPoints(this.value);
 
   static CalibrationPoints fromInt(int value) {
     switch (value) {

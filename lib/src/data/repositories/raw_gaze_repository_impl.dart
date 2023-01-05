@@ -4,31 +4,30 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
-import 'dart:async';
-
 import 'package:grpc/grpc_or_grpcweb.dart';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../data/models/point.dart';
-import '../../domain/repositories/gaze_repository.dart';
+import '../../domain/repositories/raw_gaze_repository.dart';
+
 import '../../generated/Skyle.pbgrpc.dart' as grpc;
 import '../../generated/google/protobuf/empty.pb.dart';
+import '../models/binocular_gaze.dart';
 
-class GazeRepositoryImpl implements GazeRepository {
+class RawGazeRepositoryImpl implements RawGazeRepository {
   grpc.SkyleClient? client;
-  ResponseStream<grpc.Point>? _stream;
+  ResponseStream<grpc.BinocularGaze>? _stream;
 
-  GazeRepositoryImpl({this.client});
+  RawGazeRepositoryImpl({this.client});
 
   @override
-  Stream<DataState<Point>> start() async* {
+  Stream<DataState<BinocularGaze>> start() async* {
     try {
       if (_stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
-      _stream = client!.gaze(Empty());
-      await for (final grpc.Point event in _stream!) {
-        yield DataSuccess(Point(x: event.x, y: event.y));
+      _stream = client!.rawBinocularGaze(Empty());
+      await for (final grpc.BinocularGaze event in _stream!) {
+        yield DataSuccess(BinocularGaze.fromBinocularGaze(event));
       }
     } on StillStreamingException catch (_) {
     } on NotConnectedException catch (_) {

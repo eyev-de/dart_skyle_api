@@ -17,7 +17,7 @@ import '../models/calibration/calibration_points.dart';
 import '../models/settings/screen_sizes.dart';
 
 class CalibrationRepositoryImpl extends CalibrationRepository {
-  StreamController<calibControlMessages> control = StreamController<calibControlMessages>();
+  StreamController<CalibControlMessages> control = StreamController<CalibControlMessages>();
   ResponseStream<CalibMessages>? stream;
   SkyleClient? client;
 
@@ -32,9 +32,9 @@ class CalibrationRepositoryImpl extends CalibrationRepository {
     try {
       if (stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
-      control = StreamController<calibControlMessages>();
+      control = StreamController<CalibControlMessages>();
       stream = client!.calibrate(control.stream);
-      final calibControlMessages message = (calibControlMessages()
+      final CalibControlMessages message = (CalibControlMessages()
         ..calibControl = (CalibControl()
           ..stepByStep = stepped
           ..calibrate = true
@@ -73,7 +73,7 @@ class CalibrationRepositoryImpl extends CalibrationRepository {
 
   @override
   Future<void> abort() async {
-    final calibControlMessages message = (calibControlMessages()..calibControl = (CalibControl()..abort = true));
+    final CalibControlMessages message = (CalibControlMessages()..calibControl = (CalibControl()..abort = true));
     control.add(message);
     await stream?.cancel();
     stream = null;
@@ -81,7 +81,7 @@ class CalibrationRepositoryImpl extends CalibrationRepository {
 
   @override
   void next() {
-    final calibControlMessages message = (calibControlMessages()..calibConfirm = (CalibConfirm()..confirmed = true));
+    final CalibControlMessages message = (CalibControlMessages()..calibConfirm = (CalibConfirm()..confirmed = true));
     control.add(message);
   }
 }

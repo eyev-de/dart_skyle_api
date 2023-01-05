@@ -19,6 +19,7 @@ import 'data/repositories/profiles_repository_imp.dart';
 import 'data/repositories/reset_repository_impl.dart';
 import 'data/repositories/settings_repository_impl.dart';
 import 'data/repositories/switch_repository_impl.dart';
+import 'data/repositories/trigger_repository_impl.dart';
 import 'data/repositories/versions_repository_impl.dart';
 import 'data/repositories/video_stream_repository_impl.dart';
 import 'domain/repositories/calibration_repository.dart';
@@ -28,6 +29,7 @@ import 'domain/repositories/profiles_repository.dart';
 import 'domain/repositories/reset_repository.dart';
 import 'domain/repositories/settings_repository.dart';
 import 'domain/repositories/switch_repository.dart';
+import 'domain/repositories/trigger_repository.dart';
 import 'domain/repositories/versions_repository.dart';
 import 'domain/repositories/video_stream_repository.dart';
 import 'generated/Skyle.pbgrpc.dart';
@@ -57,6 +59,7 @@ class ET {
   SwitchRepository switchSettings = SwitchRepositoryImpl();
   final VideoStreamRepository stream = VideoStreamRepositoryImpl();
   ProfilesRepository profiles = ProfilesRepositoryImpl();
+  TriggerRepository trigger = TriggerRepositoryImpl();
 
   Connection _connection = Connection.disconnected;
   Connection get connection => _connection;
@@ -192,6 +195,7 @@ class ET {
     positioning = PositioningRepositoryImpl(client: client);
     switchSettings = SwitchRepositoryImpl(client: client);
     profiles = ProfilesRepositoryImpl(client: client);
+    trigger = TriggerRepositoryImpl(client: client);
   }
 
   /// Disposes the instance of [ET] completely.

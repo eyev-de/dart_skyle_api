@@ -30,6 +30,7 @@ mixin _$Settings {
   IPadOS get iPadOS => throw _privateConstructorUsedError;
   ScreenSizes get screenSizes => throw _privateConstructorUsedError;
   bool get hp => throw _privateConstructorUsedError;
+  TrackingMode get trackingMode => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +52,8 @@ abstract class $SettingsCopyWith<$Res> {
       Filter filter,
       IPadOS iPadOS,
       ScreenSizes screenSizes,
-      bool hp});
+      bool hp,
+      TrackingMode trackingMode});
 
   $FilterCopyWith<$Res> get filter;
   $IPadOSCopyWith<$Res> get iPadOS;
@@ -78,6 +80,7 @@ class _$SettingsCopyWithImpl<$Res> implements $SettingsCopyWith<$Res> {
     Object? iPadOS = freezed,
     Object? screenSizes = freezed,
     Object? hp = freezed,
+    Object? trackingMode = freezed,
   }) {
     return _then(_value.copyWith(
       video: video == freezed
@@ -120,6 +123,10 @@ class _$SettingsCopyWithImpl<$Res> implements $SettingsCopyWith<$Res> {
           ? _value.hp
           : hp // ignore: cast_nullable_to_non_nullable
               as bool,
+      trackingMode: trackingMode == freezed
+          ? _value.trackingMode
+          : trackingMode // ignore: cast_nullable_to_non_nullable
+              as TrackingMode,
     ));
   }
 
@@ -161,7 +168,8 @@ abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
       Filter filter,
       IPadOS iPadOS,
       ScreenSizes screenSizes,
-      bool hp});
+      bool hp,
+      TrackingMode trackingMode});
 
   @override
   $FilterCopyWith<$Res> get filter;
@@ -193,6 +201,7 @@ class __$$_SettingsCopyWithImpl<$Res> extends _$SettingsCopyWithImpl<$Res>
     Object? iPadOS = freezed,
     Object? screenSizes = freezed,
     Object? hp = freezed,
+    Object? trackingMode = freezed,
   }) {
     return _then(_$_Settings(
       video: video == freezed
@@ -235,6 +244,10 @@ class __$$_SettingsCopyWithImpl<$Res> extends _$SettingsCopyWithImpl<$Res>
           ? _value.hp
           : hp // ignore: cast_nullable_to_non_nullable
               as bool,
+      trackingMode: trackingMode == freezed
+          ? _value.trackingMode
+          : trackingMode // ignore: cast_nullable_to_non_nullable
+              as TrackingMode,
     ));
   }
 }
@@ -252,7 +265,8 @@ class _$_Settings implements _Settings {
       this.filter = const Filter(),
       this.iPadOS = const IPadOS(),
       this.screenSizes = const ScreenSizes(),
-      this.hp = false});
+      this.hp = false,
+      this.trackingMode = TrackingMode.both});
 
   factory _$_Settings.fromJson(Map<String, dynamic> json) =>
       _$$_SettingsFromJson(json);
@@ -287,10 +301,13 @@ class _$_Settings implements _Settings {
   @override
   @JsonKey()
   final bool hp;
+  @override
+  @JsonKey()
+  final TrackingMode trackingMode;
 
   @override
   String toString() {
-    return 'Settings(video: $video, enablePause: $enablePause, pause: $pause, guidance: $guidance, enableStandby: $enableStandby, disableMouse: $disableMouse, filter: $filter, iPadOS: $iPadOS, screenSizes: $screenSizes, hp: $hp)';
+    return 'Settings(video: $video, enablePause: $enablePause, pause: $pause, guidance: $guidance, enableStandby: $enableStandby, disableMouse: $disableMouse, filter: $filter, iPadOS: $iPadOS, screenSizes: $screenSizes, hp: $hp, trackingMode: $trackingMode)';
   }
 
   @override
@@ -311,7 +328,9 @@ class _$_Settings implements _Settings {
             const DeepCollectionEquality().equals(other.iPadOS, iPadOS) &&
             const DeepCollectionEquality()
                 .equals(other.screenSizes, screenSizes) &&
-            const DeepCollectionEquality().equals(other.hp, hp));
+            const DeepCollectionEquality().equals(other.hp, hp) &&
+            const DeepCollectionEquality()
+                .equals(other.trackingMode, trackingMode));
   }
 
   @JsonKey(ignore: true)
@@ -327,7 +346,8 @@ class _$_Settings implements _Settings {
       const DeepCollectionEquality().hash(filter),
       const DeepCollectionEquality().hash(iPadOS),
       const DeepCollectionEquality().hash(screenSizes),
-      const DeepCollectionEquality().hash(hp));
+      const DeepCollectionEquality().hash(hp),
+      const DeepCollectionEquality().hash(trackingMode));
 
   @JsonKey(ignore: true)
   @override
@@ -353,7 +373,8 @@ abstract class _Settings implements Settings {
       final Filter filter,
       final IPadOS iPadOS,
       final ScreenSizes screenSizes,
-      final bool hp}) = _$_Settings;
+      final bool hp,
+      final TrackingMode trackingMode}) = _$_Settings;
 
   factory _Settings.fromJson(Map<String, dynamic> json) = _$_Settings.fromJson;
 
@@ -377,6 +398,8 @@ abstract class _Settings implements Settings {
   ScreenSizes get screenSizes;
   @override
   bool get hp;
+  @override
+  TrackingMode get trackingMode;
   @override
   @JsonKey(ignore: true)
   _$$_SettingsCopyWith<_$_Settings> get copyWith =>

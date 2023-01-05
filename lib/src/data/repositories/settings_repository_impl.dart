@@ -13,6 +13,7 @@ import '../../generated/Skyle.pbgrpc.dart';
 import '../models/settings/ipad_model.dart';
 import '../models/settings/screen_sizes.dart';
 import '../models/settings/settings.dart';
+import '../models/settings/tracking_mode.dart';
 
 class SettingsRepositoryImpl implements SettingsRepository {
   SkyleClient? client;
@@ -104,6 +105,13 @@ class SettingsRepositoryImpl implements SettingsRepository {
   @override
   Future<DataState<Settings>> video({bool on = true}) {
     final Options options = Options.fromJson(_state.writeToJson())..stream = on;
+    return _setStateAsync(options: options);
+  }
+
+  @override
+  Future<DataState<Settings>> setTrackingMode({TrackingMode trackingMode = TrackingMode.both}) {
+    final Options options = Options.fromJson(_state.writeToJson())..eyeUsage = trackingMode.toIPadOptionsEyeUseModel();
+    print(options.toDebugString());
     return _setStateAsync(options: options);
   }
 }

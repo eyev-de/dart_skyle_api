@@ -11,6 +11,7 @@ import '../../../generated/Skyle.pb.dart';
 import 'filter.dart';
 import 'ipados.dart';
 import 'screen_sizes.dart';
+import 'tracking_mode.dart';
 
 part 'settings.freezed.dart';
 part 'settings.g.dart';
@@ -28,6 +29,7 @@ class Settings with _$Settings {
     @Default(IPadOS()) IPadOS iPadOS,
     @Default(ScreenSizes()) ScreenSizes screenSizes,
     @Default(false) bool hp,
+    @Default(TrackingMode.none) TrackingMode trackingMode,
   }) = _Settings;
 
   factory Settings.fromJson(Map<String, Object?> json) => _$SettingsFromJson(json);
@@ -44,6 +46,7 @@ class Settings with _$Settings {
       iPadOS: IPadOS.fromIPadOptions(options.iPadOptions),
       screenSizes: ScreenSizes.fromScreenResolution(options.res),
       hp: options.hp,
+      trackingMode: options.hasEyeUsage() ? TrackingMode.fromOptionsEyeUseModel(options.eyeUsage) : TrackingMode.none,
     );
   }
 }

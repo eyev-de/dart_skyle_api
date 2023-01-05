@@ -10,25 +10,25 @@ import 'package:grpc/grpc_or_grpcweb.dart';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../data/models/point.dart';
-import '../../domain/repositories/gaze_repository.dart';
+import '../../domain/repositories/trigger_repository.dart';
 import '../../generated/Skyle.pbgrpc.dart' as grpc;
 import '../../generated/google/protobuf/empty.pb.dart';
+import '../models/trigger.dart';
 
-class GazeRepositoryImpl implements GazeRepository {
+class TriggerRepositoryImpl implements TriggerRepository {
   grpc.SkyleClient? client;
-  ResponseStream<grpc.Point>? _stream;
+  ResponseStream<grpc.TriggerMessage>? _stream;
 
-  GazeRepositoryImpl({this.client});
+  TriggerRepositoryImpl({this.client});
 
   @override
-  Stream<DataState<Point>> start() async* {
+  Stream<DataState<Trigger>> start() async* {
     try {
       if (_stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
-      _stream = client!.gaze(Empty());
-      await for (final grpc.Point event in _stream!) {
-        yield DataSuccess(Point(x: event.x, y: event.y));
+      _stream = client!.trigger(Empty());
+      await for (final grpc.TriggerMessage event in _stream!) {
+        yield DataSuccess(Trigger.fromTriggerMessage(event));
       }
     } on StillStreamingException catch (_) {
     } on NotConnectedException catch (_) {

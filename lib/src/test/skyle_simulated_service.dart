@@ -40,7 +40,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
   }).toList();
 
   @override
-  Stream<CalibMessages> calibrate(ServiceCall call, Stream<calibControlMessages> request) async* {
+  Stream<CalibMessages> calibrate(ServiceCall call, Stream<CalibControlMessages> request) async* {
     bool abort = false;
     CalibrationPoints? pts;
     int currentIndex = 0;
@@ -228,8 +228,20 @@ class SkyleSimulatedService extends SkyleServiceBase {
   }
 
   @override
-  Stream<Point> cursorCalibration(ServiceCall call, Stream<calibCursorMessages> request) {
+  Stream<Point> cursorCalibration(ServiceCall call, Stream<CalibCursorMessages> request) {
     // TODO(krjw-eyev): implement cursorCalibration
+    throw UnimplementedError();
+  }
+
+  @override
+  Stream<BinocularGaze> rawBinocularGaze(ServiceCall call, Empty request) {
+    // TODO: implement rawBinocularGaze
+    throw UnimplementedError();
+  }
+
+  @override
+  Stream<RawImage> rawImages(ServiceCall call, Empty request) {
+    // TODO: implement rawImages
     throw UnimplementedError();
   }
 }
@@ -250,7 +262,7 @@ final defaultOptions = Options(
 final defaultProfile = Profile()
   ..id = 1
   ..name = 'Default'
-  ..skill = Profile_Skill.medium;
+  ..skill = Profile_Skill.Medium;
 
 final defaultButton = Button(
   availableActions: [

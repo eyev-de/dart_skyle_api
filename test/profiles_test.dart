@@ -50,7 +50,7 @@ class ProfilesTester {
       });
 
       test('Add profile, delete profile', () async {
-        final profile = Profile.fromProfile(grpc.Profile(id: 2, name: 'Test', skill: grpc.Profile_Skill.low));
+        final profile = Profile.fromProfile(grpc.Profile(id: 2, name: 'Test', skill: grpc.Profile_Skill.Low));
         final newProfile = await client.et.profiles.add(profile);
         expect(newProfile.id, profile.id);
 

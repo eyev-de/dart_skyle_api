@@ -8,6 +8,18 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use rawImageDescriptor instead')
+const RawImage$json = const {
+  '1': 'RawImage',
+  '2': const [
+    const {'1': 'width', '3': 1, '4': 1, '5': 5, '10': 'width'},
+    const {'1': 'height', '3': 2, '4': 1, '5': 5, '10': 'height'},
+    const {'1': 'data', '3': 3, '4': 1, '5': 12, '10': 'data'},
+  ],
+};
+
+/// Descriptor for `RawImage`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List rawImageDescriptor = $convert.base64Decode('CghSYXdJbWFnZRIUCgV3aWR0aBgBIAEoBVIFd2lkdGgSFgoGaGVpZ2h0GAIgASgFUgZoZWlnaHQSEgoEZGF0YRgDIAEoDFIEZGF0YQ==');
 @$core.Deprecated('Use triggerMessageDescriptor instead')
 const TriggerMessage$json = const {
   '1': 'TriggerMessage',
@@ -48,14 +60,14 @@ const Profile$json = const {
 const Profile_Skill$json = const {
   '1': 'Skill',
   '2': const [
-    const {'1': 'low', '2': 0},
-    const {'1': 'medium', '2': 1},
-    const {'1': 'high', '2': 2},
+    const {'1': 'Low', '2': 0},
+    const {'1': 'Medium', '2': 1},
+    const {'1': 'High', '2': 2},
   ],
 };
 
 /// Descriptor for `Profile`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List profileDescriptor = $convert.base64Decode('CgdQcm9maWxlEg4KAmlkGAEgASgFUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEioKBXNraWxsGAMgASgOMhQuU2t5bGUuUHJvZmlsZS5Ta2lsbFIFc2tpbGwiJgoFU2tpbGwSBwoDbG93EAASCgoGbWVkaXVtEAESCAoEaGlnaBAC');
+final $typed_data.Uint8List profileDescriptor = $convert.base64Decode('CgdQcm9maWxlEg4KAmlkGAEgASgFUgJpZBISCgRuYW1lGAIgASgJUgRuYW1lEioKBXNraWxsGAMgASgOMhQuU2t5bGUuUHJvZmlsZS5Ta2lsbFIFc2tpbGwiJgoFU2tpbGwSBwoDTG93EAASCgoGTWVkaXVtEAESCAoESGlnaBAC');
 @$core.Deprecated('Use statusMessageDescriptor instead')
 const StatusMessage$json = const {
   '1': 'StatusMessage',
@@ -81,8 +93,8 @@ const OptionMessage$json = const {
 /// Descriptor for `OptionMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List optionMessageDescriptor = $convert.base64Decode('Cg1PcHRpb25NZXNzYWdlEi4KBWVtcHR5GAEgASgLMhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5SABSBWVtcHR5EioKB29wdGlvbnMYAiABKAsyDi5Ta3lsZS5PcHRpb25zSABSB29wdGlvbnNCCQoHbWVzc2FnZQ==');
 @$core.Deprecated('Use calibControlMessagesDescriptor instead')
-const calibControlMessages$json = const {
-  '1': 'calibControlMessages',
+const CalibControlMessages$json = const {
+  '1': 'CalibControlMessages',
   '2': const [
     const {'1': 'calibControl', '3': 1, '4': 1, '5': 11, '6': '.Skyle.CalibControl', '9': 0, '10': 'calibControl'},
     const {'1': 'calibImprove', '3': 2, '4': 1, '5': 11, '6': '.Skyle.CalibImprove', '9': 0, '10': 'calibImprove'},
@@ -93,11 +105,11 @@ const calibControlMessages$json = const {
   ],
 };
 
-/// Descriptor for `calibControlMessages`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List calibControlMessagesDescriptor = $convert.base64Decode('ChRjYWxpYkNvbnRyb2xNZXNzYWdlcxI5CgxjYWxpYkNvbnRyb2wYASABKAsyEy5Ta3lsZS5DYWxpYkNvbnRyb2xIAFIMY2FsaWJDb250cm9sEjkKDGNhbGliSW1wcm92ZRgCIAEoCzITLlNreWxlLkNhbGliSW1wcm92ZUgAUgxjYWxpYkltcHJvdmUSOQoMY2FsaWJDb25maXJtGAMgASgLMhMuU2t5bGUuQ2FsaWJDb25maXJtSABSDGNhbGliQ29uZmlybUIJCgdtZXNzYWdl');
+/// Descriptor for `CalibControlMessages`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List calibControlMessagesDescriptor = $convert.base64Decode('ChRDYWxpYkNvbnRyb2xNZXNzYWdlcxI5CgxjYWxpYkNvbnRyb2wYASABKAsyEy5Ta3lsZS5DYWxpYkNvbnRyb2xIAFIMY2FsaWJDb250cm9sEjkKDGNhbGliSW1wcm92ZRgCIAEoCzITLlNreWxlLkNhbGliSW1wcm92ZUgAUgxjYWxpYkltcHJvdmUSOQoMY2FsaWJDb25maXJtGAMgASgLMhMuU2t5bGUuQ2FsaWJDb25maXJtSABSDGNhbGliQ29uZmlybUIJCgdtZXNzYWdl');
 @$core.Deprecated('Use calibCursorMessagesDescriptor instead')
-const calibCursorMessages$json = const {
-  '1': 'calibCursorMessages',
+const CalibCursorMessages$json = const {
+  '1': 'CalibCursorMessages',
   '2': const [
     const {'1': 'empty', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Empty', '9': 0, '10': 'empty'},
     const {'1': 'calibConfirm', '3': 3, '4': 1, '5': 11, '6': '.Skyle.CalibConfirm', '9': 0, '10': 'calibConfirm'},
@@ -107,8 +119,8 @@ const calibCursorMessages$json = const {
   ],
 };
 
-/// Descriptor for `calibCursorMessages`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List calibCursorMessagesDescriptor = $convert.base64Decode('ChNjYWxpYkN1cnNvck1lc3NhZ2VzEi4KBWVtcHR5GAEgASgLMhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5SABSBWVtcHR5EjkKDGNhbGliQ29uZmlybRgDIAEoCzITLlNreWxlLkNhbGliQ29uZmlybUgAUgxjYWxpYkNvbmZpcm1CCQoHbWVzc2FnZQ==');
+/// Descriptor for `CalibCursorMessages`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List calibCursorMessagesDescriptor = $convert.base64Decode('ChNDYWxpYkN1cnNvck1lc3NhZ2VzEi4KBWVtcHR5GAEgASgLMhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5SABSBWVtcHR5EjkKDGNhbGliQ29uZmlybRgDIAEoCzITLlNreWxlLkNhbGliQ29uZmlybUgAUgxjYWxpYkNvbmZpcm1CCQoHbWVzc2FnZQ==');
 @$core.Deprecated('Use calibControlDescriptor instead')
 const CalibControl$json = const {
   '1': 'CalibControl',
@@ -173,6 +185,17 @@ const CalibMessages$json = const {
 
 /// Descriptor for `CalibMessages`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List calibMessagesDescriptor = $convert.base64Decode('Cg1DYWxpYk1lc3NhZ2VzEjkKDGNhbGliQ29udHJvbBgBIAEoCzITLlNreWxlLkNhbGliQ29udHJvbEgAUgxjYWxpYkNvbnRyb2wSMwoKY2FsaWJQb2ludBgCIAEoCzIRLlNreWxlLkNhbGliUG9pbnRIAFIKY2FsaWJQb2ludBI5CgxjYWxpYlF1YWxpdHkYAyABKAsyEy5Ta3lsZS5DYWxpYlF1YWxpdHlIAFIMY2FsaWJRdWFsaXR5QgkKB21lc3NhZ2U=');
+@$core.Deprecated('Use binocularGazeDescriptor instead')
+const BinocularGaze$json = const {
+  '1': 'BinocularGaze',
+  '2': const [
+    const {'1': 'leftGaze', '3': 1, '4': 1, '5': 11, '6': '.Skyle.Point', '10': 'leftGaze'},
+    const {'1': 'rightGaze', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Point', '10': 'rightGaze'},
+  ],
+};
+
+/// Descriptor for `BinocularGaze`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List binocularGazeDescriptor = $convert.base64Decode('Cg1CaW5vY3VsYXJHYXplEigKCGxlZnRHYXplGAEgASgLMgwuU2t5bGUuUG9pbnRSCGxlZnRHYXplEioKCXJpZ2h0R2F6ZRgCIAEoCzIMLlNreWxlLlBvaW50UglyaWdodEdhemU=');
 @$core.Deprecated('Use pointDescriptor instead')
 const Point$json = const {
   '1': 'Point',
@@ -235,11 +258,23 @@ const Options$json = const {
     const {'1': 'iPadOptions', '3': 8, '4': 1, '5': 11, '6': '.Skyle.IPadOptions', '10': 'iPadOptions'},
     const {'1': 'res', '3': 9, '4': 1, '5': 11, '6': '.Skyle.ScreenResolution', '10': 'res'},
     const {'1': 'hp', '3': 10, '4': 1, '5': 8, '10': 'hp'},
+    const {'1': 'eyeUsage', '3': 11, '4': 1, '5': 14, '6': '.Skyle.Options.eyeUse', '10': 'eyeUsage'},
+  ],
+  '4': const [Options_eyeUse$json],
+};
+
+@$core.Deprecated('Use optionsDescriptor instead')
+const Options_eyeUse$json = const {
+  '1': 'eyeUse',
+  '2': const [
+    const {'1': 'Both', '2': 0},
+    const {'1': 'Left', '2': 1},
+    const {'1': 'Right', '2': 2},
   ],
 };
 
 /// Descriptor for `Options`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List optionsDescriptor = $convert.base64Decode('CgdPcHRpb25zEhYKBnN0cmVhbRgBIAEoCFIGc3RyZWFtEiAKC2VuYWJsZVBhdXNlGAIgASgIUgtlbmFibGVQYXVzZRIUCgVwYXVzZRgDIAEoCFIFcGF1c2USGgoIZ3VpZGFuY2UYBCABKAhSCGd1aWRhbmNlEiQKDWVuYWJsZVN0YW5kYnkYBSABKAhSDWVuYWJsZVN0YW5kYnkSIgoMZGlzYWJsZU1vdXNlGAYgASgIUgxkaXNhYmxlTW91c2USLAoGZmlsdGVyGAcgASgLMhQuU2t5bGUuRmlsdGVyT3B0aW9uc1IGZmlsdGVyEjQKC2lQYWRPcHRpb25zGAggASgLMhIuU2t5bGUuSVBhZE9wdGlvbnNSC2lQYWRPcHRpb25zEikKA3JlcxgJIAEoCzIXLlNreWxlLlNjcmVlblJlc29sdXRpb25SA3JlcxIOCgJocBgKIAEoCFICaHA=');
+final $typed_data.Uint8List optionsDescriptor = $convert.base64Decode('CgdPcHRpb25zEhYKBnN0cmVhbRgBIAEoCFIGc3RyZWFtEiAKC2VuYWJsZVBhdXNlGAIgASgIUgtlbmFibGVQYXVzZRIUCgVwYXVzZRgDIAEoCFIFcGF1c2USGgoIZ3VpZGFuY2UYBCABKAhSCGd1aWRhbmNlEiQKDWVuYWJsZVN0YW5kYnkYBSABKAhSDWVuYWJsZVN0YW5kYnkSIgoMZGlzYWJsZU1vdXNlGAYgASgIUgxkaXNhYmxlTW91c2USLAoGZmlsdGVyGAcgASgLMhQuU2t5bGUuRmlsdGVyT3B0aW9uc1IGZmlsdGVyEjQKC2lQYWRPcHRpb25zGAggASgLMhIuU2t5bGUuSVBhZE9wdGlvbnNSC2lQYWRPcHRpb25zEikKA3JlcxgJIAEoCzIXLlNreWxlLlNjcmVlblJlc29sdXRpb25SA3JlcxIOCgJocBgKIAEoCFICaHASMQoIZXllVXNhZ2UYCyABKA4yFS5Ta3lsZS5PcHRpb25zLmV5ZVVzZVIIZXllVXNhZ2UiJwoGZXllVXNlEggKBEJvdGgQABIICgRMZWZ0EAESCQoFUmlnaHQQAg==');
 @$core.Deprecated('Use iPadOptionsDescriptor instead')
 const IPadOptions$json = const {
   '1': 'IPadOptions',
@@ -258,25 +293,25 @@ const IPadOptions$json = const {
 const IPadOptions_iPadModel$json = const {
   '1': 'iPadModel',
   '2': const [
-    const {'1': 'iPad8_5', '2': 0},
-    const {'1': 'iPad8_6', '2': 1},
-    const {'1': 'iPad8_7', '2': 2},
-    const {'1': 'iPad8_8', '2': 3},
-    const {'1': 'iPad8_11', '2': 4},
-    const {'1': 'iPad8_12', '2': 5},
-    const {'1': 'iPad13_1', '2': 6},
-    const {'1': 'iPad13_2', '2': 7},
-    const {'1': 'iPad13_8', '2': 8},
-    const {'1': 'iPad13_9', '2': 9},
-    const {'1': 'iPad13_10', '2': 10},
-    const {'1': 'iPad13_11', '2': 11},
-    const {'1': 'iPad13_16', '2': 12},
-    const {'1': 'iPad13_17', '2': 13},
+    const {'1': 'IPad8_5', '2': 0},
+    const {'1': 'IPad8_6', '2': 1},
+    const {'1': 'IPad8_7', '2': 2},
+    const {'1': 'IPad8_8', '2': 3},
+    const {'1': 'IPad8_11', '2': 4},
+    const {'1': 'IPad8_12', '2': 5},
+    const {'1': 'IPad13_1', '2': 6},
+    const {'1': 'IPad13_2', '2': 7},
+    const {'1': 'IPad13_8', '2': 8},
+    const {'1': 'IPad13_9', '2': 9},
+    const {'1': 'IPad13_10', '2': 10},
+    const {'1': 'IPad13_11', '2': 11},
+    const {'1': 'IPad13_16', '2': 12},
+    const {'1': 'IPad13_17', '2': 13},
   ],
 };
 
 /// Descriptor for `IPadOptions`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab29tZWQYAiABKAhSC2lzTm90Wm9vbWVkEjQKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMuaVBhZE1vZGVsSABSBW1vZGVsIs8BCglpUGFkTW9kZWwSCwoHaVBhZDhfNRAAEgsKB2lQYWQ4XzYQARILCgdpUGFkOF83EAISCwoHaVBhZDhfOBADEgwKCGlQYWQ4XzExEAQSDAoIaVBhZDhfMTIQBRIMCghpUGFkMTNfMRAGEgwKCGlQYWQxM18yEAcSDAoIaVBhZDEzXzgQCBIMCghpUGFkMTNfORAJEg0KCWlQYWQxM18xMBAKEg0KCWlQYWQxM18xMRALEg0KCWlQYWQxM18xNhAMEg0KCWlQYWQxM18xNxANQhAKDm9wdGlvbmFsX21vZGVs');
+final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode('CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab29tZWQYAiABKAhSC2lzTm90Wm9vbWVkEjQKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMuaVBhZE1vZGVsSABSBW1vZGVsIs8BCglpUGFkTW9kZWwSCwoHSVBhZDhfNRAAEgsKB0lQYWQ4XzYQARILCgdJUGFkOF83EAISCwoHSVBhZDhfOBADEgwKCElQYWQ4XzExEAQSDAoISVBhZDhfMTIQBRIMCghJUGFkMTNfMRAGEgwKCElQYWQxM18yEAcSDAoISVBhZDEzXzgQCBIMCghJUGFkMTNfORAJEg0KCUlQYWQxM18xMBAKEg0KCUlQYWQxM18xMRALEg0KCUlQYWQxM18xNhAMEg0KCUlQYWQxM18xNxANQhAKDm9wdGlvbmFsX21vZGVs');
 @$core.Deprecated('Use deviceVersionsDescriptor instead')
 const DeviceVersions$json = const {
   '1': 'DeviceVersions',

@@ -10,6 +10,7 @@ import '../../data/models/settings/ipad_model.dart';
 import '../../data/models/settings/ipados.dart';
 import '../../data/models/settings/screen_sizes.dart';
 import '../../data/models/settings/settings.dart';
+import '../../data/models/settings/tracking_mode.dart';
 
 /// Interface for the settings of Skyle.
 abstract class SettingsRepository {
@@ -54,4 +55,7 @@ abstract class SettingsRepository {
 
   /// Sets the [ScreenSizes] and behaves like [get].
   Future<DataState<Settings>> setResolution({ScreenSizes screenSizes = const ScreenSizes()});
+
+  /// Sets the [TrackingMode] and behaves like [get].
+  Future<DataState<Settings>> setTrackingMode({TrackingMode trackingMode = TrackingMode.both});
 }

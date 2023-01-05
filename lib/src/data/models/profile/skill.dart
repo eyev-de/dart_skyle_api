@@ -7,31 +7,25 @@
 import '../../../generated/Skyle.pb.dart';
 
 enum Skill {
-  beginner,
-  medium,
-  advanced;
+  beginner(0),
+  medium(1),
+  advanced(2);
+
+  final int value;
+  const Skill(this.value);
 
   factory Skill.fromProfileSkill(Profile_Skill skill) {
-    switch (skill.value) {
-      case 0:
-        return Skill.beginner;
-      case 1:
-        return Skill.medium;
-      case 2:
-        return Skill.advanced;
-      default:
-        return Skill.medium;
-    }
+    return Skill.values.firstWhere((element) => element.value == skill.value);
   }
 
   Profile_Skill toProfileSkill() {
     switch (this) {
       case Skill.beginner:
-        return Profile_Skill.low;
+        return Profile_Skill.Low;
       case Skill.medium:
-        return Profile_Skill.medium;
+        return Profile_Skill.Medium;
       case Skill.advanced:
-        return Profile_Skill.high;
+        return Profile_Skill.High;
     }
   }
 
