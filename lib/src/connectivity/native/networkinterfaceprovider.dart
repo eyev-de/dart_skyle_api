@@ -10,6 +10,8 @@ import 'dart:isolate';
 
 // import 'package:universal_platform/universal_platform.dart';
 
+import 'package:universal_platform/universal_platform.dart';
+
 import '../../et.dart';
 import '../connectivityprovider.dart';
 
@@ -96,17 +98,25 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
         // TODO(krjw-eyev) Document Android < 12 solution
         // This is a shady hack for Android < 12
         // if (UniversalPlatform.isAndroid && interface.name == 'eth0') {
-        //   for (final InternetAddress address in interface.addresses) {
-        //     final addressParts = address.address.split('.');
-        //     final hostIP = '${addressParts[0]}.${addressParts[1]}.${addressParts[2]}.243';
-        //     message = ConnectionMessage.connecting(hostIP);
-        //     break;
-        //   }
-        //   if (message.connection == Connection.connecting) {
-        //     break;
-        //   }
+        // for (final InternetAddress address in interface.addresses) {
+        //   final addressParts = address.address.split('.');
+        //   final hostIP = '${addressParts[0]}.${addressParts[1]}.${addressParts[2]}.243';
+        //   message = ConnectionMessage.connecting(hostIP);
+        //   break;
+        // }
+        // if (message.connection == Connection.connecting) {
+        //   break;
+        // }
         // }
         // END OF HACKY ANDROID SOLUTION
+
+        // HACKY SOLUTION FOR CHROMEOS
+        if (UniversalPlatform.isAndroid && interface.name == 'eth0') {
+          message = ConnectionMessage.connecting('192.168.137.2');
+          break;
+        }
+        // END OF HACKY SOLUTION OF CHROMEOS
+
         for (final InternetAddress address in interface.addresses) {
           final hostIP = '${address.address.substring(0, address.address.length - 1)}2';
           if (address.type == InternetAddressType.IPv4 && urls.contains(hostIP)) {
