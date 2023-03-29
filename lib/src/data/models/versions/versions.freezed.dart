@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'versions.dart';
 
@@ -37,7 +37,8 @@ mixin _$Versions {
 /// @nodoc
 abstract class $VersionsCopyWith<$Res> {
   factory $VersionsCopyWith(Versions value, $Res Function(Versions) then) =
-      _$VersionsCopyWithImpl<$Res>;
+      _$VersionsCopyWithImpl<$Res, Versions>;
+  @useResult
   $Res call(
       {String firmware,
       String eyetracker,
@@ -49,53 +50,56 @@ abstract class $VersionsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VersionsCopyWithImpl<$Res> implements $VersionsCopyWith<$Res> {
+class _$VersionsCopyWithImpl<$Res, $Val extends Versions>
+    implements $VersionsCopyWith<$Res> {
   _$VersionsCopyWithImpl(this._value, this._then);
 
-  final Versions _value;
   // ignore: unused_field
-  final $Res Function(Versions) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firmware = freezed,
-    Object? eyetracker = freezed,
-    Object? calib = freezed,
-    Object? base = freezed,
-    Object? serial = freezed,
-    Object? skyleType = freezed,
-    Object? isDemo = freezed,
+    Object? firmware = null,
+    Object? eyetracker = null,
+    Object? calib = null,
+    Object? base = null,
+    Object? serial = null,
+    Object? skyleType = null,
+    Object? isDemo = null,
   }) {
     return _then(_value.copyWith(
-      firmware: firmware == freezed
+      firmware: null == firmware
           ? _value.firmware
           : firmware // ignore: cast_nullable_to_non_nullable
               as String,
-      eyetracker: eyetracker == freezed
+      eyetracker: null == eyetracker
           ? _value.eyetracker
           : eyetracker // ignore: cast_nullable_to_non_nullable
               as String,
-      calib: calib == freezed
+      calib: null == calib
           ? _value.calib
           : calib // ignore: cast_nullable_to_non_nullable
               as String,
-      base: base == freezed
+      base: null == base
           ? _value.base
           : base // ignore: cast_nullable_to_non_nullable
               as String,
-      serial: serial == freezed
+      serial: null == serial
           ? _value.serial
           : serial // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      skyleType: skyleType == freezed
+      skyleType: null == skyleType
           ? _value.skyleType
           : skyleType // ignore: cast_nullable_to_non_nullable
               as int,
-      isDemo: isDemo == freezed
+      isDemo: null == isDemo
           ? _value.isDemo
           : isDemo // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -105,6 +109,7 @@ abstract class _$$_VersionsCopyWith<$Res> implements $VersionsCopyWith<$Res> {
           _$_Versions value, $Res Function(_$_Versions) then) =
       __$$_VersionsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String firmware,
       String eyetracker,
@@ -116,51 +121,50 @@ abstract class _$$_VersionsCopyWith<$Res> implements $VersionsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VersionsCopyWithImpl<$Res> extends _$VersionsCopyWithImpl<$Res>
+class __$$_VersionsCopyWithImpl<$Res>
+    extends _$VersionsCopyWithImpl<$Res, _$_Versions>
     implements _$$_VersionsCopyWith<$Res> {
   __$$_VersionsCopyWithImpl(
       _$_Versions _value, $Res Function(_$_Versions) _then)
-      : super(_value, (v) => _then(v as _$_Versions));
+      : super(_value, _then);
 
-  @override
-  _$_Versions get _value => super._value as _$_Versions;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? firmware = freezed,
-    Object? eyetracker = freezed,
-    Object? calib = freezed,
-    Object? base = freezed,
-    Object? serial = freezed,
-    Object? skyleType = freezed,
-    Object? isDemo = freezed,
+    Object? firmware = null,
+    Object? eyetracker = null,
+    Object? calib = null,
+    Object? base = null,
+    Object? serial = null,
+    Object? skyleType = null,
+    Object? isDemo = null,
   }) {
     return _then(_$_Versions(
-      firmware: firmware == freezed
+      firmware: null == firmware
           ? _value.firmware
           : firmware // ignore: cast_nullable_to_non_nullable
               as String,
-      eyetracker: eyetracker == freezed
+      eyetracker: null == eyetracker
           ? _value.eyetracker
           : eyetracker // ignore: cast_nullable_to_non_nullable
               as String,
-      calib: calib == freezed
+      calib: null == calib
           ? _value.calib
           : calib // ignore: cast_nullable_to_non_nullable
               as String,
-      base: base == freezed
+      base: null == base
           ? _value.base
           : base // ignore: cast_nullable_to_non_nullable
               as String,
-      serial: serial == freezed
+      serial: null == serial
           ? _value.serial
           : serial // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      skyleType: skyleType == freezed
+      skyleType: null == skyleType
           ? _value.skyleType
           : skyleType // ignore: cast_nullable_to_non_nullable
               as int,
-      isDemo: isDemo == freezed
+      isDemo: null == isDemo
           ? _value.isDemo
           : isDemo // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -208,30 +212,26 @@ class _$_Versions implements _Versions {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Versions &&
-            const DeepCollectionEquality().equals(other.firmware, firmware) &&
-            const DeepCollectionEquality()
-                .equals(other.eyetracker, eyetracker) &&
-            const DeepCollectionEquality().equals(other.calib, calib) &&
-            const DeepCollectionEquality().equals(other.base, base) &&
-            const DeepCollectionEquality().equals(other.serial, serial) &&
-            const DeepCollectionEquality().equals(other.skyleType, skyleType) &&
-            const DeepCollectionEquality().equals(other.isDemo, isDemo));
+            (identical(other.firmware, firmware) ||
+                other.firmware == firmware) &&
+            (identical(other.eyetracker, eyetracker) ||
+                other.eyetracker == eyetracker) &&
+            (identical(other.calib, calib) || other.calib == calib) &&
+            (identical(other.base, base) || other.base == base) &&
+            (identical(other.serial, serial) || other.serial == serial) &&
+            (identical(other.skyleType, skyleType) ||
+                other.skyleType == skyleType) &&
+            (identical(other.isDemo, isDemo) || other.isDemo == isDemo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(firmware),
-      const DeepCollectionEquality().hash(eyetracker),
-      const DeepCollectionEquality().hash(calib),
-      const DeepCollectionEquality().hash(base),
-      const DeepCollectionEquality().hash(serial),
-      const DeepCollectionEquality().hash(skyleType),
-      const DeepCollectionEquality().hash(isDemo));
+  int get hashCode => Object.hash(runtimeType, firmware, eyetracker, calib,
+      base, serial, skyleType, isDemo);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VersionsCopyWith<_$_Versions> get copyWith =>
       __$$_VersionsCopyWithImpl<_$_Versions>(this, _$identity);
 

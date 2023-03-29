@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'positioning_eyes.dart';
 
@@ -33,7 +33,8 @@ mixin _$PositioningEyes {
 abstract class $PositioningEyesCopyWith<$Res> {
   factory $PositioningEyesCopyWith(
           PositioningEyes value, $Res Function(PositioningEyes) then) =
-      _$PositioningEyesCopyWithImpl<$Res>;
+      _$PositioningEyesCopyWithImpl<$Res, PositioningEyes>;
+  @useResult
   $Res call({Point left, Point right});
 
   $PointCopyWith<$Res> get left;
@@ -41,42 +42,46 @@ abstract class $PositioningEyesCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PositioningEyesCopyWithImpl<$Res>
+class _$PositioningEyesCopyWithImpl<$Res, $Val extends PositioningEyes>
     implements $PositioningEyesCopyWith<$Res> {
   _$PositioningEyesCopyWithImpl(this._value, this._then);
 
-  final PositioningEyes _value;
   // ignore: unused_field
-  final $Res Function(PositioningEyes) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? left = freezed,
-    Object? right = freezed,
+    Object? left = null,
+    Object? right = null,
   }) {
     return _then(_value.copyWith(
-      left: left == freezed
+      left: null == left
           ? _value.left
           : left // ignore: cast_nullable_to_non_nullable
               as Point,
-      right: right == freezed
+      right: null == right
           ? _value.right
           : right // ignore: cast_nullable_to_non_nullable
               as Point,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PointCopyWith<$Res> get left {
     return $PointCopyWith<$Res>(_value.left, (value) {
-      return _then(_value.copyWith(left: value));
+      return _then(_value.copyWith(left: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PointCopyWith<$Res> get right {
     return $PointCopyWith<$Res>(_value.right, (value) {
-      return _then(_value.copyWith(right: value));
+      return _then(_value.copyWith(right: value) as $Val);
     });
   }
 }
@@ -88,6 +93,7 @@ abstract class _$$_PositioningEyesCopyWith<$Res>
           _$_PositioningEyes value, $Res Function(_$_PositioningEyes) then) =
       __$$_PositioningEyesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Point left, Point right});
 
   @override
@@ -98,26 +104,24 @@ abstract class _$$_PositioningEyesCopyWith<$Res>
 
 /// @nodoc
 class __$$_PositioningEyesCopyWithImpl<$Res>
-    extends _$PositioningEyesCopyWithImpl<$Res>
+    extends _$PositioningEyesCopyWithImpl<$Res, _$_PositioningEyes>
     implements _$$_PositioningEyesCopyWith<$Res> {
   __$$_PositioningEyesCopyWithImpl(
       _$_PositioningEyes _value, $Res Function(_$_PositioningEyes) _then)
-      : super(_value, (v) => _then(v as _$_PositioningEyes));
+      : super(_value, _then);
 
-  @override
-  _$_PositioningEyes get _value => super._value as _$_PositioningEyes;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? left = freezed,
-    Object? right = freezed,
+    Object? left = null,
+    Object? right = null,
   }) {
     return _then(_$_PositioningEyes(
-      left: left == freezed
+      left: null == left
           ? _value.left
           : left // ignore: cast_nullable_to_non_nullable
               as Point,
-      right: right == freezed
+      right: null == right
           ? _value.right
           : right // ignore: cast_nullable_to_non_nullable
               as Point,
@@ -151,19 +155,17 @@ class _$_PositioningEyes implements _PositioningEyes {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PositioningEyes &&
-            const DeepCollectionEquality().equals(other.left, left) &&
-            const DeepCollectionEquality().equals(other.right, right));
+            (identical(other.left, left) || other.left == left) &&
+            (identical(other.right, right) || other.right == right));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(left),
-      const DeepCollectionEquality().hash(right));
+  int get hashCode => Object.hash(runtimeType, left, right);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PositioningEyesCopyWith<_$_PositioningEyes> get copyWith =>
       __$$_PositioningEyesCopyWithImpl<_$_PositioningEyes>(this, _$identity);
 

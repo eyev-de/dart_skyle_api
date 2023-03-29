@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'size.dart';
 
@@ -31,33 +31,37 @@ mixin _$Size {
 /// @nodoc
 abstract class $SizeCopyWith<$Res> {
   factory $SizeCopyWith(Size value, $Res Function(Size) then) =
-      _$SizeCopyWithImpl<$Res>;
+      _$SizeCopyWithImpl<$Res, Size>;
+  @useResult
   $Res call({double width, double height});
 }
 
 /// @nodoc
-class _$SizeCopyWithImpl<$Res> implements $SizeCopyWith<$Res> {
+class _$SizeCopyWithImpl<$Res, $Val extends Size>
+    implements $SizeCopyWith<$Res> {
   _$SizeCopyWithImpl(this._value, this._then);
 
-  final Size _value;
   // ignore: unused_field
-  final $Res Function(Size) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? width = freezed,
-    Object? height = freezed,
+    Object? width = null,
+    Object? height = null,
   }) {
     return _then(_value.copyWith(
-      width: width == freezed
+      width: null == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
               as double,
-      height: height == freezed
+      height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,29 +70,28 @@ abstract class _$$_SizeCopyWith<$Res> implements $SizeCopyWith<$Res> {
   factory _$$_SizeCopyWith(_$_Size value, $Res Function(_$_Size) then) =
       __$$_SizeCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({double width, double height});
 }
 
 /// @nodoc
-class __$$_SizeCopyWithImpl<$Res> extends _$SizeCopyWithImpl<$Res>
+class __$$_SizeCopyWithImpl<$Res> extends _$SizeCopyWithImpl<$Res, _$_Size>
     implements _$$_SizeCopyWith<$Res> {
   __$$_SizeCopyWithImpl(_$_Size _value, $Res Function(_$_Size) _then)
-      : super(_value, (v) => _then(v as _$_Size));
+      : super(_value, _then);
 
-  @override
-  _$_Size get _value => super._value as _$_Size;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? width = freezed,
-    Object? height = freezed,
+    Object? width = null,
+    Object? height = null,
   }) {
     return _then(_$_Size(
-      width: width == freezed
+      width: null == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
               as double,
-      height: height == freezed
+      height: null == height
           ? _value.height
           : height // ignore: cast_nullable_to_non_nullable
               as double,
@@ -118,19 +121,17 @@ class _$_Size implements _Size {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Size &&
-            const DeepCollectionEquality().equals(other.width, width) &&
-            const DeepCollectionEquality().equals(other.height, height));
+            (identical(other.width, width) || other.width == width) &&
+            (identical(other.height, height) || other.height == height));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(width),
-      const DeepCollectionEquality().hash(height));
+  int get hashCode => Object.hash(runtimeType, width, height);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SizeCopyWith<_$_Size> get copyWith =>
       __$$_SizeCopyWithImpl<_$_Size>(this, _$identity);
 

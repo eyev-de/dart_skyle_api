@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'point.dart';
 
@@ -31,33 +31,37 @@ mixin _$Point {
 /// @nodoc
 abstract class $PointCopyWith<$Res> {
   factory $PointCopyWith(Point value, $Res Function(Point) then) =
-      _$PointCopyWithImpl<$Res>;
+      _$PointCopyWithImpl<$Res, Point>;
+  @useResult
   $Res call({double x, double y});
 }
 
 /// @nodoc
-class _$PointCopyWithImpl<$Res> implements $PointCopyWith<$Res> {
+class _$PointCopyWithImpl<$Res, $Val extends Point>
+    implements $PointCopyWith<$Res> {
   _$PointCopyWithImpl(this._value, this._then);
 
-  final Point _value;
   // ignore: unused_field
-  final $Res Function(Point) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? x = freezed,
-    Object? y = freezed,
+    Object? x = null,
+    Object? y = null,
   }) {
     return _then(_value.copyWith(
-      x: x == freezed
+      x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
               as double,
-      y: y == freezed
+      y: null == y
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
               as double,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,29 +70,28 @@ abstract class _$$_PointCopyWith<$Res> implements $PointCopyWith<$Res> {
   factory _$$_PointCopyWith(_$_Point value, $Res Function(_$_Point) then) =
       __$$_PointCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({double x, double y});
 }
 
 /// @nodoc
-class __$$_PointCopyWithImpl<$Res> extends _$PointCopyWithImpl<$Res>
+class __$$_PointCopyWithImpl<$Res> extends _$PointCopyWithImpl<$Res, _$_Point>
     implements _$$_PointCopyWith<$Res> {
   __$$_PointCopyWithImpl(_$_Point _value, $Res Function(_$_Point) _then)
-      : super(_value, (v) => _then(v as _$_Point));
+      : super(_value, _then);
 
-  @override
-  _$_Point get _value => super._value as _$_Point;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? x = freezed,
-    Object? y = freezed,
+    Object? x = null,
+    Object? y = null,
   }) {
     return _then(_$_Point(
-      x: x == freezed
+      x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
               as double,
-      y: y == freezed
+      y: null == y
           ? _value.y
           : y // ignore: cast_nullable_to_non_nullable
               as double,
@@ -121,19 +124,17 @@ class _$_Point extends _Point {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Point &&
-            const DeepCollectionEquality().equals(other.x, x) &&
-            const DeepCollectionEquality().equals(other.y, y));
+            (identical(other.x, x) || other.x == x) &&
+            (identical(other.y, y) || other.y == y));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(x),
-      const DeepCollectionEquality().hash(y));
+  int get hashCode => Object.hash(runtimeType, x, y);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PointCopyWith<_$_Point> get copyWith =>
       __$$_PointCopyWithImpl<_$_Point>(this, _$identity);
 

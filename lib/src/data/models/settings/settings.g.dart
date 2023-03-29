@@ -25,7 +25,7 @@ _$_Settings _$$_SettingsFromJson(Map<String, dynamic> json) => _$_Settings(
       hp: json['hp'] as bool? ?? false,
       trackingMode:
           $enumDecodeNullable(_$TrackingModeEnumMap, json['trackingMode']) ??
-              TrackingMode.both,
+              TrackingMode.none,
     );
 
 Map<String, dynamic> _$$_SettingsToJson(_$_Settings instance) =>
@@ -44,6 +44,7 @@ Map<String, dynamic> _$$_SettingsToJson(_$_Settings instance) =>
     };
 
 const _$TrackingModeEnumMap = {
+  TrackingMode.none: 'none',
   TrackingMode.both: 'both',
   TrackingMode.left: 'left',
   TrackingMode.right: 'right',

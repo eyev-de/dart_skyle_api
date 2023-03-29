@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'settings.dart';
 
@@ -41,7 +41,8 @@ mixin _$Settings {
 /// @nodoc
 abstract class $SettingsCopyWith<$Res> {
   factory $SettingsCopyWith(Settings value, $Res Function(Settings) then) =
-      _$SettingsCopyWithImpl<$Res>;
+      _$SettingsCopyWithImpl<$Res, Settings>;
+  @useResult
   $Res call(
       {bool video,
       bool enablePause,
@@ -61,93 +62,99 @@ abstract class $SettingsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SettingsCopyWithImpl<$Res> implements $SettingsCopyWith<$Res> {
+class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
+    implements $SettingsCopyWith<$Res> {
   _$SettingsCopyWithImpl(this._value, this._then);
 
-  final Settings _value;
   // ignore: unused_field
-  final $Res Function(Settings) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? video = freezed,
-    Object? enablePause = freezed,
-    Object? pause = freezed,
-    Object? guidance = freezed,
-    Object? enableStandby = freezed,
-    Object? disableMouse = freezed,
-    Object? filter = freezed,
-    Object? iPadOS = freezed,
-    Object? screenSizes = freezed,
-    Object? hp = freezed,
-    Object? trackingMode = freezed,
+    Object? video = null,
+    Object? enablePause = null,
+    Object? pause = null,
+    Object? guidance = null,
+    Object? enableStandby = null,
+    Object? disableMouse = null,
+    Object? filter = null,
+    Object? iPadOS = null,
+    Object? screenSizes = null,
+    Object? hp = null,
+    Object? trackingMode = null,
   }) {
     return _then(_value.copyWith(
-      video: video == freezed
+      video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
               as bool,
-      enablePause: enablePause == freezed
+      enablePause: null == enablePause
           ? _value.enablePause
           : enablePause // ignore: cast_nullable_to_non_nullable
               as bool,
-      pause: pause == freezed
+      pause: null == pause
           ? _value.pause
           : pause // ignore: cast_nullable_to_non_nullable
               as bool,
-      guidance: guidance == freezed
+      guidance: null == guidance
           ? _value.guidance
           : guidance // ignore: cast_nullable_to_non_nullable
               as bool,
-      enableStandby: enableStandby == freezed
+      enableStandby: null == enableStandby
           ? _value.enableStandby
           : enableStandby // ignore: cast_nullable_to_non_nullable
               as bool,
-      disableMouse: disableMouse == freezed
+      disableMouse: null == disableMouse
           ? _value.disableMouse
           : disableMouse // ignore: cast_nullable_to_non_nullable
               as bool,
-      filter: filter == freezed
+      filter: null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
               as Filter,
-      iPadOS: iPadOS == freezed
+      iPadOS: null == iPadOS
           ? _value.iPadOS
           : iPadOS // ignore: cast_nullable_to_non_nullable
               as IPadOS,
-      screenSizes: screenSizes == freezed
+      screenSizes: null == screenSizes
           ? _value.screenSizes
           : screenSizes // ignore: cast_nullable_to_non_nullable
               as ScreenSizes,
-      hp: hp == freezed
+      hp: null == hp
           ? _value.hp
           : hp // ignore: cast_nullable_to_non_nullable
               as bool,
-      trackingMode: trackingMode == freezed
+      trackingMode: null == trackingMode
           ? _value.trackingMode
           : trackingMode // ignore: cast_nullable_to_non_nullable
               as TrackingMode,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $FilterCopyWith<$Res> get filter {
     return $FilterCopyWith<$Res>(_value.filter, (value) {
-      return _then(_value.copyWith(filter: value));
+      return _then(_value.copyWith(filter: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $IPadOSCopyWith<$Res> get iPadOS {
     return $IPadOSCopyWith<$Res>(_value.iPadOS, (value) {
-      return _then(_value.copyWith(iPadOS: value));
+      return _then(_value.copyWith(iPadOS: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ScreenSizesCopyWith<$Res> get screenSizes {
     return $ScreenSizesCopyWith<$Res>(_value.screenSizes, (value) {
-      return _then(_value.copyWith(screenSizes: value));
+      return _then(_value.copyWith(screenSizes: value) as $Val);
     });
   }
 }
@@ -158,6 +165,7 @@ abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
           _$_Settings value, $Res Function(_$_Settings) then) =
       __$$_SettingsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool video,
       bool enablePause,
@@ -180,71 +188,70 @@ abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SettingsCopyWithImpl<$Res> extends _$SettingsCopyWithImpl<$Res>
+class __$$_SettingsCopyWithImpl<$Res>
+    extends _$SettingsCopyWithImpl<$Res, _$_Settings>
     implements _$$_SettingsCopyWith<$Res> {
   __$$_SettingsCopyWithImpl(
       _$_Settings _value, $Res Function(_$_Settings) _then)
-      : super(_value, (v) => _then(v as _$_Settings));
+      : super(_value, _then);
 
-  @override
-  _$_Settings get _value => super._value as _$_Settings;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? video = freezed,
-    Object? enablePause = freezed,
-    Object? pause = freezed,
-    Object? guidance = freezed,
-    Object? enableStandby = freezed,
-    Object? disableMouse = freezed,
-    Object? filter = freezed,
-    Object? iPadOS = freezed,
-    Object? screenSizes = freezed,
-    Object? hp = freezed,
-    Object? trackingMode = freezed,
+    Object? video = null,
+    Object? enablePause = null,
+    Object? pause = null,
+    Object? guidance = null,
+    Object? enableStandby = null,
+    Object? disableMouse = null,
+    Object? filter = null,
+    Object? iPadOS = null,
+    Object? screenSizes = null,
+    Object? hp = null,
+    Object? trackingMode = null,
   }) {
     return _then(_$_Settings(
-      video: video == freezed
+      video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
               as bool,
-      enablePause: enablePause == freezed
+      enablePause: null == enablePause
           ? _value.enablePause
           : enablePause // ignore: cast_nullable_to_non_nullable
               as bool,
-      pause: pause == freezed
+      pause: null == pause
           ? _value.pause
           : pause // ignore: cast_nullable_to_non_nullable
               as bool,
-      guidance: guidance == freezed
+      guidance: null == guidance
           ? _value.guidance
           : guidance // ignore: cast_nullable_to_non_nullable
               as bool,
-      enableStandby: enableStandby == freezed
+      enableStandby: null == enableStandby
           ? _value.enableStandby
           : enableStandby // ignore: cast_nullable_to_non_nullable
               as bool,
-      disableMouse: disableMouse == freezed
+      disableMouse: null == disableMouse
           ? _value.disableMouse
           : disableMouse // ignore: cast_nullable_to_non_nullable
               as bool,
-      filter: filter == freezed
+      filter: null == filter
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
               as Filter,
-      iPadOS: iPadOS == freezed
+      iPadOS: null == iPadOS
           ? _value.iPadOS
           : iPadOS // ignore: cast_nullable_to_non_nullable
               as IPadOS,
-      screenSizes: screenSizes == freezed
+      screenSizes: null == screenSizes
           ? _value.screenSizes
           : screenSizes // ignore: cast_nullable_to_non_nullable
               as ScreenSizes,
-      hp: hp == freezed
+      hp: null == hp
           ? _value.hp
           : hp // ignore: cast_nullable_to_non_nullable
               as bool,
-      trackingMode: trackingMode == freezed
+      trackingMode: null == trackingMode
           ? _value.trackingMode
           : trackingMode // ignore: cast_nullable_to_non_nullable
               as TrackingMode,
@@ -266,7 +273,7 @@ class _$_Settings implements _Settings {
       this.iPadOS = const IPadOS(),
       this.screenSizes = const ScreenSizes(),
       this.hp = false,
-      this.trackingMode = TrackingMode.both});
+      this.trackingMode = TrackingMode.none});
 
   factory _$_Settings.fromJson(Map<String, dynamic> json) =>
       _$$_SettingsFromJson(json);
@@ -315,42 +322,44 @@ class _$_Settings implements _Settings {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Settings &&
-            const DeepCollectionEquality().equals(other.video, video) &&
-            const DeepCollectionEquality()
-                .equals(other.enablePause, enablePause) &&
-            const DeepCollectionEquality().equals(other.pause, pause) &&
-            const DeepCollectionEquality().equals(other.guidance, guidance) &&
-            const DeepCollectionEquality()
-                .equals(other.enableStandby, enableStandby) &&
-            const DeepCollectionEquality()
-                .equals(other.disableMouse, disableMouse) &&
-            const DeepCollectionEquality().equals(other.filter, filter) &&
-            const DeepCollectionEquality().equals(other.iPadOS, iPadOS) &&
-            const DeepCollectionEquality()
-                .equals(other.screenSizes, screenSizes) &&
-            const DeepCollectionEquality().equals(other.hp, hp) &&
-            const DeepCollectionEquality()
-                .equals(other.trackingMode, trackingMode));
+            (identical(other.video, video) || other.video == video) &&
+            (identical(other.enablePause, enablePause) ||
+                other.enablePause == enablePause) &&
+            (identical(other.pause, pause) || other.pause == pause) &&
+            (identical(other.guidance, guidance) ||
+                other.guidance == guidance) &&
+            (identical(other.enableStandby, enableStandby) ||
+                other.enableStandby == enableStandby) &&
+            (identical(other.disableMouse, disableMouse) ||
+                other.disableMouse == disableMouse) &&
+            (identical(other.filter, filter) || other.filter == filter) &&
+            (identical(other.iPadOS, iPadOS) || other.iPadOS == iPadOS) &&
+            (identical(other.screenSizes, screenSizes) ||
+                other.screenSizes == screenSizes) &&
+            (identical(other.hp, hp) || other.hp == hp) &&
+            (identical(other.trackingMode, trackingMode) ||
+                other.trackingMode == trackingMode));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(video),
-      const DeepCollectionEquality().hash(enablePause),
-      const DeepCollectionEquality().hash(pause),
-      const DeepCollectionEquality().hash(guidance),
-      const DeepCollectionEquality().hash(enableStandby),
-      const DeepCollectionEquality().hash(disableMouse),
-      const DeepCollectionEquality().hash(filter),
-      const DeepCollectionEquality().hash(iPadOS),
-      const DeepCollectionEquality().hash(screenSizes),
-      const DeepCollectionEquality().hash(hp),
-      const DeepCollectionEquality().hash(trackingMode));
+      video,
+      enablePause,
+      pause,
+      guidance,
+      enableStandby,
+      disableMouse,
+      filter,
+      iPadOS,
+      screenSizes,
+      hp,
+      trackingMode);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SettingsCopyWith<_$_Settings> get copyWith =>
       __$$_SettingsCopyWithImpl<_$_Settings>(this, _$identity);
 

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'switch.dart';
 
@@ -32,7 +32,8 @@ mixin _$Switch {
 /// @nodoc
 abstract class $SwitchCopyWith<$Res> {
   factory $SwitchCopyWith(Switch value, $Res Function(Switch) then) =
-      _$SwitchCopyWithImpl<$Res>;
+      _$SwitchCopyWithImpl<$Res, Switch>;
+  @useResult
   $Res call(
       {bool isPresent, SwitchActions actions, List<String> availableActions});
 
@@ -40,39 +41,43 @@ abstract class $SwitchCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SwitchCopyWithImpl<$Res> implements $SwitchCopyWith<$Res> {
+class _$SwitchCopyWithImpl<$Res, $Val extends Switch>
+    implements $SwitchCopyWith<$Res> {
   _$SwitchCopyWithImpl(this._value, this._then);
 
-  final Switch _value;
   // ignore: unused_field
-  final $Res Function(Switch) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isPresent = freezed,
-    Object? actions = freezed,
-    Object? availableActions = freezed,
+    Object? isPresent = null,
+    Object? actions = null,
+    Object? availableActions = null,
   }) {
     return _then(_value.copyWith(
-      isPresent: isPresent == freezed
+      isPresent: null == isPresent
           ? _value.isPresent
           : isPresent // ignore: cast_nullable_to_non_nullable
               as bool,
-      actions: actions == freezed
+      actions: null == actions
           ? _value.actions
           : actions // ignore: cast_nullable_to_non_nullable
               as SwitchActions,
-      availableActions: availableActions == freezed
+      availableActions: null == availableActions
           ? _value.availableActions
           : availableActions // ignore: cast_nullable_to_non_nullable
               as List<String>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SwitchActionsCopyWith<$Res> get actions {
     return $SwitchActionsCopyWith<$Res>(_value.actions, (value) {
-      return _then(_value.copyWith(actions: value));
+      return _then(_value.copyWith(actions: value) as $Val);
     });
   }
 }
@@ -82,6 +87,7 @@ abstract class _$$_SwitchCopyWith<$Res> implements $SwitchCopyWith<$Res> {
   factory _$$_SwitchCopyWith(_$_Switch value, $Res Function(_$_Switch) then) =
       __$$_SwitchCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {bool isPresent, SwitchActions actions, List<String> availableActions});
 
@@ -90,30 +96,29 @@ abstract class _$$_SwitchCopyWith<$Res> implements $SwitchCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SwitchCopyWithImpl<$Res> extends _$SwitchCopyWithImpl<$Res>
+class __$$_SwitchCopyWithImpl<$Res>
+    extends _$SwitchCopyWithImpl<$Res, _$_Switch>
     implements _$$_SwitchCopyWith<$Res> {
   __$$_SwitchCopyWithImpl(_$_Switch _value, $Res Function(_$_Switch) _then)
-      : super(_value, (v) => _then(v as _$_Switch));
+      : super(_value, _then);
 
-  @override
-  _$_Switch get _value => super._value as _$_Switch;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isPresent = freezed,
-    Object? actions = freezed,
-    Object? availableActions = freezed,
+    Object? isPresent = null,
+    Object? actions = null,
+    Object? availableActions = null,
   }) {
     return _then(_$_Switch(
-      isPresent: isPresent == freezed
+      isPresent: null == isPresent
           ? _value.isPresent
           : isPresent // ignore: cast_nullable_to_non_nullable
               as bool,
-      actions: actions == freezed
+      actions: null == actions
           ? _value.actions
           : actions // ignore: cast_nullable_to_non_nullable
               as SwitchActions,
-      availableActions: availableActions == freezed
+      availableActions: null == availableActions
           ? _value._availableActions
           : availableActions // ignore: cast_nullable_to_non_nullable
               as List<String>,
@@ -140,6 +145,8 @@ class _$_Switch implements _Switch {
   final List<String> _availableActions;
   @override
   List<String> get availableActions {
+    if (_availableActions is EqualUnmodifiableListView)
+      return _availableActions;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_availableActions);
   }
@@ -154,22 +161,21 @@ class _$_Switch implements _Switch {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Switch &&
-            const DeepCollectionEquality().equals(other.isPresent, isPresent) &&
-            const DeepCollectionEquality().equals(other.actions, actions) &&
+            (identical(other.isPresent, isPresent) ||
+                other.isPresent == isPresent) &&
+            (identical(other.actions, actions) || other.actions == actions) &&
             const DeepCollectionEquality()
                 .equals(other._availableActions, _availableActions));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isPresent),
-      const DeepCollectionEquality().hash(actions),
+  int get hashCode => Object.hash(runtimeType, isPresent, actions,
       const DeepCollectionEquality().hash(_availableActions));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_SwitchCopyWith<_$_Switch> get copyWith =>
       __$$_SwitchCopyWithImpl<_$_Switch>(this, _$identity);
 

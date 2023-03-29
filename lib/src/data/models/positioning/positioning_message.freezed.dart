@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'positioning_message.dart';
 
@@ -34,7 +34,8 @@ mixin _$PositioningMessage {
 abstract class $PositioningMessageCopyWith<$Res> {
   factory $PositioningMessageCopyWith(
           PositioningMessage value, $Res Function(PositioningMessage) then) =
-      _$PositioningMessageCopyWithImpl<$Res>;
+      _$PositioningMessageCopyWithImpl<$Res, PositioningMessage>;
+  @useResult
   $Res call(
       {PositioningEyes eyes,
       PositioningQuality quality,
@@ -45,47 +46,51 @@ abstract class $PositioningMessageCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PositioningMessageCopyWithImpl<$Res>
+class _$PositioningMessageCopyWithImpl<$Res, $Val extends PositioningMessage>
     implements $PositioningMessageCopyWith<$Res> {
   _$PositioningMessageCopyWithImpl(this._value, this._then);
 
-  final PositioningMessage _value;
   // ignore: unused_field
-  final $Res Function(PositioningMessage) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? eyes = freezed,
-    Object? quality = freezed,
-    Object? distance = freezed,
+    Object? eyes = null,
+    Object? quality = null,
+    Object? distance = null,
   }) {
     return _then(_value.copyWith(
-      eyes: eyes == freezed
+      eyes: null == eyes
           ? _value.eyes
           : eyes // ignore: cast_nullable_to_non_nullable
               as PositioningEyes,
-      quality: quality == freezed
+      quality: null == quality
           ? _value.quality
           : quality // ignore: cast_nullable_to_non_nullable
               as PositioningQuality,
-      distance: distance == freezed
+      distance: null == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as PositioningDistance,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PositioningEyesCopyWith<$Res> get eyes {
     return $PositioningEyesCopyWith<$Res>(_value.eyes, (value) {
-      return _then(_value.copyWith(eyes: value));
+      return _then(_value.copyWith(eyes: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PositioningQualityCopyWith<$Res> get quality {
     return $PositioningQualityCopyWith<$Res>(_value.quality, (value) {
-      return _then(_value.copyWith(quality: value));
+      return _then(_value.copyWith(quality: value) as $Val);
     });
   }
 }
@@ -97,6 +102,7 @@ abstract class _$$_PositioningMessageCopyWith<$Res>
           $Res Function(_$_PositioningMessage) then) =
       __$$_PositioningMessageCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {PositioningEyes eyes,
       PositioningQuality quality,
@@ -110,31 +116,29 @@ abstract class _$$_PositioningMessageCopyWith<$Res>
 
 /// @nodoc
 class __$$_PositioningMessageCopyWithImpl<$Res>
-    extends _$PositioningMessageCopyWithImpl<$Res>
+    extends _$PositioningMessageCopyWithImpl<$Res, _$_PositioningMessage>
     implements _$$_PositioningMessageCopyWith<$Res> {
   __$$_PositioningMessageCopyWithImpl(
       _$_PositioningMessage _value, $Res Function(_$_PositioningMessage) _then)
-      : super(_value, (v) => _then(v as _$_PositioningMessage));
+      : super(_value, _then);
 
-  @override
-  _$_PositioningMessage get _value => super._value as _$_PositioningMessage;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? eyes = freezed,
-    Object? quality = freezed,
-    Object? distance = freezed,
+    Object? eyes = null,
+    Object? quality = null,
+    Object? distance = null,
   }) {
     return _then(_$_PositioningMessage(
-      eyes: eyes == freezed
+      eyes: null == eyes
           ? _value.eyes
           : eyes // ignore: cast_nullable_to_non_nullable
               as PositioningEyes,
-      quality: quality == freezed
+      quality: null == quality
           ? _value.quality
           : quality // ignore: cast_nullable_to_non_nullable
               as PositioningQuality,
-      distance: distance == freezed
+      distance: null == distance
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as PositioningDistance,
@@ -173,21 +177,19 @@ class _$_PositioningMessage implements _PositioningMessage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PositioningMessage &&
-            const DeepCollectionEquality().equals(other.eyes, eyes) &&
-            const DeepCollectionEquality().equals(other.quality, quality) &&
-            const DeepCollectionEquality().equals(other.distance, distance));
+            (identical(other.eyes, eyes) || other.eyes == eyes) &&
+            (identical(other.quality, quality) || other.quality == quality) &&
+            (identical(other.distance, distance) ||
+                other.distance == distance));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(eyes),
-      const DeepCollectionEquality().hash(quality),
-      const DeepCollectionEquality().hash(distance));
+  int get hashCode => Object.hash(runtimeType, eyes, quality, distance);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PositioningMessageCopyWith<_$_PositioningMessage> get copyWith =>
       __$$_PositioningMessageCopyWithImpl<_$_PositioningMessage>(
           this, _$identity);

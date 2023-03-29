@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'ipados.dart';
 
@@ -32,18 +32,22 @@ mixin _$IPadOS {
 /// @nodoc
 abstract class $IPadOSCopyWith<$Res> {
   factory $IPadOSCopyWith(IPadOS value, $Res Function(IPadOS) then) =
-      _$IPadOSCopyWithImpl<$Res>;
+      _$IPadOSCopyWithImpl<$Res, IPadOS>;
+  @useResult
   $Res call({bool? isOld, bool? isNotZoomed, IPadModel? iPadModel});
 }
 
 /// @nodoc
-class _$IPadOSCopyWithImpl<$Res> implements $IPadOSCopyWith<$Res> {
+class _$IPadOSCopyWithImpl<$Res, $Val extends IPadOS>
+    implements $IPadOSCopyWith<$Res> {
   _$IPadOSCopyWithImpl(this._value, this._then);
 
-  final IPadOS _value;
   // ignore: unused_field
-  final $Res Function(IPadOS) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isOld = freezed,
@@ -51,19 +55,19 @@ class _$IPadOSCopyWithImpl<$Res> implements $IPadOSCopyWith<$Res> {
     Object? iPadModel = freezed,
   }) {
     return _then(_value.copyWith(
-      isOld: isOld == freezed
+      isOld: freezed == isOld
           ? _value.isOld
           : isOld // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isNotZoomed: isNotZoomed == freezed
+      isNotZoomed: freezed == isNotZoomed
           ? _value.isNotZoomed
           : isNotZoomed // ignore: cast_nullable_to_non_nullable
               as bool?,
-      iPadModel: iPadModel == freezed
+      iPadModel: freezed == iPadModel
           ? _value.iPadModel
           : iPadModel // ignore: cast_nullable_to_non_nullable
               as IPadModel?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -72,18 +76,18 @@ abstract class _$$_IPadOSCopyWith<$Res> implements $IPadOSCopyWith<$Res> {
   factory _$$_IPadOSCopyWith(_$_IPadOS value, $Res Function(_$_IPadOS) then) =
       __$$_IPadOSCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({bool? isOld, bool? isNotZoomed, IPadModel? iPadModel});
 }
 
 /// @nodoc
-class __$$_IPadOSCopyWithImpl<$Res> extends _$IPadOSCopyWithImpl<$Res>
+class __$$_IPadOSCopyWithImpl<$Res>
+    extends _$IPadOSCopyWithImpl<$Res, _$_IPadOS>
     implements _$$_IPadOSCopyWith<$Res> {
   __$$_IPadOSCopyWithImpl(_$_IPadOS _value, $Res Function(_$_IPadOS) _then)
-      : super(_value, (v) => _then(v as _$_IPadOS));
+      : super(_value, _then);
 
-  @override
-  _$_IPadOS get _value => super._value as _$_IPadOS;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isOld = freezed,
@@ -91,15 +95,15 @@ class __$$_IPadOSCopyWithImpl<$Res> extends _$IPadOSCopyWithImpl<$Res>
     Object? iPadModel = freezed,
   }) {
     return _then(_$_IPadOS(
-      isOld: isOld == freezed
+      isOld: freezed == isOld
           ? _value.isOld
           : isOld // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isNotZoomed: isNotZoomed == freezed
+      isNotZoomed: freezed == isNotZoomed
           ? _value.isNotZoomed
           : isNotZoomed // ignore: cast_nullable_to_non_nullable
               as bool?,
-      iPadModel: iPadModel == freezed
+      iPadModel: freezed == iPadModel
           ? _value.iPadModel
           : iPadModel // ignore: cast_nullable_to_non_nullable
               as IPadModel?,
@@ -138,22 +142,20 @@ class _$_IPadOS implements _IPadOS {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IPadOS &&
-            const DeepCollectionEquality().equals(other.isOld, isOld) &&
-            const DeepCollectionEquality()
-                .equals(other.isNotZoomed, isNotZoomed) &&
-            const DeepCollectionEquality().equals(other.iPadModel, iPadModel));
+            (identical(other.isOld, isOld) || other.isOld == isOld) &&
+            (identical(other.isNotZoomed, isNotZoomed) ||
+                other.isNotZoomed == isNotZoomed) &&
+            (identical(other.iPadModel, iPadModel) ||
+                other.iPadModel == iPadModel));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(isOld),
-      const DeepCollectionEquality().hash(isNotZoomed),
-      const DeepCollectionEquality().hash(iPadModel));
+  int get hashCode => Object.hash(runtimeType, isOld, isNotZoomed, iPadModel);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_IPadOSCopyWith<_$_IPadOS> get copyWith =>
       __$$_IPadOSCopyWithImpl<_$_IPadOS>(this, _$identity);
 

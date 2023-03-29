@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'screen_sizes.dart';
 
@@ -33,7 +33,8 @@ mixin _$ScreenSizes {
 abstract class $ScreenSizesCopyWith<$Res> {
   factory $ScreenSizesCopyWith(
           ScreenSizes value, $Res Function(ScreenSizes) then) =
-      _$ScreenSizesCopyWithImpl<$Res>;
+      _$ScreenSizesCopyWithImpl<$Res, ScreenSizes>;
+  @useResult
   $Res call({Size resolution, Size? dimensions});
 
   $SizeCopyWith<$Res> get resolution;
@@ -41,45 +42,50 @@ abstract class $ScreenSizesCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ScreenSizesCopyWithImpl<$Res> implements $ScreenSizesCopyWith<$Res> {
+class _$ScreenSizesCopyWithImpl<$Res, $Val extends ScreenSizes>
+    implements $ScreenSizesCopyWith<$Res> {
   _$ScreenSizesCopyWithImpl(this._value, this._then);
 
-  final ScreenSizes _value;
   // ignore: unused_field
-  final $Res Function(ScreenSizes) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? resolution = freezed,
+    Object? resolution = null,
     Object? dimensions = freezed,
   }) {
     return _then(_value.copyWith(
-      resolution: resolution == freezed
+      resolution: null == resolution
           ? _value.resolution
           : resolution // ignore: cast_nullable_to_non_nullable
               as Size,
-      dimensions: dimensions == freezed
+      dimensions: freezed == dimensions
           ? _value.dimensions
           : dimensions // ignore: cast_nullable_to_non_nullable
               as Size?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SizeCopyWith<$Res> get resolution {
     return $SizeCopyWith<$Res>(_value.resolution, (value) {
-      return _then(_value.copyWith(resolution: value));
+      return _then(_value.copyWith(resolution: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $SizeCopyWith<$Res>? get dimensions {
     if (_value.dimensions == null) {
       return null;
     }
 
     return $SizeCopyWith<$Res>(_value.dimensions!, (value) {
-      return _then(_value.copyWith(dimensions: value));
+      return _then(_value.copyWith(dimensions: value) as $Val);
     });
   }
 }
@@ -91,6 +97,7 @@ abstract class _$$_ScreenSizesCopyWith<$Res>
           _$_ScreenSizes value, $Res Function(_$_ScreenSizes) then) =
       __$$_ScreenSizesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Size resolution, Size? dimensions});
 
   @override
@@ -100,26 +107,25 @@ abstract class _$$_ScreenSizesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ScreenSizesCopyWithImpl<$Res> extends _$ScreenSizesCopyWithImpl<$Res>
+class __$$_ScreenSizesCopyWithImpl<$Res>
+    extends _$ScreenSizesCopyWithImpl<$Res, _$_ScreenSizes>
     implements _$$_ScreenSizesCopyWith<$Res> {
   __$$_ScreenSizesCopyWithImpl(
       _$_ScreenSizes _value, $Res Function(_$_ScreenSizes) _then)
-      : super(_value, (v) => _then(v as _$_ScreenSizes));
+      : super(_value, _then);
 
-  @override
-  _$_ScreenSizes get _value => super._value as _$_ScreenSizes;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? resolution = freezed,
+    Object? resolution = null,
     Object? dimensions = freezed,
   }) {
     return _then(_$_ScreenSizes(
-      resolution: resolution == freezed
+      resolution: null == resolution
           ? _value.resolution
           : resolution // ignore: cast_nullable_to_non_nullable
               as Size,
-      dimensions: dimensions == freezed
+      dimensions: freezed == dimensions
           ? _value.dimensions
           : dimensions // ignore: cast_nullable_to_non_nullable
               as Size?,
@@ -153,21 +159,19 @@ class _$_ScreenSizes implements _ScreenSizes {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ScreenSizes &&
-            const DeepCollectionEquality()
-                .equals(other.resolution, resolution) &&
-            const DeepCollectionEquality()
-                .equals(other.dimensions, dimensions));
+            (identical(other.resolution, resolution) ||
+                other.resolution == resolution) &&
+            (identical(other.dimensions, dimensions) ||
+                other.dimensions == dimensions));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(resolution),
-      const DeepCollectionEquality().hash(dimensions));
+  int get hashCode => Object.hash(runtimeType, resolution, dimensions);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_ScreenSizesCopyWith<_$_ScreenSizes> get copyWith =>
       __$$_ScreenSizesCopyWithImpl<_$_ScreenSizes>(this, _$identity);
 

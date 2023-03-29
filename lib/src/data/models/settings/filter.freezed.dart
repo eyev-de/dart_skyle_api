@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'filter.dart';
 
@@ -31,33 +31,37 @@ mixin _$Filter {
 /// @nodoc
 abstract class $FilterCopyWith<$Res> {
   factory $FilterCopyWith(Filter value, $Res Function(Filter) then) =
-      _$FilterCopyWithImpl<$Res>;
+      _$FilterCopyWithImpl<$Res, Filter>;
+  @useResult
   $Res call({int gaze, int fixation});
 }
 
 /// @nodoc
-class _$FilterCopyWithImpl<$Res> implements $FilterCopyWith<$Res> {
+class _$FilterCopyWithImpl<$Res, $Val extends Filter>
+    implements $FilterCopyWith<$Res> {
   _$FilterCopyWithImpl(this._value, this._then);
 
-  final Filter _value;
   // ignore: unused_field
-  final $Res Function(Filter) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gaze = freezed,
-    Object? fixation = freezed,
+    Object? gaze = null,
+    Object? fixation = null,
   }) {
     return _then(_value.copyWith(
-      gaze: gaze == freezed
+      gaze: null == gaze
           ? _value.gaze
           : gaze // ignore: cast_nullable_to_non_nullable
               as int,
-      fixation: fixation == freezed
+      fixation: null == fixation
           ? _value.fixation
           : fixation // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,29 +70,29 @@ abstract class _$$_FilterCopyWith<$Res> implements $FilterCopyWith<$Res> {
   factory _$$_FilterCopyWith(_$_Filter value, $Res Function(_$_Filter) then) =
       __$$_FilterCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int gaze, int fixation});
 }
 
 /// @nodoc
-class __$$_FilterCopyWithImpl<$Res> extends _$FilterCopyWithImpl<$Res>
+class __$$_FilterCopyWithImpl<$Res>
+    extends _$FilterCopyWithImpl<$Res, _$_Filter>
     implements _$$_FilterCopyWith<$Res> {
   __$$_FilterCopyWithImpl(_$_Filter _value, $Res Function(_$_Filter) _then)
-      : super(_value, (v) => _then(v as _$_Filter));
+      : super(_value, _then);
 
-  @override
-  _$_Filter get _value => super._value as _$_Filter;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? gaze = freezed,
-    Object? fixation = freezed,
+    Object? gaze = null,
+    Object? fixation = null,
   }) {
     return _then(_$_Filter(
-      gaze: gaze == freezed
+      gaze: null == gaze
           ? _value.gaze
           : gaze // ignore: cast_nullable_to_non_nullable
               as int,
-      fixation: fixation == freezed
+      fixation: null == fixation
           ? _value.fixation
           : fixation // ignore: cast_nullable_to_non_nullable
               as int,
@@ -121,19 +125,18 @@ class _$_Filter implements _Filter {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Filter &&
-            const DeepCollectionEquality().equals(other.gaze, gaze) &&
-            const DeepCollectionEquality().equals(other.fixation, fixation));
+            (identical(other.gaze, gaze) || other.gaze == gaze) &&
+            (identical(other.fixation, fixation) ||
+                other.fixation == fixation));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(gaze),
-      const DeepCollectionEquality().hash(fixation));
+  int get hashCode => Object.hash(runtimeType, gaze, fixation);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_FilterCopyWith<_$_Filter> get copyWith =>
       __$$_FilterCopyWithImpl<_$_Filter>(this, _$identity);
 

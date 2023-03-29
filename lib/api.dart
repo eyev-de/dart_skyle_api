@@ -4,6 +4,9 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+/// Skyle API package.
+///
+/// This is the official Skyle API package for dart and flutter.
 library skyle_api;
 
 export 'src/core/data_state.dart' show DataState, DataSuccess, DataFailed, DataLoading;

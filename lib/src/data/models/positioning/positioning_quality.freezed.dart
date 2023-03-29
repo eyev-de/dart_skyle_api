@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'positioning_quality.dart';
 
@@ -34,39 +34,42 @@ mixin _$PositioningQuality {
 abstract class $PositioningQualityCopyWith<$Res> {
   factory $PositioningQualityCopyWith(
           PositioningQuality value, $Res Function(PositioningQuality) then) =
-      _$PositioningQualityCopyWithImpl<$Res>;
+      _$PositioningQualityCopyWithImpl<$Res, PositioningQuality>;
+  @useResult
   $Res call({int horizontal, int vertical, int depth});
 }
 
 /// @nodoc
-class _$PositioningQualityCopyWithImpl<$Res>
+class _$PositioningQualityCopyWithImpl<$Res, $Val extends PositioningQuality>
     implements $PositioningQualityCopyWith<$Res> {
   _$PositioningQualityCopyWithImpl(this._value, this._then);
 
-  final PositioningQuality _value;
   // ignore: unused_field
-  final $Res Function(PositioningQuality) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? horizontal = freezed,
-    Object? vertical = freezed,
-    Object? depth = freezed,
+    Object? horizontal = null,
+    Object? vertical = null,
+    Object? depth = null,
   }) {
     return _then(_value.copyWith(
-      horizontal: horizontal == freezed
+      horizontal: null == horizontal
           ? _value.horizontal
           : horizontal // ignore: cast_nullable_to_non_nullable
               as int,
-      vertical: vertical == freezed
+      vertical: null == vertical
           ? _value.vertical
           : vertical // ignore: cast_nullable_to_non_nullable
               as int,
-      depth: depth == freezed
+      depth: null == depth
           ? _value.depth
           : depth // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -77,36 +80,35 @@ abstract class _$$_PositioningQualityCopyWith<$Res>
           $Res Function(_$_PositioningQuality) then) =
       __$$_PositioningQualityCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int horizontal, int vertical, int depth});
 }
 
 /// @nodoc
 class __$$_PositioningQualityCopyWithImpl<$Res>
-    extends _$PositioningQualityCopyWithImpl<$Res>
+    extends _$PositioningQualityCopyWithImpl<$Res, _$_PositioningQuality>
     implements _$$_PositioningQualityCopyWith<$Res> {
   __$$_PositioningQualityCopyWithImpl(
       _$_PositioningQuality _value, $Res Function(_$_PositioningQuality) _then)
-      : super(_value, (v) => _then(v as _$_PositioningQuality));
+      : super(_value, _then);
 
-  @override
-  _$_PositioningQuality get _value => super._value as _$_PositioningQuality;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? horizontal = freezed,
-    Object? vertical = freezed,
-    Object? depth = freezed,
+    Object? horizontal = null,
+    Object? vertical = null,
+    Object? depth = null,
   }) {
     return _then(_$_PositioningQuality(
-      horizontal: horizontal == freezed
+      horizontal: null == horizontal
           ? _value.horizontal
           : horizontal // ignore: cast_nullable_to_non_nullable
               as int,
-      vertical: vertical == freezed
+      vertical: null == vertical
           ? _value.vertical
           : vertical // ignore: cast_nullable_to_non_nullable
               as int,
-      depth: depth == freezed
+      depth: null == depth
           ? _value.depth
           : depth // ignore: cast_nullable_to_non_nullable
               as int,
@@ -143,22 +145,20 @@ class _$_PositioningQuality implements _PositioningQuality {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PositioningQuality &&
-            const DeepCollectionEquality()
-                .equals(other.horizontal, horizontal) &&
-            const DeepCollectionEquality().equals(other.vertical, vertical) &&
-            const DeepCollectionEquality().equals(other.depth, depth));
+            (identical(other.horizontal, horizontal) ||
+                other.horizontal == horizontal) &&
+            (identical(other.vertical, vertical) ||
+                other.vertical == vertical) &&
+            (identical(other.depth, depth) || other.depth == depth));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(horizontal),
-      const DeepCollectionEquality().hash(vertical),
-      const DeepCollectionEquality().hash(depth));
+  int get hashCode => Object.hash(runtimeType, horizontal, vertical, depth);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PositioningQualityCopyWith<_$_PositioningQuality> get copyWith =>
       __$$_PositioningQualityCopyWithImpl<_$_PositioningQuality>(
           this, _$identity);
