@@ -98,6 +98,10 @@ class ET {
   /// This should be called if you want to reconfigure a completely new connection.
   Future<void> disconnect() async {
     if (_connectivityProvider.state != ConnectivityProviderState.running) throw NotRunningException();
+    if (_connection == Connection.connecting) {
+      // Handles disconnect request when in the process of connecting the grpcs
+      // TODO(krjw-eyev): Handle disconnect request here. Send async cancellation to trySoftReconnect().
+    }
     await _connectivityProvider.stop();
     logger?.i('Disconnected Skyle...');
   }
@@ -116,7 +120,7 @@ class ET {
     }
   }
 
-  /// TODO(krjw-eyev):  Add async cancellation if called again.
+  /// TODO(krjw-eyev): Add async cancellation if called again.
   /// Trys to reconnect the grpc connection. Is only needed after calling [softDisconnect]
   ///
   /// Accepts a new [url] and a new [grpcPort]. Should only be set if you really know what you are doing.
@@ -199,9 +203,9 @@ class ET {
   }
 
   /// Disposes the instance of [ET] completely.
-  void dispose() {
-    disconnect();
-    _connectionStreamController.close();
+  Future<void> dispose() async {
+    await disconnect();
+    await _connectionStreamController.close();
   }
 
   /// Simulates a connection. This is only used for tests with the [TestServer] which is located in lib/src/test/test_server.dart
