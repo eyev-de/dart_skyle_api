@@ -22,9 +22,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: subosito/flutter-action@v2
-      with:
-        flutter-version: '3.7.9'
-        channel: 'stable'
-    - run: flutter pub get
-    - run: flutter test
+    - uses: dart-lang/setup-dart@v1
+    - run: dart pub get
+    - run: dart analyze
+    - run: dart test --concurrency=1

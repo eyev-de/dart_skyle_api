@@ -3,7 +3,7 @@
 //  Created by Konstantin Wachendorff.
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
-
+@TestOn('linux')
 import 'package:skyle_api/src/test/test_client.dart';
 import 'package:skyle_api/src/test/test_server.dart';
 import 'package:test/test.dart';
