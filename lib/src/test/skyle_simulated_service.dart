@@ -17,7 +17,20 @@ import '../generated/Skyle.pbgrpc.dart';
 import '../generated/google/protobuf/empty.pb.dart';
 import 'positionings.dart';
 
+class SkyleSimulatedServiceConfiguration {
+  final bool positioningStream;
+  final bool gazeStream;
+  SkyleSimulatedServiceConfiguration({
+    this.gazeStream = true,
+    this.positioningStream = true,
+  });
+}
+
 class SkyleSimulatedService extends SkyleServiceBase {
+  final SkyleSimulatedServiceConfiguration config;
+
+  SkyleSimulatedService({required this.config});
+
   Options options = defaultOptions;
   List<Profile> profiles = [defaultProfile];
   Profile currentP = defaultProfile;
@@ -145,6 +158,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
 
   @override
   Stream<Point> gaze(ServiceCall call, Empty request) async* {
+    if (!config.gazeStream) return;
     while (!call.isCanceled) {
       for (final gaze in gazes) {
         yield gaze;
@@ -172,6 +186,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
 
   @override
   Stream<PositioningMessage> positioning(ServiceCall call, Empty request) async* {
+    if (!config.positioningStream) return;
     for (final positioning in positionings) {
       yield positioning;
       await Future.delayed(const Duration(milliseconds: 20));
@@ -223,26 +238,22 @@ class SkyleSimulatedService extends SkyleServiceBase {
 
   @override
   Stream<TriggerMessage> trigger(ServiceCall call, Empty request) {
-    // TODO(krjw-eyev): implement trigger
-    throw UnimplementedError();
+    return Stream.empty();
   }
 
   @override
   Stream<Point> cursorCalibration(ServiceCall call, Stream<CalibCursorMessages> request) {
-    // TODO(krjw-eyev): implement cursorCalibration
-    throw UnimplementedError();
+    return Stream.empty();
   }
 
   @override
   Stream<BinocularGaze> rawBinocularGaze(ServiceCall call, Empty request) {
-    // TODO: implement rawBinocularGaze
-    throw UnimplementedError();
+    return Stream.empty();
   }
 
   @override
   Stream<RawImage> rawImages(ServiceCall call, Empty request) {
-    // TODO: implement rawImages
-    throw UnimplementedError();
+    return Stream.empty();
   }
 }
 

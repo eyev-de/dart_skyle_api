@@ -48,5 +48,6 @@ export 'src/domain/repositories/trigger_repository.dart' show TriggerRepository;
 export 'src/domain/repositories/versions_repository.dart' show VersionsRepository;
 export 'src/domain/repositories/video_stream_repository.dart' show VideoStreamRepository;
 export 'src/et.dart' show ET, Connection;
+export 'src/test/skyle_simulated_service.dart' show SkyleSimulatedServiceConfiguration;
 export 'src/test/test_client.dart' show TestClient;
 export 'src/test/test_server.dart' show TestServer;

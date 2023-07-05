@@ -14,12 +14,15 @@ import 'constants.dart';
 import 'skyle_simulated_service.dart';
 
 class TestServer {
-  final service = SkyleSimulatedService();
+  final SkyleSimulatedService service;
   late Server _server;
   _MJPEGTestServer? _mjpegTestServer;
 
-  TestServer({String imagePath = 'assets'}) {
-    _server = Server([service]);
+  TestServer({
+    String imagePath = 'assets',
+    SkyleSimulatedServiceConfiguration? config,
+  }) : service = SkyleSimulatedService(config: config ?? SkyleSimulatedServiceConfiguration()) {
+    _server = Server.create(services: [service]);
     _mjpegTestServer = _MJPEGTestServer(imagePath: imagePath, service: service);
   }
 
