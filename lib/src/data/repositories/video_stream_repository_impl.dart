@@ -52,7 +52,7 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
       _sendPort = null;
       running = false;
     } catch (error) {
-      ET.logger?.e('Error stopping parsing isolate.', error, StackTrace.current);
+      ET.logger?.e('Error stopping parsing isolate.', error: error, stackTrace: StackTrace.current);
     }
   }
 
@@ -92,18 +92,18 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
             _subscription = response.stream.listen((data) async {
               _sendPort?.send(data);
             }, onError: (error) async {
-              ET.logger?.e('Error in mjpeg stream.', error, StackTrace.current);
+              ET.logger?.e('Error in mjpeg stream.', error: error, stackTrace: StackTrace.current);
               await cancel();
             }, cancelOnError: true);
           } else {
-            ET.logger?.e('Error in mjpeg stream.', Exception('Stream returned ${response.statusCode} status'), StackTrace.current);
+            ET.logger?.e('Error in mjpeg stream.', error: Exception('Stream returned ${response.statusCode} status'), stackTrace: StackTrace.current);
             await cancel();
             yield DataFailed('Stream returned ${response.statusCode} status and is canceled.');
           }
         }
       }
     } catch (error) {
-      ET.logger?.e('Error in mjpeg stream.', error, StackTrace.current);
+      ET.logger?.e('Error in mjpeg stream.', error: error, stackTrace: StackTrace.current);
       yield const DataFailed('Stream failed.');
     }
   }
@@ -117,7 +117,7 @@ class VideoStreamRepositoryImpl implements VideoStreamRepository {
       // _httpClient.close();
       await _stopParsingIsolate();
     } catch (error) {
-      ET.logger?.e('Error canceling mjpeg stream request.', error, StackTrace.current);
+      ET.logger?.e('Error canceling mjpeg stream request.', error: error, stackTrace: StackTrace.current);
     }
   }
 

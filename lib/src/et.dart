@@ -146,7 +146,7 @@ class ET {
           break;
         } catch (error) {
           final milliseconds = 100 + 500 * i;
-          logger?.w('Warning in tryReconnect():', error, StackTrace.current);
+          logger?.w('Warning in tryReconnect():', error: error, stackTrace: StackTrace.current);
           logger?.i('GRPC connection attempt ${i + 1}/$_maxRetries - Waiting ${milliseconds / 1000}s before retrying.');
           await Future.delayed(Duration(milliseconds: milliseconds));
         }
@@ -155,7 +155,7 @@ class ET {
         throw Exception('Could not excecute initial GRPC');
       }
     } catch (e, st) {
-      logger?.e('Skyle disconnected fatally:', e, st);
+      logger?.e('Skyle disconnected fatally:', error: e, stackTrace: st);
       await softDisconnect();
     }
   }
@@ -180,7 +180,7 @@ class ET {
       switchSettings.stop();
       await _channel?.terminate();
     } catch (e, st) {
-      logger?.e('Skyle disconnecting clients failed:', e, st);
+      logger?.e('Skyle disconnecting clients failed:', error: e, stackTrace: st);
     } finally {
       _channel = null;
       _client = null;

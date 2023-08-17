@@ -82,7 +82,7 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
           // }
         }
       } catch (error) {
-        ET.logger?.e('Connection Isolate reports error: ', error, StackTrace.current);
+        ET.logger?.e('Connection Isolate reports error: ', error: error, stackTrace: StackTrace.current);
         message = ConnectionMessage.disconnected();
       }
       portReceive.send(message);

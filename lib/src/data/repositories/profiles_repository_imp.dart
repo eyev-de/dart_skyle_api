@@ -31,10 +31,10 @@ class ProfilesRepositoryImpl implements ProfilesRepository {
     } on NotConnectedException catch (_) {
       rethrow;
     } on StillStreamingException catch (error) {
-      ET.logger?.w('Warning in getting profiles:', error, StackTrace.current);
+      ET.logger?.w('Warning in getting profiles:', error: error, stackTrace: StackTrace.current);
       rethrow;
     } catch (error) {
-      ET.logger?.e('Error in getting profiles:', error, StackTrace.current);
+      ET.logger?.e('Error in getting profiles:', error: error, stackTrace: StackTrace.current);
       rethrow;
     } finally {
       _stream = null;
@@ -54,10 +54,10 @@ class ProfilesRepositoryImpl implements ProfilesRepository {
     } on NotConnectedException catch (_) {
       rethrow;
     } on StillStreamingException catch (error) {
-      ET.logger?.w('Warning deleting profile ${profile.name}:', error, StackTrace.current);
+      ET.logger?.w('Warning deleting profile ${profile.name}:', error: error, stackTrace: StackTrace.current);
       rethrow;
     } catch (error) {
-      ET.logger?.e('Error deleting profile ${profile.name}:', error, StackTrace.current);
+      ET.logger?.e('Error deleting profile ${profile.name}:', error: error, stackTrace: StackTrace.current);
       rethrow;
     }
   }
@@ -76,10 +76,10 @@ class ProfilesRepositoryImpl implements ProfilesRepository {
     } on NotConnectedException catch (_) {
       rethrow;
     } on StillStreamingException catch (error) {
-      ET.logger?.w('Warning adding profile ${profile.name}:', error, StackTrace.current);
+      ET.logger?.w('Warning adding profile ${profile.name}:', error: error, stackTrace: StackTrace.current);
       rethrow;
     } catch (error) {
-      ET.logger?.e('Error adding profile ${profile.name}:', error, StackTrace.current);
+      ET.logger?.e('Error adding profile ${profile.name}:', error: error, stackTrace: StackTrace.current);
       rethrow;
     }
   }
@@ -93,7 +93,7 @@ class ProfilesRepositoryImpl implements ProfilesRepository {
     } on NotConnectedException catch (_) {
       rethrow;
     } catch (error) {
-      ET.logger?.e('Error getting current profile:', error, StackTrace.current);
+      ET.logger?.e('Error getting current profile:', error: error, stackTrace: StackTrace.current);
       rethrow;
     }
   }
