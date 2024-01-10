@@ -7,7 +7,7 @@ part of 'filter.dart';
 // **************************************************************************
 
 _$_Filter _$$_FilterFromJson(Map<String, dynamic> json) => _$_Filter(
-      gaze: json['gaze'] as int? ?? 11,
+      gaze: json['gaze'] as int? ?? 30,
       fixation: json['fixation'] as int? ?? 5,
     );
 
