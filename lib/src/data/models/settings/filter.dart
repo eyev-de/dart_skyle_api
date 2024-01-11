@@ -14,7 +14,7 @@ part 'filter.g.dart';
 @freezed
 class Filter with _$Filter {
   const factory Filter({
-    @Default(11) int gaze,
+    @Default(30) int gaze,
     @Default(5) int fixation,
   }) = _Filter;
 
