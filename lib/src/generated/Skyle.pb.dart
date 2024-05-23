@@ -1,49 +1,55 @@
-///
+//
 //  Generated code. Do not modify.
 //  source: Skyle.proto
 //
 // @dart = 2.12
-// ignore_for_file: annotate_overrides,camel_case_types,constant_identifier_names,directives_ordering,library_prefixes,non_constant_identifier_names,prefer_final_fields,return_of_invalid_type,unnecessary_const,unnecessary_import,unnecessary_this,unused_import,unused_shown_name
+
+// ignore_for_file: annotate_overrides, camel_case_types, comment_references
+// ignore_for_file: constant_identifier_names, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_final_fields
+// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
 
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'google/protobuf/empty.pb.dart' as $1;
-
 import 'Skyle.pbenum.dart';
+import 'google/protobuf/empty.pb.dart' as $1;
 
 export 'Skyle.pbenum.dart';
 
+/// *
+///  Single image in grayscale raw bytes
 class RawImage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RawImage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'width', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'height', $pb.PbFieldType.O3)
-    ..a<$core.List<$core.int>>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data', $pb.PbFieldType.OY)
-    ..hasRequiredFields = false
-  ;
-
-  RawImage._() : super();
   factory RawImage({
     $core.int? width,
     $core.int? height,
     $core.List<$core.int>? data,
   }) {
-    final _result = create();
+    final $result = create();
     if (width != null) {
-      _result.width = width;
+      $result.width = width;
     }
     if (height != null) {
-      _result.height = height;
+      $result.height = height;
     }
     if (data != null) {
-      _result.data = data;
+      $result.data = data;
     }
-    return _result;
+    return $result;
   }
+  RawImage._() : super();
   factory RawImage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory RawImage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RawImage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'width', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'height', $pb.PbFieldType.O3)
+    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -53,8 +59,10 @@ class RawImage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  RawImage copyWith(void Function(RawImage) updates) => super.copyWith((message) => updates(message as RawImage)) as RawImage; // ignore: deprecated_member_use
+  RawImage copyWith(void Function(RawImage) updates) => super.copyWith((message) => updates(message as RawImage)) as RawImage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static RawImage create() => RawImage._();
   RawImage createEmptyInstance() => create();
@@ -91,39 +99,42 @@ class RawImage extends $pb.GeneratedMessage {
   void clearData() => clearField(3);
 }
 
+/// *
+///  Message to indicate a trigger
 class TriggerMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'TriggerMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'singleClick', protoName: 'singleClick')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'doubleClick', protoName: 'doubleClick')
-    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'holdClick', protoName: 'holdClick')
-    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fixation')
-    ..hasRequiredFields = false
-  ;
-
-  TriggerMessage._() : super();
   factory TriggerMessage({
     $core.bool? singleClick,
     $core.bool? doubleClick,
     $core.bool? holdClick,
     $core.bool? fixation,
   }) {
-    final _result = create();
+    final $result = create();
     if (singleClick != null) {
-      _result.singleClick = singleClick;
+      $result.singleClick = singleClick;
     }
     if (doubleClick != null) {
-      _result.doubleClick = doubleClick;
+      $result.doubleClick = doubleClick;
     }
     if (holdClick != null) {
-      _result.holdClick = holdClick;
+      $result.holdClick = holdClick;
     }
     if (fixation != null) {
-      _result.fixation = fixation;
+      $result.fixation = fixation;
     }
-    return _result;
+    return $result;
   }
+  TriggerMessage._() : super();
   factory TriggerMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory TriggerMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'TriggerMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'singleClick', protoName: 'singleClick')
+    ..aOB(2, _omitFieldNames ? '' : 'doubleClick', protoName: 'doubleClick')
+    ..aOB(3, _omitFieldNames ? '' : 'holdClick', protoName: 'holdClick')
+    ..aOB(4, _omitFieldNames ? '' : 'fixation')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -133,8 +144,10 @@ class TriggerMessage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  TriggerMessage copyWith(void Function(TriggerMessage) updates) => super.copyWith((message) => updates(message as TriggerMessage)) as TriggerMessage; // ignore: deprecated_member_use
+  TriggerMessage copyWith(void Function(TriggerMessage) updates) => super.copyWith((message) => updates(message as TriggerMessage)) as TriggerMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static TriggerMessage create() => TriggerMessage._();
   TriggerMessage createEmptyInstance() => create();
@@ -180,34 +193,37 @@ class TriggerMessage extends $pb.GeneratedMessage {
   void clearFixation() => clearField(4);
 }
 
+/// *
+///  Message to request resets
 class ResetMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ResetMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'services')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'device')
-    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'data')
-    ..hasRequiredFields = false
-  ;
-
-  ResetMessage._() : super();
   factory ResetMessage({
     $core.bool? services,
     $core.bool? device,
     $core.bool? data,
   }) {
-    final _result = create();
+    final $result = create();
     if (services != null) {
-      _result.services = services;
+      $result.services = services;
     }
     if (device != null) {
-      _result.device = device;
+      $result.device = device;
     }
     if (data != null) {
-      _result.data = data;
+      $result.data = data;
     }
-    return _result;
+    return $result;
   }
+  ResetMessage._() : super();
   factory ResetMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ResetMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ResetMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'services')
+    ..aOB(2, _omitFieldNames ? '' : 'device')
+    ..aOB(3, _omitFieldNames ? '' : 'data')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -217,8 +233,10 @@ class ResetMessage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ResetMessage copyWith(void Function(ResetMessage) updates) => super.copyWith((message) => updates(message as ResetMessage)) as ResetMessage; // ignore: deprecated_member_use
+  ResetMessage copyWith(void Function(ResetMessage) updates) => super.copyWith((message) => updates(message as ResetMessage)) as ResetMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ResetMessage create() => ResetMessage._();
   ResetMessage createEmptyInstance() => create();
@@ -255,34 +273,37 @@ class ResetMessage extends $pb.GeneratedMessage {
   void clearData() => clearField(3);
 }
 
+/// *
+///  Message describing a user profile
 class Profile extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Profile', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..e<Profile_Skill>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skill', $pb.PbFieldType.OE, defaultOrMaker: Profile_Skill.Low, valueOf: Profile_Skill.valueOf, enumValues: Profile_Skill.values)
-    ..hasRequiredFields = false
-  ;
-
-  Profile._() : super();
   factory Profile({
     $core.int? id,
     $core.String? name,
     Profile_Skill? skill,
   }) {
-    final _result = create();
+    final $result = create();
     if (id != null) {
-      _result.id = id;
+      $result.id = id;
     }
     if (name != null) {
-      _result.name = name;
+      $result.name = name;
     }
     if (skill != null) {
-      _result.skill = skill;
+      $result.skill = skill;
     }
-    return _result;
+    return $result;
   }
+  Profile._() : super();
   factory Profile.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Profile.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Profile', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'id', $pb.PbFieldType.O3)
+    ..aOS(2, _omitFieldNames ? '' : 'name')
+    ..e<Profile_Skill>(3, _omitFieldNames ? '' : 'skill', $pb.PbFieldType.OE, defaultOrMaker: Profile_Skill.Low, valueOf: Profile_Skill.valueOf, enumValues: Profile_Skill.values)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -292,8 +313,10 @@ class Profile extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Profile copyWith(void Function(Profile) updates) => super.copyWith((message) => updates(message as Profile)) as Profile; // ignore: deprecated_member_use
+  Profile copyWith(void Function(Profile) updates) => super.copyWith((message) => updates(message as Profile)) as Profile;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Profile create() => Profile._();
   Profile createEmptyInstance() => create();
@@ -330,24 +353,27 @@ class Profile extends $pb.GeneratedMessage {
   void clearSkill() => clearField(3);
 }
 
+/// *
+///  General status message
 class StatusMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StatusMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
-    ..hasRequiredFields = false
-  ;
-
-  StatusMessage._() : super();
   factory StatusMessage({
     $core.bool? success,
   }) {
-    final _result = create();
+    final $result = create();
     if (success != null) {
-      _result.success = success;
+      $result.success = success;
     }
-    return _result;
+    return $result;
   }
+  StatusMessage._() : super();
   factory StatusMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory StatusMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'StatusMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'success')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -357,8 +383,10 @@ class StatusMessage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  StatusMessage copyWith(void Function(StatusMessage) updates) => super.copyWith((message) => updates(message as StatusMessage)) as StatusMessage; // ignore: deprecated_member_use
+  StatusMessage copyWith(void Function(StatusMessage) updates) => super.copyWith((message) => updates(message as StatusMessage)) as StatusMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static StatusMessage create() => StatusMessage._();
   StatusMessage createEmptyInstance() => create();
@@ -383,35 +411,38 @@ enum OptionMessage_Message {
   notSet
 }
 
+/// *
+///  Message to wrap the options message: either empty or filled with options
 class OptionMessage extends $pb.GeneratedMessage {
+  factory OptionMessage({
+    $1.Empty? empty,
+    Options? options,
+  }) {
+    final $result = create();
+    if (empty != null) {
+      $result.empty = empty;
+    }
+    if (options != null) {
+      $result.options = options;
+    }
+    return $result;
+  }
+  OptionMessage._() : super();
+  factory OptionMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory OptionMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, OptionMessage_Message> _OptionMessage_MessageByTag = {
     1 : OptionMessage_Message.empty,
     2 : OptionMessage_Message.options,
     0 : OptionMessage_Message.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'OptionMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'OptionMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
     ..oo(0, [1, 2])
-    ..aOM<$1.Empty>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'empty', subBuilder: $1.Empty.create)
-    ..aOM<Options>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'options', subBuilder: Options.create)
+    ..aOM<$1.Empty>(1, _omitFieldNames ? '' : 'empty', subBuilder: $1.Empty.create)
+    ..aOM<Options>(2, _omitFieldNames ? '' : 'options', subBuilder: Options.create)
     ..hasRequiredFields = false
   ;
 
-  OptionMessage._() : super();
-  factory OptionMessage({
-    $1.Empty? empty,
-    Options? options,
-  }) {
-    final _result = create();
-    if (empty != null) {
-      _result.empty = empty;
-    }
-    if (options != null) {
-      _result.options = options;
-    }
-    return _result;
-  }
-  factory OptionMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory OptionMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -421,8 +452,10 @@ class OptionMessage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  OptionMessage copyWith(void Function(OptionMessage) updates) => super.copyWith((message) => updates(message as OptionMessage)) as OptionMessage; // ignore: deprecated_member_use
+  OptionMessage copyWith(void Function(OptionMessage) updates) => super.copyWith((message) => updates(message as OptionMessage)) as OptionMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static OptionMessage create() => OptionMessage._();
   OptionMessage createEmptyInstance() => create();
@@ -464,41 +497,44 @@ enum CalibControlMessages_Message {
   notSet
 }
 
+/// *
+///  Message wrapping possible calibration control messages for a client
 class CalibControlMessages extends $pb.GeneratedMessage {
+  factory CalibControlMessages({
+    CalibControl? calibControl,
+    CalibImprove? calibImprove,
+    CalibConfirm? calibConfirm,
+  }) {
+    final $result = create();
+    if (calibControl != null) {
+      $result.calibControl = calibControl;
+    }
+    if (calibImprove != null) {
+      $result.calibImprove = calibImprove;
+    }
+    if (calibConfirm != null) {
+      $result.calibConfirm = calibConfirm;
+    }
+    return $result;
+  }
+  CalibControlMessages._() : super();
+  factory CalibControlMessages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CalibControlMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, CalibControlMessages_Message> _CalibControlMessages_MessageByTag = {
     1 : CalibControlMessages_Message.calibControl,
     2 : CalibControlMessages_Message.calibImprove,
     3 : CalibControlMessages_Message.calibConfirm,
     0 : CalibControlMessages_Message.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibControlMessages', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibControlMessages', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
     ..oo(0, [1, 2, 3])
-    ..aOM<CalibControl>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibControl', protoName: 'calibControl', subBuilder: CalibControl.create)
-    ..aOM<CalibImprove>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibImprove', protoName: 'calibImprove', subBuilder: CalibImprove.create)
-    ..aOM<CalibConfirm>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibConfirm', protoName: 'calibConfirm', subBuilder: CalibConfirm.create)
+    ..aOM<CalibControl>(1, _omitFieldNames ? '' : 'calibControl', protoName: 'calibControl', subBuilder: CalibControl.create)
+    ..aOM<CalibImprove>(2, _omitFieldNames ? '' : 'calibImprove', protoName: 'calibImprove', subBuilder: CalibImprove.create)
+    ..aOM<CalibConfirm>(3, _omitFieldNames ? '' : 'calibConfirm', protoName: 'calibConfirm', subBuilder: CalibConfirm.create)
     ..hasRequiredFields = false
   ;
 
-  CalibControlMessages._() : super();
-  factory CalibControlMessages({
-    CalibControl? calibControl,
-    CalibImprove? calibImprove,
-    CalibConfirm? calibConfirm,
-  }) {
-    final _result = create();
-    if (calibControl != null) {
-      _result.calibControl = calibControl;
-    }
-    if (calibImprove != null) {
-      _result.calibImprove = calibImprove;
-    }
-    if (calibConfirm != null) {
-      _result.calibConfirm = calibConfirm;
-    }
-    return _result;
-  }
-  factory CalibControlMessages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CalibControlMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -508,8 +544,10 @@ class CalibControlMessages extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalibControlMessages copyWith(void Function(CalibControlMessages) updates) => super.copyWith((message) => updates(message as CalibControlMessages)) as CalibControlMessages; // ignore: deprecated_member_use
+  CalibControlMessages copyWith(void Function(CalibControlMessages) updates) => super.copyWith((message) => updates(message as CalibControlMessages)) as CalibControlMessages;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalibControlMessages create() => CalibControlMessages._();
   CalibControlMessages createEmptyInstance() => create();
@@ -561,35 +599,38 @@ enum CalibCursorMessages_Message {
   notSet
 }
 
+/// *
+///  Message wrapping possible cursor calibration messages for a client
 class CalibCursorMessages extends $pb.GeneratedMessage {
+  factory CalibCursorMessages({
+    $1.Empty? empty,
+    CalibConfirm? calibConfirm,
+  }) {
+    final $result = create();
+    if (empty != null) {
+      $result.empty = empty;
+    }
+    if (calibConfirm != null) {
+      $result.calibConfirm = calibConfirm;
+    }
+    return $result;
+  }
+  CalibCursorMessages._() : super();
+  factory CalibCursorMessages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CalibCursorMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, CalibCursorMessages_Message> _CalibCursorMessages_MessageByTag = {
     1 : CalibCursorMessages_Message.empty,
     3 : CalibCursorMessages_Message.calibConfirm,
     0 : CalibCursorMessages_Message.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibCursorMessages', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibCursorMessages', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
     ..oo(0, [1, 3])
-    ..aOM<$1.Empty>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'empty', subBuilder: $1.Empty.create)
-    ..aOM<CalibConfirm>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibConfirm', protoName: 'calibConfirm', subBuilder: CalibConfirm.create)
+    ..aOM<$1.Empty>(1, _omitFieldNames ? '' : 'empty', subBuilder: $1.Empty.create)
+    ..aOM<CalibConfirm>(3, _omitFieldNames ? '' : 'calibConfirm', protoName: 'calibConfirm', subBuilder: CalibConfirm.create)
     ..hasRequiredFields = false
   ;
 
-  CalibCursorMessages._() : super();
-  factory CalibCursorMessages({
-    $1.Empty? empty,
-    CalibConfirm? calibConfirm,
-  }) {
-    final _result = create();
-    if (empty != null) {
-      _result.empty = empty;
-    }
-    if (calibConfirm != null) {
-      _result.calibConfirm = calibConfirm;
-    }
-    return _result;
-  }
-  factory CalibCursorMessages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CalibCursorMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -599,8 +640,10 @@ class CalibCursorMessages extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalibCursorMessages copyWith(void Function(CalibCursorMessages) updates) => super.copyWith((message) => updates(message as CalibCursorMessages)) as CalibCursorMessages; // ignore: deprecated_member_use
+  CalibCursorMessages copyWith(void Function(CalibCursorMessages) updates) => super.copyWith((message) => updates(message as CalibCursorMessages)) as CalibCursorMessages;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalibCursorMessages create() => CalibCursorMessages._();
   CalibCursorMessages createEmptyInstance() => create();
@@ -635,18 +678,9 @@ class CalibCursorMessages extends $pb.GeneratedMessage {
   CalibConfirm ensureCalibConfirm() => $_ensure(1);
 }
 
+/// *
+///  Message describing the calibration status
 class CalibControl extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibControl', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibrate')
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'numberOfPoints', $pb.PbFieldType.O3, protoName: 'numberOfPoints')
-    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'abort')
-    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stopHID', protoName: 'stopHID')
-    ..aOM<ScreenResolution>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'res', subBuilder: ScreenResolution.create)
-    ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stepByStep', protoName: 'stepByStep')
-    ..hasRequiredFields = false
-  ;
-
-  CalibControl._() : super();
   factory CalibControl({
     $core.bool? calibrate,
     $core.int? numberOfPoints,
@@ -655,29 +689,41 @@ class CalibControl extends $pb.GeneratedMessage {
     ScreenResolution? res,
     $core.bool? stepByStep,
   }) {
-    final _result = create();
+    final $result = create();
     if (calibrate != null) {
-      _result.calibrate = calibrate;
+      $result.calibrate = calibrate;
     }
     if (numberOfPoints != null) {
-      _result.numberOfPoints = numberOfPoints;
+      $result.numberOfPoints = numberOfPoints;
     }
     if (abort != null) {
-      _result.abort = abort;
+      $result.abort = abort;
     }
     if (stopHID != null) {
-      _result.stopHID = stopHID;
+      $result.stopHID = stopHID;
     }
     if (res != null) {
-      _result.res = res;
+      $result.res = res;
     }
     if (stepByStep != null) {
-      _result.stepByStep = stepByStep;
+      $result.stepByStep = stepByStep;
     }
-    return _result;
+    return $result;
   }
+  CalibControl._() : super();
   factory CalibControl.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CalibControl.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibControl', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'calibrate')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'numberOfPoints', $pb.PbFieldType.O3, protoName: 'numberOfPoints')
+    ..aOB(3, _omitFieldNames ? '' : 'abort')
+    ..aOB(4, _omitFieldNames ? '' : 'stopHID', protoName: 'stopHID')
+    ..aOM<ScreenResolution>(5, _omitFieldNames ? '' : 'res', subBuilder: ScreenResolution.create)
+    ..aOB(6, _omitFieldNames ? '' : 'stepByStep', protoName: 'stepByStep')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -687,8 +733,10 @@ class CalibControl extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalibControl copyWith(void Function(CalibControl) updates) => super.copyWith((message) => updates(message as CalibControl)) as CalibControl; // ignore: deprecated_member_use
+  CalibControl copyWith(void Function(CalibControl) updates) => super.copyWith((message) => updates(message as CalibControl)) as CalibControl;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalibControl create() => CalibControl._();
   CalibControl createEmptyInstance() => create();
@@ -754,39 +802,42 @@ class CalibControl extends $pb.GeneratedMessage {
   void clearStepByStep() => clearField(6);
 }
 
+/// *
+///  Message with screen resolution of the client
 class ScreenResolution extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ScreenResolution', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'width', $pb.PbFieldType.O3)
-    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'height', $pb.PbFieldType.O3)
-    ..a<$core.int>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'widthInMM', $pb.PbFieldType.O3, protoName: 'widthInMM')
-    ..a<$core.int>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'heightInMM', $pb.PbFieldType.O3, protoName: 'heightInMM')
-    ..hasRequiredFields = false
-  ;
-
-  ScreenResolution._() : super();
   factory ScreenResolution({
     $core.int? width,
     $core.int? height,
     $core.int? widthInMM,
     $core.int? heightInMM,
   }) {
-    final _result = create();
+    final $result = create();
     if (width != null) {
-      _result.width = width;
+      $result.width = width;
     }
     if (height != null) {
-      _result.height = height;
+      $result.height = height;
     }
     if (widthInMM != null) {
-      _result.widthInMM = widthInMM;
+      $result.widthInMM = widthInMM;
     }
     if (heightInMM != null) {
-      _result.heightInMM = heightInMM;
+      $result.heightInMM = heightInMM;
     }
-    return _result;
+    return $result;
   }
+  ScreenResolution._() : super();
   factory ScreenResolution.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ScreenResolution.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ScreenResolution', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'width', $pb.PbFieldType.O3)
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'height', $pb.PbFieldType.O3)
+    ..a<$core.int>(7, _omitFieldNames ? '' : 'widthInMM', $pb.PbFieldType.O3, protoName: 'widthInMM')
+    ..a<$core.int>(8, _omitFieldNames ? '' : 'heightInMM', $pb.PbFieldType.O3, protoName: 'heightInMM')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -796,8 +847,10 @@ class ScreenResolution extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ScreenResolution copyWith(void Function(ScreenResolution) updates) => super.copyWith((message) => updates(message as ScreenResolution)) as ScreenResolution; // ignore: deprecated_member_use
+  ScreenResolution copyWith(void Function(ScreenResolution) updates) => super.copyWith((message) => updates(message as ScreenResolution)) as ScreenResolution;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ScreenResolution create() => ScreenResolution._();
   ScreenResolution createEmptyInstance() => create();
@@ -843,29 +896,32 @@ class ScreenResolution extends $pb.GeneratedMessage {
   void clearHeightInMM() => clearField(8);
 }
 
+/// *
+///  Message to improve a calibration
 class CalibImprove extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibImprove', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rating', $pb.PbFieldType.O3)
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stopHID', protoName: 'stopHID')
-    ..hasRequiredFields = false
-  ;
-
-  CalibImprove._() : super();
   factory CalibImprove({
     $core.int? rating,
     $core.bool? stopHID,
   }) {
-    final _result = create();
+    final $result = create();
     if (rating != null) {
-      _result.rating = rating;
+      $result.rating = rating;
     }
     if (stopHID != null) {
-      _result.stopHID = stopHID;
+      $result.stopHID = stopHID;
     }
-    return _result;
+    return $result;
   }
+  CalibImprove._() : super();
   factory CalibImprove.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CalibImprove.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibImprove', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'rating', $pb.PbFieldType.O3)
+    ..aOB(2, _omitFieldNames ? '' : 'stopHID', protoName: 'stopHID')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -875,8 +931,10 @@ class CalibImprove extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalibImprove copyWith(void Function(CalibImprove) updates) => super.copyWith((message) => updates(message as CalibImprove)) as CalibImprove; // ignore: deprecated_member_use
+  CalibImprove copyWith(void Function(CalibImprove) updates) => super.copyWith((message) => updates(message as CalibImprove)) as CalibImprove;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalibImprove create() => CalibImprove._();
   CalibImprove createEmptyInstance() => create();
@@ -904,24 +962,27 @@ class CalibImprove extends $pb.GeneratedMessage {
   void clearStopHID() => clearField(2);
 }
 
+/// *
+///  Message to confirm a calibration point
 class CalibConfirm extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibConfirm', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'confirmed')
-    ..hasRequiredFields = false
-  ;
-
-  CalibConfirm._() : super();
   factory CalibConfirm({
     $core.bool? confirmed,
   }) {
-    final _result = create();
+    final $result = create();
     if (confirmed != null) {
-      _result.confirmed = confirmed;
+      $result.confirmed = confirmed;
     }
-    return _result;
+    return $result;
   }
+  CalibConfirm._() : super();
   factory CalibConfirm.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CalibConfirm.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibConfirm', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'confirmed')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -931,8 +992,10 @@ class CalibConfirm extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalibConfirm copyWith(void Function(CalibConfirm) updates) => super.copyWith((message) => updates(message as CalibConfirm)) as CalibConfirm; // ignore: deprecated_member_use
+  CalibConfirm copyWith(void Function(CalibConfirm) updates) => super.copyWith((message) => updates(message as CalibConfirm)) as CalibConfirm;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalibConfirm create() => CalibConfirm._();
   CalibConfirm createEmptyInstance() => create();
@@ -958,41 +1021,44 @@ enum CalibMessages_Message {
   notSet
 }
 
+/// *
+///  Message wrapping calibration host messages
 class CalibMessages extends $pb.GeneratedMessage {
+  factory CalibMessages({
+    CalibControl? calibControl,
+    CalibPoint? calibPoint,
+    CalibQuality? calibQuality,
+  }) {
+    final $result = create();
+    if (calibControl != null) {
+      $result.calibControl = calibControl;
+    }
+    if (calibPoint != null) {
+      $result.calibPoint = calibPoint;
+    }
+    if (calibQuality != null) {
+      $result.calibQuality = calibQuality;
+    }
+    return $result;
+  }
+  CalibMessages._() : super();
+  factory CalibMessages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory CalibMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
   static const $core.Map<$core.int, CalibMessages_Message> _CalibMessages_MessageByTag = {
     1 : CalibMessages_Message.calibControl,
     2 : CalibMessages_Message.calibPoint,
     3 : CalibMessages_Message.calibQuality,
     0 : CalibMessages_Message.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibMessages', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibMessages', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
     ..oo(0, [1, 2, 3])
-    ..aOM<CalibControl>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibControl', protoName: 'calibControl', subBuilder: CalibControl.create)
-    ..aOM<CalibPoint>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibPoint', protoName: 'calibPoint', subBuilder: CalibPoint.create)
-    ..aOM<CalibQuality>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calibQuality', protoName: 'calibQuality', subBuilder: CalibQuality.create)
+    ..aOM<CalibControl>(1, _omitFieldNames ? '' : 'calibControl', protoName: 'calibControl', subBuilder: CalibControl.create)
+    ..aOM<CalibPoint>(2, _omitFieldNames ? '' : 'calibPoint', protoName: 'calibPoint', subBuilder: CalibPoint.create)
+    ..aOM<CalibQuality>(3, _omitFieldNames ? '' : 'calibQuality', protoName: 'calibQuality', subBuilder: CalibQuality.create)
     ..hasRequiredFields = false
   ;
 
-  CalibMessages._() : super();
-  factory CalibMessages({
-    CalibControl? calibControl,
-    CalibPoint? calibPoint,
-    CalibQuality? calibQuality,
-  }) {
-    final _result = create();
-    if (calibControl != null) {
-      _result.calibControl = calibControl;
-    }
-    if (calibPoint != null) {
-      _result.calibPoint = calibPoint;
-    }
-    if (calibQuality != null) {
-      _result.calibQuality = calibQuality;
-    }
-    return _result;
-  }
-  factory CalibMessages.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CalibMessages.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1002,8 +1068,10 @@ class CalibMessages extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalibMessages copyWith(void Function(CalibMessages) updates) => super.copyWith((message) => updates(message as CalibMessages)) as CalibMessages; // ignore: deprecated_member_use
+  CalibMessages copyWith(void Function(CalibMessages) updates) => super.copyWith((message) => updates(message as CalibMessages)) as CalibMessages;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalibMessages create() => CalibMessages._();
   CalibMessages createEmptyInstance() => create();
@@ -1049,29 +1117,32 @@ class CalibMessages extends $pb.GeneratedMessage {
   CalibQuality ensureCalibQuality() => $_ensure(2);
 }
 
+/// *
+///  Message for binocular gaze points
 class BinocularGaze extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'BinocularGaze', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOM<Point>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'leftGaze', protoName: 'leftGaze', subBuilder: Point.create)
-    ..aOM<Point>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rightGaze', protoName: 'rightGaze', subBuilder: Point.create)
-    ..hasRequiredFields = false
-  ;
-
-  BinocularGaze._() : super();
   factory BinocularGaze({
     Point? leftGaze,
     Point? rightGaze,
   }) {
-    final _result = create();
+    final $result = create();
     if (leftGaze != null) {
-      _result.leftGaze = leftGaze;
+      $result.leftGaze = leftGaze;
     }
     if (rightGaze != null) {
-      _result.rightGaze = rightGaze;
+      $result.rightGaze = rightGaze;
     }
-    return _result;
+    return $result;
   }
+  BinocularGaze._() : super();
   factory BinocularGaze.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory BinocularGaze.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BinocularGaze', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOM<Point>(1, _omitFieldNames ? '' : 'leftGaze', protoName: 'leftGaze', subBuilder: Point.create)
+    ..aOM<Point>(2, _omitFieldNames ? '' : 'rightGaze', protoName: 'rightGaze', subBuilder: Point.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1081,8 +1152,10 @@ class BinocularGaze extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  BinocularGaze copyWith(void Function(BinocularGaze) updates) => super.copyWith((message) => updates(message as BinocularGaze)) as BinocularGaze; // ignore: deprecated_member_use
+  BinocularGaze copyWith(void Function(BinocularGaze) updates) => super.copyWith((message) => updates(message as BinocularGaze)) as BinocularGaze;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static BinocularGaze create() => BinocularGaze._();
   BinocularGaze createEmptyInstance() => create();
@@ -1114,29 +1187,32 @@ class BinocularGaze extends $pb.GeneratedMessage {
   Point ensureRightGaze() => $_ensure(1);
 }
 
+/// *
+///  Message for a 2D point
 class Point extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Point', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'x', $pb.PbFieldType.OD)
-    ..a<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'y', $pb.PbFieldType.OD)
-    ..hasRequiredFields = false
-  ;
-
-  Point._() : super();
   factory Point({
     $core.double? x,
     $core.double? y,
   }) {
-    final _result = create();
+    final $result = create();
     if (x != null) {
-      _result.x = x;
+      $result.x = x;
     }
     if (y != null) {
-      _result.y = y;
+      $result.y = y;
     }
-    return _result;
+    return $result;
   }
+  Point._() : super();
   factory Point.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Point.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Point', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..a<$core.double>(1, _omitFieldNames ? '' : 'x', $pb.PbFieldType.OD)
+    ..a<$core.double>(2, _omitFieldNames ? '' : 'y', $pb.PbFieldType.OD)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1146,8 +1222,10 @@ class Point extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Point copyWith(void Function(Point) updates) => super.copyWith((message) => updates(message as Point)) as Point; // ignore: deprecated_member_use
+  Point copyWith(void Function(Point) updates) => super.copyWith((message) => updates(message as Point)) as Point;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Point create() => Point._();
   Point createEmptyInstance() => create();
@@ -1175,29 +1253,32 @@ class Point extends $pb.GeneratedMessage {
   void clearY() => clearField(2);
 }
 
+/// *
+///  Message describing a calibration point
 class CalibPoint extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibPoint', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'count', $pb.PbFieldType.O3)
-    ..aOM<Point>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'currentPoint', protoName: 'currentPoint', subBuilder: Point.create)
-    ..hasRequiredFields = false
-  ;
-
-  CalibPoint._() : super();
   factory CalibPoint({
     $core.int? count,
     Point? currentPoint,
   }) {
-    final _result = create();
+    final $result = create();
     if (count != null) {
-      _result.count = count;
+      $result.count = count;
     }
     if (currentPoint != null) {
-      _result.currentPoint = currentPoint;
+      $result.currentPoint = currentPoint;
     }
-    return _result;
+    return $result;
   }
+  CalibPoint._() : super();
   factory CalibPoint.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CalibPoint.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibPoint', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'count', $pb.PbFieldType.O3)
+    ..aOM<Point>(2, _omitFieldNames ? '' : 'currentPoint', protoName: 'currentPoint', subBuilder: Point.create)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1207,8 +1288,10 @@ class CalibPoint extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalibPoint copyWith(void Function(CalibPoint) updates) => super.copyWith((message) => updates(message as CalibPoint)) as CalibPoint; // ignore: deprecated_member_use
+  CalibPoint copyWith(void Function(CalibPoint) updates) => super.copyWith((message) => updates(message as CalibPoint)) as CalibPoint;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalibPoint create() => CalibPoint._();
   CalibPoint createEmptyInstance() => create();
@@ -1238,29 +1321,32 @@ class CalibPoint extends $pb.GeneratedMessage {
   Point ensureCurrentPoint() => $_ensure(1);
 }
 
+/// *
+///  Message describing the quality of a calibration
 class CalibQuality extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CalibQuality', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'quality', $pb.PbFieldType.OD)
-    ..p<$core.double>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'qualities', $pb.PbFieldType.KD)
-    ..hasRequiredFields = false
-  ;
-
-  CalibQuality._() : super();
   factory CalibQuality({
     $core.double? quality,
     $core.Iterable<$core.double>? qualities,
   }) {
-    final _result = create();
+    final $result = create();
     if (quality != null) {
-      _result.quality = quality;
+      $result.quality = quality;
     }
     if (qualities != null) {
-      _result.qualities.addAll(qualities);
+      $result.qualities.addAll(qualities);
     }
-    return _result;
+    return $result;
   }
+  CalibQuality._() : super();
   factory CalibQuality.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory CalibQuality.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibQuality', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..a<$core.double>(1, _omitFieldNames ? '' : 'quality', $pb.PbFieldType.OD)
+    ..p<$core.double>(2, _omitFieldNames ? '' : 'qualities', $pb.PbFieldType.KD)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1270,8 +1356,10 @@ class CalibQuality extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CalibQuality copyWith(void Function(CalibQuality) updates) => super.copyWith((message) => updates(message as CalibQuality)) as CalibQuality; // ignore: deprecated_member_use
+  CalibQuality copyWith(void Function(CalibQuality) updates) => super.copyWith((message) => updates(message as CalibQuality)) as CalibQuality;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static CalibQuality create() => CalibQuality._();
   CalibQuality createEmptyInstance() => create();
@@ -1293,18 +1381,9 @@ class CalibQuality extends $pb.GeneratedMessage {
   $core.List<$core.double> get qualities => $_getList(1);
 }
 
+/// *
+///  Message with eye positions and quality indicators
 class PositioningMessage extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PositioningMessage', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOM<Point>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'leftEye', protoName: 'leftEye', subBuilder: Point.create)
-    ..aOM<Point>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'rightEye', protoName: 'rightEye', subBuilder: Point.create)
-    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'distanceQuality', $pb.PbFieldType.O3, protoName: 'distanceQuality')
-    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'positioningQuality', $pb.PbFieldType.O3, protoName: 'positioningQuality')
-    ..a<$core.int>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'horizontalQuality', $pb.PbFieldType.O3, protoName: 'horizontalQuality')
-    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'verticalQuality', $pb.PbFieldType.O3, protoName: 'verticalQuality')
-    ..hasRequiredFields = false
-  ;
-
-  PositioningMessage._() : super();
   factory PositioningMessage({
     Point? leftEye,
     Point? rightEye,
@@ -1313,29 +1392,41 @@ class PositioningMessage extends $pb.GeneratedMessage {
     $core.int? horizontalQuality,
     $core.int? verticalQuality,
   }) {
-    final _result = create();
+    final $result = create();
     if (leftEye != null) {
-      _result.leftEye = leftEye;
+      $result.leftEye = leftEye;
     }
     if (rightEye != null) {
-      _result.rightEye = rightEye;
+      $result.rightEye = rightEye;
     }
     if (distanceQuality != null) {
-      _result.distanceQuality = distanceQuality;
+      $result.distanceQuality = distanceQuality;
     }
     if (positioningQuality != null) {
-      _result.positioningQuality = positioningQuality;
+      $result.positioningQuality = positioningQuality;
     }
     if (horizontalQuality != null) {
-      _result.horizontalQuality = horizontalQuality;
+      $result.horizontalQuality = horizontalQuality;
     }
     if (verticalQuality != null) {
-      _result.verticalQuality = verticalQuality;
+      $result.verticalQuality = verticalQuality;
     }
-    return _result;
+    return $result;
   }
+  PositioningMessage._() : super();
   factory PositioningMessage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory PositioningMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PositioningMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOM<Point>(1, _omitFieldNames ? '' : 'leftEye', protoName: 'leftEye', subBuilder: Point.create)
+    ..aOM<Point>(2, _omitFieldNames ? '' : 'rightEye', protoName: 'rightEye', subBuilder: Point.create)
+    ..a<$core.int>(3, _omitFieldNames ? '' : 'distanceQuality', $pb.PbFieldType.O3, protoName: 'distanceQuality')
+    ..a<$core.int>(4, _omitFieldNames ? '' : 'positioningQuality', $pb.PbFieldType.O3, protoName: 'positioningQuality')
+    ..a<$core.int>(5, _omitFieldNames ? '' : 'horizontalQuality', $pb.PbFieldType.O3, protoName: 'horizontalQuality')
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'verticalQuality', $pb.PbFieldType.O3, protoName: 'verticalQuality')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1345,8 +1436,10 @@ class PositioningMessage extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PositioningMessage copyWith(void Function(PositioningMessage) updates) => super.copyWith((message) => updates(message as PositioningMessage)) as PositioningMessage; // ignore: deprecated_member_use
+  PositioningMessage copyWith(void Function(PositioningMessage) updates) => super.copyWith((message) => updates(message as PositioningMessage)) as PositioningMessage;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static PositioningMessage create() => PositioningMessage._();
   PositioningMessage createEmptyInstance() => create();
@@ -1414,23 +1507,9 @@ class PositioningMessage extends $pb.GeneratedMessage {
   void clearVerticalQuality() => clearField(6);
 }
 
+/// *
+///  Option message for configuration
 class Options extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Options', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'stream')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enablePause', protoName: 'enablePause')
-    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pause')
-    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'guidance')
-    ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'enableStandby', protoName: 'enableStandby')
-    ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'disableMouse', protoName: 'disableMouse')
-    ..aOM<FilterOptions>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'filter', subBuilder: FilterOptions.create)
-    ..aOM<IPadOptions>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'iPadOptions', protoName: 'iPadOptions', subBuilder: IPadOptions.create)
-    ..aOM<ScreenResolution>(9, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'res', subBuilder: ScreenResolution.create)
-    ..aOB(10, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hp')
-    ..e<Options_eyeUse>(11, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'eyeUsage', $pb.PbFieldType.OE, protoName: 'eyeUsage', defaultOrMaker: Options_eyeUse.Both, valueOf: Options_eyeUse.valueOf, enumValues: Options_eyeUse.values)
-    ..hasRequiredFields = false
-  ;
-
-  Options._() : super();
   factory Options({
     $core.bool? stream,
     $core.bool? enablePause,
@@ -1444,44 +1523,61 @@ class Options extends $pb.GeneratedMessage {
     $core.bool? hp,
     Options_eyeUse? eyeUsage,
   }) {
-    final _result = create();
+    final $result = create();
     if (stream != null) {
-      _result.stream = stream;
+      $result.stream = stream;
     }
     if (enablePause != null) {
-      _result.enablePause = enablePause;
+      $result.enablePause = enablePause;
     }
     if (pause != null) {
-      _result.pause = pause;
+      $result.pause = pause;
     }
     if (guidance != null) {
-      _result.guidance = guidance;
+      $result.guidance = guidance;
     }
     if (enableStandby != null) {
-      _result.enableStandby = enableStandby;
+      $result.enableStandby = enableStandby;
     }
     if (disableMouse != null) {
-      _result.disableMouse = disableMouse;
+      $result.disableMouse = disableMouse;
     }
     if (filter != null) {
-      _result.filter = filter;
+      $result.filter = filter;
     }
     if (iPadOptions != null) {
-      _result.iPadOptions = iPadOptions;
+      $result.iPadOptions = iPadOptions;
     }
     if (res != null) {
-      _result.res = res;
+      $result.res = res;
     }
     if (hp != null) {
-      _result.hp = hp;
+      $result.hp = hp;
     }
     if (eyeUsage != null) {
-      _result.eyeUsage = eyeUsage;
+      $result.eyeUsage = eyeUsage;
     }
-    return _result;
+    return $result;
   }
+  Options._() : super();
   factory Options.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Options.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Options', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'stream')
+    ..aOB(2, _omitFieldNames ? '' : 'enablePause', protoName: 'enablePause')
+    ..aOB(3, _omitFieldNames ? '' : 'pause')
+    ..aOB(4, _omitFieldNames ? '' : 'guidance')
+    ..aOB(5, _omitFieldNames ? '' : 'enableStandby', protoName: 'enableStandby')
+    ..aOB(6, _omitFieldNames ? '' : 'disableMouse', protoName: 'disableMouse')
+    ..aOM<FilterOptions>(7, _omitFieldNames ? '' : 'filter', subBuilder: FilterOptions.create)
+    ..aOM<IPadOptions>(8, _omitFieldNames ? '' : 'iPadOptions', protoName: 'iPadOptions', subBuilder: IPadOptions.create)
+    ..aOM<ScreenResolution>(9, _omitFieldNames ? '' : 'res', subBuilder: ScreenResolution.create)
+    ..aOB(10, _omitFieldNames ? '' : 'hp')
+    ..e<Options_eyeUse>(11, _omitFieldNames ? '' : 'eyeUsage', $pb.PbFieldType.OE, protoName: 'eyeUsage', defaultOrMaker: Options_eyeUse.Both, valueOf: Options_eyeUse.valueOf, enumValues: Options_eyeUse.values)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1491,8 +1587,10 @@ class Options extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Options copyWith(void Function(Options) updates) => super.copyWith((message) => updates(message as Options)) as Options; // ignore: deprecated_member_use
+  Options copyWith(void Function(Options) updates) => super.copyWith((message) => updates(message as Options)) as Options;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Options create() => Options._();
   Options createEmptyInstance() => create();
@@ -1612,39 +1710,42 @@ enum IPadOptions_OptionalModel {
   notSet
 }
 
+/// *
+///  iPad Option message for configuration
 class IPadOptions extends $pb.GeneratedMessage {
-  static const $core.Map<$core.int, IPadOptions_OptionalModel> _IPadOptions_OptionalModelByTag = {
-    3 : IPadOptions_OptionalModel.model,
-    0 : IPadOptions_OptionalModel.notSet
-  };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'IPadOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..oo(0, [3])
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isOldiOS', protoName: 'isOldiOS')
-    ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isNotZoomed', protoName: 'isNotZoomed')
-    ..e<IPadOptions_iPadModel>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'model', $pb.PbFieldType.OE, defaultOrMaker: IPadOptions_iPadModel.IPad8_5, valueOf: IPadOptions_iPadModel.valueOf, enumValues: IPadOptions_iPadModel.values)
-    ..hasRequiredFields = false
-  ;
-
-  IPadOptions._() : super();
   factory IPadOptions({
     $core.bool? isOldiOS,
     $core.bool? isNotZoomed,
     IPadOptions_iPadModel? model,
   }) {
-    final _result = create();
+    final $result = create();
     if (isOldiOS != null) {
-      _result.isOldiOS = isOldiOS;
+      $result.isOldiOS = isOldiOS;
     }
     if (isNotZoomed != null) {
-      _result.isNotZoomed = isNotZoomed;
+      $result.isNotZoomed = isNotZoomed;
     }
     if (model != null) {
-      _result.model = model;
+      $result.model = model;
     }
-    return _result;
+    return $result;
   }
+  IPadOptions._() : super();
   factory IPadOptions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory IPadOptions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static const $core.Map<$core.int, IPadOptions_OptionalModel> _IPadOptions_OptionalModelByTag = {
+    3 : IPadOptions_OptionalModel.model,
+    0 : IPadOptions_OptionalModel.notSet
+  };
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'IPadOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..oo(0, [3])
+    ..aOB(1, _omitFieldNames ? '' : 'isOldiOS', protoName: 'isOldiOS')
+    ..aOB(2, _omitFieldNames ? '' : 'isNotZoomed', protoName: 'isNotZoomed')
+    ..e<IPadOptions_iPadModel>(3, _omitFieldNames ? '' : 'model', $pb.PbFieldType.OE, defaultOrMaker: IPadOptions_iPadModel.IPad8_5, valueOf: IPadOptions_iPadModel.valueOf, enumValues: IPadOptions_iPadModel.values)
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1654,8 +1755,10 @@ class IPadOptions extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  IPadOptions copyWith(void Function(IPadOptions) updates) => super.copyWith((message) => updates(message as IPadOptions)) as IPadOptions; // ignore: deprecated_member_use
+  IPadOptions copyWith(void Function(IPadOptions) updates) => super.copyWith((message) => updates(message as IPadOptions)) as IPadOptions;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static IPadOptions create() => IPadOptions._();
   IPadOptions createEmptyInstance() => create();
@@ -1695,19 +1798,9 @@ class IPadOptions extends $pb.GeneratedMessage {
   void clearModel() => clearField(3);
 }
 
+/// *
+///  Message containing all build versions
 class DeviceVersions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DeviceVersions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'firmware')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'eyetracker')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'calib')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'base')
-    ..a<$fixnum.Int64>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'serial', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
-    ..a<$core.int>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'skyleType', $pb.PbFieldType.O3, protoName: 'skyleType')
-    ..aOB(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isDemo', protoName: 'isDemo')
-    ..hasRequiredFields = false
-  ;
-
-  DeviceVersions._() : super();
   factory DeviceVersions({
     $core.String? firmware,
     $core.String? eyetracker,
@@ -1717,32 +1810,45 @@ class DeviceVersions extends $pb.GeneratedMessage {
     $core.int? skyleType,
     $core.bool? isDemo,
   }) {
-    final _result = create();
+    final $result = create();
     if (firmware != null) {
-      _result.firmware = firmware;
+      $result.firmware = firmware;
     }
     if (eyetracker != null) {
-      _result.eyetracker = eyetracker;
+      $result.eyetracker = eyetracker;
     }
     if (calib != null) {
-      _result.calib = calib;
+      $result.calib = calib;
     }
     if (base != null) {
-      _result.base = base;
+      $result.base = base;
     }
     if (serial != null) {
-      _result.serial = serial;
+      $result.serial = serial;
     }
     if (skyleType != null) {
-      _result.skyleType = skyleType;
+      $result.skyleType = skyleType;
     }
     if (isDemo != null) {
-      _result.isDemo = isDemo;
+      $result.isDemo = isDemo;
     }
-    return _result;
+    return $result;
   }
+  DeviceVersions._() : super();
   factory DeviceVersions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory DeviceVersions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'DeviceVersions', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'firmware')
+    ..aOS(2, _omitFieldNames ? '' : 'eyetracker')
+    ..aOS(3, _omitFieldNames ? '' : 'calib')
+    ..aOS(4, _omitFieldNames ? '' : 'base')
+    ..a<$fixnum.Int64>(5, _omitFieldNames ? '' : 'serial', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+    ..a<$core.int>(6, _omitFieldNames ? '' : 'skyleType', $pb.PbFieldType.O3, protoName: 'skyleType')
+    ..aOB(7, _omitFieldNames ? '' : 'isDemo', protoName: 'isDemo')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1752,8 +1858,10 @@ class DeviceVersions extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  DeviceVersions copyWith(void Function(DeviceVersions) updates) => super.copyWith((message) => updates(message as DeviceVersions)) as DeviceVersions; // ignore: deprecated_member_use
+  DeviceVersions copyWith(void Function(DeviceVersions) updates) => super.copyWith((message) => updates(message as DeviceVersions)) as DeviceVersions;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static DeviceVersions create() => DeviceVersions._();
   DeviceVersions createEmptyInstance() => create();
@@ -1826,34 +1934,37 @@ class DeviceVersions extends $pb.GeneratedMessage {
   void clearIsDemo() => clearField(7);
 }
 
+/// *
+///  Representing the three available button actions
 class ButtonActions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ButtonActions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'singleClick', protoName: 'singleClick')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'doubleClick', protoName: 'doubleClick')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'holdClick', protoName: 'holdClick')
-    ..hasRequiredFields = false
-  ;
-
-  ButtonActions._() : super();
   factory ButtonActions({
     $core.String? singleClick,
     $core.String? doubleClick,
     $core.String? holdClick,
   }) {
-    final _result = create();
+    final $result = create();
     if (singleClick != null) {
-      _result.singleClick = singleClick;
+      $result.singleClick = singleClick;
     }
     if (doubleClick != null) {
-      _result.doubleClick = doubleClick;
+      $result.doubleClick = doubleClick;
     }
     if (holdClick != null) {
-      _result.holdClick = holdClick;
+      $result.holdClick = holdClick;
     }
-    return _result;
+    return $result;
   }
+  ButtonActions._() : super();
   factory ButtonActions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory ButtonActions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ButtonActions', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'singleClick', protoName: 'singleClick')
+    ..aOS(2, _omitFieldNames ? '' : 'doubleClick', protoName: 'doubleClick')
+    ..aOS(3, _omitFieldNames ? '' : 'holdClick', protoName: 'holdClick')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1863,8 +1974,10 @@ class ButtonActions extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ButtonActions copyWith(void Function(ButtonActions) updates) => super.copyWith((message) => updates(message as ButtonActions)) as ButtonActions; // ignore: deprecated_member_use
+  ButtonActions copyWith(void Function(ButtonActions) updates) => super.copyWith((message) => updates(message as ButtonActions)) as ButtonActions;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static ButtonActions create() => ButtonActions._();
   ButtonActions createEmptyInstance() => create();
@@ -1901,34 +2014,37 @@ class ButtonActions extends $pb.GeneratedMessage {
   void clearHoldClick() => clearField(3);
 }
 
+/// *
+///  Button message
 class Button extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Button', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isPresent', protoName: 'isPresent')
-    ..aOM<ButtonActions>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buttonActions', protoName: 'buttonActions', subBuilder: ButtonActions.create)
-    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'availableActions', protoName: 'availableActions')
-    ..hasRequiredFields = false
-  ;
-
-  Button._() : super();
   factory Button({
     $core.bool? isPresent,
     ButtonActions? buttonActions,
     $core.Iterable<$core.String>? availableActions,
   }) {
-    final _result = create();
+    final $result = create();
     if (isPresent != null) {
-      _result.isPresent = isPresent;
+      $result.isPresent = isPresent;
     }
     if (buttonActions != null) {
-      _result.buttonActions = buttonActions;
+      $result.buttonActions = buttonActions;
     }
     if (availableActions != null) {
-      _result.availableActions.addAll(availableActions);
+      $result.availableActions.addAll(availableActions);
     }
-    return _result;
+    return $result;
   }
+  Button._() : super();
   factory Button.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory Button.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Button', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOB(1, _omitFieldNames ? '' : 'isPresent', protoName: 'isPresent')
+    ..aOM<ButtonActions>(2, _omitFieldNames ? '' : 'buttonActions', protoName: 'buttonActions', subBuilder: ButtonActions.create)
+    ..pPS(3, _omitFieldNames ? '' : 'availableActions', protoName: 'availableActions')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -1938,8 +2054,10 @@ class Button extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  Button copyWith(void Function(Button) updates) => super.copyWith((message) => updates(message as Button)) as Button; // ignore: deprecated_member_use
+  Button copyWith(void Function(Button) updates) => super.copyWith((message) => updates(message as Button)) as Button;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static Button create() => Button._();
   Button createEmptyInstance() => create();
@@ -1972,29 +2090,32 @@ class Button extends $pb.GeneratedMessage {
   $core.List<$core.String> get availableActions => $_getList(2);
 }
 
+/// *
+///  Filter configuration message
 class FilterOptions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FilterOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fixationFilter', $pb.PbFieldType.O3, protoName: 'fixationFilter')
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'gazeFilter', $pb.PbFieldType.O3, protoName: 'gazeFilter')
-    ..hasRequiredFields = false
-  ;
-
-  FilterOptions._() : super();
   factory FilterOptions({
     $core.int? fixationFilter,
     $core.int? gazeFilter,
   }) {
-    final _result = create();
+    final $result = create();
     if (fixationFilter != null) {
-      _result.fixationFilter = fixationFilter;
+      $result.fixationFilter = fixationFilter;
     }
     if (gazeFilter != null) {
-      _result.gazeFilter = gazeFilter;
+      $result.gazeFilter = gazeFilter;
     }
-    return _result;
+    return $result;
   }
+  FilterOptions._() : super();
   factory FilterOptions.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
   factory FilterOptions.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'FilterOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..a<$core.int>(1, _omitFieldNames ? '' : 'fixationFilter', $pb.PbFieldType.O3, protoName: 'fixationFilter')
+    ..a<$core.int>(2, _omitFieldNames ? '' : 'gazeFilter', $pb.PbFieldType.O3, protoName: 'gazeFilter')
+    ..hasRequiredFields = false
+  ;
+
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
@@ -2004,8 +2125,10 @@ class FilterOptions extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  FilterOptions copyWith(void Function(FilterOptions) updates) => super.copyWith((message) => updates(message as FilterOptions)) as FilterOptions; // ignore: deprecated_member_use
+  FilterOptions copyWith(void Function(FilterOptions) updates) => super.copyWith((message) => updates(message as FilterOptions)) as FilterOptions;
+
   $pb.BuilderInfo get info_ => _i;
+
   @$core.pragma('dart2js:noInline')
   static FilterOptions create() => FilterOptions._();
   FilterOptions createEmptyInstance() => create();
@@ -2033,3 +2156,6 @@ class FilterOptions extends $pb.GeneratedMessage {
   void clearGazeFilter() => clearField(2);
 }
 
+
+const _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');

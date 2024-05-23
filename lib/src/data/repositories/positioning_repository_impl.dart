@@ -39,6 +39,7 @@ class PositioningRepositoryImpl extends PositioningRepository {
       var previousPositioningMessage = const PositioningMessage();
       await for (final grpc.PositioningMessage event in _stream!) {
         final grpc.PositioningMessage positioningMessage = grpc.PositioningMessage()..mergeFromJson(event.writeToJson());
+        // final grpc.PositioningMessage positioningMessage = grpc.PositioningMessage()..mergeFromProto3Json(event.writeToJson());
         if (positioningMessage.hasLeftEye() || positioningMessage.hasRightEye()) {
           var message = PositioningMessage.fromPositioningMessage(positioningMessage);
           if (message.eyes.left.isZero() && !previousPositioningMessage.eyes.left.isZero()) {

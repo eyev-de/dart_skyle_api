@@ -12,10 +12,12 @@ import 'package:logger/logger.dart';
 import 'connectivity/connectivityprovider.dart';
 import 'core/data_state.dart';
 import 'core/exceptions.dart';
+import 'data/models/size.dart';
 import 'data/repositories/calibration_repository_impl.dart';
 import 'data/repositories/gaze_repository_impl.dart';
 import 'data/repositories/positioning_repository_impl.dart';
 import 'data/repositories/profiles_repository_imp.dart';
+import 'data/repositories/raw_video_stream_repository_impl.dart';
 import 'data/repositories/reset_repository_impl.dart';
 import 'data/repositories/settings_repository_impl.dart';
 import 'data/repositories/switch_repository_impl.dart';
@@ -26,6 +28,7 @@ import 'domain/repositories/calibration_repository.dart';
 import 'domain/repositories/gaze_repository.dart';
 import 'domain/repositories/positioning_repository.dart';
 import 'domain/repositories/profiles_repository.dart';
+import 'domain/repositories/raw_video_stream_repository.dart';
 import 'domain/repositories/reset_repository.dart';
 import 'domain/repositories/settings_repository.dart';
 import 'domain/repositories/switch_repository.dart';
@@ -60,6 +63,14 @@ class ET {
   final VideoStreamRepository stream = VideoStreamRepositoryImpl();
   ProfilesRepository profiles = ProfilesRepositoryImpl();
   TriggerRepository trigger = TriggerRepositoryImpl();
+  RawVideoStreamRepository video = RawVideoStreamRepositoryImpl();
+
+  Size resolution(int generation) {
+    if (generation == 2) {
+      return const Size(width: 1280, height: 800);
+    }
+    return const Size(width: 2472, height: 2048);
+  }
 
   Connection _connection = Connection.disconnected;
   Connection get connection => _connection;
@@ -200,6 +211,7 @@ class ET {
     switchSettings = SwitchRepositoryImpl(client: client);
     profiles = ProfilesRepositoryImpl(client: client);
     trigger = TriggerRepositoryImpl(client: client);
+    video = RawVideoStreamRepositoryImpl(client: client);
   }
 
   /// Disposes the instance of [ET] completely.
