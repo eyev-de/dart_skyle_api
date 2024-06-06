@@ -4,27 +4,18 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: ">=2.17.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   collection: ^1.17.0
-
   freezed_annotation: ^2.2.0
-
   grpc: ^3.1.0
-
   http: ^1.1.0
-
   json_annotation: ^4.8.0
-
   logger: ^2.0.1
-
   path: ^1.8.2
-  
   protobuf: ^3.1.0
-
   retry: ^3.1.1
-
   universal_platform: ^1.0.0+1
 
 dev_dependencies:
