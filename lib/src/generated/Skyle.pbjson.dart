@@ -387,6 +387,30 @@ const IPadOptions_iPadModel$json = {
     {'1': 'IPad13_11', '2': 11},
     {'1': 'IPad13_16', '2': 12},
     {'1': 'IPad13_17', '2': 13},
+    {'1': 'IPad8_1', '2': 14},
+    {'1': 'IPad8_2', '2': 15},
+    {'1': 'IPad8_3', '2': 16},
+    {'1': 'IPad8_4', '2': 17},
+    {'1': 'IPad8_9', '2': 18},
+    {'1': 'IPad8_10', '2': 19},
+    {'1': 'IPad13_4', '2': 20},
+    {'1': 'IPad13_5', '2': 21},
+    {'1': 'IPad13_6', '2': 22},
+    {'1': 'IPad13_7', '2': 23},
+    {'1': 'IPad14_1', '2': 24},
+    {'1': 'IPad14_2', '2': 25},
+    {'1': 'IPad14_3', '2': 26},
+    {'1': 'IPad14_4', '2': 27},
+    {'1': 'IPad14_5', '2': 28},
+    {'1': 'IPad14_6', '2': 29},
+    {'1': 'IPad14_8', '2': 30},
+    {'1': 'IPad14_9', '2': 31},
+    {'1': 'IPad14_10', '2': 32},
+    {'1': 'IPad14_11', '2': 33},
+    {'1': 'IPad16_3', '2': 34},
+    {'1': 'IPad16_4', '2': 35},
+    {'1': 'IPad16_5', '2': 36},
+    {'1': 'IPad16_6', '2': 37},
   ],
 };
 
@@ -394,11 +418,17 @@ const IPadOptions_iPadModel$json = {
 final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode(
     'CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab29tZW'
     'QYAiABKAhSC2lzTm90Wm9vbWVkEjQKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMu'
-    'aVBhZE1vZGVsSABSBW1vZGVsIs8BCglpUGFkTW9kZWwSCwoHSVBhZDhfNRAAEgsKB0lQYWQ4Xz'
+    'aVBhZE1vZGVsSABSBW1vZGVsIpwECglpUGFkTW9kZWwSCwoHSVBhZDhfNRAAEgsKB0lQYWQ4Xz'
     'YQARILCgdJUGFkOF83EAISCwoHSVBhZDhfOBADEgwKCElQYWQ4XzExEAQSDAoISVBhZDhfMTIQ'
     'BRIMCghJUGFkMTNfMRAGEgwKCElQYWQxM18yEAcSDAoISVBhZDEzXzgQCBIMCghJUGFkMTNfOR'
     'AJEg0KCUlQYWQxM18xMBAKEg0KCUlQYWQxM18xMRALEg0KCUlQYWQxM18xNhAMEg0KCUlQYWQx'
-    'M18xNxANQhAKDm9wdGlvbmFsX21vZGVs');
+    'M18xNxANEgsKB0lQYWQ4XzEQDhILCgdJUGFkOF8yEA8SCwoHSVBhZDhfMxAQEgsKB0lQYWQ4Xz'
+    'QQERILCgdJUGFkOF85EBISDAoISVBhZDhfMTAQExIMCghJUGFkMTNfNBAUEgwKCElQYWQxM181'
+    'EBUSDAoISVBhZDEzXzYQFhIMCghJUGFkMTNfNxAXEgwKCElQYWQxNF8xEBgSDAoISVBhZDE0Xz'
+    'IQGRIMCghJUGFkMTRfMxAaEgwKCElQYWQxNF80EBsSDAoISVBhZDE0XzUQHBIMCghJUGFkMTRf'
+    'NhAdEgwKCElQYWQxNF84EB4SDAoISVBhZDE0XzkQHxINCglJUGFkMTRfMTAQIBINCglJUGFkMT'
+    'RfMTEQIRIMCghJUGFkMTZfMxAiEgwKCElQYWQxNl80ECMSDAoISVBhZDE2XzUQJBIMCghJUGFk'
+    'MTZfNhAlQhAKDm9wdGlvbmFsX21vZGVs');
 
 @$core.Deprecated('Use deviceVersionsDescriptor instead')
 const DeviceVersions$json = {
