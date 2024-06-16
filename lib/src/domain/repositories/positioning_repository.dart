@@ -15,10 +15,14 @@ import '../../data/models/positioning/positioning_quality.dart';
 
 /// Interface for receiving the positioning stream.
 abstract class PositioningRepository {
-  static double width = 1280;
-  static double height = 800;
   static double maxDistance = UniversalPlatform.isDesktop ? -15 : 0;
   static double minDistance = UniversalPlatform.isDesktop ? 35 : 40;
+
+  static int closeUpperBoundaryiPad = 450;
+  static int normalUpperBoundaryiPad = 650;
+
+  static int closeUpperBoundaryDesktop = 500;
+  static int normalUpperBoundaryDesktop = 700;
 
   /// Starts the positioning stream which lives until a disconnect happens.
   ///
