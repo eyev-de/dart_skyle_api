@@ -15,6 +15,11 @@ import '../../data/models/positioning/positioning_quality.dart';
 
 /// Interface for receiving the positioning stream.
 abstract class PositioningRepository {
+  static double widthSkyle2 = 1280;
+  static double heightSkyle2 = 800;
+  static double widthSkyle3 = 2472;
+  static double heightSkyle3 = 2048;
+
   static double maxDistance = UniversalPlatform.isDesktop ? -15 : 0;
   static double minDistance = UniversalPlatform.isDesktop ? 35 : 40;
 
