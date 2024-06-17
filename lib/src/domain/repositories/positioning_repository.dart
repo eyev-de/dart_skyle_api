@@ -19,6 +19,7 @@ abstract class PositioningRepository {
   static double heightSkyle2 = 800;
   static double widthSkyle3 = 2472;
   static double heightSkyle3 = 2048;
+
   static double maxDistance = UniversalPlatform.isDesktop ? -15 : 0;
   static double minDistance = UniversalPlatform.isDesktop ? 35 : 40;
 
