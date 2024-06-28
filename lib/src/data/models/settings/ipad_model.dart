@@ -196,4 +196,38 @@ enum IPadModel {
       IPadModel.iPad8_5 || IPadModel.iPad8_6 || IPadModel.iPad8_7 || IPadModel.iPad8_8 => 'iPad Pro (12.9-inch) (3rd generation)',
     };
   }
+
+  IPadModel get substitute {
+    if (value >= 0 && value <= 13) {
+      return this;
+    }
+    // Closest to old screenSizePixel (2360, 1640) => iPad13_16, iPad13_17, iPad13_1, iPad13_2
+    final similarToIPad13_1List = [
+      iPad16_3,
+      iPad16_4,
+      iPad14_3,
+      iPad14_4,
+      iPad13_4,
+      iPad13_5,
+      iPad13_6,
+      iPad13_7,
+      iPad8_1,
+      iPad8_2,
+      iPad8_3,
+      iPad8_4,
+      iPad8_9,
+      iPad8_10,
+      iPad14_8,
+      iPad14_9,
+      iPad14_1,
+      iPad14_2,
+    ];
+    if (similarToIPad13_1List.contains(this)) {
+      return iPad13_1;
+    } else {
+      // Default: Closest to old screenSizePixel (2732, 2048) iPad8_5 ... 8_8,8_11,8_12 ; iPad13_8 ... 13_11
+      //similarToIPad13_11List = [iPad16_5, iPad16_6, iPad14_10, iPad14_11, iPad14_5, iPad14_6];
+      return iPad13_11;
+    }
+  }
 }
