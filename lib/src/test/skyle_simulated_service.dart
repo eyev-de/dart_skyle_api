@@ -38,8 +38,8 @@ class SkyleSimulatedService extends SkyleServiceBase {
 
   List<Point> gazes = List.generate(200, (index) {
     return Point(
-      x: Random.secure().nextInt(1920).toDouble(),
-      y: Random.secure().nextInt(1080).toDouble(),
+      x: 150 + Random.secure().nextInt(100).toDouble(),
+      y: 0 + Random.secure().nextInt(100).toDouble(),
     );
   });
 
@@ -104,7 +104,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
             //
           } else {
             for (final pt in List.generate(pts.value, (index) => index)) {
-              await Future.delayed(const Duration(milliseconds: 100));
+              await Future.delayed(const Duration(milliseconds: 2000));
               if (abort) return;
               yield CalibMessages()
                 ..calibPoint = CalibPoint(
@@ -162,7 +162,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
     while (!call.isCanceled) {
       for (final gaze in gazes) {
         yield gaze;
-        await Future.delayed(const Duration(milliseconds: 20));
+        await Future.delayed(const Duration(milliseconds: 1000));
       }
     }
   }
