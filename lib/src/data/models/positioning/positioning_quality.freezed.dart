@@ -12,7 +12,7 @@ part of 'positioning_quality.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PositioningQuality _$PositioningQualityFromJson(Map<String, dynamic> json) {
   return _PositioningQuality.fromJson(json);
@@ -74,22 +74,22 @@ class _$PositioningQualityCopyWithImpl<$Res, $Val extends PositioningQuality>
 }
 
 /// @nodoc
-abstract class _$$_PositioningQualityCopyWith<$Res>
+abstract class _$$PositioningQualityImplCopyWith<$Res>
     implements $PositioningQualityCopyWith<$Res> {
-  factory _$$_PositioningQualityCopyWith(_$_PositioningQuality value,
-          $Res Function(_$_PositioningQuality) then) =
-      __$$_PositioningQualityCopyWithImpl<$Res>;
+  factory _$$PositioningQualityImplCopyWith(_$PositioningQualityImpl value,
+          $Res Function(_$PositioningQualityImpl) then) =
+      __$$PositioningQualityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int horizontal, int vertical, int depth});
 }
 
 /// @nodoc
-class __$$_PositioningQualityCopyWithImpl<$Res>
-    extends _$PositioningQualityCopyWithImpl<$Res, _$_PositioningQuality>
-    implements _$$_PositioningQualityCopyWith<$Res> {
-  __$$_PositioningQualityCopyWithImpl(
-      _$_PositioningQuality _value, $Res Function(_$_PositioningQuality) _then)
+class __$$PositioningQualityImplCopyWithImpl<$Res>
+    extends _$PositioningQualityCopyWithImpl<$Res, _$PositioningQualityImpl>
+    implements _$$PositioningQualityImplCopyWith<$Res> {
+  __$$PositioningQualityImplCopyWithImpl(_$PositioningQualityImpl _value,
+      $Res Function(_$PositioningQualityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_PositioningQualityCopyWithImpl<$Res>
     Object? vertical = null,
     Object? depth = null,
   }) {
-    return _then(_$_PositioningQuality(
+    return _then(_$PositioningQualityImpl(
       horizontal: null == horizontal
           ? _value.horizontal
           : horizontal // ignore: cast_nullable_to_non_nullable
@@ -118,12 +118,12 @@ class __$$_PositioningQualityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PositioningQuality implements _PositioningQuality {
-  const _$_PositioningQuality(
+class _$PositioningQualityImpl implements _PositioningQuality {
+  const _$PositioningQualityImpl(
       {this.horizontal = 0, this.vertical = 0, this.depth = 0});
 
-  factory _$_PositioningQuality.fromJson(Map<String, dynamic> json) =>
-      _$$_PositioningQualityFromJson(json);
+  factory _$PositioningQualityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PositioningQualityImplFromJson(json);
 
   @override
   @JsonKey()
@@ -141,10 +141,10 @@ class _$_PositioningQuality implements _PositioningQuality {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PositioningQuality &&
+            other is _$PositioningQualityImpl &&
             (identical(other.horizontal, horizontal) ||
                 other.horizontal == horizontal) &&
             (identical(other.vertical, vertical) ||
@@ -159,13 +159,13 @@ class _$_PositioningQuality implements _PositioningQuality {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PositioningQualityCopyWith<_$_PositioningQuality> get copyWith =>
-      __$$_PositioningQualityCopyWithImpl<_$_PositioningQuality>(
+  _$$PositioningQualityImplCopyWith<_$PositioningQualityImpl> get copyWith =>
+      __$$PositioningQualityImplCopyWithImpl<_$PositioningQualityImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PositioningQualityToJson(
+    return _$$PositioningQualityImplToJson(
       this,
     );
   }
@@ -175,10 +175,10 @@ abstract class _PositioningQuality implements PositioningQuality {
   const factory _PositioningQuality(
       {final int horizontal,
       final int vertical,
-      final int depth}) = _$_PositioningQuality;
+      final int depth}) = _$PositioningQualityImpl;
 
   factory _PositioningQuality.fromJson(Map<String, dynamic> json) =
-      _$_PositioningQuality.fromJson;
+      _$PositioningQualityImpl.fromJson;
 
   @override
   int get horizontal;
@@ -188,6 +188,6 @@ abstract class _PositioningQuality implements PositioningQuality {
   int get depth;
   @override
   @JsonKey(ignore: true)
-  _$$_PositioningQualityCopyWith<_$_PositioningQuality> get copyWith =>
+  _$$PositioningQualityImplCopyWith<_$PositioningQualityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

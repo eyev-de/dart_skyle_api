@@ -12,7 +12,7 @@ part of 'switch.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Switch _$SwitchFromJson(Map<String, dynamic> json) {
   return _Switch.fromJson(json);
@@ -83,9 +83,10 @@ class _$SwitchCopyWithImpl<$Res, $Val extends Switch>
 }
 
 /// @nodoc
-abstract class _$$_SwitchCopyWith<$Res> implements $SwitchCopyWith<$Res> {
-  factory _$$_SwitchCopyWith(_$_Switch value, $Res Function(_$_Switch) then) =
-      __$$_SwitchCopyWithImpl<$Res>;
+abstract class _$$SwitchImplCopyWith<$Res> implements $SwitchCopyWith<$Res> {
+  factory _$$SwitchImplCopyWith(
+          _$SwitchImpl value, $Res Function(_$SwitchImpl) then) =
+      __$$SwitchImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -96,10 +97,11 @@ abstract class _$$_SwitchCopyWith<$Res> implements $SwitchCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SwitchCopyWithImpl<$Res>
-    extends _$SwitchCopyWithImpl<$Res, _$_Switch>
-    implements _$$_SwitchCopyWith<$Res> {
-  __$$_SwitchCopyWithImpl(_$_Switch _value, $Res Function(_$_Switch) _then)
+class __$$SwitchImplCopyWithImpl<$Res>
+    extends _$SwitchCopyWithImpl<$Res, _$SwitchImpl>
+    implements _$$SwitchImplCopyWith<$Res> {
+  __$$SwitchImplCopyWithImpl(
+      _$SwitchImpl _value, $Res Function(_$SwitchImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -109,7 +111,7 @@ class __$$_SwitchCopyWithImpl<$Res>
     Object? actions = null,
     Object? availableActions = null,
   }) {
-    return _then(_$_Switch(
+    return _then(_$SwitchImpl(
       isPresent: null == isPresent
           ? _value.isPresent
           : isPresent // ignore: cast_nullable_to_non_nullable
@@ -128,15 +130,15 @@ class __$$_SwitchCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Switch implements _Switch {
-  const _$_Switch(
+class _$SwitchImpl implements _Switch {
+  const _$SwitchImpl(
       {required this.isPresent,
       required this.actions,
       required final List<String> availableActions})
       : _availableActions = availableActions;
 
-  factory _$_Switch.fromJson(Map<String, dynamic> json) =>
-      _$$_SwitchFromJson(json);
+  factory _$SwitchImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SwitchImplFromJson(json);
 
   @override
   final bool isPresent;
@@ -157,10 +159,10 @@ class _$_Switch implements _Switch {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Switch &&
+            other is _$SwitchImpl &&
             (identical(other.isPresent, isPresent) ||
                 other.isPresent == isPresent) &&
             (identical(other.actions, actions) || other.actions == actions) &&
@@ -176,12 +178,12 @@ class _$_Switch implements _Switch {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SwitchCopyWith<_$_Switch> get copyWith =>
-      __$$_SwitchCopyWithImpl<_$_Switch>(this, _$identity);
+  _$$SwitchImplCopyWith<_$SwitchImpl> get copyWith =>
+      __$$SwitchImplCopyWithImpl<_$SwitchImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SwitchToJson(
+    return _$$SwitchImplToJson(
       this,
     );
   }
@@ -191,9 +193,9 @@ abstract class _Switch implements Switch {
   const factory _Switch(
       {required final bool isPresent,
       required final SwitchActions actions,
-      required final List<String> availableActions}) = _$_Switch;
+      required final List<String> availableActions}) = _$SwitchImpl;
 
-  factory _Switch.fromJson(Map<String, dynamic> json) = _$_Switch.fromJson;
+  factory _Switch.fromJson(Map<String, dynamic> json) = _$SwitchImpl.fromJson;
 
   @override
   bool get isPresent;
@@ -203,6 +205,6 @@ abstract class _Switch implements Switch {
   List<String> get availableActions;
   @override
   @JsonKey(ignore: true)
-  _$$_SwitchCopyWith<_$_Switch> get copyWith =>
+  _$$SwitchImplCopyWith<_$SwitchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

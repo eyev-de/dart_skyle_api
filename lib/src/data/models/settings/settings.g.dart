@@ -6,7 +6,8 @@ part of 'settings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Settings _$$_SettingsFromJson(Map<String, dynamic> json) => _$_Settings(
+_$SettingsImpl _$$SettingsImplFromJson(Map<String, dynamic> json) =>
+    _$SettingsImpl(
       video: json['video'] as bool? ?? false,
       enablePause: json['enablePause'] as bool? ?? false,
       pause: json['pause'] as bool? ?? false,
@@ -28,7 +29,7 @@ _$_Settings _$$_SettingsFromJson(Map<String, dynamic> json) => _$_Settings(
               TrackingMode.none,
     );
 
-Map<String, dynamic> _$$_SettingsToJson(_$_Settings instance) =>
+Map<String, dynamic> _$$SettingsImplToJson(_$SettingsImpl instance) =>
     <String, dynamic>{
       'video': instance.video,
       'enablePause': instance.enablePause,

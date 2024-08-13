@@ -6,8 +6,9 @@ part of 'positioning_eyes.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PositioningEyes _$$_PositioningEyesFromJson(Map<String, dynamic> json) =>
-    _$_PositioningEyes(
+_$PositioningEyesImpl _$$PositioningEyesImplFromJson(
+        Map<String, dynamic> json) =>
+    _$PositioningEyesImpl(
       left: json['left'] == null
           ? const Point()
           : Point.fromJson(json['left'] as Map<String, dynamic>),
@@ -16,7 +17,8 @@ _$_PositioningEyes _$$_PositioningEyesFromJson(Map<String, dynamic> json) =>
           : Point.fromJson(json['right'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_PositioningEyesToJson(_$_PositioningEyes instance) =>
+Map<String, dynamic> _$$PositioningEyesImplToJson(
+        _$PositioningEyesImpl instance) =>
     <String, dynamic>{
       'left': instance.left,
       'right': instance.right,

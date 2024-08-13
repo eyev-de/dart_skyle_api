@@ -12,7 +12,7 @@ part of 'raw_image.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 RawImage _$RawImageFromJson(Map<String, dynamic> json) {
   return _RawImage.fromJson(json);
@@ -73,21 +73,22 @@ class _$RawImageCopyWithImpl<$Res, $Val extends RawImage>
 }
 
 /// @nodoc
-abstract class _$$_RawImageCopyWith<$Res> implements $RawImageCopyWith<$Res> {
-  factory _$$_RawImageCopyWith(
-          _$_RawImage value, $Res Function(_$_RawImage) then) =
-      __$$_RawImageCopyWithImpl<$Res>;
+abstract class _$$RawImageImplCopyWith<$Res>
+    implements $RawImageCopyWith<$Res> {
+  factory _$$RawImageImplCopyWith(
+          _$RawImageImpl value, $Res Function(_$RawImageImpl) then) =
+      __$$RawImageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int width, int height, List<int> data});
 }
 
 /// @nodoc
-class __$$_RawImageCopyWithImpl<$Res>
-    extends _$RawImageCopyWithImpl<$Res, _$_RawImage>
-    implements _$$_RawImageCopyWith<$Res> {
-  __$$_RawImageCopyWithImpl(
-      _$_RawImage _value, $Res Function(_$_RawImage) _then)
+class __$$RawImageImplCopyWithImpl<$Res>
+    extends _$RawImageCopyWithImpl<$Res, _$RawImageImpl>
+    implements _$$RawImageImplCopyWith<$Res> {
+  __$$RawImageImplCopyWithImpl(
+      _$RawImageImpl _value, $Res Function(_$RawImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -97,7 +98,7 @@ class __$$_RawImageCopyWithImpl<$Res>
     Object? height = null,
     Object? data = null,
   }) {
-    return _then(_$_RawImage(
+    return _then(_$RawImageImpl(
       width: null == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -116,14 +117,14 @@ class __$$_RawImageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RawImage extends _RawImage {
-  const _$_RawImage(
+class _$RawImageImpl extends _RawImage {
+  const _$RawImageImpl(
       {this.width = 0, this.height = 0, final List<int> data = const []})
       : _data = data,
         super._();
 
-  factory _$_RawImage.fromJson(Map<String, dynamic> json) =>
-      _$$_RawImageFromJson(json);
+  factory _$RawImageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RawImageImplFromJson(json);
 
   @override
   @JsonKey()
@@ -146,10 +147,10 @@ class _$_RawImage extends _RawImage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RawImage &&
+            other is _$RawImageImpl &&
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height) &&
             const DeepCollectionEquality().equals(other._data, _data));
@@ -163,12 +164,12 @@ class _$_RawImage extends _RawImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RawImageCopyWith<_$_RawImage> get copyWith =>
-      __$$_RawImageCopyWithImpl<_$_RawImage>(this, _$identity);
+  _$$RawImageImplCopyWith<_$RawImageImpl> get copyWith =>
+      __$$RawImageImplCopyWithImpl<_$RawImageImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RawImageToJson(
+    return _$$RawImageImplToJson(
       this,
     );
   }
@@ -176,10 +177,13 @@ class _$_RawImage extends _RawImage {
 
 abstract class _RawImage extends RawImage {
   const factory _RawImage(
-      {final int width, final int height, final List<int> data}) = _$_RawImage;
+      {final int width,
+      final int height,
+      final List<int> data}) = _$RawImageImpl;
   const _RawImage._() : super._();
 
-  factory _RawImage.fromJson(Map<String, dynamic> json) = _$_RawImage.fromJson;
+  factory _RawImage.fromJson(Map<String, dynamic> json) =
+      _$RawImageImpl.fromJson;
 
   @override
   int get width;
@@ -189,6 +193,6 @@ abstract class _RawImage extends RawImage {
   List<int> get data;
   @override
   @JsonKey(ignore: true)
-  _$$_RawImageCopyWith<_$_RawImage> get copyWith =>
+  _$$RawImageImplCopyWith<_$RawImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

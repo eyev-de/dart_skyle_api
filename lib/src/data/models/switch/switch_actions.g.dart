@@ -6,14 +6,14 @@ part of 'switch_actions.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SwitchActions _$$_SwitchActionsFromJson(Map<String, dynamic> json) =>
-    _$_SwitchActions(
+_$SwitchActionsImpl _$$SwitchActionsImplFromJson(Map<String, dynamic> json) =>
+    _$SwitchActionsImpl(
       singleClick: json['singleClick'] as String,
       doubleClick: json['doubleClick'] as String,
       holdClick: json['holdClick'] as String,
     );
 
-Map<String, dynamic> _$$_SwitchActionsToJson(_$_SwitchActions instance) =>
+Map<String, dynamic> _$$SwitchActionsImplToJson(_$SwitchActionsImpl instance) =>
     <String, dynamic>{
       'singleClick': instance.singleClick,
       'doubleClick': instance.doubleClick,

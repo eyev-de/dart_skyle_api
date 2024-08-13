@@ -12,7 +12,7 @@ part of 'point.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Point _$PointFromJson(Map<String, dynamic> json) {
   return _Point.fromJson(json);
@@ -66,18 +66,21 @@ class _$PointCopyWithImpl<$Res, $Val extends Point>
 }
 
 /// @nodoc
-abstract class _$$_PointCopyWith<$Res> implements $PointCopyWith<$Res> {
-  factory _$$_PointCopyWith(_$_Point value, $Res Function(_$_Point) then) =
-      __$$_PointCopyWithImpl<$Res>;
+abstract class _$$PointImplCopyWith<$Res> implements $PointCopyWith<$Res> {
+  factory _$$PointImplCopyWith(
+          _$PointImpl value, $Res Function(_$PointImpl) then) =
+      __$$PointImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({double x, double y});
 }
 
 /// @nodoc
-class __$$_PointCopyWithImpl<$Res> extends _$PointCopyWithImpl<$Res, _$_Point>
-    implements _$$_PointCopyWith<$Res> {
-  __$$_PointCopyWithImpl(_$_Point _value, $Res Function(_$_Point) _then)
+class __$$PointImplCopyWithImpl<$Res>
+    extends _$PointCopyWithImpl<$Res, _$PointImpl>
+    implements _$$PointImplCopyWith<$Res> {
+  __$$PointImplCopyWithImpl(
+      _$PointImpl _value, $Res Function(_$PointImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +89,7 @@ class __$$_PointCopyWithImpl<$Res> extends _$PointCopyWithImpl<$Res, _$_Point>
     Object? x = null,
     Object? y = null,
   }) {
-    return _then(_$_Point(
+    return _then(_$PointImpl(
       x: null == x
           ? _value.x
           : x // ignore: cast_nullable_to_non_nullable
@@ -101,11 +104,11 @@ class __$$_PointCopyWithImpl<$Res> extends _$PointCopyWithImpl<$Res, _$_Point>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Point extends _Point {
-  const _$_Point({this.x = 0.0, this.y = 0.0}) : super._();
+class _$PointImpl extends _Point {
+  const _$PointImpl({this.x = 0.0, this.y = 0.0}) : super._();
 
-  factory _$_Point.fromJson(Map<String, dynamic> json) =>
-      _$$_PointFromJson(json);
+  factory _$PointImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PointImplFromJson(json);
 
   @override
   @JsonKey()
@@ -120,10 +123,10 @@ class _$_Point extends _Point {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Point &&
+            other is _$PointImpl &&
             (identical(other.x, x) || other.x == x) &&
             (identical(other.y, y) || other.y == y));
   }
@@ -135,22 +138,22 @@ class _$_Point extends _Point {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PointCopyWith<_$_Point> get copyWith =>
-      __$$_PointCopyWithImpl<_$_Point>(this, _$identity);
+  _$$PointImplCopyWith<_$PointImpl> get copyWith =>
+      __$$PointImplCopyWithImpl<_$PointImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PointToJson(
+    return _$$PointImplToJson(
       this,
     );
   }
 }
 
 abstract class _Point extends Point {
-  const factory _Point({final double x, final double y}) = _$_Point;
+  const factory _Point({final double x, final double y}) = _$PointImpl;
   const _Point._() : super._();
 
-  factory _Point.fromJson(Map<String, dynamic> json) = _$_Point.fromJson;
+  factory _Point.fromJson(Map<String, dynamic> json) = _$PointImpl.fromJson;
 
   @override
   double get x;
@@ -158,6 +161,6 @@ abstract class _Point extends Point {
   double get y;
   @override
   @JsonKey(ignore: true)
-  _$$_PointCopyWith<_$_Point> get copyWith =>
+  _$$PointImplCopyWith<_$PointImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

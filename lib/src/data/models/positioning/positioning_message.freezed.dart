@@ -12,7 +12,7 @@ part of 'positioning_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PositioningMessage _$PositioningMessageFromJson(Map<String, dynamic> json) {
   return _PositioningMessage.fromJson(json);
@@ -96,11 +96,11 @@ class _$PositioningMessageCopyWithImpl<$Res, $Val extends PositioningMessage>
 }
 
 /// @nodoc
-abstract class _$$_PositioningMessageCopyWith<$Res>
+abstract class _$$PositioningMessageImplCopyWith<$Res>
     implements $PositioningMessageCopyWith<$Res> {
-  factory _$$_PositioningMessageCopyWith(_$_PositioningMessage value,
-          $Res Function(_$_PositioningMessage) then) =
-      __$$_PositioningMessageCopyWithImpl<$Res>;
+  factory _$$PositioningMessageImplCopyWith(_$PositioningMessageImpl value,
+          $Res Function(_$PositioningMessageImpl) then) =
+      __$$PositioningMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -115,11 +115,11 @@ abstract class _$$_PositioningMessageCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PositioningMessageCopyWithImpl<$Res>
-    extends _$PositioningMessageCopyWithImpl<$Res, _$_PositioningMessage>
-    implements _$$_PositioningMessageCopyWith<$Res> {
-  __$$_PositioningMessageCopyWithImpl(
-      _$_PositioningMessage _value, $Res Function(_$_PositioningMessage) _then)
+class __$$PositioningMessageImplCopyWithImpl<$Res>
+    extends _$PositioningMessageCopyWithImpl<$Res, _$PositioningMessageImpl>
+    implements _$$PositioningMessageImplCopyWith<$Res> {
+  __$$PositioningMessageImplCopyWithImpl(_$PositioningMessageImpl _value,
+      $Res Function(_$PositioningMessageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -129,7 +129,7 @@ class __$$_PositioningMessageCopyWithImpl<$Res>
     Object? quality = null,
     Object? distance = null,
   }) {
-    return _then(_$_PositioningMessage(
+    return _then(_$PositioningMessageImpl(
       eyes: null == eyes
           ? _value.eyes
           : eyes // ignore: cast_nullable_to_non_nullable
@@ -148,14 +148,14 @@ class __$$_PositioningMessageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PositioningMessage implements _PositioningMessage {
-  const _$_PositioningMessage(
+class _$PositioningMessageImpl implements _PositioningMessage {
+  const _$PositioningMessageImpl(
       {this.eyes = const PositioningEyes(),
       this.quality = const PositioningQuality(),
       this.distance = PositioningDistance.none});
 
-  factory _$_PositioningMessage.fromJson(Map<String, dynamic> json) =>
-      _$$_PositioningMessageFromJson(json);
+  factory _$PositioningMessageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PositioningMessageImplFromJson(json);
 
   @override
   @JsonKey()
@@ -173,10 +173,10 @@ class _$_PositioningMessage implements _PositioningMessage {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PositioningMessage &&
+            other is _$PositioningMessageImpl &&
             (identical(other.eyes, eyes) || other.eyes == eyes) &&
             (identical(other.quality, quality) || other.quality == quality) &&
             (identical(other.distance, distance) ||
@@ -190,13 +190,13 @@ class _$_PositioningMessage implements _PositioningMessage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PositioningMessageCopyWith<_$_PositioningMessage> get copyWith =>
-      __$$_PositioningMessageCopyWithImpl<_$_PositioningMessage>(
+  _$$PositioningMessageImplCopyWith<_$PositioningMessageImpl> get copyWith =>
+      __$$PositioningMessageImplCopyWithImpl<_$PositioningMessageImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PositioningMessageToJson(
+    return _$$PositioningMessageImplToJson(
       this,
     );
   }
@@ -206,10 +206,10 @@ abstract class _PositioningMessage implements PositioningMessage {
   const factory _PositioningMessage(
       {final PositioningEyes eyes,
       final PositioningQuality quality,
-      final PositioningDistance distance}) = _$_PositioningMessage;
+      final PositioningDistance distance}) = _$PositioningMessageImpl;
 
   factory _PositioningMessage.fromJson(Map<String, dynamic> json) =
-      _$_PositioningMessage.fromJson;
+      _$PositioningMessageImpl.fromJson;
 
   @override
   PositioningEyes get eyes;
@@ -219,6 +219,6 @@ abstract class _PositioningMessage implements PositioningMessage {
   PositioningDistance get distance;
   @override
   @JsonKey(ignore: true)
-  _$$_PositioningMessageCopyWith<_$_PositioningMessage> get copyWith =>
+  _$$PositioningMessageImplCopyWith<_$PositioningMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

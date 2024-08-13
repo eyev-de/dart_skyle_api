@@ -12,7 +12,7 @@ part of 'binocular_gaze.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BinocularGaze _$BinocularGazeFromJson(Map<String, dynamic> json) {
   return _BinocularGaze.fromJson(json);
@@ -87,11 +87,11 @@ class _$BinocularGazeCopyWithImpl<$Res, $Val extends BinocularGaze>
 }
 
 /// @nodoc
-abstract class _$$_BinocularGazeCopyWith<$Res>
+abstract class _$$BinocularGazeImplCopyWith<$Res>
     implements $BinocularGazeCopyWith<$Res> {
-  factory _$$_BinocularGazeCopyWith(
-          _$_BinocularGaze value, $Res Function(_$_BinocularGaze) then) =
-      __$$_BinocularGazeCopyWithImpl<$Res>;
+  factory _$$BinocularGazeImplCopyWith(
+          _$BinocularGazeImpl value, $Res Function(_$BinocularGazeImpl) then) =
+      __$$BinocularGazeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Point leftGaze, Point rightGaze});
@@ -103,11 +103,11 @@ abstract class _$$_BinocularGazeCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_BinocularGazeCopyWithImpl<$Res>
-    extends _$BinocularGazeCopyWithImpl<$Res, _$_BinocularGaze>
-    implements _$$_BinocularGazeCopyWith<$Res> {
-  __$$_BinocularGazeCopyWithImpl(
-      _$_BinocularGaze _value, $Res Function(_$_BinocularGaze) _then)
+class __$$BinocularGazeImplCopyWithImpl<$Res>
+    extends _$BinocularGazeCopyWithImpl<$Res, _$BinocularGazeImpl>
+    implements _$$BinocularGazeImplCopyWith<$Res> {
+  __$$BinocularGazeImplCopyWithImpl(
+      _$BinocularGazeImpl _value, $Res Function(_$BinocularGazeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +116,7 @@ class __$$_BinocularGazeCopyWithImpl<$Res>
     Object? leftGaze = null,
     Object? rightGaze = null,
   }) {
-    return _then(_$_BinocularGaze(
+    return _then(_$BinocularGazeImpl(
       leftGaze: null == leftGaze
           ? _value.leftGaze
           : leftGaze // ignore: cast_nullable_to_non_nullable
@@ -131,13 +131,13 @@ class __$$_BinocularGazeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_BinocularGaze extends _BinocularGaze {
-  const _$_BinocularGaze(
+class _$BinocularGazeImpl extends _BinocularGaze {
+  const _$BinocularGazeImpl(
       {this.leftGaze = const Point(), this.rightGaze = const Point()})
       : super._();
 
-  factory _$_BinocularGaze.fromJson(Map<String, dynamic> json) =>
-      _$$_BinocularGazeFromJson(json);
+  factory _$BinocularGazeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BinocularGazeImplFromJson(json);
 
   @override
   @JsonKey()
@@ -152,10 +152,10 @@ class _$_BinocularGaze extends _BinocularGaze {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BinocularGaze &&
+            other is _$BinocularGazeImpl &&
             (identical(other.leftGaze, leftGaze) ||
                 other.leftGaze == leftGaze) &&
             (identical(other.rightGaze, rightGaze) ||
@@ -169,12 +169,12 @@ class _$_BinocularGaze extends _BinocularGaze {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BinocularGazeCopyWith<_$_BinocularGaze> get copyWith =>
-      __$$_BinocularGazeCopyWithImpl<_$_BinocularGaze>(this, _$identity);
+  _$$BinocularGazeImplCopyWith<_$BinocularGazeImpl> get copyWith =>
+      __$$BinocularGazeImplCopyWithImpl<_$BinocularGazeImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BinocularGazeToJson(
+    return _$$BinocularGazeImplToJson(
       this,
     );
   }
@@ -182,11 +182,11 @@ class _$_BinocularGaze extends _BinocularGaze {
 
 abstract class _BinocularGaze extends BinocularGaze {
   const factory _BinocularGaze({final Point leftGaze, final Point rightGaze}) =
-      _$_BinocularGaze;
+      _$BinocularGazeImpl;
   const _BinocularGaze._() : super._();
 
   factory _BinocularGaze.fromJson(Map<String, dynamic> json) =
-      _$_BinocularGaze.fromJson;
+      _$BinocularGazeImpl.fromJson;
 
   @override
   Point get leftGaze;
@@ -194,6 +194,6 @@ abstract class _BinocularGaze extends BinocularGaze {
   Point get rightGaze;
   @override
   @JsonKey(ignore: true)
-  _$$_BinocularGazeCopyWith<_$_BinocularGaze> get copyWith =>
+  _$$BinocularGazeImplCopyWith<_$BinocularGazeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

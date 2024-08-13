@@ -12,7 +12,7 @@ part of 'screen_sizes.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ScreenSizes _$ScreenSizesFromJson(Map<String, dynamic> json) {
   return _ScreenSizes.fromJson(json);
@@ -91,11 +91,11 @@ class _$ScreenSizesCopyWithImpl<$Res, $Val extends ScreenSizes>
 }
 
 /// @nodoc
-abstract class _$$_ScreenSizesCopyWith<$Res>
+abstract class _$$ScreenSizesImplCopyWith<$Res>
     implements $ScreenSizesCopyWith<$Res> {
-  factory _$$_ScreenSizesCopyWith(
-          _$_ScreenSizes value, $Res Function(_$_ScreenSizes) then) =
-      __$$_ScreenSizesCopyWithImpl<$Res>;
+  factory _$$ScreenSizesImplCopyWith(
+          _$ScreenSizesImpl value, $Res Function(_$ScreenSizesImpl) then) =
+      __$$ScreenSizesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Size resolution, Size? dimensions});
@@ -107,11 +107,11 @@ abstract class _$$_ScreenSizesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ScreenSizesCopyWithImpl<$Res>
-    extends _$ScreenSizesCopyWithImpl<$Res, _$_ScreenSizes>
-    implements _$$_ScreenSizesCopyWith<$Res> {
-  __$$_ScreenSizesCopyWithImpl(
-      _$_ScreenSizes _value, $Res Function(_$_ScreenSizes) _then)
+class __$$ScreenSizesImplCopyWithImpl<$Res>
+    extends _$ScreenSizesCopyWithImpl<$Res, _$ScreenSizesImpl>
+    implements _$$ScreenSizesImplCopyWith<$Res> {
+  __$$ScreenSizesImplCopyWithImpl(
+      _$ScreenSizesImpl _value, $Res Function(_$ScreenSizesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -120,7 +120,7 @@ class __$$_ScreenSizesCopyWithImpl<$Res>
     Object? resolution = null,
     Object? dimensions = freezed,
   }) {
-    return _then(_$_ScreenSizes(
+    return _then(_$ScreenSizesImpl(
       resolution: null == resolution
           ? _value.resolution
           : resolution // ignore: cast_nullable_to_non_nullable
@@ -135,13 +135,13 @@ class __$$_ScreenSizesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ScreenSizes implements _ScreenSizes {
-  const _$_ScreenSizes(
+class _$ScreenSizesImpl implements _ScreenSizes {
+  const _$ScreenSizesImpl(
       {this.resolution = const Size(width: 1920, height: 1080),
       this.dimensions});
 
-  factory _$_ScreenSizes.fromJson(Map<String, dynamic> json) =>
-      _$$_ScreenSizesFromJson(json);
+  factory _$ScreenSizesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ScreenSizesImplFromJson(json);
 
   @override
   @JsonKey()
@@ -155,10 +155,10 @@ class _$_ScreenSizes implements _ScreenSizes {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ScreenSizes &&
+            other is _$ScreenSizesImpl &&
             (identical(other.resolution, resolution) ||
                 other.resolution == resolution) &&
             (identical(other.dimensions, dimensions) ||
@@ -172,12 +172,12 @@ class _$_ScreenSizes implements _ScreenSizes {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ScreenSizesCopyWith<_$_ScreenSizes> get copyWith =>
-      __$$_ScreenSizesCopyWithImpl<_$_ScreenSizes>(this, _$identity);
+  _$$ScreenSizesImplCopyWith<_$ScreenSizesImpl> get copyWith =>
+      __$$ScreenSizesImplCopyWithImpl<_$ScreenSizesImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ScreenSizesToJson(
+    return _$$ScreenSizesImplToJson(
       this,
     );
   }
@@ -185,10 +185,10 @@ class _$_ScreenSizes implements _ScreenSizes {
 
 abstract class _ScreenSizes implements ScreenSizes {
   const factory _ScreenSizes({final Size resolution, final Size? dimensions}) =
-      _$_ScreenSizes;
+      _$ScreenSizesImpl;
 
   factory _ScreenSizes.fromJson(Map<String, dynamic> json) =
-      _$_ScreenSizes.fromJson;
+      _$ScreenSizesImpl.fromJson;
 
   @override
   Size get resolution;
@@ -196,6 +196,6 @@ abstract class _ScreenSizes implements ScreenSizes {
   Size? get dimensions;
   @override
   @JsonKey(ignore: true)
-  _$$_ScreenSizesCopyWith<_$_ScreenSizes> get copyWith =>
+  _$$ScreenSizesImplCopyWith<_$ScreenSizesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

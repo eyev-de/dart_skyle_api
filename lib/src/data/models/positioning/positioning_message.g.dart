@@ -6,9 +6,9 @@ part of 'positioning_message.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PositioningMessage _$$_PositioningMessageFromJson(
+_$PositioningMessageImpl _$$PositioningMessageImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PositioningMessage(
+    _$PositioningMessageImpl(
       eyes: json['eyes'] == null
           ? const PositioningEyes()
           : PositioningEyes.fromJson(json['eyes'] as Map<String, dynamic>),
@@ -21,8 +21,8 @@ _$_PositioningMessage _$$_PositioningMessageFromJson(
               PositioningDistance.none,
     );
 
-Map<String, dynamic> _$$_PositioningMessageToJson(
-        _$_PositioningMessage instance) =>
+Map<String, dynamic> _$$PositioningMessageImplToJson(
+        _$PositioningMessageImpl instance) =>
     <String, dynamic>{
       'eyes': instance.eyes,
       'quality': instance.quality,

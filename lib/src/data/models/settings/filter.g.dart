@@ -6,12 +6,13 @@ part of 'filter.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Filter _$$_FilterFromJson(Map<String, dynamic> json) => _$_Filter(
-      gaze: json['gaze'] as int? ?? 30,
-      fixation: json['fixation'] as int? ?? 5,
+_$FilterImpl _$$FilterImplFromJson(Map<String, dynamic> json) => _$FilterImpl(
+      gaze: (json['gaze'] as num?)?.toInt() ?? 5,
+      fixation: (json['fixation'] as num?)?.toInt() ?? 30,
     );
 
-Map<String, dynamic> _$$_FilterToJson(_$_Filter instance) => <String, dynamic>{
+Map<String, dynamic> _$$FilterImplToJson(_$FilterImpl instance) =>
+    <String, dynamic>{
       'gaze': instance.gaze,
       'fixation': instance.fixation,
     };

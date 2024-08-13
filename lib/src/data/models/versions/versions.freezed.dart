@@ -12,7 +12,7 @@ part of 'versions.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Versions _$VersionsFromJson(Map<String, dynamic> json) {
   return _Versions.fromJson(json);
@@ -104,10 +104,11 @@ class _$VersionsCopyWithImpl<$Res, $Val extends Versions>
 }
 
 /// @nodoc
-abstract class _$$_VersionsCopyWith<$Res> implements $VersionsCopyWith<$Res> {
-  factory _$$_VersionsCopyWith(
-          _$_Versions value, $Res Function(_$_Versions) then) =
-      __$$_VersionsCopyWithImpl<$Res>;
+abstract class _$$VersionsImplCopyWith<$Res>
+    implements $VersionsCopyWith<$Res> {
+  factory _$$VersionsImplCopyWith(
+          _$VersionsImpl value, $Res Function(_$VersionsImpl) then) =
+      __$$VersionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -121,11 +122,11 @@ abstract class _$$_VersionsCopyWith<$Res> implements $VersionsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_VersionsCopyWithImpl<$Res>
-    extends _$VersionsCopyWithImpl<$Res, _$_Versions>
-    implements _$$_VersionsCopyWith<$Res> {
-  __$$_VersionsCopyWithImpl(
-      _$_Versions _value, $Res Function(_$_Versions) _then)
+class __$$VersionsImplCopyWithImpl<$Res>
+    extends _$VersionsCopyWithImpl<$Res, _$VersionsImpl>
+    implements _$$VersionsImplCopyWith<$Res> {
+  __$$VersionsImplCopyWithImpl(
+      _$VersionsImpl _value, $Res Function(_$VersionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -139,7 +140,7 @@ class __$$_VersionsCopyWithImpl<$Res>
     Object? skyleType = null,
     Object? isDemo = null,
   }) {
-    return _then(_$_Versions(
+    return _then(_$VersionsImpl(
       firmware: null == firmware
           ? _value.firmware
           : firmware // ignore: cast_nullable_to_non_nullable
@@ -174,8 +175,8 @@ class __$$_VersionsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Versions implements _Versions {
-  const _$_Versions(
+class _$VersionsImpl implements _Versions {
+  const _$VersionsImpl(
       {required this.firmware,
       required this.eyetracker,
       required this.calib,
@@ -184,8 +185,8 @@ class _$_Versions implements _Versions {
       required this.skyleType,
       required this.isDemo});
 
-  factory _$_Versions.fromJson(Map<String, dynamic> json) =>
-      _$$_VersionsFromJson(json);
+  factory _$VersionsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VersionsImplFromJson(json);
 
   @override
   final String firmware;
@@ -208,10 +209,10 @@ class _$_Versions implements _Versions {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Versions &&
+            other is _$VersionsImpl &&
             (identical(other.firmware, firmware) ||
                 other.firmware == firmware) &&
             (identical(other.eyetracker, eyetracker) ||
@@ -232,12 +233,12 @@ class _$_Versions implements _Versions {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_VersionsCopyWith<_$_Versions> get copyWith =>
-      __$$_VersionsCopyWithImpl<_$_Versions>(this, _$identity);
+  _$$VersionsImplCopyWith<_$VersionsImpl> get copyWith =>
+      __$$VersionsImplCopyWithImpl<_$VersionsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VersionsToJson(
+    return _$$VersionsImplToJson(
       this,
     );
   }
@@ -251,9 +252,10 @@ abstract class _Versions implements Versions {
       required final String base,
       required final BigInt serial,
       required final int skyleType,
-      required final bool isDemo}) = _$_Versions;
+      required final bool isDemo}) = _$VersionsImpl;
 
-  factory _Versions.fromJson(Map<String, dynamic> json) = _$_Versions.fromJson;
+  factory _Versions.fromJson(Map<String, dynamic> json) =
+      _$VersionsImpl.fromJson;
 
   @override
   String get firmware;
@@ -271,6 +273,6 @@ abstract class _Versions implements Versions {
   bool get isDemo;
   @override
   @JsonKey(ignore: true)
-  _$$_VersionsCopyWith<_$_Versions> get copyWith =>
+  _$$VersionsImplCopyWith<_$VersionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

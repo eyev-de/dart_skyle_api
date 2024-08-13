@@ -12,7 +12,7 @@ part of 'filter.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Filter _$FilterFromJson(Map<String, dynamic> json) {
   return _Filter.fromJson(json);
@@ -66,19 +66,21 @@ class _$FilterCopyWithImpl<$Res, $Val extends Filter>
 }
 
 /// @nodoc
-abstract class _$$_FilterCopyWith<$Res> implements $FilterCopyWith<$Res> {
-  factory _$$_FilterCopyWith(_$_Filter value, $Res Function(_$_Filter) then) =
-      __$$_FilterCopyWithImpl<$Res>;
+abstract class _$$FilterImplCopyWith<$Res> implements $FilterCopyWith<$Res> {
+  factory _$$FilterImplCopyWith(
+          _$FilterImpl value, $Res Function(_$FilterImpl) then) =
+      __$$FilterImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int gaze, int fixation});
 }
 
 /// @nodoc
-class __$$_FilterCopyWithImpl<$Res>
-    extends _$FilterCopyWithImpl<$Res, _$_Filter>
-    implements _$$_FilterCopyWith<$Res> {
-  __$$_FilterCopyWithImpl(_$_Filter _value, $Res Function(_$_Filter) _then)
+class __$$FilterImplCopyWithImpl<$Res>
+    extends _$FilterCopyWithImpl<$Res, _$FilterImpl>
+    implements _$$FilterImplCopyWith<$Res> {
+  __$$FilterImplCopyWithImpl(
+      _$FilterImpl _value, $Res Function(_$FilterImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +89,7 @@ class __$$_FilterCopyWithImpl<$Res>
     Object? gaze = null,
     Object? fixation = null,
   }) {
-    return _then(_$_Filter(
+    return _then(_$FilterImpl(
       gaze: null == gaze
           ? _value.gaze
           : gaze // ignore: cast_nullable_to_non_nullable
@@ -102,11 +104,11 @@ class __$$_FilterCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Filter implements _Filter {
-  const _$_Filter({this.gaze = 11, this.fixation = 5});
+class _$FilterImpl implements _Filter {
+  const _$FilterImpl({this.gaze = 5, this.fixation = 30});
 
-  factory _$_Filter.fromJson(Map<String, dynamic> json) =>
-      _$$_FilterFromJson(json);
+  factory _$FilterImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FilterImplFromJson(json);
 
   @override
   @JsonKey()
@@ -121,10 +123,10 @@ class _$_Filter implements _Filter {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Filter &&
+            other is _$FilterImpl &&
             (identical(other.gaze, gaze) || other.gaze == gaze) &&
             (identical(other.fixation, fixation) ||
                 other.fixation == fixation));
@@ -137,21 +139,21 @@ class _$_Filter implements _Filter {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_FilterCopyWith<_$_Filter> get copyWith =>
-      __$$_FilterCopyWithImpl<_$_Filter>(this, _$identity);
+  _$$FilterImplCopyWith<_$FilterImpl> get copyWith =>
+      __$$FilterImplCopyWithImpl<_$FilterImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_FilterToJson(
+    return _$$FilterImplToJson(
       this,
     );
   }
 }
 
 abstract class _Filter implements Filter {
-  const factory _Filter({final int gaze, final int fixation}) = _$_Filter;
+  const factory _Filter({final int gaze, final int fixation}) = _$FilterImpl;
 
-  factory _Filter.fromJson(Map<String, dynamic> json) = _$_Filter.fromJson;
+  factory _Filter.fromJson(Map<String, dynamic> json) = _$FilterImpl.fromJson;
 
   @override
   int get gaze;
@@ -159,6 +161,6 @@ abstract class _Filter implements Filter {
   int get fixation;
   @override
   @JsonKey(ignore: true)
-  _$$_FilterCopyWith<_$_Filter> get copyWith =>
+  _$$FilterImplCopyWith<_$FilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

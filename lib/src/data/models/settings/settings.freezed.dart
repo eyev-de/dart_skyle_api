@@ -12,7 +12,7 @@ part of 'settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Settings _$SettingsFromJson(Map<String, dynamic> json) {
   return _Settings.fromJson(json);
@@ -160,10 +160,11 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
 }
 
 /// @nodoc
-abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
-  factory _$$_SettingsCopyWith(
-          _$_Settings value, $Res Function(_$_Settings) then) =
-      __$$_SettingsCopyWithImpl<$Res>;
+abstract class _$$SettingsImplCopyWith<$Res>
+    implements $SettingsCopyWith<$Res> {
+  factory _$$SettingsImplCopyWith(
+          _$SettingsImpl value, $Res Function(_$SettingsImpl) then) =
+      __$$SettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -188,11 +189,11 @@ abstract class _$$_SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_SettingsCopyWithImpl<$Res>
-    extends _$SettingsCopyWithImpl<$Res, _$_Settings>
-    implements _$$_SettingsCopyWith<$Res> {
-  __$$_SettingsCopyWithImpl(
-      _$_Settings _value, $Res Function(_$_Settings) _then)
+class __$$SettingsImplCopyWithImpl<$Res>
+    extends _$SettingsCopyWithImpl<$Res, _$SettingsImpl>
+    implements _$$SettingsImplCopyWith<$Res> {
+  __$$SettingsImplCopyWithImpl(
+      _$SettingsImpl _value, $Res Function(_$SettingsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -210,7 +211,7 @@ class __$$_SettingsCopyWithImpl<$Res>
     Object? hp = null,
     Object? trackingMode = null,
   }) {
-    return _then(_$_Settings(
+    return _then(_$SettingsImpl(
       video: null == video
           ? _value.video
           : video // ignore: cast_nullable_to_non_nullable
@@ -261,8 +262,8 @@ class __$$_SettingsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Settings implements _Settings {
-  const _$_Settings(
+class _$SettingsImpl implements _Settings {
+  const _$SettingsImpl(
       {this.video = false,
       this.enablePause = false,
       this.pause = false,
@@ -275,8 +276,8 @@ class _$_Settings implements _Settings {
       this.hp = false,
       this.trackingMode = TrackingMode.none});
 
-  factory _$_Settings.fromJson(Map<String, dynamic> json) =>
-      _$$_SettingsFromJson(json);
+  factory _$SettingsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SettingsImplFromJson(json);
 
   @override
   @JsonKey()
@@ -318,10 +319,10 @@ class _$_Settings implements _Settings {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Settings &&
+            other is _$SettingsImpl &&
             (identical(other.video, video) || other.video == video) &&
             (identical(other.enablePause, enablePause) ||
                 other.enablePause == enablePause) &&
@@ -360,12 +361,12 @@ class _$_Settings implements _Settings {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SettingsCopyWith<_$_Settings> get copyWith =>
-      __$$_SettingsCopyWithImpl<_$_Settings>(this, _$identity);
+  _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith =>
+      __$$SettingsImplCopyWithImpl<_$SettingsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SettingsToJson(
+    return _$$SettingsImplToJson(
       this,
     );
   }
@@ -383,9 +384,10 @@ abstract class _Settings implements Settings {
       final IPadOS iPadOS,
       final ScreenSizes screenSizes,
       final bool hp,
-      final TrackingMode trackingMode}) = _$_Settings;
+      final TrackingMode trackingMode}) = _$SettingsImpl;
 
-  factory _Settings.fromJson(Map<String, dynamic> json) = _$_Settings.fromJson;
+  factory _Settings.fromJson(Map<String, dynamic> json) =
+      _$SettingsImpl.fromJson;
 
   @override
   bool get video;
@@ -411,6 +413,6 @@ abstract class _Settings implements Settings {
   TrackingMode get trackingMode;
   @override
   @JsonKey(ignore: true)
-  _$$_SettingsCopyWith<_$_Settings> get copyWith =>
+  _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

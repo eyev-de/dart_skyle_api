@@ -12,7 +12,7 @@ part of 'switch_actions.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 SwitchActions _$SwitchActionsFromJson(Map<String, dynamic> json) {
   return _SwitchActions.fromJson(json);
@@ -74,22 +74,22 @@ class _$SwitchActionsCopyWithImpl<$Res, $Val extends SwitchActions>
 }
 
 /// @nodoc
-abstract class _$$_SwitchActionsCopyWith<$Res>
+abstract class _$$SwitchActionsImplCopyWith<$Res>
     implements $SwitchActionsCopyWith<$Res> {
-  factory _$$_SwitchActionsCopyWith(
-          _$_SwitchActions value, $Res Function(_$_SwitchActions) then) =
-      __$$_SwitchActionsCopyWithImpl<$Res>;
+  factory _$$SwitchActionsImplCopyWith(
+          _$SwitchActionsImpl value, $Res Function(_$SwitchActionsImpl) then) =
+      __$$SwitchActionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String singleClick, String doubleClick, String holdClick});
 }
 
 /// @nodoc
-class __$$_SwitchActionsCopyWithImpl<$Res>
-    extends _$SwitchActionsCopyWithImpl<$Res, _$_SwitchActions>
-    implements _$$_SwitchActionsCopyWith<$Res> {
-  __$$_SwitchActionsCopyWithImpl(
-      _$_SwitchActions _value, $Res Function(_$_SwitchActions) _then)
+class __$$SwitchActionsImplCopyWithImpl<$Res>
+    extends _$SwitchActionsCopyWithImpl<$Res, _$SwitchActionsImpl>
+    implements _$$SwitchActionsImplCopyWith<$Res> {
+  __$$SwitchActionsImplCopyWithImpl(
+      _$SwitchActionsImpl _value, $Res Function(_$SwitchActionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_SwitchActionsCopyWithImpl<$Res>
     Object? doubleClick = null,
     Object? holdClick = null,
   }) {
-    return _then(_$_SwitchActions(
+    return _then(_$SwitchActionsImpl(
       singleClick: null == singleClick
           ? _value.singleClick
           : singleClick // ignore: cast_nullable_to_non_nullable
@@ -118,14 +118,14 @@ class __$$_SwitchActionsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SwitchActions implements _SwitchActions {
-  const _$_SwitchActions(
+class _$SwitchActionsImpl implements _SwitchActions {
+  const _$SwitchActionsImpl(
       {required this.singleClick,
       required this.doubleClick,
       required this.holdClick});
 
-  factory _$_SwitchActions.fromJson(Map<String, dynamic> json) =>
-      _$$_SwitchActionsFromJson(json);
+  factory _$SwitchActionsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SwitchActionsImplFromJson(json);
 
   @override
   final String singleClick;
@@ -140,10 +140,10 @@ class _$_SwitchActions implements _SwitchActions {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SwitchActions &&
+            other is _$SwitchActionsImpl &&
             (identical(other.singleClick, singleClick) ||
                 other.singleClick == singleClick) &&
             (identical(other.doubleClick, doubleClick) ||
@@ -160,12 +160,12 @@ class _$_SwitchActions implements _SwitchActions {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SwitchActionsCopyWith<_$_SwitchActions> get copyWith =>
-      __$$_SwitchActionsCopyWithImpl<_$_SwitchActions>(this, _$identity);
+  _$$SwitchActionsImplCopyWith<_$SwitchActionsImpl> get copyWith =>
+      __$$SwitchActionsImplCopyWithImpl<_$SwitchActionsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SwitchActionsToJson(
+    return _$$SwitchActionsImplToJson(
       this,
     );
   }
@@ -175,10 +175,10 @@ abstract class _SwitchActions implements SwitchActions {
   const factory _SwitchActions(
       {required final String singleClick,
       required final String doubleClick,
-      required final String holdClick}) = _$_SwitchActions;
+      required final String holdClick}) = _$SwitchActionsImpl;
 
   factory _SwitchActions.fromJson(Map<String, dynamic> json) =
-      _$_SwitchActions.fromJson;
+      _$SwitchActionsImpl.fromJson;
 
   @override
   String get singleClick;
@@ -188,6 +188,6 @@ abstract class _SwitchActions implements SwitchActions {
   String get holdClick;
   @override
   @JsonKey(ignore: true)
-  _$$_SwitchActionsCopyWith<_$_SwitchActions> get copyWith =>
+  _$$SwitchActionsImplCopyWith<_$SwitchActionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

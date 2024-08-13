@@ -12,7 +12,7 @@ part of 'positioning_eyes.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PositioningEyes _$PositioningEyesFromJson(Map<String, dynamic> json) {
   return _PositioningEyes.fromJson(json);
@@ -87,11 +87,11 @@ class _$PositioningEyesCopyWithImpl<$Res, $Val extends PositioningEyes>
 }
 
 /// @nodoc
-abstract class _$$_PositioningEyesCopyWith<$Res>
+abstract class _$$PositioningEyesImplCopyWith<$Res>
     implements $PositioningEyesCopyWith<$Res> {
-  factory _$$_PositioningEyesCopyWith(
-          _$_PositioningEyes value, $Res Function(_$_PositioningEyes) then) =
-      __$$_PositioningEyesCopyWithImpl<$Res>;
+  factory _$$PositioningEyesImplCopyWith(_$PositioningEyesImpl value,
+          $Res Function(_$PositioningEyesImpl) then) =
+      __$$PositioningEyesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Point left, Point right});
@@ -103,11 +103,11 @@ abstract class _$$_PositioningEyesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PositioningEyesCopyWithImpl<$Res>
-    extends _$PositioningEyesCopyWithImpl<$Res, _$_PositioningEyes>
-    implements _$$_PositioningEyesCopyWith<$Res> {
-  __$$_PositioningEyesCopyWithImpl(
-      _$_PositioningEyes _value, $Res Function(_$_PositioningEyes) _then)
+class __$$PositioningEyesImplCopyWithImpl<$Res>
+    extends _$PositioningEyesCopyWithImpl<$Res, _$PositioningEyesImpl>
+    implements _$$PositioningEyesImplCopyWith<$Res> {
+  __$$PositioningEyesImplCopyWithImpl(
+      _$PositioningEyesImpl _value, $Res Function(_$PositioningEyesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -116,7 +116,7 @@ class __$$_PositioningEyesCopyWithImpl<$Res>
     Object? left = null,
     Object? right = null,
   }) {
-    return _then(_$_PositioningEyes(
+    return _then(_$PositioningEyesImpl(
       left: null == left
           ? _value.left
           : left // ignore: cast_nullable_to_non_nullable
@@ -131,12 +131,12 @@ class __$$_PositioningEyesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PositioningEyes implements _PositioningEyes {
-  const _$_PositioningEyes(
+class _$PositioningEyesImpl implements _PositioningEyes {
+  const _$PositioningEyesImpl(
       {this.left = const Point(), this.right = const Point()});
 
-  factory _$_PositioningEyes.fromJson(Map<String, dynamic> json) =>
-      _$$_PositioningEyesFromJson(json);
+  factory _$PositioningEyesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PositioningEyesImplFromJson(json);
 
   @override
   @JsonKey()
@@ -151,10 +151,10 @@ class _$_PositioningEyes implements _PositioningEyes {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PositioningEyes &&
+            other is _$PositioningEyesImpl &&
             (identical(other.left, left) || other.left == left) &&
             (identical(other.right, right) || other.right == right));
   }
@@ -166,12 +166,13 @@ class _$_PositioningEyes implements _PositioningEyes {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PositioningEyesCopyWith<_$_PositioningEyes> get copyWith =>
-      __$$_PositioningEyesCopyWithImpl<_$_PositioningEyes>(this, _$identity);
+  _$$PositioningEyesImplCopyWith<_$PositioningEyesImpl> get copyWith =>
+      __$$PositioningEyesImplCopyWithImpl<_$PositioningEyesImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PositioningEyesToJson(
+    return _$$PositioningEyesImplToJson(
       this,
     );
   }
@@ -179,10 +180,10 @@ class _$_PositioningEyes implements _PositioningEyes {
 
 abstract class _PositioningEyes implements PositioningEyes {
   const factory _PositioningEyes({final Point left, final Point right}) =
-      _$_PositioningEyes;
+      _$PositioningEyesImpl;
 
   factory _PositioningEyes.fromJson(Map<String, dynamic> json) =
-      _$_PositioningEyes.fromJson;
+      _$PositioningEyesImpl.fromJson;
 
   @override
   Point get left;
@@ -190,6 +191,6 @@ abstract class _PositioningEyes implements PositioningEyes {
   Point get right;
   @override
   @JsonKey(ignore: true)
-  _$$_PositioningEyesCopyWith<_$_PositioningEyes> get copyWith =>
+  _$$PositioningEyesImplCopyWith<_$PositioningEyesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

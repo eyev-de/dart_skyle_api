@@ -6,8 +6,8 @@ part of 'binocular_gaze.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_BinocularGaze _$$_BinocularGazeFromJson(Map<String, dynamic> json) =>
-    _$_BinocularGaze(
+_$BinocularGazeImpl _$$BinocularGazeImplFromJson(Map<String, dynamic> json) =>
+    _$BinocularGazeImpl(
       leftGaze: json['leftGaze'] == null
           ? const Point()
           : Point.fromJson(json['leftGaze'] as Map<String, dynamic>),
@@ -16,7 +16,7 @@ _$_BinocularGaze _$$_BinocularGazeFromJson(Map<String, dynamic> json) =>
           : Point.fromJson(json['rightGaze'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_BinocularGazeToJson(_$_BinocularGaze instance) =>
+Map<String, dynamic> _$$BinocularGazeImplToJson(_$BinocularGazeImpl instance) =>
     <String, dynamic>{
       'leftGaze': instance.leftGaze,
       'rightGaze': instance.rightGaze,

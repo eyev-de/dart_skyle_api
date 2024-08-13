@@ -12,7 +12,7 @@ part of 'ipados.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 IPadOS _$IPadOSFromJson(Map<String, dynamic> json) {
   return _IPadOS.fromJson(json);
@@ -72,19 +72,21 @@ class _$IPadOSCopyWithImpl<$Res, $Val extends IPadOS>
 }
 
 /// @nodoc
-abstract class _$$_IPadOSCopyWith<$Res> implements $IPadOSCopyWith<$Res> {
-  factory _$$_IPadOSCopyWith(_$_IPadOS value, $Res Function(_$_IPadOS) then) =
-      __$$_IPadOSCopyWithImpl<$Res>;
+abstract class _$$IPadOSImplCopyWith<$Res> implements $IPadOSCopyWith<$Res> {
+  factory _$$IPadOSImplCopyWith(
+          _$IPadOSImpl value, $Res Function(_$IPadOSImpl) then) =
+      __$$IPadOSImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool? isOld, bool? isNotZoomed, IPadModel? iPadModel});
 }
 
 /// @nodoc
-class __$$_IPadOSCopyWithImpl<$Res>
-    extends _$IPadOSCopyWithImpl<$Res, _$_IPadOS>
-    implements _$$_IPadOSCopyWith<$Res> {
-  __$$_IPadOSCopyWithImpl(_$_IPadOS _value, $Res Function(_$_IPadOS) _then)
+class __$$IPadOSImplCopyWithImpl<$Res>
+    extends _$IPadOSCopyWithImpl<$Res, _$IPadOSImpl>
+    implements _$$IPadOSImplCopyWith<$Res> {
+  __$$IPadOSImplCopyWithImpl(
+      _$IPadOSImpl _value, $Res Function(_$IPadOSImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +96,7 @@ class __$$_IPadOSCopyWithImpl<$Res>
     Object? isNotZoomed = freezed,
     Object? iPadModel = freezed,
   }) {
-    return _then(_$_IPadOS(
+    return _then(_$IPadOSImpl(
       isOld: freezed == isOld
           ? _value.isOld
           : isOld // ignore: cast_nullable_to_non_nullable
@@ -113,14 +115,14 @@ class __$$_IPadOSCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_IPadOS implements _IPadOS {
-  const _$_IPadOS(
+class _$IPadOSImpl implements _IPadOS {
+  const _$IPadOSImpl(
       {this.isOld = false,
       this.isNotZoomed = false,
       this.iPadModel = IPadModel.iPad13_10});
 
-  factory _$_IPadOS.fromJson(Map<String, dynamic> json) =>
-      _$$_IPadOSFromJson(json);
+  factory _$IPadOSImpl.fromJson(Map<String, dynamic> json) =>
+      _$$IPadOSImplFromJson(json);
 
   @override
   @JsonKey()
@@ -138,10 +140,10 @@ class _$_IPadOS implements _IPadOS {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_IPadOS &&
+            other is _$IPadOSImpl &&
             (identical(other.isOld, isOld) || other.isOld == isOld) &&
             (identical(other.isNotZoomed, isNotZoomed) ||
                 other.isNotZoomed == isNotZoomed) &&
@@ -156,12 +158,12 @@ class _$_IPadOS implements _IPadOS {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_IPadOSCopyWith<_$_IPadOS> get copyWith =>
-      __$$_IPadOSCopyWithImpl<_$_IPadOS>(this, _$identity);
+  _$$IPadOSImplCopyWith<_$IPadOSImpl> get copyWith =>
+      __$$IPadOSImplCopyWithImpl<_$IPadOSImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_IPadOSToJson(
+    return _$$IPadOSImplToJson(
       this,
     );
   }
@@ -171,9 +173,9 @@ abstract class _IPadOS implements IPadOS {
   const factory _IPadOS(
       {final bool? isOld,
       final bool? isNotZoomed,
-      final IPadModel? iPadModel}) = _$_IPadOS;
+      final IPadModel? iPadModel}) = _$IPadOSImpl;
 
-  factory _IPadOS.fromJson(Map<String, dynamic> json) = _$_IPadOS.fromJson;
+  factory _IPadOS.fromJson(Map<String, dynamic> json) = _$IPadOSImpl.fromJson;
 
   @override
   bool? get isOld;
@@ -183,6 +185,6 @@ abstract class _IPadOS implements IPadOS {
   IPadModel? get iPadModel;
   @override
   @JsonKey(ignore: true)
-  _$$_IPadOSCopyWith<_$_IPadOS> get copyWith =>
+  _$$IPadOSImplCopyWith<_$IPadOSImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

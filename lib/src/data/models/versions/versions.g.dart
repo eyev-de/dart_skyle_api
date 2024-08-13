@@ -6,17 +6,18 @@ part of 'versions.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Versions _$$_VersionsFromJson(Map<String, dynamic> json) => _$_Versions(
+_$VersionsImpl _$$VersionsImplFromJson(Map<String, dynamic> json) =>
+    _$VersionsImpl(
       firmware: json['firmware'] as String,
       eyetracker: json['eyetracker'] as String,
       calib: json['calib'] as String,
       base: json['base'] as String,
       serial: BigInt.parse(json['serial'] as String),
-      skyleType: json['skyleType'] as int,
+      skyleType: (json['skyleType'] as num).toInt(),
       isDemo: json['isDemo'] as bool,
     );
 
-Map<String, dynamic> _$$_VersionsToJson(_$_Versions instance) =>
+Map<String, dynamic> _$$VersionsImplToJson(_$VersionsImpl instance) =>
     <String, dynamic>{
       'firmware': instance.firmware,
       'eyetracker': instance.eyetracker,

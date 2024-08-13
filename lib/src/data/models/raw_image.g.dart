@@ -6,14 +6,17 @@ part of 'raw_image.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_RawImage _$$_RawImageFromJson(Map<String, dynamic> json) => _$_RawImage(
-      width: json['width'] as int? ?? 0,
-      height: json['height'] as int? ?? 0,
-      data: (json['data'] as List<dynamic>?)?.map((e) => e as int).toList() ??
+_$RawImageImpl _$$RawImageImplFromJson(Map<String, dynamic> json) =>
+    _$RawImageImpl(
+      width: (json['width'] as num?)?.toInt() ?? 0,
+      height: (json['height'] as num?)?.toInt() ?? 0,
+      data: (json['data'] as List<dynamic>?)
+              ?.map((e) => (e as num).toInt())
+              .toList() ??
           const [],
     );
 
-Map<String, dynamic> _$$_RawImageToJson(_$_RawImage instance) =>
+Map<String, dynamic> _$$RawImageImplToJson(_$RawImageImpl instance) =>
     <String, dynamic>{
       'width': instance.width,
       'height': instance.height,

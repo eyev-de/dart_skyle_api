@@ -6,16 +6,16 @@ part of 'positioning_quality.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PositioningQuality _$$_PositioningQualityFromJson(
+_$PositioningQualityImpl _$$PositioningQualityImplFromJson(
         Map<String, dynamic> json) =>
-    _$_PositioningQuality(
-      horizontal: json['horizontal'] as int? ?? 0,
-      vertical: json['vertical'] as int? ?? 0,
-      depth: json['depth'] as int? ?? 0,
+    _$PositioningQualityImpl(
+      horizontal: (json['horizontal'] as num?)?.toInt() ?? 0,
+      vertical: (json['vertical'] as num?)?.toInt() ?? 0,
+      depth: (json['depth'] as num?)?.toInt() ?? 0,
     );
 
-Map<String, dynamic> _$$_PositioningQualityToJson(
-        _$_PositioningQuality instance) =>
+Map<String, dynamic> _$$PositioningQualityImplToJson(
+        _$PositioningQualityImpl instance) =>
     <String, dynamic>{
       'horizontal': instance.horizontal,
       'vertical': instance.vertical,

@@ -12,7 +12,7 @@ part of 'size.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Size _$SizeFromJson(Map<String, dynamic> json) {
   return _Size.fromJson(json);
@@ -66,18 +66,20 @@ class _$SizeCopyWithImpl<$Res, $Val extends Size>
 }
 
 /// @nodoc
-abstract class _$$_SizeCopyWith<$Res> implements $SizeCopyWith<$Res> {
-  factory _$$_SizeCopyWith(_$_Size value, $Res Function(_$_Size) then) =
-      __$$_SizeCopyWithImpl<$Res>;
+abstract class _$$SizeImplCopyWith<$Res> implements $SizeCopyWith<$Res> {
+  factory _$$SizeImplCopyWith(
+          _$SizeImpl value, $Res Function(_$SizeImpl) then) =
+      __$$SizeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({double width, double height});
 }
 
 /// @nodoc
-class __$$_SizeCopyWithImpl<$Res> extends _$SizeCopyWithImpl<$Res, _$_Size>
-    implements _$$_SizeCopyWith<$Res> {
-  __$$_SizeCopyWithImpl(_$_Size _value, $Res Function(_$_Size) _then)
+class __$$SizeImplCopyWithImpl<$Res>
+    extends _$SizeCopyWithImpl<$Res, _$SizeImpl>
+    implements _$$SizeImplCopyWith<$Res> {
+  __$$SizeImplCopyWithImpl(_$SizeImpl _value, $Res Function(_$SizeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +88,7 @@ class __$$_SizeCopyWithImpl<$Res> extends _$SizeCopyWithImpl<$Res, _$_Size>
     Object? width = null,
     Object? height = null,
   }) {
-    return _then(_$_Size(
+    return _then(_$SizeImpl(
       width: null == width
           ? _value.width
           : width // ignore: cast_nullable_to_non_nullable
@@ -101,10 +103,11 @@ class __$$_SizeCopyWithImpl<$Res> extends _$SizeCopyWithImpl<$Res, _$_Size>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Size implements _Size {
-  const _$_Size({required this.width, required this.height});
+class _$SizeImpl implements _Size {
+  const _$SizeImpl({required this.width, required this.height});
 
-  factory _$_Size.fromJson(Map<String, dynamic> json) => _$$_SizeFromJson(json);
+  factory _$SizeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SizeImplFromJson(json);
 
   @override
   final double width;
@@ -117,10 +120,10 @@ class _$_Size implements _Size {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Size &&
+            other is _$SizeImpl &&
             (identical(other.width, width) || other.width == width) &&
             (identical(other.height, height) || other.height == height));
   }
@@ -132,12 +135,12 @@ class _$_Size implements _Size {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SizeCopyWith<_$_Size> get copyWith =>
-      __$$_SizeCopyWithImpl<_$_Size>(this, _$identity);
+  _$$SizeImplCopyWith<_$SizeImpl> get copyWith =>
+      __$$SizeImplCopyWithImpl<_$SizeImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SizeToJson(
+    return _$$SizeImplToJson(
       this,
     );
   }
@@ -145,9 +148,9 @@ class _$_Size implements _Size {
 
 abstract class _Size implements Size {
   const factory _Size(
-      {required final double width, required final double height}) = _$_Size;
+      {required final double width, required final double height}) = _$SizeImpl;
 
-  factory _Size.fromJson(Map<String, dynamic> json) = _$_Size.fromJson;
+  factory _Size.fromJson(Map<String, dynamic> json) = _$SizeImpl.fromJson;
 
   @override
   double get width;
@@ -155,5 +158,6 @@ abstract class _Size implements Size {
   double get height;
   @override
   @JsonKey(ignore: true)
-  _$$_SizeCopyWith<_$_Size> get copyWith => throw _privateConstructorUsedError;
+  _$$SizeImplCopyWith<_$SizeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

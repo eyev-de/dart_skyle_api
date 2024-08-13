@@ -6,8 +6,8 @@ part of 'screen_sizes.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ScreenSizes _$$_ScreenSizesFromJson(Map<String, dynamic> json) =>
-    _$_ScreenSizes(
+_$ScreenSizesImpl _$$ScreenSizesImplFromJson(Map<String, dynamic> json) =>
+    _$ScreenSizesImpl(
       resolution: json['resolution'] == null
           ? const Size(width: 1920, height: 1080)
           : Size.fromJson(json['resolution'] as Map<String, dynamic>),
@@ -16,7 +16,7 @@ _$_ScreenSizes _$$_ScreenSizesFromJson(Map<String, dynamic> json) =>
           : Size.fromJson(json['dimensions'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_ScreenSizesToJson(_$_ScreenSizes instance) =>
+Map<String, dynamic> _$$ScreenSizesImplToJson(_$ScreenSizesImpl instance) =>
     <String, dynamic>{
       'resolution': instance.resolution,
       'dimensions': instance.dimensions,
