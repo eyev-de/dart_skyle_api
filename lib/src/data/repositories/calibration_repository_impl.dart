@@ -28,6 +28,7 @@ class CalibrationRepositoryImpl extends CalibrationRepository {
     CalibrationPoints points, {
     ScreenSizes screenSizes = const ScreenSizes(),
     bool stepped = false,
+    Set<int> orderOfCalibrationPoints = const {0, 1, 2, 3, 4, 5, 6, 7, 8},
   }) async* {
     try {
       if (stream != null) throw StillStreamingException();
@@ -35,10 +36,10 @@ class CalibrationRepositoryImpl extends CalibrationRepository {
       control = StreamController<CalibControlMessages>();
       stream = client!.calibrate(control.stream);
       final CalibControlMessages message = (CalibControlMessages()
-        ..calibControl = (CalibControl()
-          ..stepByStep = stepped
+        ..calibControl = (CalibControl(calibrationPoints: orderOfCalibrationPoints)
           ..calibrate = true
           ..numberOfPoints = points.value
+          ..stepByStep = stepped
           ..stopHID = true
           ..res = ScreenSizes.toScreenResolution(screenSizes)));
       control.add(message);

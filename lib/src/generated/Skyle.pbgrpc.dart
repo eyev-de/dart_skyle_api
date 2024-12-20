@@ -50,6 +50,10 @@ class SkyleClient extends $grpc.Client {
       '/Skyle.Skyle/Configure',
       ($0.OptionMessage value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.Options.fromBuffer(value));
+  static final _$configureStream = $grpc.ClientMethod<$0.OptionMessage, $0.Options>(
+      '/Skyle.Skyle/ConfigureStream',
+      ($0.OptionMessage value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.Options.fromBuffer(value));
   static final _$getVersions = $grpc.ClientMethod<$1.Empty, $0.DeviceVersions>(
       '/Skyle.Skyle/GetVersions',
       ($1.Empty value) => value.writeToBuffer(),
@@ -119,6 +123,10 @@ class SkyleClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.Options> configure($0.OptionMessage request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$configure, request, options: options);
+  }
+
+  $grpc.ResponseStream<$0.Options> configureStream($async.Stream<$0.OptionMessage> request, {$grpc.CallOptions? options}) {
+    return $createStreamingCall(_$configureStream, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.DeviceVersions> getVersions($1.Empty request, {$grpc.CallOptions? options}) {
@@ -210,6 +218,13 @@ abstract class SkyleServiceBase extends $grpc.Service {
         configure_Pre,
         false,
         false,
+        ($core.List<$core.int> value) => $0.OptionMessage.fromBuffer(value),
+        ($0.Options value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.OptionMessage, $0.Options>(
+        'ConfigureStream',
+        configureStream,
+        true,
+        true,
         ($core.List<$core.int> value) => $0.OptionMessage.fromBuffer(value),
         ($0.Options value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $0.DeviceVersions>(
@@ -340,6 +355,7 @@ abstract class SkyleServiceBase extends $grpc.Service {
   $async.Future<$0.Button> getButton($grpc.ServiceCall call, $1.Empty request);
   $async.Future<$0.ButtonActions> setButton($grpc.ServiceCall call, $0.ButtonActions request);
   $async.Future<$0.Options> configure($grpc.ServiceCall call, $0.OptionMessage request);
+  $async.Stream<$0.Options> configureStream($grpc.ServiceCall call, $async.Stream<$0.OptionMessage> request);
   $async.Future<$0.DeviceVersions> getVersions($grpc.ServiceCall call, $1.Empty request);
   $async.Stream<$0.Profile> getProfiles($grpc.ServiceCall call, $1.Empty request);
   $async.Future<$0.Profile> currentProfile($grpc.ServiceCall call, $1.Empty request);

@@ -688,6 +688,7 @@ class CalibControl extends $pb.GeneratedMessage {
     $core.bool? stopHID,
     ScreenResolution? res,
     $core.bool? stepByStep,
+    $core.Iterable<$core.int>? calibrationPoints,
   }) {
     final $result = create();
     if (calibrate != null) {
@@ -708,6 +709,9 @@ class CalibControl extends $pb.GeneratedMessage {
     if (stepByStep != null) {
       $result.stepByStep = stepByStep;
     }
+    if (calibrationPoints != null) {
+      $result.calibrationPoints.addAll(calibrationPoints);
+    }
     return $result;
   }
   CalibControl._() : super();
@@ -721,6 +725,7 @@ class CalibControl extends $pb.GeneratedMessage {
     ..aOB(4, _omitFieldNames ? '' : 'stopHID', protoName: 'stopHID')
     ..aOM<ScreenResolution>(5, _omitFieldNames ? '' : 'res', subBuilder: ScreenResolution.create)
     ..aOB(6, _omitFieldNames ? '' : 'stepByStep', protoName: 'stepByStep')
+    ..p<$core.int>(7, _omitFieldNames ? '' : 'calibrationPoints', $pb.PbFieldType.K3, protoName: 'calibrationPoints')
     ..hasRequiredFields = false
   ;
 
@@ -800,6 +805,23 @@ class CalibControl extends $pb.GeneratedMessage {
   $core.bool hasStepByStep() => $_has(5);
   @$pb.TagNumber(6)
   void clearStepByStep() => clearField(6);
+
+  /// Indices of calibration points the user wants for a 9 point or 5 point calibration
+  /// The length of calibrationPoints needs to match numberOfPoints
+  /// Grid on the monitor:
+  /// —————————————————————————
+  /// |   0   |   1   |   2   |
+  /// |   3   |   4   |   5   |
+  /// |   6   |   7   |   8   |
+  /// —————————————————————————
+  /// examples:
+  /// 9 points: [0, 1, 2, 3, 4, 5, 6, 7, 8] (default for 9 points if not supplied)
+  /// 9 points: [0, 2, 7, 1, 8, 3, 5, 6, 4]
+  /// 5 points: [0, 2, 4, 6, 8] (default for 5 points if not supplied)
+  /// 5 points: [0, 2, 6, 8, 4]
+  /// 5 points: [0, 8, 2, 6, 4]
+  @$pb.TagNumber(7)
+  $core.List<$core.int> get calibrationPoints => $_getList(6);
 }
 
 /// *
@@ -1511,33 +1533,34 @@ class PositioningMessage extends $pb.GeneratedMessage {
 ///  Option message for configuration
 class Options extends $pb.GeneratedMessage {
   factory Options({
-    $core.bool? stream,
+    $core.bool? enableVideoStream,
+    $core.bool? enableAutoPause,
     $core.bool? enablePause,
-    $core.bool? pause,
-    $core.bool? guidance,
-    $core.bool? enableStandby,
+    $core.bool? enablePositioningStream,
+    $core.bool? enableAutoStandby,
     $core.bool? disableMouse,
     FilterOptions? filter,
     IPadOptions? iPadOptions,
     ScreenResolution? res,
     $core.bool? hp,
     Options_eyeUse? eyeUsage,
+    $core.bool? enableTrackingDetails,
   }) {
     final $result = create();
-    if (stream != null) {
-      $result.stream = stream;
+    if (enableVideoStream != null) {
+      $result.enableVideoStream = enableVideoStream;
+    }
+    if (enableAutoPause != null) {
+      $result.enableAutoPause = enableAutoPause;
     }
     if (enablePause != null) {
       $result.enablePause = enablePause;
     }
-    if (pause != null) {
-      $result.pause = pause;
+    if (enablePositioningStream != null) {
+      $result.enablePositioningStream = enablePositioningStream;
     }
-    if (guidance != null) {
-      $result.guidance = guidance;
-    }
-    if (enableStandby != null) {
-      $result.enableStandby = enableStandby;
+    if (enableAutoStandby != null) {
+      $result.enableAutoStandby = enableAutoStandby;
     }
     if (disableMouse != null) {
       $result.disableMouse = disableMouse;
@@ -1557,6 +1580,9 @@ class Options extends $pb.GeneratedMessage {
     if (eyeUsage != null) {
       $result.eyeUsage = eyeUsage;
     }
+    if (enableTrackingDetails != null) {
+      $result.enableTrackingDetails = enableTrackingDetails;
+    }
     return $result;
   }
   Options._() : super();
@@ -1564,17 +1590,18 @@ class Options extends $pb.GeneratedMessage {
   factory Options.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Options', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'stream')
-    ..aOB(2, _omitFieldNames ? '' : 'enablePause', protoName: 'enablePause')
-    ..aOB(3, _omitFieldNames ? '' : 'pause')
-    ..aOB(4, _omitFieldNames ? '' : 'guidance')
-    ..aOB(5, _omitFieldNames ? '' : 'enableStandby', protoName: 'enableStandby')
+    ..aOB(1, _omitFieldNames ? '' : 'enableVideoStream', protoName: 'enableVideoStream')
+    ..aOB(2, _omitFieldNames ? '' : 'enableAutoPause', protoName: 'enableAutoPause')
+    ..aOB(3, _omitFieldNames ? '' : 'enablePause', protoName: 'enablePause')
+    ..aOB(4, _omitFieldNames ? '' : 'enablePositioningStream', protoName: 'enablePositioningStream')
+    ..aOB(5, _omitFieldNames ? '' : 'enableAutoStandby', protoName: 'enableAutoStandby')
     ..aOB(6, _omitFieldNames ? '' : 'disableMouse', protoName: 'disableMouse')
     ..aOM<FilterOptions>(7, _omitFieldNames ? '' : 'filter', subBuilder: FilterOptions.create)
     ..aOM<IPadOptions>(8, _omitFieldNames ? '' : 'iPadOptions', protoName: 'iPadOptions', subBuilder: IPadOptions.create)
     ..aOM<ScreenResolution>(9, _omitFieldNames ? '' : 'res', subBuilder: ScreenResolution.create)
     ..aOB(10, _omitFieldNames ? '' : 'hp')
     ..e<Options_eyeUse>(11, _omitFieldNames ? '' : 'eyeUsage', $pb.PbFieldType.OE, protoName: 'eyeUsage', defaultOrMaker: Options_eyeUse.Both, valueOf: Options_eyeUse.valueOf, enumValues: Options_eyeUse.values)
+    ..aOB(12, _omitFieldNames ? '' : 'enableTrackingDetails', protoName: 'enableTrackingDetails')
     ..hasRequiredFields = false
   ;
 
@@ -1600,49 +1627,49 @@ class Options extends $pb.GeneratedMessage {
   static Options? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.bool get stream => $_getBF(0);
+  $core.bool get enableVideoStream => $_getBF(0);
   @$pb.TagNumber(1)
-  set stream($core.bool v) { $_setBool(0, v); }
+  set enableVideoStream($core.bool v) { $_setBool(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasStream() => $_has(0);
+  $core.bool hasEnableVideoStream() => $_has(0);
   @$pb.TagNumber(1)
-  void clearStream() => clearField(1);
+  void clearEnableVideoStream() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.bool get enablePause => $_getBF(1);
+  $core.bool get enableAutoPause => $_getBF(1);
   @$pb.TagNumber(2)
-  set enablePause($core.bool v) { $_setBool(1, v); }
+  set enableAutoPause($core.bool v) { $_setBool(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasEnablePause() => $_has(1);
+  $core.bool hasEnableAutoPause() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEnablePause() => clearField(2);
+  void clearEnableAutoPause() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.bool get pause => $_getBF(2);
+  $core.bool get enablePause => $_getBF(2);
   @$pb.TagNumber(3)
-  set pause($core.bool v) { $_setBool(2, v); }
+  set enablePause($core.bool v) { $_setBool(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasPause() => $_has(2);
+  $core.bool hasEnablePause() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPause() => clearField(3);
+  void clearEnablePause() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.bool get guidance => $_getBF(3);
+  $core.bool get enablePositioningStream => $_getBF(3);
   @$pb.TagNumber(4)
-  set guidance($core.bool v) { $_setBool(3, v); }
+  set enablePositioningStream($core.bool v) { $_setBool(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasGuidance() => $_has(3);
+  $core.bool hasEnablePositioningStream() => $_has(3);
   @$pb.TagNumber(4)
-  void clearGuidance() => clearField(4);
+  void clearEnablePositioningStream() => clearField(4);
 
   @$pb.TagNumber(5)
-  $core.bool get enableStandby => $_getBF(4);
+  $core.bool get enableAutoStandby => $_getBF(4);
   @$pb.TagNumber(5)
-  set enableStandby($core.bool v) { $_setBool(4, v); }
+  set enableAutoStandby($core.bool v) { $_setBool(4, v); }
   @$pb.TagNumber(5)
-  $core.bool hasEnableStandby() => $_has(4);
+  $core.bool hasEnableAutoStandby() => $_has(4);
   @$pb.TagNumber(5)
-  void clearEnableStandby() => clearField(5);
+  void clearEnableAutoStandby() => clearField(5);
 
   @$pb.TagNumber(6)
   $core.bool get disableMouse => $_getBF(5);
@@ -1703,6 +1730,15 @@ class Options extends $pb.GeneratedMessage {
   $core.bool hasEyeUsage() => $_has(10);
   @$pb.TagNumber(11)
   void clearEyeUsage() => clearField(11);
+
+  @$pb.TagNumber(12)
+  $core.bool get enableTrackingDetails => $_getBF(11);
+  @$pb.TagNumber(12)
+  set enableTrackingDetails($core.bool v) { $_setBool(11, v); }
+  @$pb.TagNumber(12)
+  $core.bool hasEnableTrackingDetails() => $_has(11);
+  @$pb.TagNumber(12)
+  void clearEnableTrackingDetails() => clearField(12);
 }
 
 enum IPadOptions_OptionalModel {

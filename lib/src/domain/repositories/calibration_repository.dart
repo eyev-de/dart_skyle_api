@@ -22,6 +22,7 @@ abstract class CalibrationRepository {
     CalibrationPoints points, {
     ScreenSizes screenSizes = const ScreenSizes(),
     bool stepped = false,
+    Set<int> orderOfCalibrationPoints,
   });
 
   /// Aborts a calibration started by [calibrate].

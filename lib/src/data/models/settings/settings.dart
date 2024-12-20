@@ -7,7 +7,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../generated/Skyle.pb.dart';
-
 import 'filter.dart';
 import 'ipados.dart';
 import 'screen_sizes.dart';
@@ -36,11 +35,11 @@ class Settings with _$Settings {
 
   factory Settings.fromOptions(Options options) {
     return Settings(
-      video: options.stream,
-      enablePause: options.enablePause,
-      pause: options.pause,
-      guidance: options.guidance,
-      enableStandby: options.enableStandby,
+      video: options.enableVideoStream,
+      enablePause: options.enableAutoPause,
+      pause: options.enablePause,
+      guidance: options.enablePositioningStream,
+      enableStandby: options.enableAutoStandby,
       disableMouse: options.disableMouse,
       filter: Filter.fromFilterOptions(options.filter),
       iPadOS: IPadOS.fromIPadOptions(options.iPadOptions),
