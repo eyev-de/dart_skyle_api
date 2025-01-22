@@ -57,7 +57,7 @@ class _MJPEGTestServer {
   Stream<String> _buffer() async* {
     final dir = Directory(imagePath);
     final files = dir.listSync(recursive: true)..sort(((a, b) => a.path.compareTo(b.path)));
-    while (service.options.stream) {
+    while (service.options.enablePositioningStream) {
       for (final jpeg in files) {
         if (jpeg is File && p.extension(jpeg.path) == '.jpg') {
           yield String.fromCharCodes(await jpeg.readAsBytes());

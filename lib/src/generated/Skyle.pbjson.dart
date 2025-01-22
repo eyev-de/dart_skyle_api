@@ -165,6 +165,7 @@ const CalibControl$json = {
     {'1': 'stopHID', '3': 4, '4': 1, '5': 8, '10': 'stopHID'},
     {'1': 'res', '3': 5, '4': 1, '5': 11, '6': '.Skyle.ScreenResolution', '10': 'res'},
     {'1': 'stepByStep', '3': 6, '4': 1, '5': 8, '10': 'stepByStep'},
+    {'1': 'calibrationPoints', '3': 7, '4': 3, '5': 5, '10': 'calibrationPoints'},
   ],
 };
 
@@ -173,7 +174,8 @@ final $typed_data.Uint8List calibControlDescriptor = $convert.base64Decode(
     'CgxDYWxpYkNvbnRyb2wSHAoJY2FsaWJyYXRlGAEgASgIUgljYWxpYnJhdGUSJgoObnVtYmVyT2'
     'ZQb2ludHMYAiABKAVSDm51bWJlck9mUG9pbnRzEhQKBWFib3J0GAMgASgIUgVhYm9ydBIYCgdz'
     'dG9wSElEGAQgASgIUgdzdG9wSElEEikKA3JlcxgFIAEoCzIXLlNreWxlLlNjcmVlblJlc29sdX'
-    'Rpb25SA3JlcxIeCgpzdGVwQnlTdGVwGAYgASgIUgpzdGVwQnlTdGVw');
+    'Rpb25SA3JlcxIeCgpzdGVwQnlTdGVwGAYgASgIUgpzdGVwQnlTdGVwEiwKEWNhbGlicmF0aW9u'
+    'UG9pbnRzGAcgAygFUhFjYWxpYnJhdGlvblBvaW50cw==');
 
 @$core.Deprecated('Use screenResolutionDescriptor instead')
 const ScreenResolution$json = {
@@ -319,17 +321,18 @@ final $typed_data.Uint8List positioningMessageDescriptor = $convert.base64Decode
 const Options$json = {
   '1': 'Options',
   '2': [
-    {'1': 'stream', '3': 1, '4': 1, '5': 8, '10': 'stream'},
-    {'1': 'enablePause', '3': 2, '4': 1, '5': 8, '10': 'enablePause'},
-    {'1': 'pause', '3': 3, '4': 1, '5': 8, '10': 'pause'},
-    {'1': 'guidance', '3': 4, '4': 1, '5': 8, '10': 'guidance'},
-    {'1': 'enableStandby', '3': 5, '4': 1, '5': 8, '10': 'enableStandby'},
+    {'1': 'enableVideoStream', '3': 1, '4': 1, '5': 8, '10': 'enableVideoStream'},
+    {'1': 'enableAutoPause', '3': 2, '4': 1, '5': 8, '10': 'enableAutoPause'},
+    {'1': 'enablePause', '3': 3, '4': 1, '5': 8, '10': 'enablePause'},
+    {'1': 'enablePositioningStream', '3': 4, '4': 1, '5': 8, '10': 'enablePositioningStream'},
+    {'1': 'enableAutoStandby', '3': 5, '4': 1, '5': 8, '10': 'enableAutoStandby'},
     {'1': 'disableMouse', '3': 6, '4': 1, '5': 8, '10': 'disableMouse'},
     {'1': 'filter', '3': 7, '4': 1, '5': 11, '6': '.Skyle.FilterOptions', '10': 'filter'},
     {'1': 'iPadOptions', '3': 8, '4': 1, '5': 11, '6': '.Skyle.IPadOptions', '10': 'iPadOptions'},
     {'1': 'res', '3': 9, '4': 1, '5': 11, '6': '.Skyle.ScreenResolution', '10': 'res'},
     {'1': 'hp', '3': 10, '4': 1, '5': 8, '10': 'hp'},
     {'1': 'eyeUsage', '3': 11, '4': 1, '5': 14, '6': '.Skyle.Options.eyeUse', '10': 'eyeUsage'},
+    {'1': 'enableTrackingDetails', '3': 12, '4': 1, '5': 8, '10': 'enableTrackingDetails'},
   ],
   '4': [Options_eyeUse$json],
 };
@@ -346,14 +349,17 @@ const Options_eyeUse$json = {
 
 /// Descriptor for `Options`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List optionsDescriptor = $convert.base64Decode(
-    'CgdPcHRpb25zEhYKBnN0cmVhbRgBIAEoCFIGc3RyZWFtEiAKC2VuYWJsZVBhdXNlGAIgASgIUg'
-    'tlbmFibGVQYXVzZRIUCgVwYXVzZRgDIAEoCFIFcGF1c2USGgoIZ3VpZGFuY2UYBCABKAhSCGd1'
-    'aWRhbmNlEiQKDWVuYWJsZVN0YW5kYnkYBSABKAhSDWVuYWJsZVN0YW5kYnkSIgoMZGlzYWJsZU'
-    '1vdXNlGAYgASgIUgxkaXNhYmxlTW91c2USLAoGZmlsdGVyGAcgASgLMhQuU2t5bGUuRmlsdGVy'
-    'T3B0aW9uc1IGZmlsdGVyEjQKC2lQYWRPcHRpb25zGAggASgLMhIuU2t5bGUuSVBhZE9wdGlvbn'
-    'NSC2lQYWRPcHRpb25zEikKA3JlcxgJIAEoCzIXLlNreWxlLlNjcmVlblJlc29sdXRpb25SA3Jl'
-    'cxIOCgJocBgKIAEoCFICaHASMQoIZXllVXNhZ2UYCyABKA4yFS5Ta3lsZS5PcHRpb25zLmV5ZV'
-    'VzZVIIZXllVXNhZ2UiJwoGZXllVXNlEggKBEJvdGgQABIICgRMZWZ0EAESCQoFUmlnaHQQAg==');
+    'CgdPcHRpb25zEiwKEWVuYWJsZVZpZGVvU3RyZWFtGAEgASgIUhFlbmFibGVWaWRlb1N0cmVhbR'
+    'IoCg9lbmFibGVBdXRvUGF1c2UYAiABKAhSD2VuYWJsZUF1dG9QYXVzZRIgCgtlbmFibGVQYXVz'
+    'ZRgDIAEoCFILZW5hYmxlUGF1c2USOAoXZW5hYmxlUG9zaXRpb25pbmdTdHJlYW0YBCABKAhSF2'
+    'VuYWJsZVBvc2l0aW9uaW5nU3RyZWFtEiwKEWVuYWJsZUF1dG9TdGFuZGJ5GAUgASgIUhFlbmFi'
+    'bGVBdXRvU3RhbmRieRIiCgxkaXNhYmxlTW91c2UYBiABKAhSDGRpc2FibGVNb3VzZRIsCgZmaW'
+    'x0ZXIYByABKAsyFC5Ta3lsZS5GaWx0ZXJPcHRpb25zUgZmaWx0ZXISNAoLaVBhZE9wdGlvbnMY'
+    'CCABKAsyEi5Ta3lsZS5JUGFkT3B0aW9uc1ILaVBhZE9wdGlvbnMSKQoDcmVzGAkgASgLMhcuU2'
+    't5bGUuU2NyZWVuUmVzb2x1dGlvblIDcmVzEg4KAmhwGAogASgIUgJocBIxCghleWVVc2FnZRgL'
+    'IAEoDjIVLlNreWxlLk9wdGlvbnMuZXllVXNlUghleWVVc2FnZRI0ChVlbmFibGVUcmFja2luZ0'
+    'RldGFpbHMYDCABKAhSFWVuYWJsZVRyYWNraW5nRGV0YWlscyInCgZleWVVc2USCAoEQm90aBAA'
+    'EggKBExlZnQQARIJCgVSaWdodBAC');
 
 @$core.Deprecated('Use iPadOptionsDescriptor instead')
 const IPadOptions$json = {

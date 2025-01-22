@@ -238,32 +238,37 @@ class SkyleSimulatedService extends SkyleServiceBase {
 
   @override
   Stream<TriggerMessage> trigger(ServiceCall call, Empty request) {
-    return Stream.empty();
+    return const Stream.empty();
   }
 
   @override
   Stream<Point> cursorCalibration(ServiceCall call, Stream<CalibCursorMessages> request) {
-    return Stream.empty();
+    return const Stream.empty();
   }
 
   @override
   Stream<BinocularGaze> rawBinocularGaze(ServiceCall call, Empty request) {
-    return Stream.empty();
+    return const Stream.empty();
   }
 
   @override
   Stream<RawImage> rawImages(ServiceCall call, Empty request) {
-    return Stream.empty();
+    return const Stream.empty();
+  }
+
+  @override
+  Stream<Options> configureStream(ServiceCall call, Stream<OptionMessage> request) {
+    throw UnimplementedError();
   }
 }
 
 final defaultOptions = Options(
   disableMouse: false,
-  stream: false,
+  enableVideoStream: false,
+  enableAutoPause: false,
   enablePause: false,
-  pause: false,
-  enableStandby: false,
-  guidance: false,
+  enableAutoStandby: false,
+  enablePositioningStream: false,
   res: ScreenResolution(width: 1920, height: 1080, widthInMM: 560, heightInMM: 350),
   filter: FilterOptions(gazeFilter: 5, fixationFilter: 11),
   iPadOptions: IPadOptions(isNotZoomed: true, isOldiOS: false),

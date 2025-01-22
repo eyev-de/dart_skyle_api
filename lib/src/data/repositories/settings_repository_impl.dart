@@ -57,7 +57,7 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   @override
   Future<DataState<Settings>> pause({bool on = true}) {
-    final Options options = Options.fromJson(_state.writeToJson())..pause = on;
+    final Options options = Options.fromJson(_state.writeToJson())..enablePause = on;
     return _setStateAsync(options: options);
   }
 
@@ -98,13 +98,13 @@ class SettingsRepositoryImpl implements SettingsRepository {
 
   @override
   Future<DataState<Settings>> standby({bool on = true}) {
-    final Options options = Options.fromJson(_state.writeToJson())..enableStandby = on;
+    final Options options = Options.fromJson(_state.writeToJson())..enableAutoStandby = on;
     return _setStateAsync(options: options);
   }
 
   @override
   Future<DataState<Settings>> video({bool on = true}) {
-    final Options options = Options.fromJson(_state.writeToJson())..stream = on;
+    final Options options = Options.fromJson(_state.writeToJson())..enableVideoStream = on;
     return _setStateAsync(options: options);
   }
 
