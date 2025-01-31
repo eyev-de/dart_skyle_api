@@ -8,7 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../generated/Skyle.pb.dart';
 
-import '../size.dart';
+import '../types.dart';
 
 part 'screen_sizes.freezed.dart';
 part 'screen_sizes.g.dart';
@@ -39,8 +39,8 @@ class ScreenSizes with _$ScreenSizes {
     return ScreenResolution(
       width: screenSizes.resolution.width.round(),
       height: screenSizes.resolution.height.round(),
-      widthInMM: screenSizes.dimensions != null ? screenSizes.dimensions!.width.round() : null,
-      heightInMM: screenSizes.dimensions != null ? screenSizes.dimensions!.height.round() : null,
+      widthInMM: screenSizes.dimensions?.width.round(),
+      heightInMM: screenSizes.dimensions?.height.round(),
     );
   }
 }

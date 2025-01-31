@@ -7,11 +7,11 @@
 import 'package:universal_platform/universal_platform.dart';
 
 import '../../core/data_state.dart';
-import '../../data/models/point.dart';
 import '../../data/models/positioning/positioning_distance.dart';
 import '../../data/models/positioning/positioning_eyes.dart';
 import '../../data/models/positioning/positioning_message.dart';
 import '../../data/models/positioning/positioning_quality.dart';
+import '../../data/models/types.dart';
 
 /// Interface for receiving the positioning stream.
 abstract class PositioningRepository {

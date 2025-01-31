@@ -23,8 +23,12 @@ mixin _$ScreenSizes {
   Size get resolution => throw _privateConstructorUsedError;
   Size? get dimensions => throw _privateConstructorUsedError;
 
+  /// Serializes this ScreenSizes to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ScreenSizes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ScreenSizesCopyWith<ScreenSizes> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$ScreenSizesCopyWithImpl<$Res, $Val extends ScreenSizes>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ScreenSizes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -69,6 +75,8 @@ class _$ScreenSizesCopyWithImpl<$Res, $Val extends ScreenSizes>
     ) as $Val);
   }
 
+  /// Create a copy of ScreenSizes
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SizeCopyWith<$Res> get resolution {
@@ -77,6 +85,8 @@ class _$ScreenSizesCopyWithImpl<$Res, $Val extends ScreenSizes>
     });
   }
 
+  /// Create a copy of ScreenSizes
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SizeCopyWith<$Res>? get dimensions {
@@ -114,6 +124,8 @@ class __$$ScreenSizesImplCopyWithImpl<$Res>
       _$ScreenSizesImpl _value, $Res Function(_$ScreenSizesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ScreenSizes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -165,11 +177,13 @@ class _$ScreenSizesImpl implements _ScreenSizes {
                 other.dimensions == dimensions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, resolution, dimensions);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ScreenSizes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ScreenSizesImplCopyWith<_$ScreenSizesImpl> get copyWith =>
@@ -194,8 +208,11 @@ abstract class _ScreenSizes implements ScreenSizes {
   Size get resolution;
   @override
   Size? get dimensions;
+
+  /// Create a copy of ScreenSizes
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ScreenSizesImplCopyWith<_$ScreenSizesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

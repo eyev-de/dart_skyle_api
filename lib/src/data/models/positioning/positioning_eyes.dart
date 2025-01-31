@@ -6,7 +6,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../point.dart';
+import '../types.dart';
 
 part 'positioning_eyes.freezed.dart';
 part 'positioning_eyes.g.dart';

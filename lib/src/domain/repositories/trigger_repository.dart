@@ -5,7 +5,7 @@
 //
 
 import '../../core/data_state.dart';
-import '../../data/models/trigger.dart';
+import '../../data/models/types.dart';
 
 /// Interface for receiving the trigger stream.
 abstract class TriggerRepository {

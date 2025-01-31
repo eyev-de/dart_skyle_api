@@ -10,14 +10,15 @@ import 'package:grpc/grpc_or_grpcweb.dart';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
-import '../../data/models/point.dart';
+import '../../data/models/types.dart';
 import '../../domain/repositories/gaze_repository.dart';
 import '../../generated/Skyle.pbgrpc.dart' as grpc;
+import '../../generated/Types.pb.dart' as types;
 import '../../generated/google/protobuf/empty.pb.dart';
 
 class GazeRepositoryImpl implements GazeRepository {
   grpc.SkyleClient? client;
-  ResponseStream<grpc.Point>? _stream;
+  ResponseStream<types.Point>? _stream;
 
   GazeRepositoryImpl({this.client});
 
@@ -27,7 +28,7 @@ class GazeRepositoryImpl implements GazeRepository {
       if (_stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
       _stream = client!.gaze(Empty());
-      await for (final grpc.Point event in _stream!) {
+      await for (final types.Point event in _stream!) {
         yield DataSuccess(Point(x: event.x, y: event.y));
       }
     } on StillStreamingException catch (_) {

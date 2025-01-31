@@ -16,6 +16,7 @@ import 'package:grpc/service_api.dart' as $grpc;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'Skyle.pb.dart' as $0;
+import 'Types.pb.dart' as $2;
 import 'google/protobuf/empty.pb.dart' as $1;
 
 export 'Skyle.pb.dart';
@@ -30,10 +31,10 @@ class SkyleClient extends $grpc.Client {
       '/Skyle.Skyle/Positioning',
       ($1.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.PositioningMessage.fromBuffer(value));
-  static final _$gaze = $grpc.ClientMethod<$1.Empty, $0.Point>(
+  static final _$gaze = $grpc.ClientMethod<$1.Empty, $2.Point>(
       '/Skyle.Skyle/Gaze',
       ($1.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.Point.fromBuffer(value));
+      ($core.List<$core.int> value) => $2.Point.fromBuffer(value));
   static final _$trigger = $grpc.ClientMethod<$1.Empty, $0.TriggerMessage>(
       '/Skyle.Skyle/Trigger',
       ($1.Empty value) => value.writeToBuffer(),
@@ -78,10 +79,10 @@ class SkyleClient extends $grpc.Client {
       '/Skyle.Skyle/Reset',
       ($0.ResetMessage value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.StatusMessage.fromBuffer(value));
-  static final _$cursorCalibration = $grpc.ClientMethod<$0.CalibCursorMessages, $0.Point>(
+  static final _$cursorCalibration = $grpc.ClientMethod<$0.CalibCursorMessages, $2.Point>(
       '/Skyle.Skyle/CursorCalibration',
       ($0.CalibCursorMessages value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.Point.fromBuffer(value));
+      ($core.List<$core.int> value) => $2.Point.fromBuffer(value));
   static final _$rawImages = $grpc.ClientMethod<$1.Empty, $0.RawImage>(
       '/Skyle.Skyle/RawImages',
       ($1.Empty value) => value.writeToBuffer(),
@@ -105,7 +106,7 @@ class SkyleClient extends $grpc.Client {
     return $createStreamingCall(_$positioning, $async.Stream.fromIterable([request]), options: options);
   }
 
-  $grpc.ResponseStream<$0.Point> gaze($1.Empty request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseStream<$2.Point> gaze($1.Empty request, {$grpc.CallOptions? options}) {
     return $createStreamingCall(_$gaze, $async.Stream.fromIterable([request]), options: options);
   }
 
@@ -153,7 +154,7 @@ class SkyleClient extends $grpc.Client {
     return $createUnaryCall(_$reset, request, options: options);
   }
 
-  $grpc.ResponseStream<$0.Point> cursorCalibration($async.Stream<$0.CalibCursorMessages> request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseStream<$2.Point> cursorCalibration($async.Stream<$0.CalibCursorMessages> request, {$grpc.CallOptions? options}) {
     return $createStreamingCall(_$cursorCalibration, request, options: options);
   }
 
@@ -185,13 +186,13 @@ abstract class SkyleServiceBase extends $grpc.Service {
         true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
         ($0.PositioningMessage value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.Empty, $0.Point>(
+    $addMethod($grpc.ServiceMethod<$1.Empty, $2.Point>(
         'Gaze',
         gaze_Pre,
         false,
         true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
-        ($0.Point value) => value.writeToBuffer()));
+        ($2.Point value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $0.TriggerMessage>(
         'Trigger',
         trigger_Pre,
@@ -269,13 +270,13 @@ abstract class SkyleServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.ResetMessage.fromBuffer(value),
         ($0.StatusMessage value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.CalibCursorMessages, $0.Point>(
+    $addMethod($grpc.ServiceMethod<$0.CalibCursorMessages, $2.Point>(
         'CursorCalibration',
         cursorCalibration,
         true,
         true,
         ($core.List<$core.int> value) => $0.CalibCursorMessages.fromBuffer(value),
-        ($0.Point value) => value.writeToBuffer()));
+        ($2.Point value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $0.RawImage>(
         'RawImages',
         rawImages_Pre,
@@ -296,7 +297,7 @@ abstract class SkyleServiceBase extends $grpc.Service {
     yield* positioning(call, await request);
   }
 
-  $async.Stream<$0.Point> gaze_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
+  $async.Stream<$2.Point> gaze_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
     yield* gaze(call, await request);
   }
 
@@ -350,7 +351,7 @@ abstract class SkyleServiceBase extends $grpc.Service {
 
   $async.Stream<$0.CalibMessages> calibrate($grpc.ServiceCall call, $async.Stream<$0.CalibControlMessages> request);
   $async.Stream<$0.PositioningMessage> positioning($grpc.ServiceCall call, $1.Empty request);
-  $async.Stream<$0.Point> gaze($grpc.ServiceCall call, $1.Empty request);
+  $async.Stream<$2.Point> gaze($grpc.ServiceCall call, $1.Empty request);
   $async.Stream<$0.TriggerMessage> trigger($grpc.ServiceCall call, $1.Empty request);
   $async.Future<$0.Button> getButton($grpc.ServiceCall call, $1.Empty request);
   $async.Future<$0.ButtonActions> setButton($grpc.ServiceCall call, $0.ButtonActions request);
@@ -362,7 +363,7 @@ abstract class SkyleServiceBase extends $grpc.Service {
   $async.Future<$0.StatusMessage> setProfile($grpc.ServiceCall call, $0.Profile request);
   $async.Future<$0.StatusMessage> deleteProfile($grpc.ServiceCall call, $0.Profile request);
   $async.Future<$0.StatusMessage> reset($grpc.ServiceCall call, $0.ResetMessage request);
-  $async.Stream<$0.Point> cursorCalibration($grpc.ServiceCall call, $async.Stream<$0.CalibCursorMessages> request);
+  $async.Stream<$2.Point> cursorCalibration($grpc.ServiceCall call, $async.Stream<$0.CalibCursorMessages> request);
   $async.Stream<$0.RawImage> rawImages($grpc.ServiceCall call, $1.Empty request);
   $async.Stream<$0.BinocularGaze> rawBinocularGaze($grpc.ServiceCall call, $1.Empty request);
 }

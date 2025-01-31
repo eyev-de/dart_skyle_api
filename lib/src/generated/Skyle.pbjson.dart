@@ -244,42 +244,30 @@ final $typed_data.Uint8List calibMessagesDescriptor = $convert.base64Decode(
 const BinocularGaze$json = {
   '1': 'BinocularGaze',
   '2': [
-    {'1': 'leftGaze', '3': 1, '4': 1, '5': 11, '6': '.Skyle.Point', '10': 'leftGaze'},
-    {'1': 'rightGaze', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Point', '10': 'rightGaze'},
+    {'1': 'leftGaze', '3': 1, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'leftGaze'},
+    {'1': 'rightGaze', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'rightGaze'},
   ],
 };
 
 /// Descriptor for `BinocularGaze`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List binocularGazeDescriptor = $convert.base64Decode(
-    'Cg1CaW5vY3VsYXJHYXplEigKCGxlZnRHYXplGAEgASgLMgwuU2t5bGUuUG9pbnRSCGxlZnRHYX'
-    'plEioKCXJpZ2h0R2F6ZRgCIAEoCzIMLlNreWxlLlBvaW50UglyaWdodEdhemU=');
-
-@$core.Deprecated('Use pointDescriptor instead')
-const Point$json = {
-  '1': 'Point',
-  '2': [
-    {'1': 'x', '3': 1, '4': 1, '5': 1, '10': 'x'},
-    {'1': 'y', '3': 2, '4': 1, '5': 1, '10': 'y'},
-  ],
-};
-
-/// Descriptor for `Point`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List pointDescriptor = $convert.base64Decode(
-    'CgVQb2ludBIMCgF4GAEgASgBUgF4EgwKAXkYAiABKAFSAXk=');
+    'Cg1CaW5vY3VsYXJHYXplEi4KCGxlZnRHYXplGAEgASgLMhIuU2t5bGUuVHlwZXMuUG9pbnRSCG'
+    'xlZnRHYXplEjAKCXJpZ2h0R2F6ZRgCIAEoCzISLlNreWxlLlR5cGVzLlBvaW50UglyaWdodEdh'
+    'emU=');
 
 @$core.Deprecated('Use calibPointDescriptor instead')
 const CalibPoint$json = {
   '1': 'CalibPoint',
   '2': [
     {'1': 'count', '3': 1, '4': 1, '5': 5, '10': 'count'},
-    {'1': 'currentPoint', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Point', '10': 'currentPoint'},
+    {'1': 'currentPoint', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'currentPoint'},
   ],
 };
 
 /// Descriptor for `CalibPoint`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List calibPointDescriptor = $convert.base64Decode(
-    'CgpDYWxpYlBvaW50EhQKBWNvdW50GAEgASgFUgVjb3VudBIwCgxjdXJyZW50UG9pbnQYAiABKA'
-    'syDC5Ta3lsZS5Qb2ludFIMY3VycmVudFBvaW50');
+    'CgpDYWxpYlBvaW50EhQKBWNvdW50GAEgASgFUgVjb3VudBI2CgxjdXJyZW50UG9pbnQYAiABKA'
+    'syEi5Ta3lsZS5UeXBlcy5Qb2ludFIMY3VycmVudFBvaW50');
 
 @$core.Deprecated('Use calibQualityDescriptor instead')
 const CalibQuality$json = {
@@ -299,23 +287,28 @@ final $typed_data.Uint8List calibQualityDescriptor = $convert.base64Decode(
 const PositioningMessage$json = {
   '1': 'PositioningMessage',
   '2': [
-    {'1': 'leftEye', '3': 1, '4': 1, '5': 11, '6': '.Skyle.Point', '10': 'leftEye'},
-    {'1': 'rightEye', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Point', '10': 'rightEye'},
+    {'1': 'leftEye', '3': 1, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'leftEye'},
+    {'1': 'rightEye', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'rightEye'},
     {'1': 'distanceQuality', '3': 3, '4': 1, '5': 5, '10': 'distanceQuality'},
     {'1': 'positioningQuality', '3': 4, '4': 1, '5': 5, '10': 'positioningQuality'},
     {'1': 'horizontalQuality', '3': 5, '4': 1, '5': 5, '10': 'horizontalQuality'},
     {'1': 'verticalQuality', '3': 6, '4': 1, '5': 5, '10': 'verticalQuality'},
+    {'1': 'face', '3': 7, '4': 1, '5': 11, '6': '.Skyle.Types.Face', '9': 0, '10': 'face', '17': true},
+  ],
+  '8': [
+    {'1': '_face'},
   ],
 };
 
 /// Descriptor for `PositioningMessage`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List positioningMessageDescriptor = $convert.base64Decode(
-    'ChJQb3NpdGlvbmluZ01lc3NhZ2USJgoHbGVmdEV5ZRgBIAEoCzIMLlNreWxlLlBvaW50UgdsZW'
-    'Z0RXllEigKCHJpZ2h0RXllGAIgASgLMgwuU2t5bGUuUG9pbnRSCHJpZ2h0RXllEigKD2Rpc3Rh'
-    'bmNlUXVhbGl0eRgDIAEoBVIPZGlzdGFuY2VRdWFsaXR5Ei4KEnBvc2l0aW9uaW5nUXVhbGl0eR'
-    'gEIAEoBVIScG9zaXRpb25pbmdRdWFsaXR5EiwKEWhvcml6b250YWxRdWFsaXR5GAUgASgFUhFo'
-    'b3Jpem9udGFsUXVhbGl0eRIoCg92ZXJ0aWNhbFF1YWxpdHkYBiABKAVSD3ZlcnRpY2FsUXVhbG'
-    'l0eQ==');
+    'ChJQb3NpdGlvbmluZ01lc3NhZ2USLAoHbGVmdEV5ZRgBIAEoCzISLlNreWxlLlR5cGVzLlBvaW'
+    '50UgdsZWZ0RXllEi4KCHJpZ2h0RXllGAIgASgLMhIuU2t5bGUuVHlwZXMuUG9pbnRSCHJpZ2h0'
+    'RXllEigKD2Rpc3RhbmNlUXVhbGl0eRgDIAEoBVIPZGlzdGFuY2VRdWFsaXR5Ei4KEnBvc2l0aW'
+    '9uaW5nUXVhbGl0eRgEIAEoBVIScG9zaXRpb25pbmdRdWFsaXR5EiwKEWhvcml6b250YWxRdWFs'
+    'aXR5GAUgASgFUhFob3Jpem9udGFsUXVhbGl0eRIoCg92ZXJ0aWNhbFF1YWxpdHkYBiABKAVSD3'
+    'ZlcnRpY2FsUXVhbGl0eRIqCgRmYWNlGAcgASgLMhEuU2t5bGUuVHlwZXMuRmFjZUgAUgRmYWNl'
+    'iAEBQgcKBV9mYWNl');
 
 @$core.Deprecated('Use optionsDescriptor instead')
 const Options$json = {

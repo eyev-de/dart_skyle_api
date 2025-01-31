@@ -24,8 +24,12 @@ mixin _$PositioningQuality {
   int get vertical => throw _privateConstructorUsedError;
   int get depth => throw _privateConstructorUsedError;
 
+  /// Serializes this PositioningQuality to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PositioningQuality
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PositioningQualityCopyWith<PositioningQuality> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$PositioningQualityCopyWithImpl<$Res, $Val extends PositioningQuality>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PositioningQuality
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$PositioningQualityImplCopyWithImpl<$Res>
       $Res Function(_$PositioningQualityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PositioningQuality
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,11 +160,13 @@ class _$PositioningQualityImpl implements _PositioningQuality {
             (identical(other.depth, depth) || other.depth == depth));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, horizontal, vertical, depth);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PositioningQuality
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PositioningQualityImplCopyWith<_$PositioningQualityImpl> get copyWith =>
@@ -186,8 +196,11 @@ abstract class _PositioningQuality implements PositioningQuality {
   int get vertical;
   @override
   int get depth;
+
+  /// Create a copy of PositioningQuality
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PositioningQualityImplCopyWith<_$PositioningQualityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

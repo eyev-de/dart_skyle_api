@@ -9,10 +9,9 @@ import 'package:grpc/grpc_or_grpcweb.dart';
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
 import '../../domain/repositories/raw_gaze_repository.dart';
-
-import '../../generated/Skyle.pbgrpc.dart' as grpc;
 import '../../generated/google/protobuf/empty.pb.dart';
-import '../models/binocular_gaze.dart';
+import '../../generated/Skyle.pbgrpc.dart' as grpc;
+import '../models/types.dart';
 
 class RawGazeRepositoryImpl implements RawGazeRepository {
   grpc.SkyleClient? client;

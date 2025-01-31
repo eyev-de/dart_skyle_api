@@ -24,8 +24,12 @@ mixin _$SwitchActions {
   String get doubleClick => throw _privateConstructorUsedError;
   String get holdClick => throw _privateConstructorUsedError;
 
+  /// Serializes this SwitchActions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SwitchActions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SwitchActionsCopyWith<SwitchActions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$SwitchActionsCopyWithImpl<$Res, $Val extends SwitchActions>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SwitchActions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$SwitchActionsImplCopyWithImpl<$Res>
       _$SwitchActionsImpl _value, $Res Function(_$SwitchActionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SwitchActions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,12 +160,14 @@ class _$SwitchActionsImpl implements _SwitchActions {
                 other.holdClick == holdClick));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, singleClick, doubleClick, holdClick);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SwitchActions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SwitchActionsImplCopyWith<_$SwitchActionsImpl> get copyWith =>
@@ -186,8 +196,11 @@ abstract class _SwitchActions implements SwitchActions {
   String get doubleClick;
   @override
   String get holdClick;
+
+  /// Create a copy of SwitchActions
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SwitchActionsImplCopyWith<_$SwitchActionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

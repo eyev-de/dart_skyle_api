@@ -11,13 +11,13 @@ import 'package:grpc/grpc_or_grpcweb.dart';
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
 import '../../domain/repositories/trigger_repository.dart';
-import '../../generated/Skyle.pbgrpc.dart' as grpc;
+import '../../generated/Skyle.pbgrpc.dart';
 import '../../generated/google/protobuf/empty.pb.dart';
-import '../models/trigger.dart';
+import '../models/types.dart';
 
 class TriggerRepositoryImpl implements TriggerRepository {
-  grpc.SkyleClient? client;
-  ResponseStream<grpc.TriggerMessage>? _stream;
+  SkyleClient? client;
+  ResponseStream<TriggerMessage>? _stream;
 
   TriggerRepositoryImpl({this.client});
 
@@ -27,7 +27,7 @@ class TriggerRepositoryImpl implements TriggerRepository {
       if (_stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
       _stream = client!.trigger(Empty());
-      await for (final grpc.TriggerMessage event in _stream!) {
+      await for (final TriggerMessage event in _stream!) {
         yield DataSuccess(Trigger.fromTriggerMessage(event));
       }
     } on StillStreamingException catch (_) {

@@ -5,7 +5,7 @@
 //
 
 import '../../../generated/Skyle.pb.dart' as grpc;
-import '../point.dart';
+import '../types.dart';
 
 class CalibrationPoint {
   final Point coordinates;

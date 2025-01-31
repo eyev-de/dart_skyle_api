@@ -23,8 +23,12 @@ mixin _$PositioningEyes {
   Point get left => throw _privateConstructorUsedError;
   Point get right => throw _privateConstructorUsedError;
 
+  /// Serializes this PositioningEyes to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PositioningEyes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PositioningEyesCopyWith<PositioningEyes> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$PositioningEyesCopyWithImpl<$Res, $Val extends PositioningEyes>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PositioningEyes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -69,6 +75,8 @@ class _$PositioningEyesCopyWithImpl<$Res, $Val extends PositioningEyes>
     ) as $Val);
   }
 
+  /// Create a copy of PositioningEyes
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PointCopyWith<$Res> get left {
@@ -77,6 +85,8 @@ class _$PositioningEyesCopyWithImpl<$Res, $Val extends PositioningEyes>
     });
   }
 
+  /// Create a copy of PositioningEyes
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PointCopyWith<$Res> get right {
@@ -110,6 +120,8 @@ class __$$PositioningEyesImplCopyWithImpl<$Res>
       _$PositioningEyesImpl _value, $Res Function(_$PositioningEyesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PositioningEyes
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -159,11 +171,13 @@ class _$PositioningEyesImpl implements _PositioningEyes {
             (identical(other.right, right) || other.right == right));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, left, right);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PositioningEyes
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PositioningEyesImplCopyWith<_$PositioningEyesImpl> get copyWith =>
@@ -189,8 +203,11 @@ abstract class _PositioningEyes implements PositioningEyes {
   Point get left;
   @override
   Point get right;
+
+  /// Create a copy of PositioningEyes
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PositioningEyesImplCopyWith<_$PositioningEyesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

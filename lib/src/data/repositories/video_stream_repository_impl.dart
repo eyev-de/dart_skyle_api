@@ -11,7 +11,10 @@ import 'dart:isolate';
 import 'package:http/http.dart' as http;
 import 'package:retry/retry.dart';
 
-import '../../../api.dart';
+import '../../core/data_state.dart';
+import '../../core/exceptions.dart';
+import '../../domain/repositories/video_stream_repository.dart';
+import '../../et.dart';
 
 class VideoStreamRepositoryImpl implements VideoStreamRepository {
   // http.Client _httpClient = http.Client();

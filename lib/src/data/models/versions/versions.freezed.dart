@@ -28,8 +28,12 @@ mixin _$Versions {
   int get skyleType => throw _privateConstructorUsedError;
   bool get isDemo => throw _privateConstructorUsedError;
 
+  /// Serializes this Versions to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Versions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $VersionsCopyWith<Versions> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$VersionsCopyWithImpl<$Res, $Val extends Versions>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Versions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,6 +135,8 @@ class __$$VersionsImplCopyWithImpl<$Res>
       _$VersionsImpl _value, $Res Function(_$VersionsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Versions
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,12 +233,14 @@ class _$VersionsImpl implements _Versions {
             (identical(other.isDemo, isDemo) || other.isDemo == isDemo));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, firmware, eyetracker, calib,
       base, serial, skyleType, isDemo);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Versions
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$VersionsImplCopyWith<_$VersionsImpl> get copyWith =>
@@ -271,8 +281,11 @@ abstract class _Versions implements Versions {
   int get skyleType;
   @override
   bool get isDemo;
+
+  /// Create a copy of Versions
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$VersionsImplCopyWith<_$VersionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

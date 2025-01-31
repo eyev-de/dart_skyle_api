@@ -12,7 +12,7 @@ import 'package:logger/logger.dart';
 import 'connectivity/connectivityprovider.dart';
 import 'core/data_state.dart';
 import 'core/exceptions.dart';
-import 'data/models/size.dart';
+import 'data/models/types.dart';
 import 'data/repositories/calibration_repository_impl.dart';
 import 'data/repositories/gaze_repository_impl.dart';
 import 'data/repositories/positioning_repository_impl.dart';

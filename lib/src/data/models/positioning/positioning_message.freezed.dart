@@ -23,9 +23,14 @@ mixin _$PositioningMessage {
   PositioningEyes get eyes => throw _privateConstructorUsedError;
   PositioningQuality get quality => throw _privateConstructorUsedError;
   PositioningDistance get distance => throw _privateConstructorUsedError;
+  Face? get face => throw _privateConstructorUsedError;
 
+  /// Serializes this PositioningMessage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PositioningMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PositioningMessageCopyWith<PositioningMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -39,10 +44,12 @@ abstract class $PositioningMessageCopyWith<$Res> {
   $Res call(
       {PositioningEyes eyes,
       PositioningQuality quality,
-      PositioningDistance distance});
+      PositioningDistance distance,
+      Face? face});
 
   $PositioningEyesCopyWith<$Res> get eyes;
   $PositioningQualityCopyWith<$Res> get quality;
+  $FaceCopyWith<$Res>? get face;
 }
 
 /// @nodoc
@@ -55,12 +62,15 @@ class _$PositioningMessageCopyWithImpl<$Res, $Val extends PositioningMessage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PositioningMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? eyes = null,
     Object? quality = null,
     Object? distance = null,
+    Object? face = freezed,
   }) {
     return _then(_value.copyWith(
       eyes: null == eyes
@@ -75,9 +85,15 @@ class _$PositioningMessageCopyWithImpl<$Res, $Val extends PositioningMessage>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as PositioningDistance,
+      face: freezed == face
+          ? _value.face
+          : face // ignore: cast_nullable_to_non_nullable
+              as Face?,
     ) as $Val);
   }
 
+  /// Create a copy of PositioningMessage
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PositioningEyesCopyWith<$Res> get eyes {
@@ -86,11 +102,27 @@ class _$PositioningMessageCopyWithImpl<$Res, $Val extends PositioningMessage>
     });
   }
 
+  /// Create a copy of PositioningMessage
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PositioningQualityCopyWith<$Res> get quality {
     return $PositioningQualityCopyWith<$Res>(_value.quality, (value) {
       return _then(_value.copyWith(quality: value) as $Val);
+    });
+  }
+
+  /// Create a copy of PositioningMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FaceCopyWith<$Res>? get face {
+    if (_value.face == null) {
+      return null;
+    }
+
+    return $FaceCopyWith<$Res>(_value.face!, (value) {
+      return _then(_value.copyWith(face: value) as $Val);
     });
   }
 }
@@ -106,12 +138,15 @@ abstract class _$$PositioningMessageImplCopyWith<$Res>
   $Res call(
       {PositioningEyes eyes,
       PositioningQuality quality,
-      PositioningDistance distance});
+      PositioningDistance distance,
+      Face? face});
 
   @override
   $PositioningEyesCopyWith<$Res> get eyes;
   @override
   $PositioningQualityCopyWith<$Res> get quality;
+  @override
+  $FaceCopyWith<$Res>? get face;
 }
 
 /// @nodoc
@@ -122,12 +157,15 @@ class __$$PositioningMessageImplCopyWithImpl<$Res>
       $Res Function(_$PositioningMessageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PositioningMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? eyes = null,
     Object? quality = null,
     Object? distance = null,
+    Object? face = freezed,
   }) {
     return _then(_$PositioningMessageImpl(
       eyes: null == eyes
@@ -142,6 +180,10 @@ class __$$PositioningMessageImplCopyWithImpl<$Res>
           ? _value.distance
           : distance // ignore: cast_nullable_to_non_nullable
               as PositioningDistance,
+      face: freezed == face
+          ? _value.face
+          : face // ignore: cast_nullable_to_non_nullable
+              as Face?,
     ));
   }
 }
@@ -152,7 +194,8 @@ class _$PositioningMessageImpl implements _PositioningMessage {
   const _$PositioningMessageImpl(
       {this.eyes = const PositioningEyes(),
       this.quality = const PositioningQuality(),
-      this.distance = PositioningDistance.none});
+      this.distance = PositioningDistance.none,
+      this.face});
 
   factory _$PositioningMessageImpl.fromJson(Map<String, dynamic> json) =>
       _$$PositioningMessageImplFromJson(json);
@@ -166,10 +209,12 @@ class _$PositioningMessageImpl implements _PositioningMessage {
   @override
   @JsonKey()
   final PositioningDistance distance;
+  @override
+  final Face? face;
 
   @override
   String toString() {
-    return 'PositioningMessage(eyes: $eyes, quality: $quality, distance: $distance)';
+    return 'PositioningMessage(eyes: $eyes, quality: $quality, distance: $distance, face: $face)';
   }
 
   @override
@@ -180,14 +225,17 @@ class _$PositioningMessageImpl implements _PositioningMessage {
             (identical(other.eyes, eyes) || other.eyes == eyes) &&
             (identical(other.quality, quality) || other.quality == quality) &&
             (identical(other.distance, distance) ||
-                other.distance == distance));
+                other.distance == distance) &&
+            (identical(other.face, face) || other.face == face));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, eyes, quality, distance);
+  int get hashCode => Object.hash(runtimeType, eyes, quality, distance, face);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PositioningMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PositioningMessageImplCopyWith<_$PositioningMessageImpl> get copyWith =>
@@ -206,7 +254,8 @@ abstract class _PositioningMessage implements PositioningMessage {
   const factory _PositioningMessage(
       {final PositioningEyes eyes,
       final PositioningQuality quality,
-      final PositioningDistance distance}) = _$PositioningMessageImpl;
+      final PositioningDistance distance,
+      final Face? face}) = _$PositioningMessageImpl;
 
   factory _PositioningMessage.fromJson(Map<String, dynamic> json) =
       _$PositioningMessageImpl.fromJson;
@@ -218,7 +267,12 @@ abstract class _PositioningMessage implements PositioningMessage {
   @override
   PositioningDistance get distance;
   @override
-  @JsonKey(ignore: true)
+  Face? get face;
+
+  /// Create a copy of PositioningMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PositioningMessageImplCopyWith<_$PositioningMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -13,8 +13,9 @@ import 'package:grpc/grpc.dart';
 import '../data/models/calibration/calibration_points.dart';
 import '../data/models/switch/switch.dart';
 import '../domain/repositories/calibration_repository.dart';
-import '../generated/Skyle.pbgrpc.dart';
+import '../generated/Types.pb.dart' as types;
 import '../generated/google/protobuf/empty.pb.dart';
+import '../generated/Skyle.pbgrpc.dart';
 import 'positionings.dart';
 
 class SkyleSimulatedServiceConfiguration {
@@ -36,8 +37,8 @@ class SkyleSimulatedService extends SkyleServiceBase {
   Profile currentP = defaultProfile;
   Button button = Switch.toButton(Switch.create());
 
-  List<Point> gazes = List.generate(200, (index) {
-    return Point(
+  List<types.Point> gazes = List.generate(200, (index) {
+    return types.Point(
       x: 150 + Random.secure().nextInt(100).toDouble(),
       y: 0 + Random.secure().nextInt(100).toDouble(),
     );
@@ -46,9 +47,9 @@ class SkyleSimulatedService extends SkyleServiceBase {
   List<PositioningMessage> positionings = (jsonDecode(positioningsJSONString) as Iterable).map((position) {
     return PositioningMessage(
       // ignore: avoid_dynamic_calls
-      leftEye: Point(x: position['left']['x'], y: position['left']['y']),
+      leftEye: types.Point(x: position['left']['x'], y: position['left']['y']),
       // ignore: avoid_dynamic_calls
-      rightEye: Point(x: position['right']['x'], y: position['right']['y']),
+      rightEye: types.Point(x: position['right']['x'], y: position['right']['y']),
     );
   }).toList();
 
@@ -64,7 +65,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
         yield CalibMessages()
           ..calibPoint = CalibPoint(
             count: currentIndex,
-            currentPoint: Point(
+            currentPoint: types.Point(
               x: CalibrationRepository.calcX(
                 pts.array[currentIndex],
                 width,
@@ -109,7 +110,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
               yield CalibMessages()
                 ..calibPoint = CalibPoint(
                   count: pt,
-                  currentPoint: Point(
+                  currentPoint: types.Point(
                     x: CalibrationRepository.calcX(
                       pts.array[pt],
                       width,
@@ -157,7 +158,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
   }
 
   @override
-  Stream<Point> gaze(ServiceCall call, Empty request) async* {
+  Stream<types.Point> gaze(ServiceCall call, Empty request) async* {
     if (!config.gazeStream) return;
     while (!call.isCanceled) {
       for (final gaze in gazes) {
@@ -242,7 +243,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
   }
 
   @override
-  Stream<Point> cursorCalibration(ServiceCall call, Stream<CalibCursorMessages> request) {
+  Stream<types.Point> cursorCalibration(ServiceCall call, Stream<CalibCursorMessages> request) {
     return const Stream.empty();
   }
 

@@ -23,8 +23,12 @@ mixin _$Filter {
   int get gaze => throw _privateConstructorUsedError;
   int get fixation => throw _privateConstructorUsedError;
 
+  /// Serializes this Filter to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Filter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterCopyWith<Filter> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -46,6 +50,8 @@ class _$FilterCopyWithImpl<$Res, $Val extends Filter>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Filter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,6 +89,8 @@ class __$$FilterImplCopyWithImpl<$Res>
       _$FilterImpl _value, $Res Function(_$FilterImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Filter
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$FilterImpl implements _Filter {
                 other.fixation == fixation));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, gaze, fixation);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Filter
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterImplCopyWith<_$FilterImpl> get copyWith =>
@@ -159,8 +169,11 @@ abstract class _Filter implements Filter {
   int get gaze;
   @override
   int get fixation;
+
+  /// Create a copy of Filter
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterImplCopyWith<_$FilterImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

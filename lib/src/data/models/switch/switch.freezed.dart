@@ -24,8 +24,12 @@ mixin _$Switch {
   SwitchActions get actions => throw _privateConstructorUsedError;
   List<String> get availableActions => throw _privateConstructorUsedError;
 
+  /// Serializes this Switch to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Switch
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SwitchCopyWith<Switch> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -50,6 +54,8 @@ class _$SwitchCopyWithImpl<$Res, $Val extends Switch>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Switch
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -73,6 +79,8 @@ class _$SwitchCopyWithImpl<$Res, $Val extends Switch>
     ) as $Val);
   }
 
+  /// Create a copy of Switch
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SwitchActionsCopyWith<$Res> get actions {
@@ -104,6 +112,8 @@ class __$$SwitchImplCopyWithImpl<$Res>
       _$SwitchImpl _value, $Res Function(_$SwitchImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Switch
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,12 +180,14 @@ class _$SwitchImpl implements _Switch {
                 .equals(other._availableActions, _availableActions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, isPresent, actions,
       const DeepCollectionEquality().hash(_availableActions));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Switch
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SwitchImplCopyWith<_$SwitchImpl> get copyWith =>
@@ -203,8 +215,11 @@ abstract class _Switch implements Switch {
   SwitchActions get actions;
   @override
   List<String> get availableActions;
+
+  /// Create a copy of Switch
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SwitchImplCopyWith<_$SwitchImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

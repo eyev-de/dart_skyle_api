@@ -15,6 +15,7 @@ import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
 import 'Skyle.pbenum.dart';
+import 'Types.pb.dart' as $2;
 import 'google/protobuf/empty.pb.dart' as $1;
 
 export 'Skyle.pbenum.dart';
@@ -1143,8 +1144,8 @@ class CalibMessages extends $pb.GeneratedMessage {
 ///  Message for binocular gaze points
 class BinocularGaze extends $pb.GeneratedMessage {
   factory BinocularGaze({
-    Point? leftGaze,
-    Point? rightGaze,
+    $2.Point? leftGaze,
+    $2.Point? rightGaze,
   }) {
     final $result = create();
     if (leftGaze != null) {
@@ -1160,8 +1161,8 @@ class BinocularGaze extends $pb.GeneratedMessage {
   factory BinocularGaze.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'BinocularGaze', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOM<Point>(1, _omitFieldNames ? '' : 'leftGaze', protoName: 'leftGaze', subBuilder: Point.create)
-    ..aOM<Point>(2, _omitFieldNames ? '' : 'rightGaze', protoName: 'rightGaze', subBuilder: Point.create)
+    ..aOM<$2.Point>(1, _omitFieldNames ? '' : 'leftGaze', protoName: 'leftGaze', subBuilder: $2.Point.create)
+    ..aOM<$2.Point>(2, _omitFieldNames ? '' : 'rightGaze', protoName: 'rightGaze', subBuilder: $2.Point.create)
     ..hasRequiredFields = false
   ;
 
@@ -1187,92 +1188,26 @@ class BinocularGaze extends $pb.GeneratedMessage {
   static BinocularGaze? _defaultInstance;
 
   @$pb.TagNumber(1)
-  Point get leftGaze => $_getN(0);
+  $2.Point get leftGaze => $_getN(0);
   @$pb.TagNumber(1)
-  set leftGaze(Point v) { setField(1, v); }
+  set leftGaze($2.Point v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasLeftGaze() => $_has(0);
   @$pb.TagNumber(1)
   void clearLeftGaze() => clearField(1);
   @$pb.TagNumber(1)
-  Point ensureLeftGaze() => $_ensure(0);
+  $2.Point ensureLeftGaze() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  Point get rightGaze => $_getN(1);
+  $2.Point get rightGaze => $_getN(1);
   @$pb.TagNumber(2)
-  set rightGaze(Point v) { setField(2, v); }
+  set rightGaze($2.Point v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasRightGaze() => $_has(1);
   @$pb.TagNumber(2)
   void clearRightGaze() => clearField(2);
   @$pb.TagNumber(2)
-  Point ensureRightGaze() => $_ensure(1);
-}
-
-/// *
-///  Message for a 2D point
-class Point extends $pb.GeneratedMessage {
-  factory Point({
-    $core.double? x,
-    $core.double? y,
-  }) {
-    final $result = create();
-    if (x != null) {
-      $result.x = x;
-    }
-    if (y != null) {
-      $result.y = y;
-    }
-    return $result;
-  }
-  Point._() : super();
-  factory Point.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory Point.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'Point', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.double>(1, _omitFieldNames ? '' : 'x', $pb.PbFieldType.OD)
-    ..a<$core.double>(2, _omitFieldNames ? '' : 'y', $pb.PbFieldType.OD)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  Point clone() => Point()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  Point copyWith(void Function(Point) updates) => super.copyWith((message) => updates(message as Point)) as Point;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static Point create() => Point._();
-  Point createEmptyInstance() => create();
-  static $pb.PbList<Point> createRepeated() => $pb.PbList<Point>();
-  @$core.pragma('dart2js:noInline')
-  static Point getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Point>(create);
-  static Point? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.double get x => $_getN(0);
-  @$pb.TagNumber(1)
-  set x($core.double v) { $_setDouble(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasX() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearX() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.double get y => $_getN(1);
-  @$pb.TagNumber(2)
-  set y($core.double v) { $_setDouble(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasY() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearY() => clearField(2);
+  $2.Point ensureRightGaze() => $_ensure(1);
 }
 
 /// *
@@ -1280,7 +1215,7 @@ class Point extends $pb.GeneratedMessage {
 class CalibPoint extends $pb.GeneratedMessage {
   factory CalibPoint({
     $core.int? count,
-    Point? currentPoint,
+    $2.Point? currentPoint,
   }) {
     final $result = create();
     if (count != null) {
@@ -1297,7 +1232,7 @@ class CalibPoint extends $pb.GeneratedMessage {
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibPoint', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
     ..a<$core.int>(1, _omitFieldNames ? '' : 'count', $pb.PbFieldType.O3)
-    ..aOM<Point>(2, _omitFieldNames ? '' : 'currentPoint', protoName: 'currentPoint', subBuilder: Point.create)
+    ..aOM<$2.Point>(2, _omitFieldNames ? '' : 'currentPoint', protoName: 'currentPoint', subBuilder: $2.Point.create)
     ..hasRequiredFields = false
   ;
 
@@ -1332,15 +1267,15 @@ class CalibPoint extends $pb.GeneratedMessage {
   void clearCount() => clearField(1);
 
   @$pb.TagNumber(2)
-  Point get currentPoint => $_getN(1);
+  $2.Point get currentPoint => $_getN(1);
   @$pb.TagNumber(2)
-  set currentPoint(Point v) { setField(2, v); }
+  set currentPoint($2.Point v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasCurrentPoint() => $_has(1);
   @$pb.TagNumber(2)
   void clearCurrentPoint() => clearField(2);
   @$pb.TagNumber(2)
-  Point ensureCurrentPoint() => $_ensure(1);
+  $2.Point ensureCurrentPoint() => $_ensure(1);
 }
 
 /// *
@@ -1407,12 +1342,13 @@ class CalibQuality extends $pb.GeneratedMessage {
 ///  Message with eye positions and quality indicators
 class PositioningMessage extends $pb.GeneratedMessage {
   factory PositioningMessage({
-    Point? leftEye,
-    Point? rightEye,
+    $2.Point? leftEye,
+    $2.Point? rightEye,
     $core.int? distanceQuality,
     $core.int? positioningQuality,
     $core.int? horizontalQuality,
     $core.int? verticalQuality,
+    $2.Face? face,
   }) {
     final $result = create();
     if (leftEye != null) {
@@ -1433,6 +1369,9 @@ class PositioningMessage extends $pb.GeneratedMessage {
     if (verticalQuality != null) {
       $result.verticalQuality = verticalQuality;
     }
+    if (face != null) {
+      $result.face = face;
+    }
     return $result;
   }
   PositioningMessage._() : super();
@@ -1440,12 +1379,13 @@ class PositioningMessage extends $pb.GeneratedMessage {
   factory PositioningMessage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PositioningMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
-    ..aOM<Point>(1, _omitFieldNames ? '' : 'leftEye', protoName: 'leftEye', subBuilder: Point.create)
-    ..aOM<Point>(2, _omitFieldNames ? '' : 'rightEye', protoName: 'rightEye', subBuilder: Point.create)
+    ..aOM<$2.Point>(1, _omitFieldNames ? '' : 'leftEye', protoName: 'leftEye', subBuilder: $2.Point.create)
+    ..aOM<$2.Point>(2, _omitFieldNames ? '' : 'rightEye', protoName: 'rightEye', subBuilder: $2.Point.create)
     ..a<$core.int>(3, _omitFieldNames ? '' : 'distanceQuality', $pb.PbFieldType.O3, protoName: 'distanceQuality')
     ..a<$core.int>(4, _omitFieldNames ? '' : 'positioningQuality', $pb.PbFieldType.O3, protoName: 'positioningQuality')
     ..a<$core.int>(5, _omitFieldNames ? '' : 'horizontalQuality', $pb.PbFieldType.O3, protoName: 'horizontalQuality')
     ..a<$core.int>(6, _omitFieldNames ? '' : 'verticalQuality', $pb.PbFieldType.O3, protoName: 'verticalQuality')
+    ..aOM<$2.Face>(7, _omitFieldNames ? '' : 'face', subBuilder: $2.Face.create)
     ..hasRequiredFields = false
   ;
 
@@ -1471,26 +1411,26 @@ class PositioningMessage extends $pb.GeneratedMessage {
   static PositioningMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
-  Point get leftEye => $_getN(0);
+  $2.Point get leftEye => $_getN(0);
   @$pb.TagNumber(1)
-  set leftEye(Point v) { setField(1, v); }
+  set leftEye($2.Point v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasLeftEye() => $_has(0);
   @$pb.TagNumber(1)
   void clearLeftEye() => clearField(1);
   @$pb.TagNumber(1)
-  Point ensureLeftEye() => $_ensure(0);
+  $2.Point ensureLeftEye() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  Point get rightEye => $_getN(1);
+  $2.Point get rightEye => $_getN(1);
   @$pb.TagNumber(2)
-  set rightEye(Point v) { setField(2, v); }
+  set rightEye($2.Point v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasRightEye() => $_has(1);
   @$pb.TagNumber(2)
   void clearRightEye() => clearField(2);
   @$pb.TagNumber(2)
-  Point ensureRightEye() => $_ensure(1);
+  $2.Point ensureRightEye() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.int get distanceQuality => $_getIZ(2);
@@ -1527,6 +1467,17 @@ class PositioningMessage extends $pb.GeneratedMessage {
   $core.bool hasVerticalQuality() => $_has(5);
   @$pb.TagNumber(6)
   void clearVerticalQuality() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $2.Face get face => $_getN(6);
+  @$pb.TagNumber(7)
+  set face($2.Face v) { setField(7, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasFace() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearFace() => clearField(7);
+  @$pb.TagNumber(7)
+  $2.Face ensureFace() => $_ensure(6);
 }
 
 /// *

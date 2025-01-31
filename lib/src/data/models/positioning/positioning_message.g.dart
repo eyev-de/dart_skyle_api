@@ -19,6 +19,9 @@ _$PositioningMessageImpl _$$PositioningMessageImplFromJson(
       distance:
           $enumDecodeNullable(_$PositioningDistanceEnumMap, json['distance']) ??
               PositioningDistance.none,
+      face: json['face'] == null
+          ? null
+          : Face.fromJson(json['face'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$PositioningMessageImplToJson(
@@ -27,6 +30,7 @@ Map<String, dynamic> _$$PositioningMessageImplToJson(
       'eyes': instance.eyes,
       'quality': instance.quality,
       'distance': _$PositioningDistanceEnumMap[instance.distance]!,
+      'face': instance.face,
     };
 
 const _$PositioningDistanceEnumMap = {

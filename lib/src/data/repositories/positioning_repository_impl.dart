@@ -13,10 +13,8 @@ import '../../core/exceptions.dart';
 import '../../domain/repositories/positioning_repository.dart';
 import '../../generated/Skyle.pbgrpc.dart' as grpc;
 import '../../generated/google/protobuf/empty.pb.dart';
-import '../models/positioning/positioning_distance.dart';
 import '../models/positioning/positioning_eyes.dart';
 import '../models/positioning/positioning_message.dart';
-import '../models/positioning/positioning_quality.dart';
 
 class PositioningRepositoryImpl extends PositioningRepository {
   grpc.SkyleClient? client;
@@ -27,7 +25,7 @@ class PositioningRepositoryImpl extends PositioningRepository {
   @override
   Stream<DataState<PositioningMessage>> start() async* {
     yield* _generateStream().timeout(const Duration(milliseconds: 1200), onTimeout: (sink) {
-      sink.add(const DataSuccess(PositioningMessage(eyes: PositioningEyes(), quality: PositioningQuality(), distance: PositioningDistance.none)));
+      sink.add(const DataSuccess(PositioningMessage()));
     });
   }
 

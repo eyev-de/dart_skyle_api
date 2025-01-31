@@ -5,7 +5,7 @@
 //
 
 import '../../core/data_state.dart';
-import '../../data/models/raw_image.dart';
+import '../../data/models/types.dart';
 
 /// Interface for receiving the raw video stream.
 abstract class RawVideoStreamRepository {

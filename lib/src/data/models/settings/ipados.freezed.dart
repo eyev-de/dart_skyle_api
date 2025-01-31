@@ -24,8 +24,12 @@ mixin _$IPadOS {
   bool? get isNotZoomed => throw _privateConstructorUsedError;
   IPadModel? get iPadModel => throw _privateConstructorUsedError;
 
+  /// Serializes this IPadOS to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IPadOS
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IPadOSCopyWith<IPadOS> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -47,6 +51,8 @@ class _$IPadOSCopyWithImpl<$Res, $Val extends IPadOS>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IPadOS
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,6 +95,8 @@ class __$$IPadOSImplCopyWithImpl<$Res>
       _$IPadOSImpl _value, $Res Function(_$IPadOSImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IPadOS
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,11 +159,13 @@ class _$IPadOSImpl implements _IPadOS {
                 other.iPadModel == iPadModel));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, isOld, isNotZoomed, iPadModel);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IPadOS
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IPadOSImplCopyWith<_$IPadOSImpl> get copyWith =>
@@ -183,8 +193,11 @@ abstract class _IPadOS implements IPadOS {
   bool? get isNotZoomed;
   @override
   IPadModel? get iPadModel;
+
+  /// Create a copy of IPadOS
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IPadOSImplCopyWith<_$IPadOSImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
