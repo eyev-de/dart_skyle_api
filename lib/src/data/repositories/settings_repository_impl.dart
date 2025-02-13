@@ -111,7 +111,6 @@ class SettingsRepositoryImpl implements SettingsRepository {
   @override
   Future<DataState<Settings>> setTrackingMode({TrackingMode trackingMode = TrackingMode.both}) {
     final Options options = Options.fromJson(_state.writeToJson())..eyeUsage = trackingMode.toIPadOptionsEyeUseModel();
-    print(options.toDebugString());
     return _setStateAsync(options: options);
   }
 }

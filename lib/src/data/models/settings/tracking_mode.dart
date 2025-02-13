@@ -13,10 +13,10 @@ enum TrackingMode {
   right;
 
   static TrackingMode fromOptionsEyeUseModel(Options_eyeUse trackingMode) {
-    return TrackingMode.values.firstWhere((element) => element.name == trackingMode.name, orElse: () => TrackingMode.none);
+    return TrackingMode.values.firstWhere((element) => element.name.toLowerCase() == trackingMode.name.toLowerCase(), orElse: () => TrackingMode.none);
   }
 
   Options_eyeUse toIPadOptionsEyeUseModel() {
-    return Options_eyeUse.values.firstWhere((element) => element.name == name, orElse: () => Options_eyeUse.Both);
+    return Options_eyeUse.values.firstWhere((element) => element.name.toLowerCase() == name.toLowerCase(), orElse: () => Options_eyeUse.Both);
   }
 }
