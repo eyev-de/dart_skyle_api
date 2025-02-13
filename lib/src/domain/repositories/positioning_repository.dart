@@ -15,19 +15,14 @@ import '../../data/models/types.dart';
 
 /// Interface for receiving the positioning stream.
 abstract class PositioningRepository {
-  static double widthSkyle2 = 1280;
-  static double heightSkyle2 = 800;
-  static double widthSkyle3 = 2472;
-  static double heightSkyle3 = 2048;
-
   static double maxDistance = UniversalPlatform.isDesktop ? -15 : 0;
   static double minDistance = UniversalPlatform.isDesktop ? 35 : 40;
 
-  static int closeUpperBoundaryiPad = 450;
+  static int closeUpperBoundaryiPad = 420;
   static int normalUpperBoundaryiPad = 750;
 
-  static int closeUpperBoundaryDesktop = 500;
-  static int normalUpperBoundaryDesktop = 800;
+  static int closeUpperBoundaryDesktop = 450;
+  static int normalUpperBoundaryDesktop = 770;
 
   /// Starts the positioning stream which lives until a disconnect happens.
   ///
