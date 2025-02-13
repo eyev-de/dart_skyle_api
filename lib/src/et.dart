@@ -69,7 +69,7 @@ class ET {
     if (generation == 2) {
       return const Size(width: 1280, height: 800);
     }
-    return const Size(width: 2472, height: 2048);
+    return const Size(width: 2464, height: 2064);
   }
 
   Connection _connection = Connection.disconnected;
