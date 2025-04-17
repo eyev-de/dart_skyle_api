@@ -11,6 +11,7 @@ import '../../data/models/settings/ipados.dart';
 import '../../data/models/settings/screen_sizes.dart';
 import '../../data/models/settings/settings.dart';
 import '../../data/models/settings/tracking_mode.dart';
+import '../../generated/Skyle.pb.dart' show Options;
 
 /// Interface for the settings of Skyle.
 abstract class SettingsRepository {
@@ -47,15 +48,18 @@ abstract class SettingsRepository {
   /// If [disableMouse] is on, the HID stream is swiched off.
   Future<DataState<Settings>> disableMouse({bool on = true});
 
-  /// Sets the [Filter] settings and behaves like [get].
+  /// Sets the [Filter] settings in [Options] and behaves like [get].
   Future<DataState<Settings>> setFilter({Filter filter = const Filter()});
 
-  /// Sets the [iPadOS] settings and behaves like [get].
+  /// Sets the [IPadOS] settings in [Options] and behaves like [get].
   Future<DataState<Settings>> setIPadOS({IPadOS iPadOS = const IPadOS(isOld: true, isNotZoomed: true, iPadModel: IPadModel.iPad13_10)});
 
-  /// Sets the [ScreenSizes] and behaves like [get].
+  /// Sets the [ScreenSizes] in [Options] and behaves like [get].
   Future<DataState<Settings>> setResolution({ScreenSizes screenSizes = const ScreenSizes()});
 
-  /// Sets the [TrackingMode] and behaves like [get].
+  /// Sets the [TrackingMode] in [Options] and behaves like [get].
   Future<DataState<Settings>> setTrackingMode({TrackingMode trackingMode = TrackingMode.both});
+
+  /// Sets the [enableTrackingDetails] in [Options] and behaves like [get].
+  Future<DataState<Settings>> trackingDetails({bool on = true});
 }

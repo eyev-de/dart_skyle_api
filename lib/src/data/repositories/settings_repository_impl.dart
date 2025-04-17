@@ -113,4 +113,10 @@ class SettingsRepositoryImpl implements SettingsRepository {
     final Options options = Options.fromJson(_state.writeToJson())..eyeUsage = trackingMode.toIPadOptionsEyeUseModel();
     return _setStateAsync(options: options);
   }
+
+  @override
+  Future<DataState<Settings>> trackingDetails({bool on = true}) {
+    final Options options = Options.fromJson(_state.writeToJson())..enableTrackingDetails = on;
+    return _setStateAsync(options: options);
+  }
 }
