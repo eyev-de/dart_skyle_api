@@ -29,6 +29,7 @@ class Settings with _$Settings {
     @Default(ScreenSizes()) ScreenSizes screenSizes,
     @Default(false) bool hp,
     @Default(TrackingMode.none) TrackingMode trackingMode,
+    @Default(false) bool trackingDetails,
   }) = _Settings;
 
   factory Settings.fromJson(Map<String, Object?> json) => _$SettingsFromJson(json);
@@ -46,6 +47,7 @@ class Settings with _$Settings {
       screenSizes: ScreenSizes.fromScreenResolution(options.res),
       hp: options.hp,
       trackingMode: options.hasEyeUsage() ? TrackingMode.fromOptionsEyeUseModel(options.eyeUsage) : TrackingMode.none,
+      trackingDetails: options.enableTrackingDetails,
     );
   }
 }

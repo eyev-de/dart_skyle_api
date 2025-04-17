@@ -31,6 +31,7 @@ mixin _$Settings {
   ScreenSizes get screenSizes => throw _privateConstructorUsedError;
   bool get hp => throw _privateConstructorUsedError;
   TrackingMode get trackingMode => throw _privateConstructorUsedError;
+  bool get trackingDetails => throw _privateConstructorUsedError;
 
   /// Serializes this Settings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -58,7 +59,8 @@ abstract class $SettingsCopyWith<$Res> {
       IPadOS iPadOS,
       ScreenSizes screenSizes,
       bool hp,
-      TrackingMode trackingMode});
+      TrackingMode trackingMode,
+      bool trackingDetails});
 
   $FilterCopyWith<$Res> get filter;
   $IPadOSCopyWith<$Res> get iPadOS;
@@ -91,6 +93,7 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
     Object? screenSizes = null,
     Object? hp = null,
     Object? trackingMode = null,
+    Object? trackingDetails = null,
   }) {
     return _then(_value.copyWith(
       video: null == video
@@ -137,6 +140,10 @@ class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
           ? _value.trackingMode
           : trackingMode // ignore: cast_nullable_to_non_nullable
               as TrackingMode,
+      trackingDetails: null == trackingDetails
+          ? _value.trackingDetails
+          : trackingDetails // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -190,7 +197,8 @@ abstract class _$$SettingsImplCopyWith<$Res>
       IPadOS iPadOS,
       ScreenSizes screenSizes,
       bool hp,
-      TrackingMode trackingMode});
+      TrackingMode trackingMode,
+      bool trackingDetails});
 
   @override
   $FilterCopyWith<$Res> get filter;
@@ -224,6 +232,7 @@ class __$$SettingsImplCopyWithImpl<$Res>
     Object? screenSizes = null,
     Object? hp = null,
     Object? trackingMode = null,
+    Object? trackingDetails = null,
   }) {
     return _then(_$SettingsImpl(
       video: null == video
@@ -270,6 +279,10 @@ class __$$SettingsImplCopyWithImpl<$Res>
           ? _value.trackingMode
           : trackingMode // ignore: cast_nullable_to_non_nullable
               as TrackingMode,
+      trackingDetails: null == trackingDetails
+          ? _value.trackingDetails
+          : trackingDetails // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -288,7 +301,8 @@ class _$SettingsImpl implements _Settings {
       this.iPadOS = const IPadOS(),
       this.screenSizes = const ScreenSizes(),
       this.hp = false,
-      this.trackingMode = TrackingMode.none});
+      this.trackingMode = TrackingMode.none,
+      this.trackingDetails = false});
 
   factory _$SettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$SettingsImplFromJson(json);
@@ -326,10 +340,13 @@ class _$SettingsImpl implements _Settings {
   @override
   @JsonKey()
   final TrackingMode trackingMode;
+  @override
+  @JsonKey()
+  final bool trackingDetails;
 
   @override
   String toString() {
-    return 'Settings(video: $video, enablePause: $enablePause, pause: $pause, guidance: $guidance, enableStandby: $enableStandby, disableMouse: $disableMouse, filter: $filter, iPadOS: $iPadOS, screenSizes: $screenSizes, hp: $hp, trackingMode: $trackingMode)';
+    return 'Settings(video: $video, enablePause: $enablePause, pause: $pause, guidance: $guidance, enableStandby: $enableStandby, disableMouse: $disableMouse, filter: $filter, iPadOS: $iPadOS, screenSizes: $screenSizes, hp: $hp, trackingMode: $trackingMode, trackingDetails: $trackingDetails)';
   }
 
   @override
@@ -353,7 +370,9 @@ class _$SettingsImpl implements _Settings {
                 other.screenSizes == screenSizes) &&
             (identical(other.hp, hp) || other.hp == hp) &&
             (identical(other.trackingMode, trackingMode) ||
-                other.trackingMode == trackingMode));
+                other.trackingMode == trackingMode) &&
+            (identical(other.trackingDetails, trackingDetails) ||
+                other.trackingDetails == trackingDetails));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -370,7 +389,8 @@ class _$SettingsImpl implements _Settings {
       iPadOS,
       screenSizes,
       hp,
-      trackingMode);
+      trackingMode,
+      trackingDetails);
 
   /// Create a copy of Settings
   /// with the given fields replaced by the non-null parameter values.
@@ -400,7 +420,8 @@ abstract class _Settings implements Settings {
       final IPadOS iPadOS,
       final ScreenSizes screenSizes,
       final bool hp,
-      final TrackingMode trackingMode}) = _$SettingsImpl;
+      final TrackingMode trackingMode,
+      final bool trackingDetails}) = _$SettingsImpl;
 
   factory _Settings.fromJson(Map<String, dynamic> json) =
       _$SettingsImpl.fromJson;
@@ -427,6 +448,8 @@ abstract class _Settings implements Settings {
   bool get hp;
   @override
   TrackingMode get trackingMode;
+  @override
+  bool get trackingDetails;
 
   /// Create a copy of Settings
   /// with the given fields replaced by the non-null parameter values.

@@ -27,6 +27,7 @@ _$SettingsImpl _$$SettingsImplFromJson(Map<String, dynamic> json) =>
       trackingMode:
           $enumDecodeNullable(_$TrackingModeEnumMap, json['trackingMode']) ??
               TrackingMode.none,
+      trackingDetails: json['trackingDetails'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$SettingsImplToJson(_$SettingsImpl instance) =>
@@ -42,6 +43,7 @@ Map<String, dynamic> _$$SettingsImplToJson(_$SettingsImpl instance) =>
       'screenSizes': instance.screenSizes,
       'hp': instance.hp,
       'trackingMode': _$TrackingModeEnumMap[instance.trackingMode]!,
+      'trackingDetails': instance.trackingDetails,
     };
 
 const _$TrackingModeEnumMap = {
