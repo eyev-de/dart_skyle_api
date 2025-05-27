@@ -11,11 +11,12 @@ import '../../core/exceptions.dart';
 import '../../domain/repositories/raw_video_stream_repository.dart';
 import '../../generated/google/protobuf/empty.pb.dart';
 import '../../generated/Skyle.pbgrpc.dart' as grpc;
+import '../../generated/Types.pb.dart' as types;
 import '../models/types.dart';
 
 class RawVideoStreamRepositoryImpl implements RawVideoStreamRepository {
   grpc.SkyleClient? client;
-  ResponseStream<grpc.RawImage>? _stream;
+  ResponseStream<types.RawImage>? _stream;
 
   RawVideoStreamRepositoryImpl({this.client});
 
@@ -25,7 +26,7 @@ class RawVideoStreamRepositoryImpl implements RawVideoStreamRepository {
       if (_stream != null) throw StillStreamingException();
       if (client == null) throw NotConnectedException();
       _stream = client!.rawImages(Empty());
-      await for (final grpc.RawImage event in _stream!) {
+      await for (final types.RawImage event in _stream!) {
         yield DataSuccess(RawImage.fromRawImage(event));
       }
     } on StillStreamingException catch (_) {

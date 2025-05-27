@@ -105,7 +105,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
             //
           } else {
             for (final pt in List.generate(pts.value, (index) => index)) {
-              await Future.delayed(const Duration(milliseconds: 2000));
+              await Future.delayed(const Duration(milliseconds: 100));
               if (abort) return;
               yield CalibMessages()
                 ..calibPoint = CalibPoint(
@@ -163,7 +163,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
     while (!call.isCanceled) {
       for (final gaze in gazes) {
         yield gaze;
-        await Future.delayed(const Duration(milliseconds: 1000));
+        await Future.delayed(const Duration(milliseconds: 20));
       }
     }
   }
@@ -253,7 +253,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
   }
 
   @override
-  Stream<RawImage> rawImages(ServiceCall call, Empty request) {
+  Stream<types.RawImage> rawImages(ServiceCall call, Empty request) {
     return const Stream.empty();
   }
 

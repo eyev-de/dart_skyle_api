@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: Skyle.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -18,87 +18,9 @@ import 'Skyle.pbenum.dart';
 import 'Types.pb.dart' as $2;
 import 'google/protobuf/empty.pb.dart' as $1;
 
+export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
+
 export 'Skyle.pbenum.dart';
-
-/// *
-///  Single image in grayscale raw bytes
-class RawImage extends $pb.GeneratedMessage {
-  factory RawImage({
-    $core.int? width,
-    $core.int? height,
-    $core.List<$core.int>? data,
-  }) {
-    final $result = create();
-    if (width != null) {
-      $result.width = width;
-    }
-    if (height != null) {
-      $result.height = height;
-    }
-    if (data != null) {
-      $result.data = data;
-    }
-    return $result;
-  }
-  RawImage._() : super();
-  factory RawImage.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory RawImage.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'RawImage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
-    ..a<$core.int>(1, _omitFieldNames ? '' : 'width', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, _omitFieldNames ? '' : 'height', $pb.PbFieldType.O3)
-    ..a<$core.List<$core.int>>(3, _omitFieldNames ? '' : 'data', $pb.PbFieldType.OY)
-    ..hasRequiredFields = false
-  ;
-
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  RawImage clone() => RawImage()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  RawImage copyWith(void Function(RawImage) updates) => super.copyWith((message) => updates(message as RawImage)) as RawImage;
-
-  $pb.BuilderInfo get info_ => _i;
-
-  @$core.pragma('dart2js:noInline')
-  static RawImage create() => RawImage._();
-  RawImage createEmptyInstance() => create();
-  static $pb.PbList<RawImage> createRepeated() => $pb.PbList<RawImage>();
-  @$core.pragma('dart2js:noInline')
-  static RawImage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<RawImage>(create);
-  static RawImage? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.int get width => $_getIZ(0);
-  @$pb.TagNumber(1)
-  set width($core.int v) { $_setSignedInt32(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasWidth() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearWidth() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.int get height => $_getIZ(1);
-  @$pb.TagNumber(2)
-  set height($core.int v) { $_setSignedInt32(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasHeight() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearHeight() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.List<$core.int> get data => $_getN(2);
-  @$pb.TagNumber(3)
-  set data($core.List<$core.int> v) { $_setBytes(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasData() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearData() => clearField(3);
-}
 
 /// *
 ///  Message to indicate a trigger
@@ -136,15 +58,9 @@ class TriggerMessage extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   TriggerMessage clone() => TriggerMessage()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   TriggerMessage copyWith(void Function(TriggerMessage) updates) => super.copyWith((message) => updates(message as TriggerMessage)) as TriggerMessage;
 
   $pb.BuilderInfo get info_ => _i;
@@ -164,7 +80,7 @@ class TriggerMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasSingleClick() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSingleClick() => clearField(1);
+  void clearSingleClick() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.bool get doubleClick => $_getBF(1);
@@ -173,7 +89,7 @@ class TriggerMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasDoubleClick() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDoubleClick() => clearField(2);
+  void clearDoubleClick() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.bool get holdClick => $_getBF(2);
@@ -182,7 +98,7 @@ class TriggerMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasHoldClick() => $_has(2);
   @$pb.TagNumber(3)
-  void clearHoldClick() => clearField(3);
+  void clearHoldClick() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.bool get fixation => $_getBF(3);
@@ -191,7 +107,7 @@ class TriggerMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasFixation() => $_has(3);
   @$pb.TagNumber(4)
-  void clearFixation() => clearField(4);
+  void clearFixation() => $_clearField(4);
 }
 
 /// *
@@ -225,15 +141,9 @@ class ResetMessage extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ResetMessage clone() => ResetMessage()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ResetMessage copyWith(void Function(ResetMessage) updates) => super.copyWith((message) => updates(message as ResetMessage)) as ResetMessage;
 
   $pb.BuilderInfo get info_ => _i;
@@ -253,7 +163,7 @@ class ResetMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasServices() => $_has(0);
   @$pb.TagNumber(1)
-  void clearServices() => clearField(1);
+  void clearServices() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.bool get device => $_getBF(1);
@@ -262,7 +172,7 @@ class ResetMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasDevice() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDevice() => clearField(2);
+  void clearDevice() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.bool get data => $_getBF(2);
@@ -271,7 +181,7 @@ class ResetMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasData() => $_has(2);
   @$pb.TagNumber(3)
-  void clearData() => clearField(3);
+  void clearData() => $_clearField(3);
 }
 
 /// *
@@ -305,15 +215,9 @@ class Profile extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Profile clone() => Profile()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Profile copyWith(void Function(Profile) updates) => super.copyWith((message) => updates(message as Profile)) as Profile;
 
   $pb.BuilderInfo get info_ => _i;
@@ -333,7 +237,7 @@ class Profile extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasId() => $_has(0);
   @$pb.TagNumber(1)
-  void clearId() => clearField(1);
+  void clearId() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
@@ -342,16 +246,16 @@ class Profile extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
-  void clearName() => clearField(2);
+  void clearName() => $_clearField(2);
 
   @$pb.TagNumber(3)
   Profile_Skill get skill => $_getN(2);
   @$pb.TagNumber(3)
-  set skill(Profile_Skill v) { setField(3, v); }
+  set skill(Profile_Skill v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasSkill() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSkill() => clearField(3);
+  void clearSkill() => $_clearField(3);
 }
 
 /// *
@@ -375,15 +279,9 @@ class StatusMessage extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   StatusMessage clone() => StatusMessage()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   StatusMessage copyWith(void Function(StatusMessage) updates) => super.copyWith((message) => updates(message as StatusMessage)) as StatusMessage;
 
   $pb.BuilderInfo get info_ => _i;
@@ -403,7 +301,7 @@ class StatusMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasSuccess() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSuccess() => clearField(1);
+  void clearSuccess() => $_clearField(1);
 }
 
 enum OptionMessage_Message {
@@ -444,15 +342,9 @@ class OptionMessage extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   OptionMessage clone() => OptionMessage()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   OptionMessage copyWith(void Function(OptionMessage) updates) => super.copyWith((message) => updates(message as OptionMessage)) as OptionMessage;
 
   $pb.BuilderInfo get info_ => _i;
@@ -466,27 +358,27 @@ class OptionMessage extends $pb.GeneratedMessage {
   static OptionMessage? _defaultInstance;
 
   OptionMessage_Message whichMessage() => _OptionMessage_MessageByTag[$_whichOneof(0)]!;
-  void clearMessage() => clearField($_whichOneof(0));
+  void clearMessage() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   $1.Empty get empty => $_getN(0);
   @$pb.TagNumber(1)
-  set empty($1.Empty v) { setField(1, v); }
+  set empty($1.Empty v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasEmpty() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEmpty() => clearField(1);
+  void clearEmpty() => $_clearField(1);
   @$pb.TagNumber(1)
   $1.Empty ensureEmpty() => $_ensure(0);
 
   @$pb.TagNumber(2)
   Options get options => $_getN(1);
   @$pb.TagNumber(2)
-  set options(Options v) { setField(2, v); }
+  set options(Options v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasOptions() => $_has(1);
   @$pb.TagNumber(2)
-  void clearOptions() => clearField(2);
+  void clearOptions() => $_clearField(2);
   @$pb.TagNumber(2)
   Options ensureOptions() => $_ensure(1);
 }
@@ -536,15 +428,9 @@ class CalibControlMessages extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibControlMessages clone() => CalibControlMessages()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibControlMessages copyWith(void Function(CalibControlMessages) updates) => super.copyWith((message) => updates(message as CalibControlMessages)) as CalibControlMessages;
 
   $pb.BuilderInfo get info_ => _i;
@@ -558,38 +444,38 @@ class CalibControlMessages extends $pb.GeneratedMessage {
   static CalibControlMessages? _defaultInstance;
 
   CalibControlMessages_Message whichMessage() => _CalibControlMessages_MessageByTag[$_whichOneof(0)]!;
-  void clearMessage() => clearField($_whichOneof(0));
+  void clearMessage() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   CalibControl get calibControl => $_getN(0);
   @$pb.TagNumber(1)
-  set calibControl(CalibControl v) { setField(1, v); }
+  set calibControl(CalibControl v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCalibControl() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCalibControl() => clearField(1);
+  void clearCalibControl() => $_clearField(1);
   @$pb.TagNumber(1)
   CalibControl ensureCalibControl() => $_ensure(0);
 
   @$pb.TagNumber(2)
   CalibImprove get calibImprove => $_getN(1);
   @$pb.TagNumber(2)
-  set calibImprove(CalibImprove v) { setField(2, v); }
+  set calibImprove(CalibImprove v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasCalibImprove() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCalibImprove() => clearField(2);
+  void clearCalibImprove() => $_clearField(2);
   @$pb.TagNumber(2)
   CalibImprove ensureCalibImprove() => $_ensure(1);
 
   @$pb.TagNumber(3)
   CalibConfirm get calibConfirm => $_getN(2);
   @$pb.TagNumber(3)
-  set calibConfirm(CalibConfirm v) { setField(3, v); }
+  set calibConfirm(CalibConfirm v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasCalibConfirm() => $_has(2);
   @$pb.TagNumber(3)
-  void clearCalibConfirm() => clearField(3);
+  void clearCalibConfirm() => $_clearField(3);
   @$pb.TagNumber(3)
   CalibConfirm ensureCalibConfirm() => $_ensure(2);
 }
@@ -632,15 +518,9 @@ class CalibCursorMessages extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibCursorMessages clone() => CalibCursorMessages()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibCursorMessages copyWith(void Function(CalibCursorMessages) updates) => super.copyWith((message) => updates(message as CalibCursorMessages)) as CalibCursorMessages;
 
   $pb.BuilderInfo get info_ => _i;
@@ -654,27 +534,27 @@ class CalibCursorMessages extends $pb.GeneratedMessage {
   static CalibCursorMessages? _defaultInstance;
 
   CalibCursorMessages_Message whichMessage() => _CalibCursorMessages_MessageByTag[$_whichOneof(0)]!;
-  void clearMessage() => clearField($_whichOneof(0));
+  void clearMessage() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   $1.Empty get empty => $_getN(0);
   @$pb.TagNumber(1)
-  set empty($1.Empty v) { setField(1, v); }
+  set empty($1.Empty v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasEmpty() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEmpty() => clearField(1);
+  void clearEmpty() => $_clearField(1);
   @$pb.TagNumber(1)
   $1.Empty ensureEmpty() => $_ensure(0);
 
   @$pb.TagNumber(3)
   CalibConfirm get calibConfirm => $_getN(1);
   @$pb.TagNumber(3)
-  set calibConfirm(CalibConfirm v) { setField(3, v); }
+  set calibConfirm(CalibConfirm v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasCalibConfirm() => $_has(1);
   @$pb.TagNumber(3)
-  void clearCalibConfirm() => clearField(3);
+  void clearCalibConfirm() => $_clearField(3);
   @$pb.TagNumber(3)
   CalibConfirm ensureCalibConfirm() => $_ensure(1);
 }
@@ -730,15 +610,9 @@ class CalibControl extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibControl clone() => CalibControl()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibControl copyWith(void Function(CalibControl) updates) => super.copyWith((message) => updates(message as CalibControl)) as CalibControl;
 
   $pb.BuilderInfo get info_ => _i;
@@ -758,7 +632,7 @@ class CalibControl extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasCalibrate() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCalibrate() => clearField(1);
+  void clearCalibrate() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.int get numberOfPoints => $_getIZ(1);
@@ -767,7 +641,7 @@ class CalibControl extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasNumberOfPoints() => $_has(1);
   @$pb.TagNumber(2)
-  void clearNumberOfPoints() => clearField(2);
+  void clearNumberOfPoints() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.bool get abort => $_getBF(2);
@@ -776,7 +650,7 @@ class CalibControl extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasAbort() => $_has(2);
   @$pb.TagNumber(3)
-  void clearAbort() => clearField(3);
+  void clearAbort() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.bool get stopHID => $_getBF(3);
@@ -785,16 +659,16 @@ class CalibControl extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasStopHID() => $_has(3);
   @$pb.TagNumber(4)
-  void clearStopHID() => clearField(4);
+  void clearStopHID() => $_clearField(4);
 
   @$pb.TagNumber(5)
   ScreenResolution get res => $_getN(4);
   @$pb.TagNumber(5)
-  set res(ScreenResolution v) { setField(5, v); }
+  set res(ScreenResolution v) { $_setField(5, v); }
   @$pb.TagNumber(5)
   $core.bool hasRes() => $_has(4);
   @$pb.TagNumber(5)
-  void clearRes() => clearField(5);
+  void clearRes() => $_clearField(5);
   @$pb.TagNumber(5)
   ScreenResolution ensureRes() => $_ensure(4);
 
@@ -805,7 +679,7 @@ class CalibControl extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasStepByStep() => $_has(5);
   @$pb.TagNumber(6)
-  void clearStepByStep() => clearField(6);
+  void clearStepByStep() => $_clearField(6);
 
   /// Indices of calibration points the user wants for a 9 point or 5 point calibration
   /// The length of calibrationPoints needs to match numberOfPoints
@@ -822,7 +696,7 @@ class CalibControl extends $pb.GeneratedMessage {
   /// 5 points: [0, 2, 6, 8, 4]
   /// 5 points: [0, 8, 2, 6, 4]
   @$pb.TagNumber(7)
-  $core.List<$core.int> get calibrationPoints => $_getList(6);
+  $pb.PbList<$core.int> get calibrationPoints => $_getList(6);
 }
 
 /// *
@@ -861,15 +735,9 @@ class ScreenResolution extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ScreenResolution clone() => ScreenResolution()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ScreenResolution copyWith(void Function(ScreenResolution) updates) => super.copyWith((message) => updates(message as ScreenResolution)) as ScreenResolution;
 
   $pb.BuilderInfo get info_ => _i;
@@ -889,7 +757,7 @@ class ScreenResolution extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasWidth() => $_has(0);
   @$pb.TagNumber(5)
-  void clearWidth() => clearField(5);
+  void clearWidth() => $_clearField(5);
 
   @$pb.TagNumber(6)
   $core.int get height => $_getIZ(1);
@@ -898,7 +766,7 @@ class ScreenResolution extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasHeight() => $_has(1);
   @$pb.TagNumber(6)
-  void clearHeight() => clearField(6);
+  void clearHeight() => $_clearField(6);
 
   @$pb.TagNumber(7)
   $core.int get widthInMM => $_getIZ(2);
@@ -907,7 +775,7 @@ class ScreenResolution extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.bool hasWidthInMM() => $_has(2);
   @$pb.TagNumber(7)
-  void clearWidthInMM() => clearField(7);
+  void clearWidthInMM() => $_clearField(7);
 
   @$pb.TagNumber(8)
   $core.int get heightInMM => $_getIZ(3);
@@ -916,7 +784,7 @@ class ScreenResolution extends $pb.GeneratedMessage {
   @$pb.TagNumber(8)
   $core.bool hasHeightInMM() => $_has(3);
   @$pb.TagNumber(8)
-  void clearHeightInMM() => clearField(8);
+  void clearHeightInMM() => $_clearField(8);
 }
 
 /// *
@@ -945,15 +813,9 @@ class CalibImprove extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibImprove clone() => CalibImprove()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibImprove copyWith(void Function(CalibImprove) updates) => super.copyWith((message) => updates(message as CalibImprove)) as CalibImprove;
 
   $pb.BuilderInfo get info_ => _i;
@@ -973,7 +835,7 @@ class CalibImprove extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasRating() => $_has(0);
   @$pb.TagNumber(1)
-  void clearRating() => clearField(1);
+  void clearRating() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.bool get stopHID => $_getBF(1);
@@ -982,7 +844,7 @@ class CalibImprove extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasStopHID() => $_has(1);
   @$pb.TagNumber(2)
-  void clearStopHID() => clearField(2);
+  void clearStopHID() => $_clearField(2);
 }
 
 /// *
@@ -1006,15 +868,9 @@ class CalibConfirm extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibConfirm clone() => CalibConfirm()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibConfirm copyWith(void Function(CalibConfirm) updates) => super.copyWith((message) => updates(message as CalibConfirm)) as CalibConfirm;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1034,7 +890,7 @@ class CalibConfirm extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasConfirmed() => $_has(0);
   @$pb.TagNumber(1)
-  void clearConfirmed() => clearField(1);
+  void clearConfirmed() => $_clearField(1);
 }
 
 enum CalibMessages_Message {
@@ -1082,15 +938,9 @@ class CalibMessages extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibMessages clone() => CalibMessages()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibMessages copyWith(void Function(CalibMessages) updates) => super.copyWith((message) => updates(message as CalibMessages)) as CalibMessages;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1104,38 +954,38 @@ class CalibMessages extends $pb.GeneratedMessage {
   static CalibMessages? _defaultInstance;
 
   CalibMessages_Message whichMessage() => _CalibMessages_MessageByTag[$_whichOneof(0)]!;
-  void clearMessage() => clearField($_whichOneof(0));
+  void clearMessage() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   CalibControl get calibControl => $_getN(0);
   @$pb.TagNumber(1)
-  set calibControl(CalibControl v) { setField(1, v); }
+  set calibControl(CalibControl v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasCalibControl() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCalibControl() => clearField(1);
+  void clearCalibControl() => $_clearField(1);
   @$pb.TagNumber(1)
   CalibControl ensureCalibControl() => $_ensure(0);
 
   @$pb.TagNumber(2)
   CalibPoint get calibPoint => $_getN(1);
   @$pb.TagNumber(2)
-  set calibPoint(CalibPoint v) { setField(2, v); }
+  set calibPoint(CalibPoint v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasCalibPoint() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCalibPoint() => clearField(2);
+  void clearCalibPoint() => $_clearField(2);
   @$pb.TagNumber(2)
   CalibPoint ensureCalibPoint() => $_ensure(1);
 
   @$pb.TagNumber(3)
   CalibQuality get calibQuality => $_getN(2);
   @$pb.TagNumber(3)
-  set calibQuality(CalibQuality v) { setField(3, v); }
+  set calibQuality(CalibQuality v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasCalibQuality() => $_has(2);
   @$pb.TagNumber(3)
-  void clearCalibQuality() => clearField(3);
+  void clearCalibQuality() => $_clearField(3);
   @$pb.TagNumber(3)
   CalibQuality ensureCalibQuality() => $_ensure(2);
 }
@@ -1166,15 +1016,9 @@ class BinocularGaze extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   BinocularGaze clone() => BinocularGaze()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   BinocularGaze copyWith(void Function(BinocularGaze) updates) => super.copyWith((message) => updates(message as BinocularGaze)) as BinocularGaze;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1190,22 +1034,22 @@ class BinocularGaze extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $2.Point get leftGaze => $_getN(0);
   @$pb.TagNumber(1)
-  set leftGaze($2.Point v) { setField(1, v); }
+  set leftGaze($2.Point v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasLeftGaze() => $_has(0);
   @$pb.TagNumber(1)
-  void clearLeftGaze() => clearField(1);
+  void clearLeftGaze() => $_clearField(1);
   @$pb.TagNumber(1)
   $2.Point ensureLeftGaze() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $2.Point get rightGaze => $_getN(1);
   @$pb.TagNumber(2)
-  set rightGaze($2.Point v) { setField(2, v); }
+  set rightGaze($2.Point v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasRightGaze() => $_has(1);
   @$pb.TagNumber(2)
-  void clearRightGaze() => clearField(2);
+  void clearRightGaze() => $_clearField(2);
   @$pb.TagNumber(2)
   $2.Point ensureRightGaze() => $_ensure(1);
 }
@@ -1236,15 +1080,9 @@ class CalibPoint extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibPoint clone() => CalibPoint()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibPoint copyWith(void Function(CalibPoint) updates) => super.copyWith((message) => updates(message as CalibPoint)) as CalibPoint;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1264,16 +1102,16 @@ class CalibPoint extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasCount() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCount() => clearField(1);
+  void clearCount() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $2.Point get currentPoint => $_getN(1);
   @$pb.TagNumber(2)
-  set currentPoint($2.Point v) { setField(2, v); }
+  set currentPoint($2.Point v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasCurrentPoint() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCurrentPoint() => clearField(2);
+  void clearCurrentPoint() => $_clearField(2);
   @$pb.TagNumber(2)
   $2.Point ensureCurrentPoint() => $_ensure(1);
 }
@@ -1304,15 +1142,9 @@ class CalibQuality extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibQuality clone() => CalibQuality()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibQuality copyWith(void Function(CalibQuality) updates) => super.copyWith((message) => updates(message as CalibQuality)) as CalibQuality;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1332,10 +1164,10 @@ class CalibQuality extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasQuality() => $_has(0);
   @$pb.TagNumber(1)
-  void clearQuality() => clearField(1);
+  void clearQuality() => $_clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.double> get qualities => $_getList(1);
+  $pb.PbList<$core.double> get qualities => $_getList(1);
 }
 
 /// *
@@ -1389,15 +1221,9 @@ class PositioningMessage extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   PositioningMessage clone() => PositioningMessage()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   PositioningMessage copyWith(void Function(PositioningMessage) updates) => super.copyWith((message) => updates(message as PositioningMessage)) as PositioningMessage;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1413,22 +1239,22 @@ class PositioningMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $2.Point get leftEye => $_getN(0);
   @$pb.TagNumber(1)
-  set leftEye($2.Point v) { setField(1, v); }
+  set leftEye($2.Point v) { $_setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasLeftEye() => $_has(0);
   @$pb.TagNumber(1)
-  void clearLeftEye() => clearField(1);
+  void clearLeftEye() => $_clearField(1);
   @$pb.TagNumber(1)
   $2.Point ensureLeftEye() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $2.Point get rightEye => $_getN(1);
   @$pb.TagNumber(2)
-  set rightEye($2.Point v) { setField(2, v); }
+  set rightEye($2.Point v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasRightEye() => $_has(1);
   @$pb.TagNumber(2)
-  void clearRightEye() => clearField(2);
+  void clearRightEye() => $_clearField(2);
   @$pb.TagNumber(2)
   $2.Point ensureRightEye() => $_ensure(1);
 
@@ -1439,7 +1265,7 @@ class PositioningMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasDistanceQuality() => $_has(2);
   @$pb.TagNumber(3)
-  void clearDistanceQuality() => clearField(3);
+  void clearDistanceQuality() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.int get positioningQuality => $_getIZ(3);
@@ -1448,7 +1274,7 @@ class PositioningMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasPositioningQuality() => $_has(3);
   @$pb.TagNumber(4)
-  void clearPositioningQuality() => clearField(4);
+  void clearPositioningQuality() => $_clearField(4);
 
   @$pb.TagNumber(5)
   $core.int get horizontalQuality => $_getIZ(4);
@@ -1457,7 +1283,7 @@ class PositioningMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasHorizontalQuality() => $_has(4);
   @$pb.TagNumber(5)
-  void clearHorizontalQuality() => clearField(5);
+  void clearHorizontalQuality() => $_clearField(5);
 
   @$pb.TagNumber(6)
   $core.int get verticalQuality => $_getIZ(5);
@@ -1466,16 +1292,16 @@ class PositioningMessage extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasVerticalQuality() => $_has(5);
   @$pb.TagNumber(6)
-  void clearVerticalQuality() => clearField(6);
+  void clearVerticalQuality() => $_clearField(6);
 
   @$pb.TagNumber(7)
   $2.Face get face => $_getN(6);
   @$pb.TagNumber(7)
-  set face($2.Face v) { setField(7, v); }
+  set face($2.Face v) { $_setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasFace() => $_has(6);
   @$pb.TagNumber(7)
-  void clearFace() => clearField(7);
+  void clearFace() => $_clearField(7);
   @$pb.TagNumber(7)
   $2.Face ensureFace() => $_ensure(6);
 }
@@ -1556,15 +1382,9 @@ class Options extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Options clone() => Options()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Options copyWith(void Function(Options) updates) => super.copyWith((message) => updates(message as Options)) as Options;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1584,7 +1404,7 @@ class Options extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasEnableVideoStream() => $_has(0);
   @$pb.TagNumber(1)
-  void clearEnableVideoStream() => clearField(1);
+  void clearEnableVideoStream() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.bool get enableAutoPause => $_getBF(1);
@@ -1593,7 +1413,7 @@ class Options extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasEnableAutoPause() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEnableAutoPause() => clearField(2);
+  void clearEnableAutoPause() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.bool get enablePause => $_getBF(2);
@@ -1602,7 +1422,7 @@ class Options extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasEnablePause() => $_has(2);
   @$pb.TagNumber(3)
-  void clearEnablePause() => clearField(3);
+  void clearEnablePause() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.bool get enablePositioningStream => $_getBF(3);
@@ -1611,7 +1431,7 @@ class Options extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasEnablePositioningStream() => $_has(3);
   @$pb.TagNumber(4)
-  void clearEnablePositioningStream() => clearField(4);
+  void clearEnablePositioningStream() => $_clearField(4);
 
   @$pb.TagNumber(5)
   $core.bool get enableAutoStandby => $_getBF(4);
@@ -1620,7 +1440,7 @@ class Options extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasEnableAutoStandby() => $_has(4);
   @$pb.TagNumber(5)
-  void clearEnableAutoStandby() => clearField(5);
+  void clearEnableAutoStandby() => $_clearField(5);
 
   @$pb.TagNumber(6)
   $core.bool get disableMouse => $_getBF(5);
@@ -1629,38 +1449,38 @@ class Options extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasDisableMouse() => $_has(5);
   @$pb.TagNumber(6)
-  void clearDisableMouse() => clearField(6);
+  void clearDisableMouse() => $_clearField(6);
 
   @$pb.TagNumber(7)
   FilterOptions get filter => $_getN(6);
   @$pb.TagNumber(7)
-  set filter(FilterOptions v) { setField(7, v); }
+  set filter(FilterOptions v) { $_setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasFilter() => $_has(6);
   @$pb.TagNumber(7)
-  void clearFilter() => clearField(7);
+  void clearFilter() => $_clearField(7);
   @$pb.TagNumber(7)
   FilterOptions ensureFilter() => $_ensure(6);
 
   @$pb.TagNumber(8)
   IPadOptions get iPadOptions => $_getN(7);
   @$pb.TagNumber(8)
-  set iPadOptions(IPadOptions v) { setField(8, v); }
+  set iPadOptions(IPadOptions v) { $_setField(8, v); }
   @$pb.TagNumber(8)
   $core.bool hasIPadOptions() => $_has(7);
   @$pb.TagNumber(8)
-  void clearIPadOptions() => clearField(8);
+  void clearIPadOptions() => $_clearField(8);
   @$pb.TagNumber(8)
   IPadOptions ensureIPadOptions() => $_ensure(7);
 
   @$pb.TagNumber(9)
   ScreenResolution get res => $_getN(8);
   @$pb.TagNumber(9)
-  set res(ScreenResolution v) { setField(9, v); }
+  set res(ScreenResolution v) { $_setField(9, v); }
   @$pb.TagNumber(9)
   $core.bool hasRes() => $_has(8);
   @$pb.TagNumber(9)
-  void clearRes() => clearField(9);
+  void clearRes() => $_clearField(9);
   @$pb.TagNumber(9)
   ScreenResolution ensureRes() => $_ensure(8);
 
@@ -1671,16 +1491,16 @@ class Options extends $pb.GeneratedMessage {
   @$pb.TagNumber(10)
   $core.bool hasHp() => $_has(9);
   @$pb.TagNumber(10)
-  void clearHp() => clearField(10);
+  void clearHp() => $_clearField(10);
 
   @$pb.TagNumber(11)
   Options_eyeUse get eyeUsage => $_getN(10);
   @$pb.TagNumber(11)
-  set eyeUsage(Options_eyeUse v) { setField(11, v); }
+  set eyeUsage(Options_eyeUse v) { $_setField(11, v); }
   @$pb.TagNumber(11)
   $core.bool hasEyeUsage() => $_has(10);
   @$pb.TagNumber(11)
-  void clearEyeUsage() => clearField(11);
+  void clearEyeUsage() => $_clearField(11);
 
   @$pb.TagNumber(12)
   $core.bool get enableTrackingDetails => $_getBF(11);
@@ -1689,7 +1509,7 @@ class Options extends $pb.GeneratedMessage {
   @$pb.TagNumber(12)
   $core.bool hasEnableTrackingDetails() => $_has(11);
   @$pb.TagNumber(12)
-  void clearEnableTrackingDetails() => clearField(12);
+  void clearEnableTrackingDetails() => $_clearField(12);
 }
 
 enum IPadOptions_OptionalModel {
@@ -1733,15 +1553,9 @@ class IPadOptions extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   IPadOptions clone() => IPadOptions()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   IPadOptions copyWith(void Function(IPadOptions) updates) => super.copyWith((message) => updates(message as IPadOptions)) as IPadOptions;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1755,7 +1569,7 @@ class IPadOptions extends $pb.GeneratedMessage {
   static IPadOptions? _defaultInstance;
 
   IPadOptions_OptionalModel whichOptionalModel() => _IPadOptions_OptionalModelByTag[$_whichOneof(0)]!;
-  void clearOptionalModel() => clearField($_whichOneof(0));
+  void clearOptionalModel() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
   $core.bool get isOldiOS => $_getBF(0);
@@ -1764,7 +1578,7 @@ class IPadOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasIsOldiOS() => $_has(0);
   @$pb.TagNumber(1)
-  void clearIsOldiOS() => clearField(1);
+  void clearIsOldiOS() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.bool get isNotZoomed => $_getBF(1);
@@ -1773,16 +1587,16 @@ class IPadOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasIsNotZoomed() => $_has(1);
   @$pb.TagNumber(2)
-  void clearIsNotZoomed() => clearField(2);
+  void clearIsNotZoomed() => $_clearField(2);
 
   @$pb.TagNumber(3)
   IPadOptions_iPadModel get model => $_getN(2);
   @$pb.TagNumber(3)
-  set model(IPadOptions_iPadModel v) { setField(3, v); }
+  set model(IPadOptions_iPadModel v) { $_setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasModel() => $_has(2);
   @$pb.TagNumber(3)
-  void clearModel() => clearField(3);
+  void clearModel() => $_clearField(3);
 }
 
 /// *
@@ -1836,15 +1650,9 @@ class DeviceVersions extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   DeviceVersions clone() => DeviceVersions()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   DeviceVersions copyWith(void Function(DeviceVersions) updates) => super.copyWith((message) => updates(message as DeviceVersions)) as DeviceVersions;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1864,7 +1672,7 @@ class DeviceVersions extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasFirmware() => $_has(0);
   @$pb.TagNumber(1)
-  void clearFirmware() => clearField(1);
+  void clearFirmware() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get eyetracker => $_getSZ(1);
@@ -1873,7 +1681,7 @@ class DeviceVersions extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasEyetracker() => $_has(1);
   @$pb.TagNumber(2)
-  void clearEyetracker() => clearField(2);
+  void clearEyetracker() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.String get calib => $_getSZ(2);
@@ -1882,7 +1690,7 @@ class DeviceVersions extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasCalib() => $_has(2);
   @$pb.TagNumber(3)
-  void clearCalib() => clearField(3);
+  void clearCalib() => $_clearField(3);
 
   @$pb.TagNumber(4)
   $core.String get base => $_getSZ(3);
@@ -1891,7 +1699,7 @@ class DeviceVersions extends $pb.GeneratedMessage {
   @$pb.TagNumber(4)
   $core.bool hasBase() => $_has(3);
   @$pb.TagNumber(4)
-  void clearBase() => clearField(4);
+  void clearBase() => $_clearField(4);
 
   @$pb.TagNumber(5)
   $fixnum.Int64 get serial => $_getI64(4);
@@ -1900,7 +1708,7 @@ class DeviceVersions extends $pb.GeneratedMessage {
   @$pb.TagNumber(5)
   $core.bool hasSerial() => $_has(4);
   @$pb.TagNumber(5)
-  void clearSerial() => clearField(5);
+  void clearSerial() => $_clearField(5);
 
   @$pb.TagNumber(6)
   $core.int get skyleType => $_getIZ(5);
@@ -1909,7 +1717,7 @@ class DeviceVersions extends $pb.GeneratedMessage {
   @$pb.TagNumber(6)
   $core.bool hasSkyleType() => $_has(5);
   @$pb.TagNumber(6)
-  void clearSkyleType() => clearField(6);
+  void clearSkyleType() => $_clearField(6);
 
   @$pb.TagNumber(7)
   $core.bool get isDemo => $_getBF(6);
@@ -1918,7 +1726,7 @@ class DeviceVersions extends $pb.GeneratedMessage {
   @$pb.TagNumber(7)
   $core.bool hasIsDemo() => $_has(6);
   @$pb.TagNumber(7)
-  void clearIsDemo() => clearField(7);
+  void clearIsDemo() => $_clearField(7);
 }
 
 /// *
@@ -1952,15 +1760,9 @@ class ButtonActions extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ButtonActions clone() => ButtonActions()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ButtonActions copyWith(void Function(ButtonActions) updates) => super.copyWith((message) => updates(message as ButtonActions)) as ButtonActions;
 
   $pb.BuilderInfo get info_ => _i;
@@ -1980,7 +1782,7 @@ class ButtonActions extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasSingleClick() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSingleClick() => clearField(1);
+  void clearSingleClick() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.String get doubleClick => $_getSZ(1);
@@ -1989,7 +1791,7 @@ class ButtonActions extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasDoubleClick() => $_has(1);
   @$pb.TagNumber(2)
-  void clearDoubleClick() => clearField(2);
+  void clearDoubleClick() => $_clearField(2);
 
   @$pb.TagNumber(3)
   $core.String get holdClick => $_getSZ(2);
@@ -1998,7 +1800,7 @@ class ButtonActions extends $pb.GeneratedMessage {
   @$pb.TagNumber(3)
   $core.bool hasHoldClick() => $_has(2);
   @$pb.TagNumber(3)
-  void clearHoldClick() => clearField(3);
+  void clearHoldClick() => $_clearField(3);
 }
 
 /// *
@@ -2032,15 +1834,9 @@ class Button extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Button clone() => Button()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Button copyWith(void Function(Button) updates) => super.copyWith((message) => updates(message as Button)) as Button;
 
   $pb.BuilderInfo get info_ => _i;
@@ -2060,21 +1856,21 @@ class Button extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasIsPresent() => $_has(0);
   @$pb.TagNumber(1)
-  void clearIsPresent() => clearField(1);
+  void clearIsPresent() => $_clearField(1);
 
   @$pb.TagNumber(2)
   ButtonActions get buttonActions => $_getN(1);
   @$pb.TagNumber(2)
-  set buttonActions(ButtonActions v) { setField(2, v); }
+  set buttonActions(ButtonActions v) { $_setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasButtonActions() => $_has(1);
   @$pb.TagNumber(2)
-  void clearButtonActions() => clearField(2);
+  void clearButtonActions() => $_clearField(2);
   @$pb.TagNumber(2)
   ButtonActions ensureButtonActions() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $core.List<$core.String> get availableActions => $_getList(2);
+  $pb.PbList<$core.String> get availableActions => $_getList(2);
 }
 
 /// *
@@ -2103,15 +1899,9 @@ class FilterOptions extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   FilterOptions clone() => FilterOptions()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   FilterOptions copyWith(void Function(FilterOptions) updates) => super.copyWith((message) => updates(message as FilterOptions)) as FilterOptions;
 
   $pb.BuilderInfo get info_ => _i;
@@ -2131,7 +1921,7 @@ class FilterOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(1)
   $core.bool hasFixationFilter() => $_has(0);
   @$pb.TagNumber(1)
-  void clearFixationFilter() => clearField(1);
+  void clearFixationFilter() => $_clearField(1);
 
   @$pb.TagNumber(2)
   $core.int get gazeFilter => $_getIZ(1);
@@ -2140,7 +1930,7 @@ class FilterOptions extends $pb.GeneratedMessage {
   @$pb.TagNumber(2)
   $core.bool hasGazeFilter() => $_has(1);
   @$pb.TagNumber(2)
-  void clearGazeFilter() => clearField(2);
+  void clearGazeFilter() => $_clearField(2);
 }
 
 

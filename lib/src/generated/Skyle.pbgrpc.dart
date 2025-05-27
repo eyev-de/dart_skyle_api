@@ -2,7 +2,7 @@
 //  Generated code. Do not modify.
 //  source: Skyle.proto
 //
-// @dart = 2.12
+// @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
 // ignore_for_file: constant_identifier_names, library_prefixes
@@ -21,8 +21,18 @@ import 'google/protobuf/empty.pb.dart' as $1;
 
 export 'Skyle.pb.dart';
 
+/// *
+///  Skyle service to use the eye tracker
 @$pb.GrpcServiceName('Skyle.Skyle')
 class SkyleClient extends $grpc.Client {
+  /// The hostname for this service.
+  static const $core.String defaultHost = '';
+
+  /// OAuth scopes needed for the client.
+  static const $core.List<$core.String> oauthScopes = [
+    '',
+  ];
+
   static final _$calibrate = $grpc.ClientMethod<$0.CalibControlMessages, $0.CalibMessages>(
       '/Skyle.Skyle/Calibrate',
       ($0.CalibControlMessages value) => value.writeToBuffer(),
@@ -83,20 +93,16 @@ class SkyleClient extends $grpc.Client {
       '/Skyle.Skyle/CursorCalibration',
       ($0.CalibCursorMessages value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.Point.fromBuffer(value));
-  static final _$rawImages = $grpc.ClientMethod<$1.Empty, $0.RawImage>(
+  static final _$rawImages = $grpc.ClientMethod<$1.Empty, $2.RawImage>(
       '/Skyle.Skyle/RawImages',
       ($1.Empty value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.RawImage.fromBuffer(value));
+      ($core.List<$core.int> value) => $2.RawImage.fromBuffer(value));
   static final _$rawBinocularGaze = $grpc.ClientMethod<$1.Empty, $0.BinocularGaze>(
       '/Skyle.Skyle/RawBinocularGaze',
       ($1.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.BinocularGaze.fromBuffer(value));
 
-  SkyleClient($grpc.ClientChannel channel,
-      {$grpc.CallOptions? options,
-      $core.Iterable<$grpc.ClientInterceptor>? interceptors})
-      : super(channel, options: options,
-        interceptors: interceptors);
+  SkyleClient(super.channel, {super.options, super.interceptors});
 
   $grpc.ResponseStream<$0.CalibMessages> calibrate($async.Stream<$0.CalibControlMessages> request, {$grpc.CallOptions? options}) {
     return $createStreamingCall(_$calibrate, request, options: options);
@@ -158,7 +164,7 @@ class SkyleClient extends $grpc.Client {
     return $createStreamingCall(_$cursorCalibration, request, options: options);
   }
 
-  $grpc.ResponseStream<$0.RawImage> rawImages($1.Empty request, {$grpc.CallOptions? options}) {
+  $grpc.ResponseStream<$2.RawImage> rawImages($1.Empty request, {$grpc.CallOptions? options}) {
     return $createStreamingCall(_$rawImages, $async.Stream.fromIterable([request]), options: options);
   }
 
@@ -277,13 +283,13 @@ abstract class SkyleServiceBase extends $grpc.Service {
         true,
         ($core.List<$core.int> value) => $0.CalibCursorMessages.fromBuffer(value),
         ($2.Point value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$1.Empty, $0.RawImage>(
+    $addMethod($grpc.ServiceMethod<$1.Empty, $2.RawImage>(
         'RawImages',
         rawImages_Pre,
         false,
         true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
-        ($0.RawImage value) => value.writeToBuffer()));
+        ($2.RawImage value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $0.BinocularGaze>(
         'RawBinocularGaze',
         rawBinocularGaze_Pre,
@@ -293,60 +299,60 @@ abstract class SkyleServiceBase extends $grpc.Service {
         ($0.BinocularGaze value) => value.writeToBuffer()));
   }
 
-  $async.Stream<$0.PositioningMessage> positioning_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* positioning(call, await request);
+  $async.Stream<$0.PositioningMessage> positioning_Pre($grpc.ServiceCall $call, $async.Future<$1.Empty> $request) async* {
+    yield* positioning($call, await $request);
   }
 
-  $async.Stream<$2.Point> gaze_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* gaze(call, await request);
+  $async.Stream<$2.Point> gaze_Pre($grpc.ServiceCall $call, $async.Future<$1.Empty> $request) async* {
+    yield* gaze($call, await $request);
   }
 
-  $async.Stream<$0.TriggerMessage> trigger_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* trigger(call, await request);
+  $async.Stream<$0.TriggerMessage> trigger_Pre($grpc.ServiceCall $call, $async.Future<$1.Empty> $request) async* {
+    yield* trigger($call, await $request);
   }
 
-  $async.Future<$0.Button> getButton_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
-    return getButton(call, await request);
+  $async.Future<$0.Button> getButton_Pre($grpc.ServiceCall $call, $async.Future<$1.Empty> $request) async {
+    return getButton($call, await $request);
   }
 
-  $async.Future<$0.ButtonActions> setButton_Pre($grpc.ServiceCall call, $async.Future<$0.ButtonActions> request) async {
-    return setButton(call, await request);
+  $async.Future<$0.ButtonActions> setButton_Pre($grpc.ServiceCall $call, $async.Future<$0.ButtonActions> $request) async {
+    return setButton($call, await $request);
   }
 
-  $async.Future<$0.Options> configure_Pre($grpc.ServiceCall call, $async.Future<$0.OptionMessage> request) async {
-    return configure(call, await request);
+  $async.Future<$0.Options> configure_Pre($grpc.ServiceCall $call, $async.Future<$0.OptionMessage> $request) async {
+    return configure($call, await $request);
   }
 
-  $async.Future<$0.DeviceVersions> getVersions_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
-    return getVersions(call, await request);
+  $async.Future<$0.DeviceVersions> getVersions_Pre($grpc.ServiceCall $call, $async.Future<$1.Empty> $request) async {
+    return getVersions($call, await $request);
   }
 
-  $async.Stream<$0.Profile> getProfiles_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* getProfiles(call, await request);
+  $async.Stream<$0.Profile> getProfiles_Pre($grpc.ServiceCall $call, $async.Future<$1.Empty> $request) async* {
+    yield* getProfiles($call, await $request);
   }
 
-  $async.Future<$0.Profile> currentProfile_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async {
-    return currentProfile(call, await request);
+  $async.Future<$0.Profile> currentProfile_Pre($grpc.ServiceCall $call, $async.Future<$1.Empty> $request) async {
+    return currentProfile($call, await $request);
   }
 
-  $async.Future<$0.StatusMessage> setProfile_Pre($grpc.ServiceCall call, $async.Future<$0.Profile> request) async {
-    return setProfile(call, await request);
+  $async.Future<$0.StatusMessage> setProfile_Pre($grpc.ServiceCall $call, $async.Future<$0.Profile> $request) async {
+    return setProfile($call, await $request);
   }
 
-  $async.Future<$0.StatusMessage> deleteProfile_Pre($grpc.ServiceCall call, $async.Future<$0.Profile> request) async {
-    return deleteProfile(call, await request);
+  $async.Future<$0.StatusMessage> deleteProfile_Pre($grpc.ServiceCall $call, $async.Future<$0.Profile> $request) async {
+    return deleteProfile($call, await $request);
   }
 
-  $async.Future<$0.StatusMessage> reset_Pre($grpc.ServiceCall call, $async.Future<$0.ResetMessage> request) async {
-    return reset(call, await request);
+  $async.Future<$0.StatusMessage> reset_Pre($grpc.ServiceCall $call, $async.Future<$0.ResetMessage> $request) async {
+    return reset($call, await $request);
   }
 
-  $async.Stream<$0.RawImage> rawImages_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* rawImages(call, await request);
+  $async.Stream<$2.RawImage> rawImages_Pre($grpc.ServiceCall $call, $async.Future<$1.Empty> $request) async* {
+    yield* rawImages($call, await $request);
   }
 
-  $async.Stream<$0.BinocularGaze> rawBinocularGaze_Pre($grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* rawBinocularGaze(call, await request);
+  $async.Stream<$0.BinocularGaze> rawBinocularGaze_Pre($grpc.ServiceCall $call, $async.Future<$1.Empty> $request) async* {
+    yield* rawBinocularGaze($call, await $request);
   }
 
   $async.Stream<$0.CalibMessages> calibrate($grpc.ServiceCall call, $async.Stream<$0.CalibControlMessages> request);
@@ -364,6 +370,6 @@ abstract class SkyleServiceBase extends $grpc.Service {
   $async.Future<$0.StatusMessage> deleteProfile($grpc.ServiceCall call, $0.Profile request);
   $async.Future<$0.StatusMessage> reset($grpc.ServiceCall call, $0.ResetMessage request);
   $async.Stream<$2.Point> cursorCalibration($grpc.ServiceCall call, $async.Stream<$0.CalibCursorMessages> request);
-  $async.Stream<$0.RawImage> rawImages($grpc.ServiceCall call, $1.Empty request);
+  $async.Stream<$2.RawImage> rawImages($grpc.ServiceCall call, $1.Empty request);
   $async.Stream<$0.BinocularGaze> rawBinocularGaze($grpc.ServiceCall call, $1.Empty request);
 }

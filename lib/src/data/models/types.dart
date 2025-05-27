@@ -146,7 +146,7 @@ class RawImage with _$RawImage {
 
   factory RawImage.fromJson(Map<String, Object?> json) => _$RawImageFromJson(json);
 
-  factory RawImage.fromRawImage(grpc.RawImage rawImage) {
+  factory RawImage.fromRawImage(types.RawImage rawImage) {
     return RawImage(width: rawImage.width, height: rawImage.height, data: rawImage.data);
   }
 }
