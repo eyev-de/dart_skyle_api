@@ -3,7 +3,7 @@ description: Dart implementation of the Skyle API.
 version: 0.0.1
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: ">=3.6.0 <4.0.0"
 
 dependencies:
   collection: ^1.17.0
