@@ -13,7 +13,7 @@ part 'switch.freezed.dart';
 part 'switch.g.dart';
 
 @freezed
-class Switch with _$Switch {
+sealed class Switch with _$Switch {
   const factory Switch({
     required bool isPresent,
     required SwitchActions actions,

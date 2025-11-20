@@ -10,7 +10,7 @@ part 'positioning_quality.freezed.dart';
 part 'positioning_quality.g.dart';
 
 @freezed
-class PositioningQuality with _$PositioningQuality {
+sealed class PositioningQuality with _$PositioningQuality {
   const factory PositioningQuality({
     @Default(0) int horizontal,
     @Default(0) int vertical,

@@ -8,9 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/repositories/positioning_repository.dart';
 import '../../../generated/Skyle.pb.dart' as grpc;
-
 import '../types.dart';
-
 import 'positioning_distance.dart';
 import 'positioning_eyes.dart';
 import 'positioning_quality.dart';
@@ -19,7 +17,7 @@ part 'positioning_message.freezed.dart';
 part 'positioning_message.g.dart';
 
 @freezed
-class PositioningMessage with _$PositioningMessage {
+sealed class PositioningMessage with _$PositioningMessage {
   const factory PositioningMessage({
     @Default(PositioningEyes()) PositioningEyes eyes,
     @Default(PositioningQuality()) PositioningQuality quality,

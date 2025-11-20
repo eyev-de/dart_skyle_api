@@ -6,15 +6,14 @@ part of 'ipados.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$IPadOSImpl _$$IPadOSImplFromJson(Map<String, dynamic> json) => _$IPadOSImpl(
+_IPadOS _$IPadOSFromJson(Map<String, dynamic> json) => _IPadOS(
       isOld: json['isOld'] as bool? ?? false,
       isNotZoomed: json['isNotZoomed'] as bool? ?? false,
       iPadModel: $enumDecodeNullable(_$IPadModelEnumMap, json['iPadModel']) ??
           IPadModel.iPad13_10,
     );
 
-Map<String, dynamic> _$$IPadOSImplToJson(_$IPadOSImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$IPadOSToJson(_IPadOS instance) => <String, dynamic>{
       'isOld': instance.isOld,
       'isNotZoomed': instance.isNotZoomed,
       'iPadModel': _$IPadModelEnumMap[instance.iPadModel],

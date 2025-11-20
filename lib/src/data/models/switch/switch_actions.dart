@@ -12,7 +12,7 @@ part 'switch_actions.freezed.dart';
 part 'switch_actions.g.dart';
 
 @freezed
-class SwitchActions with _$SwitchActions {
+sealed class SwitchActions with _$SwitchActions {
   const factory SwitchActions({
     required String singleClick,
     required String doubleClick,

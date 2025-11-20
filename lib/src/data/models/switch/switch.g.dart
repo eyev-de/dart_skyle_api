@@ -6,7 +6,7 @@ part of 'switch.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SwitchImpl _$$SwitchImplFromJson(Map<String, dynamic> json) => _$SwitchImpl(
+_Switch _$SwitchFromJson(Map<String, dynamic> json) => _Switch(
       isPresent: json['isPresent'] as bool,
       actions: SwitchActions.fromJson(json['actions'] as Map<String, dynamic>),
       availableActions: (json['availableActions'] as List<dynamic>)
@@ -14,8 +14,7 @@ _$SwitchImpl _$$SwitchImplFromJson(Map<String, dynamic> json) => _$SwitchImpl(
           .toList(),
     );
 
-Map<String, dynamic> _$$SwitchImplToJson(_$SwitchImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$SwitchToJson(_Switch instance) => <String, dynamic>{
       'isPresent': instance.isPresent,
       'actions': instance.actions,
       'availableActions': instance.availableActions,
