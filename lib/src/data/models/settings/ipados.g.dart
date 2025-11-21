@@ -7,17 +7,18 @@ part of 'ipados.dart';
 // **************************************************************************
 
 _IPadOS _$IPadOSFromJson(Map<String, dynamic> json) => _IPadOS(
-      isOld: json['isOld'] as bool? ?? false,
-      isNotZoomed: json['isNotZoomed'] as bool? ?? false,
-      iPadModel: $enumDecodeNullable(_$IPadModelEnumMap, json['iPadModel']) ??
-          IPadModel.iPad13_10,
-    );
+  isOld: json['isOld'] as bool? ?? false,
+  isNotZoomed: json['isNotZoomed'] as bool? ?? false,
+  iPadModel:
+      $enumDecodeNullable(_$IPadModelEnumMap, json['iPadModel']) ??
+      IPadModel.iPad13_10,
+);
 
 Map<String, dynamic> _$IPadOSToJson(_IPadOS instance) => <String, dynamic>{
-      'isOld': instance.isOld,
-      'isNotZoomed': instance.isNotZoomed,
-      'iPadModel': _$IPadModelEnumMap[instance.iPadModel],
-    };
+  'isOld': instance.isOld,
+  'isNotZoomed': instance.isNotZoomed,
+  'iPadModel': _$IPadModelEnumMap[instance.iPadModel],
+};
 
 const _$IPadModelEnumMap = {
   IPadModel.iPad16_3: 'iPad16_3',
