@@ -12,7 +12,7 @@ part 'positioning_eyes.freezed.dart';
 part 'positioning_eyes.g.dart';
 
 @freezed
-class PositioningEyes with _$PositioningEyes {
+sealed class PositioningEyes with _$PositioningEyes {
   const factory PositioningEyes({
     @Default(Point()) Point left,
     @Default(Point()) Point right,

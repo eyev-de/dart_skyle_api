@@ -6,29 +6,27 @@ part of 'types.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$PointImpl _$$PointImplFromJson(Map<String, dynamic> json) => _$PointImpl(
+_Point _$PointFromJson(Map<String, dynamic> json) => _Point(
       x: (json['x'] as num?)?.toDouble() ?? 0.0,
       y: (json['y'] as num?)?.toDouble() ?? 0.0,
     );
 
-Map<String, dynamic> _$$PointImplToJson(_$PointImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PointToJson(_Point instance) => <String, dynamic>{
       'x': instance.x,
       'y': instance.y,
     };
 
-_$SizeImpl _$$SizeImplFromJson(Map<String, dynamic> json) => _$SizeImpl(
+_Size _$SizeFromJson(Map<String, dynamic> json) => _Size(
       width: (json['width'] as num?)?.toDouble() ?? 0.0,
       height: (json['height'] as num?)?.toDouble() ?? 0.0,
     );
 
-Map<String, dynamic> _$$SizeImplToJson(_$SizeImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$SizeToJson(_Size instance) => <String, dynamic>{
       'width': instance.width,
       'height': instance.height,
     };
 
-_$RectImpl _$$RectImplFromJson(Map<String, dynamic> json) => _$RectImpl(
+_Rect _$RectFromJson(Map<String, dynamic> json) => _Rect(
       topLeft: json['topLeft'] == null
           ? const Point()
           : Point.fromJson(json['topLeft'] as Map<String, dynamic>),
@@ -37,25 +35,22 @@ _$RectImpl _$$RectImplFromJson(Map<String, dynamic> json) => _$RectImpl(
           : Size.fromJson(json['size'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$RectImplToJson(_$RectImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$RectToJson(_Rect instance) => <String, dynamic>{
       'topLeft': instance.topLeft,
       'size': instance.size,
     };
 
-_$FeatureImpl _$$FeatureImplFromJson(Map<String, dynamic> json) =>
-    _$FeatureImpl(
+_Feature _$FeatureFromJson(Map<String, dynamic> json) => _Feature(
       center: json['center'] == null
           ? const Point()
           : Point.fromJson(json['center'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$FeatureImplToJson(_$FeatureImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$FeatureToJson(_Feature instance) => <String, dynamic>{
       'center': instance.center,
     };
 
-_$GlintsImpl _$$GlintsImplFromJson(Map<String, dynamic> json) => _$GlintsImpl(
+_Glints _$GlintsFromJson(Map<String, dynamic> json) => _Glints(
       left: json['left'] == null
           ? const Feature()
           : Feature.fromJson(json['left'] as Map<String, dynamic>),
@@ -64,13 +59,12 @@ _$GlintsImpl _$$GlintsImplFromJson(Map<String, dynamic> json) => _$GlintsImpl(
           : Feature.fromJson(json['right'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$GlintsImplToJson(_$GlintsImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$GlintsToJson(_Glints instance) => <String, dynamic>{
       'left': instance.left,
       'right': instance.right,
     };
 
-_$EyeImpl _$$EyeImplFromJson(Map<String, dynamic> json) => _$EyeImpl(
+_Eye _$EyeFromJson(Map<String, dynamic> json) => _Eye(
       keyPoint: json['keyPoint'] == null
           ? const Point()
           : Point.fromJson(json['keyPoint'] as Map<String, dynamic>),
@@ -86,7 +80,7 @@ _$EyeImpl _$$EyeImplFromJson(Map<String, dynamic> json) => _$EyeImpl(
       distance: (json['distance'] as num?)?.toDouble() ?? 0.0,
     );
 
-Map<String, dynamic> _$$EyeImplToJson(_$EyeImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$EyeToJson(_Eye instance) => <String, dynamic>{
       'keyPoint': instance.keyPoint,
       'iris': instance.iris,
       'pupil': instance.pupil,
@@ -94,7 +88,7 @@ Map<String, dynamic> _$$EyeImplToJson(_$EyeImpl instance) => <String, dynamic>{
       'distance': instance.distance,
     };
 
-_$EyesImpl _$$EyesImplFromJson(Map<String, dynamic> json) => _$EyesImpl(
+_Eyes _$EyesFromJson(Map<String, dynamic> json) => _Eyes(
       left: json['left'] == null
           ? const Eye()
           : Eye.fromJson(json['left'] as Map<String, dynamic>),
@@ -103,13 +97,12 @@ _$EyesImpl _$$EyesImplFromJson(Map<String, dynamic> json) => _$EyesImpl(
           : Eye.fromJson(json['right'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$EyesImplToJson(_$EyesImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$EyesToJson(_Eyes instance) => <String, dynamic>{
       'left': instance.left,
       'right': instance.right,
     };
 
-_$FaceImpl _$$FaceImplFromJson(Map<String, dynamic> json) => _$FaceImpl(
+_Face _$FaceFromJson(Map<String, dynamic> json) => _Face(
       boundingRect: json['boundingRect'] == null
           ? const Rect()
           : Rect.fromJson(json['boundingRect'] as Map<String, dynamic>),
@@ -118,14 +111,12 @@ _$FaceImpl _$$FaceImplFromJson(Map<String, dynamic> json) => _$FaceImpl(
           : Eyes.fromJson(json['eyes'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$FaceImplToJson(_$FaceImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$FaceToJson(_Face instance) => <String, dynamic>{
       'boundingRect': instance.boundingRect,
       'eyes': instance.eyes,
     };
 
-_$RawImageImpl _$$RawImageImplFromJson(Map<String, dynamic> json) =>
-    _$RawImageImpl(
+_RawImage _$RawImageFromJson(Map<String, dynamic> json) => _RawImage(
       width: (json['width'] as num?)?.toInt() ?? 0,
       height: (json['height'] as num?)?.toInt() ?? 0,
       data: (json['data'] as List<dynamic>?)
@@ -134,15 +125,14 @@ _$RawImageImpl _$$RawImageImplFromJson(Map<String, dynamic> json) =>
           const [],
     );
 
-Map<String, dynamic> _$$RawImageImplToJson(_$RawImageImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$RawImageToJson(_RawImage instance) => <String, dynamic>{
       'width': instance.width,
       'height': instance.height,
       'data': instance.data,
     };
 
-_$BinocularGazeImpl _$$BinocularGazeImplFromJson(Map<String, dynamic> json) =>
-    _$BinocularGazeImpl(
+_BinocularGaze _$BinocularGazeFromJson(Map<String, dynamic> json) =>
+    _BinocularGaze(
       leftGaze: json['leftGaze'] == null
           ? const Point()
           : Point.fromJson(json['leftGaze'] as Map<String, dynamic>),
@@ -151,7 +141,7 @@ _$BinocularGazeImpl _$$BinocularGazeImplFromJson(Map<String, dynamic> json) =>
           : Point.fromJson(json['rightGaze'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$BinocularGazeImplToJson(_$BinocularGazeImpl instance) =>
+Map<String, dynamic> _$BinocularGazeToJson(_BinocularGaze instance) =>
     <String, dynamic>{
       'leftGaze': instance.leftGaze,
       'rightGaze': instance.rightGaze,

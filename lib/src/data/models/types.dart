@@ -13,7 +13,7 @@ part 'types.freezed.dart';
 part 'types.g.dart';
 
 @freezed
-class Point with _$Point {
+sealed class Point with _$Point {
   const factory Point({
     @Default(0.0) double x,
     @Default(0.0) double y,
@@ -36,7 +36,7 @@ class Point with _$Point {
 }
 
 @freezed
-class Size with _$Size {
+sealed class Size with _$Size {
   const factory Size({
     @Default(0.0) double width,
     @Default(0.0) double height,
@@ -49,7 +49,7 @@ class Size with _$Size {
 }
 
 @freezed
-class Rect with _$Rect {
+sealed class Rect with _$Rect {
   const factory Rect({
     @Default(Point()) Point topLeft,
     @Default(Size()) Size size,
@@ -62,7 +62,7 @@ class Rect with _$Rect {
 }
 
 @freezed
-class Feature with _$Feature {
+sealed class Feature with _$Feature {
   const factory Feature({
     @Default(Point()) Point center,
   }) = _Feature;
@@ -74,7 +74,7 @@ class Feature with _$Feature {
 }
 
 @freezed
-class Glints with _$Glints {
+sealed class Glints with _$Glints {
   const factory Glints({
     @Default(Feature()) Feature left,
     @Default(Feature()) Feature right,
@@ -87,7 +87,7 @@ class Glints with _$Glints {
 }
 
 @freezed
-class Eye with _$Eye {
+sealed class Eye with _$Eye {
   const factory Eye({
     @Default(Point()) Point keyPoint,
     @Default(Feature()) Feature iris,
@@ -109,7 +109,7 @@ class Eye with _$Eye {
 }
 
 @freezed
-class Eyes with _$Eyes {
+sealed class Eyes with _$Eyes {
   const factory Eyes({
     @Default(Eye()) Eye left,
     @Default(Eye()) Eye right,
@@ -122,7 +122,7 @@ class Eyes with _$Eyes {
 }
 
 @freezed
-class Face with _$Face {
+sealed class Face with _$Face {
   const factory Face({
     @Default(Rect()) Rect boundingRect,
     @Default(Eyes()) Eyes eyes,
@@ -135,7 +135,7 @@ class Face with _$Face {
 }
 
 @freezed
-class RawImage with _$RawImage {
+sealed class RawImage with _$RawImage {
   const factory RawImage({
     @Default(0) int width,
     @Default(0) int height,
@@ -167,7 +167,7 @@ enum Trigger {
 }
 
 @freezed
-class BinocularGaze with _$BinocularGaze {
+sealed class BinocularGaze with _$BinocularGaze {
   const factory BinocularGaze({
     @Default(Point()) Point leftGaze,
     @Default(Point()) Point rightGaze,

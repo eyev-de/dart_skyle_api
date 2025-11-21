@@ -6,8 +6,7 @@ part of 'versions.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$VersionsImpl _$$VersionsImplFromJson(Map<String, dynamic> json) =>
-    _$VersionsImpl(
+_Versions _$VersionsFromJson(Map<String, dynamic> json) => _Versions(
       firmware: json['firmware'] as String,
       eyetracker: json['eyetracker'] as String,
       calib: json['calib'] as String,
@@ -17,8 +16,7 @@ _$VersionsImpl _$$VersionsImplFromJson(Map<String, dynamic> json) =>
       isDemo: json['isDemo'] as bool,
     );
 
-Map<String, dynamic> _$$VersionsImplToJson(_$VersionsImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$VersionsToJson(_Versions instance) => <String, dynamic>{
       'firmware': instance.firmware,
       'eyetracker': instance.eyetracker,
       'calib': instance.calib,

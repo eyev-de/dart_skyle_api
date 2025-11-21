@@ -13,7 +13,7 @@ part 'ipados.freezed.dart';
 part 'ipados.g.dart';
 
 @freezed
-class IPadOS with _$IPadOS {
+sealed class IPadOS with _$IPadOS {
   const factory IPadOS({
     @Default(false) bool? isOld,
     @Default(false) bool? isNotZoomed,

@@ -7,14 +7,13 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../generated/Skyle.pb.dart';
-
 import '../types.dart';
 
 part 'screen_sizes.freezed.dart';
 part 'screen_sizes.g.dart';
 
 @freezed
-class ScreenSizes with _$ScreenSizes {
+sealed class ScreenSizes with _$ScreenSizes {
   const factory ScreenSizes({
     @Default(Size(width: 1920, height: 1080)) Size resolution,
     Size? dimensions,

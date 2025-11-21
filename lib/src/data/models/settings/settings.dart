@@ -16,7 +16,7 @@ part 'settings.freezed.dart';
 part 'settings.g.dart';
 
 @freezed
-class Settings with _$Settings {
+sealed class Settings with _$Settings {
   const factory Settings({
     @Default(false) bool video,
     @Default(false) bool enablePause,

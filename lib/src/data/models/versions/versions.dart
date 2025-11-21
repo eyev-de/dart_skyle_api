@@ -10,7 +10,7 @@ part 'versions.freezed.dart';
 part 'versions.g.dart';
 
 @freezed
-class Versions with _$Versions {
+sealed class Versions with _$Versions {
   const factory Versions({
     required String firmware,
     required String eyetracker,
