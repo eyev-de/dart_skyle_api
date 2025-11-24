@@ -167,7 +167,9 @@ linter:
     - use_to_and_as_if_applicable
     - valid_regexps
     - void_checks
-  
+
+formatter:
+  trailing_commas: preserve
 analyzer:
   exclude:
     - lib/src/generated/**

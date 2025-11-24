@@ -17,7 +17,4 @@ _PositioningEyes _$PositioningEyesFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$PositioningEyesToJson(_PositioningEyes instance) =>
-    <String, dynamic>{
-      'left': instance.left,
-      'right': instance.right,
-    };
+    <String, dynamic>{'left': instance.left, 'right': instance.right};

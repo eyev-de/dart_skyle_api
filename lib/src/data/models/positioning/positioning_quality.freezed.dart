@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,198 +9,269 @@ part of 'positioning_quality.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-PositioningQuality _$PositioningQualityFromJson(Map<String, dynamic> json) {
-  return _PositioningQuality.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PositioningQuality {
-  int get horizontal => throw _privateConstructorUsedError;
-  int get vertical => throw _privateConstructorUsedError;
-  int get depth => throw _privateConstructorUsedError;
+
+ int get horizontal; int get vertical; int get depth;
+/// Create a copy of PositioningQuality
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PositioningQualityCopyWith<PositioningQuality> get copyWith => _$PositioningQualityCopyWithImpl<PositioningQuality>(this as PositioningQuality, _$identity);
 
   /// Serializes this PositioningQuality to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of PositioningQuality
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PositioningQualityCopyWith<PositioningQuality> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PositioningQuality&&(identical(other.horizontal, horizontal) || other.horizontal == horizontal)&&(identical(other.vertical, vertical) || other.vertical == vertical)&&(identical(other.depth, depth) || other.depth == depth));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,horizontal,vertical,depth);
+
+@override
+String toString() {
+  return 'PositioningQuality(horizontal: $horizontal, vertical: $vertical, depth: $depth)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PositioningQualityCopyWith<$Res> {
-  factory $PositioningQualityCopyWith(
-          PositioningQuality value, $Res Function(PositioningQuality) then) =
-      _$PositioningQualityCopyWithImpl<$Res, PositioningQuality>;
-  @useResult
-  $Res call({int horizontal, int vertical, int depth});
-}
+abstract mixin class $PositioningQualityCopyWith<$Res>  {
+  factory $PositioningQualityCopyWith(PositioningQuality value, $Res Function(PositioningQuality) _then) = _$PositioningQualityCopyWithImpl;
+@useResult
+$Res call({
+ int horizontal, int vertical, int depth
+});
 
+
+
+
+}
 /// @nodoc
-class _$PositioningQualityCopyWithImpl<$Res, $Val extends PositioningQuality>
+class _$PositioningQualityCopyWithImpl<$Res>
     implements $PositioningQualityCopyWith<$Res> {
-  _$PositioningQualityCopyWithImpl(this._value, this._then);
+  _$PositioningQualityCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PositioningQuality _self;
+  final $Res Function(PositioningQuality) _then;
 
-  /// Create a copy of PositioningQuality
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? horizontal = null,
-    Object? vertical = null,
-    Object? depth = null,
-  }) {
-    return _then(_value.copyWith(
-      horizontal: null == horizontal
-          ? _value.horizontal
-          : horizontal // ignore: cast_nullable_to_non_nullable
-              as int,
-      vertical: null == vertical
-          ? _value.vertical
-          : vertical // ignore: cast_nullable_to_non_nullable
-              as int,
-      depth: null == depth
-          ? _value.depth
-          : depth // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
+/// Create a copy of PositioningQuality
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? horizontal = null,Object? vertical = null,Object? depth = null,}) {
+  return _then(_self.copyWith(
+horizontal: null == horizontal ? _self.horizontal : horizontal // ignore: cast_nullable_to_non_nullable
+as int,vertical: null == vertical ? _self.vertical : vertical // ignore: cast_nullable_to_non_nullable
+as int,depth: null == depth ? _self.depth : depth // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PositioningQualityImplCopyWith<$Res>
-    implements $PositioningQualityCopyWith<$Res> {
-  factory _$$PositioningQualityImplCopyWith(_$PositioningQualityImpl value,
-          $Res Function(_$PositioningQualityImpl) then) =
-      __$$PositioningQualityImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int horizontal, int vertical, int depth});
 }
 
-/// @nodoc
-class __$$PositioningQualityImplCopyWithImpl<$Res>
-    extends _$PositioningQualityCopyWithImpl<$Res, _$PositioningQualityImpl>
-    implements _$$PositioningQualityImplCopyWith<$Res> {
-  __$$PositioningQualityImplCopyWithImpl(_$PositioningQualityImpl _value,
-      $Res Function(_$PositioningQualityImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of PositioningQuality
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? horizontal = null,
-    Object? vertical = null,
-    Object? depth = null,
-  }) {
-    return _then(_$PositioningQualityImpl(
-      horizontal: null == horizontal
-          ? _value.horizontal
-          : horizontal // ignore: cast_nullable_to_non_nullable
-              as int,
-      vertical: null == vertical
-          ? _value.vertical
-          : vertical // ignore: cast_nullable_to_non_nullable
-              as int,
-      depth: null == depth
-          ? _value.depth
-          : depth // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+/// Adds pattern-matching-related methods to [PositioningQuality].
+extension PositioningQualityPatterns on PositioningQuality {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PositioningQuality value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PositioningQuality() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PositioningQuality value)  $default,){
+final _that = this;
+switch (_that) {
+case _PositioningQuality():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PositioningQuality value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PositioningQuality() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int horizontal,  int vertical,  int depth)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PositioningQuality() when $default != null:
+return $default(_that.horizontal,_that.vertical,_that.depth);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int horizontal,  int vertical,  int depth)  $default,) {final _that = this;
+switch (_that) {
+case _PositioningQuality():
+return $default(_that.horizontal,_that.vertical,_that.depth);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int horizontal,  int vertical,  int depth)?  $default,) {final _that = this;
+switch (_that) {
+case _PositioningQuality() when $default != null:
+return $default(_that.horizontal,_that.vertical,_that.depth);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PositioningQualityImpl implements _PositioningQuality {
-  const _$PositioningQualityImpl(
-      {this.horizontal = 0, this.vertical = 0, this.depth = 0});
 
-  factory _$PositioningQualityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PositioningQualityImplFromJson(json);
+class _PositioningQuality implements PositioningQuality {
+  const _PositioningQuality({this.horizontal = 0, this.vertical = 0, this.depth = 0});
+  factory _PositioningQuality.fromJson(Map<String, dynamic> json) => _$PositioningQualityFromJson(json);
 
-  @override
-  @JsonKey()
-  final int horizontal;
-  @override
-  @JsonKey()
-  final int vertical;
-  @override
-  @JsonKey()
-  final int depth;
+@override@JsonKey() final  int horizontal;
+@override@JsonKey() final  int vertical;
+@override@JsonKey() final  int depth;
 
-  @override
-  String toString() {
-    return 'PositioningQuality(horizontal: $horizontal, vertical: $vertical, depth: $depth)';
-  }
+/// Create a copy of PositioningQuality
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PositioningQualityCopyWith<_PositioningQuality> get copyWith => __$PositioningQualityCopyWithImpl<_PositioningQuality>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PositioningQualityImpl &&
-            (identical(other.horizontal, horizontal) ||
-                other.horizontal == horizontal) &&
-            (identical(other.vertical, vertical) ||
-                other.vertical == vertical) &&
-            (identical(other.depth, depth) || other.depth == depth));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, horizontal, vertical, depth);
-
-  /// Create a copy of PositioningQuality
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PositioningQualityImplCopyWith<_$PositioningQualityImpl> get copyWith =>
-      __$$PositioningQualityImplCopyWithImpl<_$PositioningQualityImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PositioningQualityImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PositioningQualityToJson(this, );
 }
 
-abstract class _PositioningQuality implements PositioningQuality {
-  const factory _PositioningQuality(
-      {final int horizontal,
-      final int vertical,
-      final int depth}) = _$PositioningQualityImpl;
-
-  factory _PositioningQuality.fromJson(Map<String, dynamic> json) =
-      _$PositioningQualityImpl.fromJson;
-
-  @override
-  int get horizontal;
-  @override
-  int get vertical;
-  @override
-  int get depth;
-
-  /// Create a copy of PositioningQuality
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PositioningQualityImplCopyWith<_$PositioningQualityImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PositioningQuality&&(identical(other.horizontal, horizontal) || other.horizontal == horizontal)&&(identical(other.vertical, vertical) || other.vertical == vertical)&&(identical(other.depth, depth) || other.depth == depth));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,horizontal,vertical,depth);
+
+@override
+String toString() {
+  return 'PositioningQuality(horizontal: $horizontal, vertical: $vertical, depth: $depth)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PositioningQualityCopyWith<$Res> implements $PositioningQualityCopyWith<$Res> {
+  factory _$PositioningQualityCopyWith(_PositioningQuality value, $Res Function(_PositioningQuality) _then) = __$PositioningQualityCopyWithImpl;
+@override @useResult
+$Res call({
+ int horizontal, int vertical, int depth
+});
+
+
+
+
+}
+/// @nodoc
+class __$PositioningQualityCopyWithImpl<$Res>
+    implements _$PositioningQualityCopyWith<$Res> {
+  __$PositioningQualityCopyWithImpl(this._self, this._then);
+
+  final _PositioningQuality _self;
+  final $Res Function(_PositioningQuality) _then;
+
+/// Create a copy of PositioningQuality
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? horizontal = null,Object? vertical = null,Object? depth = null,}) {
+  return _then(_PositioningQuality(
+horizontal: null == horizontal ? _self.horizontal : horizontal // ignore: cast_nullable_to_non_nullable
+as int,vertical: null == vertical ? _self.vertical : vertical // ignore: cast_nullable_to_non_nullable
+as int,depth: null == depth ? _self.depth : depth // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
+// dart format on

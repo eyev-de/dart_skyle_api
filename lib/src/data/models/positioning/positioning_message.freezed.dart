@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,270 +9,332 @@ part of 'positioning_message.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-PositioningMessage _$PositioningMessageFromJson(Map<String, dynamic> json) {
-  return _PositioningMessage.fromJson(json);
-}
 
 /// @nodoc
 mixin _$PositioningMessage {
-  PositioningEyes get eyes => throw _privateConstructorUsedError;
-  PositioningQuality get quality => throw _privateConstructorUsedError;
-  PositioningDistance get distance => throw _privateConstructorUsedError;
-  Face? get face => throw _privateConstructorUsedError;
+
+ PositioningEyes get eyes; PositioningQuality get quality; PositioningDistance get distance; Face? get face;
+/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PositioningMessageCopyWith<PositioningMessage> get copyWith => _$PositioningMessageCopyWithImpl<PositioningMessage>(this as PositioningMessage, _$identity);
 
   /// Serializes this PositioningMessage to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of PositioningMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PositioningMessageCopyWith<PositioningMessage> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PositioningMessage&&(identical(other.eyes, eyes) || other.eyes == eyes)&&(identical(other.quality, quality) || other.quality == quality)&&(identical(other.distance, distance) || other.distance == distance)&&(identical(other.face, face) || other.face == face));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,eyes,quality,distance,face);
+
+@override
+String toString() {
+  return 'PositioningMessage(eyes: $eyes, quality: $quality, distance: $distance, face: $face)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PositioningMessageCopyWith<$Res> {
-  factory $PositioningMessageCopyWith(
-          PositioningMessage value, $Res Function(PositioningMessage) then) =
-      _$PositioningMessageCopyWithImpl<$Res, PositioningMessage>;
-  @useResult
-  $Res call(
-      {PositioningEyes eyes,
-      PositioningQuality quality,
-      PositioningDistance distance,
-      Face? face});
+abstract mixin class $PositioningMessageCopyWith<$Res>  {
+  factory $PositioningMessageCopyWith(PositioningMessage value, $Res Function(PositioningMessage) _then) = _$PositioningMessageCopyWithImpl;
+@useResult
+$Res call({
+ PositioningEyes eyes, PositioningQuality quality, PositioningDistance distance, Face? face
+});
 
-  $PositioningEyesCopyWith<$Res> get eyes;
-  $PositioningQualityCopyWith<$Res> get quality;
-  $FaceCopyWith<$Res>? get face;
+
+$PositioningEyesCopyWith<$Res> get eyes;$PositioningQualityCopyWith<$Res> get quality;$FaceCopyWith<$Res>? get face;
+
 }
-
 /// @nodoc
-class _$PositioningMessageCopyWithImpl<$Res, $Val extends PositioningMessage>
+class _$PositioningMessageCopyWithImpl<$Res>
     implements $PositioningMessageCopyWith<$Res> {
-  _$PositioningMessageCopyWithImpl(this._value, this._then);
+  _$PositioningMessageCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PositioningMessage _self;
+  final $Res Function(PositioningMessage) _then;
 
-  /// Create a copy of PositioningMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? eyes = null,
-    Object? quality = null,
-    Object? distance = null,
-    Object? face = freezed,
-  }) {
-    return _then(_value.copyWith(
-      eyes: null == eyes
-          ? _value.eyes
-          : eyes // ignore: cast_nullable_to_non_nullable
-              as PositioningEyes,
-      quality: null == quality
-          ? _value.quality
-          : quality // ignore: cast_nullable_to_non_nullable
-              as PositioningQuality,
-      distance: null == distance
-          ? _value.distance
-          : distance // ignore: cast_nullable_to_non_nullable
-              as PositioningDistance,
-      face: freezed == face
-          ? _value.face
-          : face // ignore: cast_nullable_to_non_nullable
-              as Face?,
-    ) as $Val);
+/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? eyes = null,Object? quality = null,Object? distance = null,Object? face = freezed,}) {
+  return _then(_self.copyWith(
+eyes: null == eyes ? _self.eyes : eyes // ignore: cast_nullable_to_non_nullable
+as PositioningEyes,quality: null == quality ? _self.quality : quality // ignore: cast_nullable_to_non_nullable
+as PositioningQuality,distance: null == distance ? _self.distance : distance // ignore: cast_nullable_to_non_nullable
+as PositioningDistance,face: freezed == face ? _self.face : face // ignore: cast_nullable_to_non_nullable
+as Face?,
+  ));
+}
+/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PositioningEyesCopyWith<$Res> get eyes {
+  
+  return $PositioningEyesCopyWith<$Res>(_self.eyes, (value) {
+    return _then(_self.copyWith(eyes: value));
+  });
+}/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PositioningQualityCopyWith<$Res> get quality {
+  
+  return $PositioningQualityCopyWith<$Res>(_self.quality, (value) {
+    return _then(_self.copyWith(quality: value));
+  });
+}/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FaceCopyWith<$Res>? get face {
+    if (_self.face == null) {
+    return null;
   }
 
-  /// Create a copy of PositioningMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PositioningEyesCopyWith<$Res> get eyes {
-    return $PositioningEyesCopyWith<$Res>(_value.eyes, (value) {
-      return _then(_value.copyWith(eyes: value) as $Val);
-    });
-  }
-
-  /// Create a copy of PositioningMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PositioningQualityCopyWith<$Res> get quality {
-    return $PositioningQualityCopyWith<$Res>(_value.quality, (value) {
-      return _then(_value.copyWith(quality: value) as $Val);
-    });
-  }
-
-  /// Create a copy of PositioningMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $FaceCopyWith<$Res>? get face {
-    if (_value.face == null) {
-      return null;
-    }
-
-    return $FaceCopyWith<$Res>(_value.face!, (value) {
-      return _then(_value.copyWith(face: value) as $Val);
-    });
-  }
+  return $FaceCopyWith<$Res>(_self.face!, (value) {
+    return _then(_self.copyWith(face: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$PositioningMessageImplCopyWith<$Res>
-    implements $PositioningMessageCopyWith<$Res> {
-  factory _$$PositioningMessageImplCopyWith(_$PositioningMessageImpl value,
-          $Res Function(_$PositioningMessageImpl) then) =
-      __$$PositioningMessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {PositioningEyes eyes,
-      PositioningQuality quality,
-      PositioningDistance distance,
-      Face? face});
 
-  @override
-  $PositioningEyesCopyWith<$Res> get eyes;
-  @override
-  $PositioningQualityCopyWith<$Res> get quality;
-  @override
-  $FaceCopyWith<$Res>? get face;
+/// Adds pattern-matching-related methods to [PositioningMessage].
+extension PositioningMessagePatterns on PositioningMessage {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PositioningMessage value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PositioningMessage() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PositioningMessage value)  $default,){
+final _that = this;
+switch (_that) {
+case _PositioningMessage():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PositioningMessage value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PositioningMessage() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PositioningEyes eyes,  PositioningQuality quality,  PositioningDistance distance,  Face? face)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PositioningMessage() when $default != null:
+return $default(_that.eyes,_that.quality,_that.distance,_that.face);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PositioningEyes eyes,  PositioningQuality quality,  PositioningDistance distance,  Face? face)  $default,) {final _that = this;
+switch (_that) {
+case _PositioningMessage():
+return $default(_that.eyes,_that.quality,_that.distance,_that.face);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PositioningEyes eyes,  PositioningQuality quality,  PositioningDistance distance,  Face? face)?  $default,) {final _that = this;
+switch (_that) {
+case _PositioningMessage() when $default != null:
+return $default(_that.eyes,_that.quality,_that.distance,_that.face);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$PositioningMessageImplCopyWithImpl<$Res>
-    extends _$PositioningMessageCopyWithImpl<$Res, _$PositioningMessageImpl>
-    implements _$$PositioningMessageImplCopyWith<$Res> {
-  __$$PositioningMessageImplCopyWithImpl(_$PositioningMessageImpl _value,
-      $Res Function(_$PositioningMessageImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of PositioningMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? eyes = null,
-    Object? quality = null,
-    Object? distance = null,
-    Object? face = freezed,
-  }) {
-    return _then(_$PositioningMessageImpl(
-      eyes: null == eyes
-          ? _value.eyes
-          : eyes // ignore: cast_nullable_to_non_nullable
-              as PositioningEyes,
-      quality: null == quality
-          ? _value.quality
-          : quality // ignore: cast_nullable_to_non_nullable
-              as PositioningQuality,
-      distance: null == distance
-          ? _value.distance
-          : distance // ignore: cast_nullable_to_non_nullable
-              as PositioningDistance,
-      face: freezed == face
-          ? _value.face
-          : face // ignore: cast_nullable_to_non_nullable
-              as Face?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PositioningMessageImpl implements _PositioningMessage {
-  const _$PositioningMessageImpl(
-      {this.eyes = const PositioningEyes(),
-      this.quality = const PositioningQuality(),
-      this.distance = PositioningDistance.none,
-      this.face});
 
-  factory _$PositioningMessageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PositioningMessageImplFromJson(json);
+class _PositioningMessage implements PositioningMessage {
+  const _PositioningMessage({this.eyes = const PositioningEyes(), this.quality = const PositioningQuality(), this.distance = PositioningDistance.none, this.face});
+  factory _PositioningMessage.fromJson(Map<String, dynamic> json) => _$PositioningMessageFromJson(json);
 
-  @override
-  @JsonKey()
-  final PositioningEyes eyes;
-  @override
-  @JsonKey()
-  final PositioningQuality quality;
-  @override
-  @JsonKey()
-  final PositioningDistance distance;
-  @override
-  final Face? face;
+@override@JsonKey() final  PositioningEyes eyes;
+@override@JsonKey() final  PositioningQuality quality;
+@override@JsonKey() final  PositioningDistance distance;
+@override final  Face? face;
 
-  @override
-  String toString() {
-    return 'PositioningMessage(eyes: $eyes, quality: $quality, distance: $distance, face: $face)';
-  }
+/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PositioningMessageCopyWith<_PositioningMessage> get copyWith => __$PositioningMessageCopyWithImpl<_PositioningMessage>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PositioningMessageImpl &&
-            (identical(other.eyes, eyes) || other.eyes == eyes) &&
-            (identical(other.quality, quality) || other.quality == quality) &&
-            (identical(other.distance, distance) ||
-                other.distance == distance) &&
-            (identical(other.face, face) || other.face == face));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, eyes, quality, distance, face);
-
-  /// Create a copy of PositioningMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PositioningMessageImplCopyWith<_$PositioningMessageImpl> get copyWith =>
-      __$$PositioningMessageImplCopyWithImpl<_$PositioningMessageImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PositioningMessageImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PositioningMessageToJson(this, );
 }
 
-abstract class _PositioningMessage implements PositioningMessage {
-  const factory _PositioningMessage(
-      {final PositioningEyes eyes,
-      final PositioningQuality quality,
-      final PositioningDistance distance,
-      final Face? face}) = _$PositioningMessageImpl;
-
-  factory _PositioningMessage.fromJson(Map<String, dynamic> json) =
-      _$PositioningMessageImpl.fromJson;
-
-  @override
-  PositioningEyes get eyes;
-  @override
-  PositioningQuality get quality;
-  @override
-  PositioningDistance get distance;
-  @override
-  Face? get face;
-
-  /// Create a copy of PositioningMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PositioningMessageImplCopyWith<_$PositioningMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PositioningMessage&&(identical(other.eyes, eyes) || other.eyes == eyes)&&(identical(other.quality, quality) || other.quality == quality)&&(identical(other.distance, distance) || other.distance == distance)&&(identical(other.face, face) || other.face == face));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,eyes,quality,distance,face);
+
+@override
+String toString() {
+  return 'PositioningMessage(eyes: $eyes, quality: $quality, distance: $distance, face: $face)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PositioningMessageCopyWith<$Res> implements $PositioningMessageCopyWith<$Res> {
+  factory _$PositioningMessageCopyWith(_PositioningMessage value, $Res Function(_PositioningMessage) _then) = __$PositioningMessageCopyWithImpl;
+@override @useResult
+$Res call({
+ PositioningEyes eyes, PositioningQuality quality, PositioningDistance distance, Face? face
+});
+
+
+@override $PositioningEyesCopyWith<$Res> get eyes;@override $PositioningQualityCopyWith<$Res> get quality;@override $FaceCopyWith<$Res>? get face;
+
+}
+/// @nodoc
+class __$PositioningMessageCopyWithImpl<$Res>
+    implements _$PositioningMessageCopyWith<$Res> {
+  __$PositioningMessageCopyWithImpl(this._self, this._then);
+
+  final _PositioningMessage _self;
+  final $Res Function(_PositioningMessage) _then;
+
+/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? eyes = null,Object? quality = null,Object? distance = null,Object? face = freezed,}) {
+  return _then(_PositioningMessage(
+eyes: null == eyes ? _self.eyes : eyes // ignore: cast_nullable_to_non_nullable
+as PositioningEyes,quality: null == quality ? _self.quality : quality // ignore: cast_nullable_to_non_nullable
+as PositioningQuality,distance: null == distance ? _self.distance : distance // ignore: cast_nullable_to_non_nullable
+as PositioningDistance,face: freezed == face ? _self.face : face // ignore: cast_nullable_to_non_nullable
+as Face?,
+  ));
+}
+
+/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PositioningEyesCopyWith<$Res> get eyes {
+  
+  return $PositioningEyesCopyWith<$Res>(_self.eyes, (value) {
+    return _then(_self.copyWith(eyes: value));
+  });
+}/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PositioningQualityCopyWith<$Res> get quality {
+  
+  return $PositioningQualityCopyWith<$Res>(_self.quality, (value) {
+    return _then(_self.copyWith(quality: value));
+  });
+}/// Create a copy of PositioningMessage
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FaceCopyWith<$Res>? get face {
+    if (_self.face == null) {
+    return null;
+  }
+
+  return $FaceCopyWith<$Res>(_self.face!, (value) {
+    return _then(_self.copyWith(face: value));
+  });
+}
+}
+
+// dart format on

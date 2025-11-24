@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,452 +9,350 @@ part of 'settings.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Settings _$SettingsFromJson(Map<String, dynamic> json) {
-  return _Settings.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Settings {
-  bool get video => throw _privateConstructorUsedError;
-  bool get enablePause => throw _privateConstructorUsedError;
-  bool get pause => throw _privateConstructorUsedError;
-  bool get guidance => throw _privateConstructorUsedError;
-  bool get enableStandby => throw _privateConstructorUsedError;
-  bool get disableMouse => throw _privateConstructorUsedError;
-  Filter get filter => throw _privateConstructorUsedError;
-  IPadOS get iPadOS => throw _privateConstructorUsedError;
-  ScreenSizes get screenSizes => throw _privateConstructorUsedError;
-  bool get hp => throw _privateConstructorUsedError;
-  TrackingMode get trackingMode => throw _privateConstructorUsedError;
-  bool get trackingDetails => throw _privateConstructorUsedError;
+
+ bool get video; bool get enablePause; bool get pause; bool get guidance; bool get enableStandby; bool get disableMouse; Filter get filter; IPadOS get iPadOS; ScreenSizes get screenSizes; bool get hp; TrackingMode get trackingMode; bool get trackingDetails;
+/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SettingsCopyWith<Settings> get copyWith => _$SettingsCopyWithImpl<Settings>(this as Settings, _$identity);
 
   /// Serializes this Settings to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Settings
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SettingsCopyWith<Settings> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Settings&&(identical(other.video, video) || other.video == video)&&(identical(other.enablePause, enablePause) || other.enablePause == enablePause)&&(identical(other.pause, pause) || other.pause == pause)&&(identical(other.guidance, guidance) || other.guidance == guidance)&&(identical(other.enableStandby, enableStandby) || other.enableStandby == enableStandby)&&(identical(other.disableMouse, disableMouse) || other.disableMouse == disableMouse)&&(identical(other.filter, filter) || other.filter == filter)&&(identical(other.iPadOS, iPadOS) || other.iPadOS == iPadOS)&&(identical(other.screenSizes, screenSizes) || other.screenSizes == screenSizes)&&(identical(other.hp, hp) || other.hp == hp)&&(identical(other.trackingMode, trackingMode) || other.trackingMode == trackingMode)&&(identical(other.trackingDetails, trackingDetails) || other.trackingDetails == trackingDetails));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,video,enablePause,pause,guidance,enableStandby,disableMouse,filter,iPadOS,screenSizes,hp,trackingMode,trackingDetails);
+
+@override
+String toString() {
+  return 'Settings(video: $video, enablePause: $enablePause, pause: $pause, guidance: $guidance, enableStandby: $enableStandby, disableMouse: $disableMouse, filter: $filter, iPadOS: $iPadOS, screenSizes: $screenSizes, hp: $hp, trackingMode: $trackingMode, trackingDetails: $trackingDetails)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SettingsCopyWith<$Res> {
-  factory $SettingsCopyWith(Settings value, $Res Function(Settings) then) =
-      _$SettingsCopyWithImpl<$Res, Settings>;
-  @useResult
-  $Res call(
-      {bool video,
-      bool enablePause,
-      bool pause,
-      bool guidance,
-      bool enableStandby,
-      bool disableMouse,
-      Filter filter,
-      IPadOS iPadOS,
-      ScreenSizes screenSizes,
-      bool hp,
-      TrackingMode trackingMode,
-      bool trackingDetails});
+abstract mixin class $SettingsCopyWith<$Res>  {
+  factory $SettingsCopyWith(Settings value, $Res Function(Settings) _then) = _$SettingsCopyWithImpl;
+@useResult
+$Res call({
+ bool video, bool enablePause, bool pause, bool guidance, bool enableStandby, bool disableMouse, Filter filter, IPadOS iPadOS, ScreenSizes screenSizes, bool hp, TrackingMode trackingMode, bool trackingDetails
+});
 
-  $FilterCopyWith<$Res> get filter;
-  $IPadOSCopyWith<$Res> get iPadOS;
-  $ScreenSizesCopyWith<$Res> get screenSizes;
+
+$FilterCopyWith<$Res> get filter;$IPadOSCopyWith<$Res> get iPadOS;$ScreenSizesCopyWith<$Res> get screenSizes;
+
 }
-
 /// @nodoc
-class _$SettingsCopyWithImpl<$Res, $Val extends Settings>
+class _$SettingsCopyWithImpl<$Res>
     implements $SettingsCopyWith<$Res> {
-  _$SettingsCopyWithImpl(this._value, this._then);
+  _$SettingsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Settings _self;
+  final $Res Function(Settings) _then;
 
-  /// Create a copy of Settings
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? video = null,
-    Object? enablePause = null,
-    Object? pause = null,
-    Object? guidance = null,
-    Object? enableStandby = null,
-    Object? disableMouse = null,
-    Object? filter = null,
-    Object? iPadOS = null,
-    Object? screenSizes = null,
-    Object? hp = null,
-    Object? trackingMode = null,
-    Object? trackingDetails = null,
-  }) {
-    return _then(_value.copyWith(
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enablePause: null == enablePause
-          ? _value.enablePause
-          : enablePause // ignore: cast_nullable_to_non_nullable
-              as bool,
-      pause: null == pause
-          ? _value.pause
-          : pause // ignore: cast_nullable_to_non_nullable
-              as bool,
-      guidance: null == guidance
-          ? _value.guidance
-          : guidance // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableStandby: null == enableStandby
-          ? _value.enableStandby
-          : enableStandby // ignore: cast_nullable_to_non_nullable
-              as bool,
-      disableMouse: null == disableMouse
-          ? _value.disableMouse
-          : disableMouse // ignore: cast_nullable_to_non_nullable
-              as bool,
-      filter: null == filter
-          ? _value.filter
-          : filter // ignore: cast_nullable_to_non_nullable
-              as Filter,
-      iPadOS: null == iPadOS
-          ? _value.iPadOS
-          : iPadOS // ignore: cast_nullable_to_non_nullable
-              as IPadOS,
-      screenSizes: null == screenSizes
-          ? _value.screenSizes
-          : screenSizes // ignore: cast_nullable_to_non_nullable
-              as ScreenSizes,
-      hp: null == hp
-          ? _value.hp
-          : hp // ignore: cast_nullable_to_non_nullable
-              as bool,
-      trackingMode: null == trackingMode
-          ? _value.trackingMode
-          : trackingMode // ignore: cast_nullable_to_non_nullable
-              as TrackingMode,
-      trackingDetails: null == trackingDetails
-          ? _value.trackingDetails
-          : trackingDetails // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
-  }
-
-  /// Create a copy of Settings
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $FilterCopyWith<$Res> get filter {
-    return $FilterCopyWith<$Res>(_value.filter, (value) {
-      return _then(_value.copyWith(filter: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Settings
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $IPadOSCopyWith<$Res> get iPadOS {
-    return $IPadOSCopyWith<$Res>(_value.iPadOS, (value) {
-      return _then(_value.copyWith(iPadOS: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Settings
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $ScreenSizesCopyWith<$Res> get screenSizes {
-    return $ScreenSizesCopyWith<$Res>(_value.screenSizes, (value) {
-      return _then(_value.copyWith(screenSizes: value) as $Val);
-    });
-  }
+/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? video = null,Object? enablePause = null,Object? pause = null,Object? guidance = null,Object? enableStandby = null,Object? disableMouse = null,Object? filter = null,Object? iPadOS = null,Object? screenSizes = null,Object? hp = null,Object? trackingMode = null,Object? trackingDetails = null,}) {
+  return _then(_self.copyWith(
+video: null == video ? _self.video : video // ignore: cast_nullable_to_non_nullable
+as bool,enablePause: null == enablePause ? _self.enablePause : enablePause // ignore: cast_nullable_to_non_nullable
+as bool,pause: null == pause ? _self.pause : pause // ignore: cast_nullable_to_non_nullable
+as bool,guidance: null == guidance ? _self.guidance : guidance // ignore: cast_nullable_to_non_nullable
+as bool,enableStandby: null == enableStandby ? _self.enableStandby : enableStandby // ignore: cast_nullable_to_non_nullable
+as bool,disableMouse: null == disableMouse ? _self.disableMouse : disableMouse // ignore: cast_nullable_to_non_nullable
+as bool,filter: null == filter ? _self.filter : filter // ignore: cast_nullable_to_non_nullable
+as Filter,iPadOS: null == iPadOS ? _self.iPadOS : iPadOS // ignore: cast_nullable_to_non_nullable
+as IPadOS,screenSizes: null == screenSizes ? _self.screenSizes : screenSizes // ignore: cast_nullable_to_non_nullable
+as ScreenSizes,hp: null == hp ? _self.hp : hp // ignore: cast_nullable_to_non_nullable
+as bool,trackingMode: null == trackingMode ? _self.trackingMode : trackingMode // ignore: cast_nullable_to_non_nullable
+as TrackingMode,trackingDetails: null == trackingDetails ? _self.trackingDetails : trackingDetails // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FilterCopyWith<$Res> get filter {
+  
+  return $FilterCopyWith<$Res>(_self.filter, (value) {
+    return _then(_self.copyWith(filter: value));
+  });
+}/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$IPadOSCopyWith<$Res> get iPadOS {
+  
+  return $IPadOSCopyWith<$Res>(_self.iPadOS, (value) {
+    return _then(_self.copyWith(iPadOS: value));
+  });
+}/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ScreenSizesCopyWith<$Res> get screenSizes {
+  
+  return $ScreenSizesCopyWith<$Res>(_self.screenSizes, (value) {
+    return _then(_self.copyWith(screenSizes: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$SettingsImplCopyWith<$Res>
-    implements $SettingsCopyWith<$Res> {
-  factory _$$SettingsImplCopyWith(
-          _$SettingsImpl value, $Res Function(_$SettingsImpl) then) =
-      __$$SettingsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {bool video,
-      bool enablePause,
-      bool pause,
-      bool guidance,
-      bool enableStandby,
-      bool disableMouse,
-      Filter filter,
-      IPadOS iPadOS,
-      ScreenSizes screenSizes,
-      bool hp,
-      TrackingMode trackingMode,
-      bool trackingDetails});
 
-  @override
-  $FilterCopyWith<$Res> get filter;
-  @override
-  $IPadOSCopyWith<$Res> get iPadOS;
-  @override
-  $ScreenSizesCopyWith<$Res> get screenSizes;
+/// Adds pattern-matching-related methods to [Settings].
+extension SettingsPatterns on Settings {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Settings value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Settings() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Settings value)  $default,){
+final _that = this;
+switch (_that) {
+case _Settings():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Settings value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Settings() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool video,  bool enablePause,  bool pause,  bool guidance,  bool enableStandby,  bool disableMouse,  Filter filter,  IPadOS iPadOS,  ScreenSizes screenSizes,  bool hp,  TrackingMode trackingMode,  bool trackingDetails)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Settings() when $default != null:
+return $default(_that.video,_that.enablePause,_that.pause,_that.guidance,_that.enableStandby,_that.disableMouse,_that.filter,_that.iPadOS,_that.screenSizes,_that.hp,_that.trackingMode,_that.trackingDetails);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool video,  bool enablePause,  bool pause,  bool guidance,  bool enableStandby,  bool disableMouse,  Filter filter,  IPadOS iPadOS,  ScreenSizes screenSizes,  bool hp,  TrackingMode trackingMode,  bool trackingDetails)  $default,) {final _that = this;
+switch (_that) {
+case _Settings():
+return $default(_that.video,_that.enablePause,_that.pause,_that.guidance,_that.enableStandby,_that.disableMouse,_that.filter,_that.iPadOS,_that.screenSizes,_that.hp,_that.trackingMode,_that.trackingDetails);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool video,  bool enablePause,  bool pause,  bool guidance,  bool enableStandby,  bool disableMouse,  Filter filter,  IPadOS iPadOS,  ScreenSizes screenSizes,  bool hp,  TrackingMode trackingMode,  bool trackingDetails)?  $default,) {final _that = this;
+switch (_that) {
+case _Settings() when $default != null:
+return $default(_that.video,_that.enablePause,_that.pause,_that.guidance,_that.enableStandby,_that.disableMouse,_that.filter,_that.iPadOS,_that.screenSizes,_that.hp,_that.trackingMode,_that.trackingDetails);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$SettingsImplCopyWithImpl<$Res>
-    extends _$SettingsCopyWithImpl<$Res, _$SettingsImpl>
-    implements _$$SettingsImplCopyWith<$Res> {
-  __$$SettingsImplCopyWithImpl(
-      _$SettingsImpl _value, $Res Function(_$SettingsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Settings
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? video = null,
-    Object? enablePause = null,
-    Object? pause = null,
-    Object? guidance = null,
-    Object? enableStandby = null,
-    Object? disableMouse = null,
-    Object? filter = null,
-    Object? iPadOS = null,
-    Object? screenSizes = null,
-    Object? hp = null,
-    Object? trackingMode = null,
-    Object? trackingDetails = null,
-  }) {
-    return _then(_$SettingsImpl(
-      video: null == video
-          ? _value.video
-          : video // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enablePause: null == enablePause
-          ? _value.enablePause
-          : enablePause // ignore: cast_nullable_to_non_nullable
-              as bool,
-      pause: null == pause
-          ? _value.pause
-          : pause // ignore: cast_nullable_to_non_nullable
-              as bool,
-      guidance: null == guidance
-          ? _value.guidance
-          : guidance // ignore: cast_nullable_to_non_nullable
-              as bool,
-      enableStandby: null == enableStandby
-          ? _value.enableStandby
-          : enableStandby // ignore: cast_nullable_to_non_nullable
-              as bool,
-      disableMouse: null == disableMouse
-          ? _value.disableMouse
-          : disableMouse // ignore: cast_nullable_to_non_nullable
-              as bool,
-      filter: null == filter
-          ? _value.filter
-          : filter // ignore: cast_nullable_to_non_nullable
-              as Filter,
-      iPadOS: null == iPadOS
-          ? _value.iPadOS
-          : iPadOS // ignore: cast_nullable_to_non_nullable
-              as IPadOS,
-      screenSizes: null == screenSizes
-          ? _value.screenSizes
-          : screenSizes // ignore: cast_nullable_to_non_nullable
-              as ScreenSizes,
-      hp: null == hp
-          ? _value.hp
-          : hp // ignore: cast_nullable_to_non_nullable
-              as bool,
-      trackingMode: null == trackingMode
-          ? _value.trackingMode
-          : trackingMode // ignore: cast_nullable_to_non_nullable
-              as TrackingMode,
-      trackingDetails: null == trackingDetails
-          ? _value.trackingDetails
-          : trackingDetails // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SettingsImpl implements _Settings {
-  const _$SettingsImpl(
-      {this.video = false,
-      this.enablePause = false,
-      this.pause = false,
-      this.guidance = false,
-      this.enableStandby = false,
-      this.disableMouse = false,
-      this.filter = const Filter(),
-      this.iPadOS = const IPadOS(),
-      this.screenSizes = const ScreenSizes(),
-      this.hp = false,
-      this.trackingMode = TrackingMode.none,
-      this.trackingDetails = false});
 
-  factory _$SettingsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SettingsImplFromJson(json);
+class _Settings implements Settings {
+  const _Settings({this.video = false, this.enablePause = false, this.pause = false, this.guidance = false, this.enableStandby = false, this.disableMouse = false, this.filter = const Filter(), this.iPadOS = const IPadOS(), this.screenSizes = const ScreenSizes(), this.hp = false, this.trackingMode = TrackingMode.none, this.trackingDetails = false});
+  factory _Settings.fromJson(Map<String, dynamic> json) => _$SettingsFromJson(json);
 
-  @override
-  @JsonKey()
-  final bool video;
-  @override
-  @JsonKey()
-  final bool enablePause;
-  @override
-  @JsonKey()
-  final bool pause;
-  @override
-  @JsonKey()
-  final bool guidance;
-  @override
-  @JsonKey()
-  final bool enableStandby;
-  @override
-  @JsonKey()
-  final bool disableMouse;
-  @override
-  @JsonKey()
-  final Filter filter;
-  @override
-  @JsonKey()
-  final IPadOS iPadOS;
-  @override
-  @JsonKey()
-  final ScreenSizes screenSizes;
-  @override
-  @JsonKey()
-  final bool hp;
-  @override
-  @JsonKey()
-  final TrackingMode trackingMode;
-  @override
-  @JsonKey()
-  final bool trackingDetails;
+@override@JsonKey() final  bool video;
+@override@JsonKey() final  bool enablePause;
+@override@JsonKey() final  bool pause;
+@override@JsonKey() final  bool guidance;
+@override@JsonKey() final  bool enableStandby;
+@override@JsonKey() final  bool disableMouse;
+@override@JsonKey() final  Filter filter;
+@override@JsonKey() final  IPadOS iPadOS;
+@override@JsonKey() final  ScreenSizes screenSizes;
+@override@JsonKey() final  bool hp;
+@override@JsonKey() final  TrackingMode trackingMode;
+@override@JsonKey() final  bool trackingDetails;
 
-  @override
-  String toString() {
-    return 'Settings(video: $video, enablePause: $enablePause, pause: $pause, guidance: $guidance, enableStandby: $enableStandby, disableMouse: $disableMouse, filter: $filter, iPadOS: $iPadOS, screenSizes: $screenSizes, hp: $hp, trackingMode: $trackingMode, trackingDetails: $trackingDetails)';
-  }
+/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SettingsCopyWith<_Settings> get copyWith => __$SettingsCopyWithImpl<_Settings>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SettingsImpl &&
-            (identical(other.video, video) || other.video == video) &&
-            (identical(other.enablePause, enablePause) ||
-                other.enablePause == enablePause) &&
-            (identical(other.pause, pause) || other.pause == pause) &&
-            (identical(other.guidance, guidance) ||
-                other.guidance == guidance) &&
-            (identical(other.enableStandby, enableStandby) ||
-                other.enableStandby == enableStandby) &&
-            (identical(other.disableMouse, disableMouse) ||
-                other.disableMouse == disableMouse) &&
-            (identical(other.filter, filter) || other.filter == filter) &&
-            (identical(other.iPadOS, iPadOS) || other.iPadOS == iPadOS) &&
-            (identical(other.screenSizes, screenSizes) ||
-                other.screenSizes == screenSizes) &&
-            (identical(other.hp, hp) || other.hp == hp) &&
-            (identical(other.trackingMode, trackingMode) ||
-                other.trackingMode == trackingMode) &&
-            (identical(other.trackingDetails, trackingDetails) ||
-                other.trackingDetails == trackingDetails));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      video,
-      enablePause,
-      pause,
-      guidance,
-      enableStandby,
-      disableMouse,
-      filter,
-      iPadOS,
-      screenSizes,
-      hp,
-      trackingMode,
-      trackingDetails);
-
-  /// Create a copy of Settings
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith =>
-      __$$SettingsImplCopyWithImpl<_$SettingsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SettingsImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SettingsToJson(this, );
 }
 
-abstract class _Settings implements Settings {
-  const factory _Settings(
-      {final bool video,
-      final bool enablePause,
-      final bool pause,
-      final bool guidance,
-      final bool enableStandby,
-      final bool disableMouse,
-      final Filter filter,
-      final IPadOS iPadOS,
-      final ScreenSizes screenSizes,
-      final bool hp,
-      final TrackingMode trackingMode,
-      final bool trackingDetails}) = _$SettingsImpl;
-
-  factory _Settings.fromJson(Map<String, dynamic> json) =
-      _$SettingsImpl.fromJson;
-
-  @override
-  bool get video;
-  @override
-  bool get enablePause;
-  @override
-  bool get pause;
-  @override
-  bool get guidance;
-  @override
-  bool get enableStandby;
-  @override
-  bool get disableMouse;
-  @override
-  Filter get filter;
-  @override
-  IPadOS get iPadOS;
-  @override
-  ScreenSizes get screenSizes;
-  @override
-  bool get hp;
-  @override
-  TrackingMode get trackingMode;
-  @override
-  bool get trackingDetails;
-
-  /// Create a copy of Settings
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SettingsImplCopyWith<_$SettingsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Settings&&(identical(other.video, video) || other.video == video)&&(identical(other.enablePause, enablePause) || other.enablePause == enablePause)&&(identical(other.pause, pause) || other.pause == pause)&&(identical(other.guidance, guidance) || other.guidance == guidance)&&(identical(other.enableStandby, enableStandby) || other.enableStandby == enableStandby)&&(identical(other.disableMouse, disableMouse) || other.disableMouse == disableMouse)&&(identical(other.filter, filter) || other.filter == filter)&&(identical(other.iPadOS, iPadOS) || other.iPadOS == iPadOS)&&(identical(other.screenSizes, screenSizes) || other.screenSizes == screenSizes)&&(identical(other.hp, hp) || other.hp == hp)&&(identical(other.trackingMode, trackingMode) || other.trackingMode == trackingMode)&&(identical(other.trackingDetails, trackingDetails) || other.trackingDetails == trackingDetails));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,video,enablePause,pause,guidance,enableStandby,disableMouse,filter,iPadOS,screenSizes,hp,trackingMode,trackingDetails);
+
+@override
+String toString() {
+  return 'Settings(video: $video, enablePause: $enablePause, pause: $pause, guidance: $guidance, enableStandby: $enableStandby, disableMouse: $disableMouse, filter: $filter, iPadOS: $iPadOS, screenSizes: $screenSizes, hp: $hp, trackingMode: $trackingMode, trackingDetails: $trackingDetails)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SettingsCopyWith<$Res> implements $SettingsCopyWith<$Res> {
+  factory _$SettingsCopyWith(_Settings value, $Res Function(_Settings) _then) = __$SettingsCopyWithImpl;
+@override @useResult
+$Res call({
+ bool video, bool enablePause, bool pause, bool guidance, bool enableStandby, bool disableMouse, Filter filter, IPadOS iPadOS, ScreenSizes screenSizes, bool hp, TrackingMode trackingMode, bool trackingDetails
+});
+
+
+@override $FilterCopyWith<$Res> get filter;@override $IPadOSCopyWith<$Res> get iPadOS;@override $ScreenSizesCopyWith<$Res> get screenSizes;
+
+}
+/// @nodoc
+class __$SettingsCopyWithImpl<$Res>
+    implements _$SettingsCopyWith<$Res> {
+  __$SettingsCopyWithImpl(this._self, this._then);
+
+  final _Settings _self;
+  final $Res Function(_Settings) _then;
+
+/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? video = null,Object? enablePause = null,Object? pause = null,Object? guidance = null,Object? enableStandby = null,Object? disableMouse = null,Object? filter = null,Object? iPadOS = null,Object? screenSizes = null,Object? hp = null,Object? trackingMode = null,Object? trackingDetails = null,}) {
+  return _then(_Settings(
+video: null == video ? _self.video : video // ignore: cast_nullable_to_non_nullable
+as bool,enablePause: null == enablePause ? _self.enablePause : enablePause // ignore: cast_nullable_to_non_nullable
+as bool,pause: null == pause ? _self.pause : pause // ignore: cast_nullable_to_non_nullable
+as bool,guidance: null == guidance ? _self.guidance : guidance // ignore: cast_nullable_to_non_nullable
+as bool,enableStandby: null == enableStandby ? _self.enableStandby : enableStandby // ignore: cast_nullable_to_non_nullable
+as bool,disableMouse: null == disableMouse ? _self.disableMouse : disableMouse // ignore: cast_nullable_to_non_nullable
+as bool,filter: null == filter ? _self.filter : filter // ignore: cast_nullable_to_non_nullable
+as Filter,iPadOS: null == iPadOS ? _self.iPadOS : iPadOS // ignore: cast_nullable_to_non_nullable
+as IPadOS,screenSizes: null == screenSizes ? _self.screenSizes : screenSizes // ignore: cast_nullable_to_non_nullable
+as ScreenSizes,hp: null == hp ? _self.hp : hp // ignore: cast_nullable_to_non_nullable
+as bool,trackingMode: null == trackingMode ? _self.trackingMode : trackingMode // ignore: cast_nullable_to_non_nullable
+as TrackingMode,trackingDetails: null == trackingDetails ? _self.trackingDetails : trackingDetails // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FilterCopyWith<$Res> get filter {
+  
+  return $FilterCopyWith<$Res>(_self.filter, (value) {
+    return _then(_self.copyWith(filter: value));
+  });
+}/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$IPadOSCopyWith<$Res> get iPadOS {
+  
+  return $IPadOSCopyWith<$Res>(_self.iPadOS, (value) {
+    return _then(_self.copyWith(iPadOS: value));
+  });
+}/// Create a copy of Settings
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ScreenSizesCopyWith<$Res> get screenSizes {
+  
+  return $ScreenSizesCopyWith<$Res>(_self.screenSizes, (value) {
+    return _then(_self.copyWith(screenSizes: value));
+  });
+}
+}
+
+// dart format on

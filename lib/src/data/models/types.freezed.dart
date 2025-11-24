@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1943 +9,2891 @@ part of 'types.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Point _$PointFromJson(Map<String, dynamic> json) {
-  return _Point.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Point {
-  double get x => throw _privateConstructorUsedError;
-  double get y => throw _privateConstructorUsedError;
+
+ double get x; double get y;
+/// Create a copy of Point
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PointCopyWith<Point> get copyWith => _$PointCopyWithImpl<Point>(this as Point, _$identity);
 
   /// Serializes this Point to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Point
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $PointCopyWith<Point> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Point&&(identical(other.x, x) || other.x == x)&&(identical(other.y, y) || other.y == y));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,x,y);
+
+@override
+String toString() {
+  return 'Point(x: $x, y: $y)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PointCopyWith<$Res> {
-  factory $PointCopyWith(Point value, $Res Function(Point) then) =
-      _$PointCopyWithImpl<$Res, Point>;
-  @useResult
-  $Res call({double x, double y});
-}
+abstract mixin class $PointCopyWith<$Res>  {
+  factory $PointCopyWith(Point value, $Res Function(Point) _then) = _$PointCopyWithImpl;
+@useResult
+$Res call({
+ double x, double y
+});
 
+
+
+
+}
 /// @nodoc
-class _$PointCopyWithImpl<$Res, $Val extends Point>
+class _$PointCopyWithImpl<$Res>
     implements $PointCopyWith<$Res> {
-  _$PointCopyWithImpl(this._value, this._then);
+  _$PointCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Point _self;
+  final $Res Function(Point) _then;
 
-  /// Create a copy of Point
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? x = null,
-    Object? y = null,
-  }) {
-    return _then(_value.copyWith(
-      x: null == x
-          ? _value.x
-          : x // ignore: cast_nullable_to_non_nullable
-              as double,
-      y: null == y
-          ? _value.y
-          : y // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
-  }
+/// Create a copy of Point
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? x = null,Object? y = null,}) {
+  return _then(_self.copyWith(
+x: null == x ? _self.x : x // ignore: cast_nullable_to_non_nullable
+as double,y: null == y ? _self.y : y // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PointImplCopyWith<$Res> implements $PointCopyWith<$Res> {
-  factory _$$PointImplCopyWith(
-          _$PointImpl value, $Res Function(_$PointImpl) then) =
-      __$$PointImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({double x, double y});
 }
 
-/// @nodoc
-class __$$PointImplCopyWithImpl<$Res>
-    extends _$PointCopyWithImpl<$Res, _$PointImpl>
-    implements _$$PointImplCopyWith<$Res> {
-  __$$PointImplCopyWithImpl(
-      _$PointImpl _value, $Res Function(_$PointImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Point
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? x = null,
-    Object? y = null,
-  }) {
-    return _then(_$PointImpl(
-      x: null == x
-          ? _value.x
-          : x // ignore: cast_nullable_to_non_nullable
-              as double,
-      y: null == y
-          ? _value.y
-          : y // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Point].
+extension PointPatterns on Point {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Point value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Point() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Point value)  $default,){
+final _that = this;
+switch (_that) {
+case _Point():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Point value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Point() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double x,  double y)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Point() when $default != null:
+return $default(_that.x,_that.y);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double x,  double y)  $default,) {final _that = this;
+switch (_that) {
+case _Point():
+return $default(_that.x,_that.y);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double x,  double y)?  $default,) {final _that = this;
+switch (_that) {
+case _Point() when $default != null:
+return $default(_that.x,_that.y);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PointImpl extends _Point {
-  const _$PointImpl({this.x = 0.0, this.y = 0.0}) : super._();
 
-  factory _$PointImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PointImplFromJson(json);
+class _Point extends Point {
+  const _Point({this.x = 0.0, this.y = 0.0}): super._();
+  factory _Point.fromJson(Map<String, dynamic> json) => _$PointFromJson(json);
 
-  @override
-  @JsonKey()
-  final double x;
-  @override
-  @JsonKey()
-  final double y;
+@override@JsonKey() final  double x;
+@override@JsonKey() final  double y;
 
-  @override
-  String toString() {
-    return 'Point(x: $x, y: $y)';
-  }
+/// Create a copy of Point
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PointCopyWith<_Point> get copyWith => __$PointCopyWithImpl<_Point>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PointImpl &&
-            (identical(other.x, x) || other.x == x) &&
-            (identical(other.y, y) || other.y == y));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, x, y);
-
-  /// Create a copy of Point
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PointImplCopyWith<_$PointImpl> get copyWith =>
-      __$$PointImplCopyWithImpl<_$PointImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PointImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$PointToJson(this, );
 }
 
-abstract class _Point extends Point {
-  const factory _Point({final double x, final double y}) = _$PointImpl;
-  const _Point._() : super._();
-
-  factory _Point.fromJson(Map<String, dynamic> json) = _$PointImpl.fromJson;
-
-  @override
-  double get x;
-  @override
-  double get y;
-
-  /// Create a copy of Point
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$PointImplCopyWith<_$PointImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Point&&(identical(other.x, x) || other.x == x)&&(identical(other.y, y) || other.y == y));
 }
 
-Size _$SizeFromJson(Map<String, dynamic> json) {
-  return _Size.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,x,y);
+
+@override
+String toString() {
+  return 'Point(x: $x, y: $y)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PointCopyWith<$Res> implements $PointCopyWith<$Res> {
+  factory _$PointCopyWith(_Point value, $Res Function(_Point) _then) = __$PointCopyWithImpl;
+@override @useResult
+$Res call({
+ double x, double y
+});
+
+
+
+
+}
+/// @nodoc
+class __$PointCopyWithImpl<$Res>
+    implements _$PointCopyWith<$Res> {
+  __$PointCopyWithImpl(this._self, this._then);
+
+  final _Point _self;
+  final $Res Function(_Point) _then;
+
+/// Create a copy of Point
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? x = null,Object? y = null,}) {
+  return _then(_Point(
+x: null == x ? _self.x : x // ignore: cast_nullable_to_non_nullable
+as double,y: null == y ? _self.y : y // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$Size {
-  double get width => throw _privateConstructorUsedError;
-  double get height => throw _privateConstructorUsedError;
+
+ double get width; double get height;
+/// Create a copy of Size
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SizeCopyWith<Size> get copyWith => _$SizeCopyWithImpl<Size>(this as Size, _$identity);
 
   /// Serializes this Size to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Size
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SizeCopyWith<Size> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Size&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,width,height);
+
+@override
+String toString() {
+  return 'Size(width: $width, height: $height)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SizeCopyWith<$Res> {
-  factory $SizeCopyWith(Size value, $Res Function(Size) then) =
-      _$SizeCopyWithImpl<$Res, Size>;
-  @useResult
-  $Res call({double width, double height});
-}
+abstract mixin class $SizeCopyWith<$Res>  {
+  factory $SizeCopyWith(Size value, $Res Function(Size) _then) = _$SizeCopyWithImpl;
+@useResult
+$Res call({
+ double width, double height
+});
 
+
+
+
+}
 /// @nodoc
-class _$SizeCopyWithImpl<$Res, $Val extends Size>
+class _$SizeCopyWithImpl<$Res>
     implements $SizeCopyWith<$Res> {
-  _$SizeCopyWithImpl(this._value, this._then);
+  _$SizeCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Size _self;
+  final $Res Function(Size) _then;
 
-  /// Create a copy of Size
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? width = null,
-    Object? height = null,
-  }) {
-    return _then(_value.copyWith(
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as double,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
-  }
+/// Create a copy of Size
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? width = null,Object? height = null,}) {
+  return _then(_self.copyWith(
+width: null == width ? _self.width : width // ignore: cast_nullable_to_non_nullable
+as double,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SizeImplCopyWith<$Res> implements $SizeCopyWith<$Res> {
-  factory _$$SizeImplCopyWith(
-          _$SizeImpl value, $Res Function(_$SizeImpl) then) =
-      __$$SizeImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({double width, double height});
 }
 
-/// @nodoc
-class __$$SizeImplCopyWithImpl<$Res>
-    extends _$SizeCopyWithImpl<$Res, _$SizeImpl>
-    implements _$$SizeImplCopyWith<$Res> {
-  __$$SizeImplCopyWithImpl(_$SizeImpl _value, $Res Function(_$SizeImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of Size
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? width = null,
-    Object? height = null,
-  }) {
-    return _then(_$SizeImpl(
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as double,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Size].
+extension SizePatterns on Size {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Size value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Size() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Size value)  $default,){
+final _that = this;
+switch (_that) {
+case _Size():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Size value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Size() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( double width,  double height)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Size() when $default != null:
+return $default(_that.width,_that.height);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( double width,  double height)  $default,) {final _that = this;
+switch (_that) {
+case _Size():
+return $default(_that.width,_that.height);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( double width,  double height)?  $default,) {final _that = this;
+switch (_that) {
+case _Size() when $default != null:
+return $default(_that.width,_that.height);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SizeImpl implements _Size {
-  const _$SizeImpl({this.width = 0.0, this.height = 0.0});
 
-  factory _$SizeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SizeImplFromJson(json);
+class _Size implements Size {
+  const _Size({this.width = 0.0, this.height = 0.0});
+  factory _Size.fromJson(Map<String, dynamic> json) => _$SizeFromJson(json);
 
-  @override
-  @JsonKey()
-  final double width;
-  @override
-  @JsonKey()
-  final double height;
+@override@JsonKey() final  double width;
+@override@JsonKey() final  double height;
 
-  @override
-  String toString() {
-    return 'Size(width: $width, height: $height)';
-  }
+/// Create a copy of Size
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SizeCopyWith<_Size> get copyWith => __$SizeCopyWithImpl<_Size>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SizeImpl &&
-            (identical(other.width, width) || other.width == width) &&
-            (identical(other.height, height) || other.height == height));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, width, height);
-
-  /// Create a copy of Size
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SizeImplCopyWith<_$SizeImpl> get copyWith =>
-      __$$SizeImplCopyWithImpl<_$SizeImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SizeImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SizeToJson(this, );
 }
 
-abstract class _Size implements Size {
-  const factory _Size({final double width, final double height}) = _$SizeImpl;
-
-  factory _Size.fromJson(Map<String, dynamic> json) = _$SizeImpl.fromJson;
-
-  @override
-  double get width;
-  @override
-  double get height;
-
-  /// Create a copy of Size
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SizeImplCopyWith<_$SizeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Size&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height));
 }
 
-Rect _$RectFromJson(Map<String, dynamic> json) {
-  return _Rect.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,width,height);
+
+@override
+String toString() {
+  return 'Size(width: $width, height: $height)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SizeCopyWith<$Res> implements $SizeCopyWith<$Res> {
+  factory _$SizeCopyWith(_Size value, $Res Function(_Size) _then) = __$SizeCopyWithImpl;
+@override @useResult
+$Res call({
+ double width, double height
+});
+
+
+
+
+}
+/// @nodoc
+class __$SizeCopyWithImpl<$Res>
+    implements _$SizeCopyWith<$Res> {
+  __$SizeCopyWithImpl(this._self, this._then);
+
+  final _Size _self;
+  final $Res Function(_Size) _then;
+
+/// Create a copy of Size
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? width = null,Object? height = null,}) {
+  return _then(_Size(
+width: null == width ? _self.width : width // ignore: cast_nullable_to_non_nullable
+as double,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$Rect {
-  Point get topLeft => throw _privateConstructorUsedError;
-  Size get size => throw _privateConstructorUsedError;
+
+ Point get topLeft; Size get size;
+/// Create a copy of Rect
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RectCopyWith<Rect> get copyWith => _$RectCopyWithImpl<Rect>(this as Rect, _$identity);
 
   /// Serializes this Rect to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Rect
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $RectCopyWith<Rect> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Rect&&(identical(other.topLeft, topLeft) || other.topLeft == topLeft)&&(identical(other.size, size) || other.size == size));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,topLeft,size);
+
+@override
+String toString() {
+  return 'Rect(topLeft: $topLeft, size: $size)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $RectCopyWith<$Res> {
-  factory $RectCopyWith(Rect value, $Res Function(Rect) then) =
-      _$RectCopyWithImpl<$Res, Rect>;
-  @useResult
-  $Res call({Point topLeft, Size size});
+abstract mixin class $RectCopyWith<$Res>  {
+  factory $RectCopyWith(Rect value, $Res Function(Rect) _then) = _$RectCopyWithImpl;
+@useResult
+$Res call({
+ Point topLeft, Size size
+});
 
-  $PointCopyWith<$Res> get topLeft;
-  $SizeCopyWith<$Res> get size;
+
+$PointCopyWith<$Res> get topLeft;$SizeCopyWith<$Res> get size;
+
 }
-
 /// @nodoc
-class _$RectCopyWithImpl<$Res, $Val extends Rect>
+class _$RectCopyWithImpl<$Res>
     implements $RectCopyWith<$Res> {
-  _$RectCopyWithImpl(this._value, this._then);
+  _$RectCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Rect _self;
+  final $Res Function(Rect) _then;
 
-  /// Create a copy of Rect
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? topLeft = null,
-    Object? size = null,
-  }) {
-    return _then(_value.copyWith(
-      topLeft: null == topLeft
-          ? _value.topLeft
-          : topLeft // ignore: cast_nullable_to_non_nullable
-              as Point,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as Size,
-    ) as $Val);
-  }
-
-  /// Create a copy of Rect
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PointCopyWith<$Res> get topLeft {
-    return $PointCopyWith<$Res>(_value.topLeft, (value) {
-      return _then(_value.copyWith(topLeft: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Rect
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $SizeCopyWith<$Res> get size {
-    return $SizeCopyWith<$Res>(_value.size, (value) {
-      return _then(_value.copyWith(size: value) as $Val);
-    });
-  }
+/// Create a copy of Rect
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? topLeft = null,Object? size = null,}) {
+  return _then(_self.copyWith(
+topLeft: null == topLeft ? _self.topLeft : topLeft // ignore: cast_nullable_to_non_nullable
+as Point,size: null == size ? _self.size : size // ignore: cast_nullable_to_non_nullable
+as Size,
+  ));
+}
+/// Create a copy of Rect
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get topLeft {
+  
+  return $PointCopyWith<$Res>(_self.topLeft, (value) {
+    return _then(_self.copyWith(topLeft: value));
+  });
+}/// Create a copy of Rect
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SizeCopyWith<$Res> get size {
+  
+  return $SizeCopyWith<$Res>(_self.size, (value) {
+    return _then(_self.copyWith(size: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$RectImplCopyWith<$Res> implements $RectCopyWith<$Res> {
-  factory _$$RectImplCopyWith(
-          _$RectImpl value, $Res Function(_$RectImpl) then) =
-      __$$RectImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Point topLeft, Size size});
 
-  @override
-  $PointCopyWith<$Res> get topLeft;
-  @override
-  $SizeCopyWith<$Res> get size;
+/// Adds pattern-matching-related methods to [Rect].
+extension RectPatterns on Rect {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Rect value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Rect() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Rect value)  $default,){
+final _that = this;
+switch (_that) {
+case _Rect():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Rect value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Rect() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Point topLeft,  Size size)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Rect() when $default != null:
+return $default(_that.topLeft,_that.size);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Point topLeft,  Size size)  $default,) {final _that = this;
+switch (_that) {
+case _Rect():
+return $default(_that.topLeft,_that.size);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Point topLeft,  Size size)?  $default,) {final _that = this;
+switch (_that) {
+case _Rect() when $default != null:
+return $default(_that.topLeft,_that.size);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$RectImplCopyWithImpl<$Res>
-    extends _$RectCopyWithImpl<$Res, _$RectImpl>
-    implements _$$RectImplCopyWith<$Res> {
-  __$$RectImplCopyWithImpl(_$RectImpl _value, $Res Function(_$RectImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Rect
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? topLeft = null,
-    Object? size = null,
-  }) {
-    return _then(_$RectImpl(
-      topLeft: null == topLeft
-          ? _value.topLeft
-          : topLeft // ignore: cast_nullable_to_non_nullable
-              as Point,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as Size,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$RectImpl implements _Rect {
-  const _$RectImpl({this.topLeft = const Point(), this.size = const Size()});
 
-  factory _$RectImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RectImplFromJson(json);
+class _Rect implements Rect {
+  const _Rect({this.topLeft = const Point(), this.size = const Size()});
+  factory _Rect.fromJson(Map<String, dynamic> json) => _$RectFromJson(json);
 
-  @override
-  @JsonKey()
-  final Point topLeft;
-  @override
-  @JsonKey()
-  final Size size;
+@override@JsonKey() final  Point topLeft;
+@override@JsonKey() final  Size size;
 
-  @override
-  String toString() {
-    return 'Rect(topLeft: $topLeft, size: $size)';
-  }
+/// Create a copy of Rect
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RectCopyWith<_Rect> get copyWith => __$RectCopyWithImpl<_Rect>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RectImpl &&
-            (identical(other.topLeft, topLeft) || other.topLeft == topLeft) &&
-            (identical(other.size, size) || other.size == size));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, topLeft, size);
-
-  /// Create a copy of Rect
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RectImplCopyWith<_$RectImpl> get copyWith =>
-      __$$RectImplCopyWithImpl<_$RectImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RectImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$RectToJson(this, );
 }
 
-abstract class _Rect implements Rect {
-  const factory _Rect({final Point topLeft, final Size size}) = _$RectImpl;
-
-  factory _Rect.fromJson(Map<String, dynamic> json) = _$RectImpl.fromJson;
-
-  @override
-  Point get topLeft;
-  @override
-  Size get size;
-
-  /// Create a copy of Rect
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RectImplCopyWith<_$RectImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Rect&&(identical(other.topLeft, topLeft) || other.topLeft == topLeft)&&(identical(other.size, size) || other.size == size));
 }
 
-Feature _$FeatureFromJson(Map<String, dynamic> json) {
-  return _Feature.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,topLeft,size);
+
+@override
+String toString() {
+  return 'Rect(topLeft: $topLeft, size: $size)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RectCopyWith<$Res> implements $RectCopyWith<$Res> {
+  factory _$RectCopyWith(_Rect value, $Res Function(_Rect) _then) = __$RectCopyWithImpl;
+@override @useResult
+$Res call({
+ Point topLeft, Size size
+});
+
+
+@override $PointCopyWith<$Res> get topLeft;@override $SizeCopyWith<$Res> get size;
+
+}
+/// @nodoc
+class __$RectCopyWithImpl<$Res>
+    implements _$RectCopyWith<$Res> {
+  __$RectCopyWithImpl(this._self, this._then);
+
+  final _Rect _self;
+  final $Res Function(_Rect) _then;
+
+/// Create a copy of Rect
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? topLeft = null,Object? size = null,}) {
+  return _then(_Rect(
+topLeft: null == topLeft ? _self.topLeft : topLeft // ignore: cast_nullable_to_non_nullable
+as Point,size: null == size ? _self.size : size // ignore: cast_nullable_to_non_nullable
+as Size,
+  ));
+}
+
+/// Create a copy of Rect
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get topLeft {
+  
+  return $PointCopyWith<$Res>(_self.topLeft, (value) {
+    return _then(_self.copyWith(topLeft: value));
+  });
+}/// Create a copy of Rect
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SizeCopyWith<$Res> get size {
+  
+  return $SizeCopyWith<$Res>(_self.size, (value) {
+    return _then(_self.copyWith(size: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$Feature {
-  Point get center => throw _privateConstructorUsedError;
+
+ Point get center;
+/// Create a copy of Feature
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FeatureCopyWith<Feature> get copyWith => _$FeatureCopyWithImpl<Feature>(this as Feature, _$identity);
 
   /// Serializes this Feature to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Feature
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $FeatureCopyWith<Feature> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Feature&&(identical(other.center, center) || other.center == center));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,center);
+
+@override
+String toString() {
+  return 'Feature(center: $center)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $FeatureCopyWith<$Res> {
-  factory $FeatureCopyWith(Feature value, $Res Function(Feature) then) =
-      _$FeatureCopyWithImpl<$Res, Feature>;
-  @useResult
-  $Res call({Point center});
+abstract mixin class $FeatureCopyWith<$Res>  {
+  factory $FeatureCopyWith(Feature value, $Res Function(Feature) _then) = _$FeatureCopyWithImpl;
+@useResult
+$Res call({
+ Point center
+});
 
-  $PointCopyWith<$Res> get center;
+
+$PointCopyWith<$Res> get center;
+
 }
-
 /// @nodoc
-class _$FeatureCopyWithImpl<$Res, $Val extends Feature>
+class _$FeatureCopyWithImpl<$Res>
     implements $FeatureCopyWith<$Res> {
-  _$FeatureCopyWithImpl(this._value, this._then);
+  _$FeatureCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Feature _self;
+  final $Res Function(Feature) _then;
 
-  /// Create a copy of Feature
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? center = null,
-  }) {
-    return _then(_value.copyWith(
-      center: null == center
-          ? _value.center
-          : center // ignore: cast_nullable_to_non_nullable
-              as Point,
-    ) as $Val);
-  }
-
-  /// Create a copy of Feature
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PointCopyWith<$Res> get center {
-    return $PointCopyWith<$Res>(_value.center, (value) {
-      return _then(_value.copyWith(center: value) as $Val);
-    });
-  }
+/// Create a copy of Feature
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? center = null,}) {
+  return _then(_self.copyWith(
+center: null == center ? _self.center : center // ignore: cast_nullable_to_non_nullable
+as Point,
+  ));
+}
+/// Create a copy of Feature
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get center {
+  
+  return $PointCopyWith<$Res>(_self.center, (value) {
+    return _then(_self.copyWith(center: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$FeatureImplCopyWith<$Res> implements $FeatureCopyWith<$Res> {
-  factory _$$FeatureImplCopyWith(
-          _$FeatureImpl value, $Res Function(_$FeatureImpl) then) =
-      __$$FeatureImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Point center});
 
-  @override
-  $PointCopyWith<$Res> get center;
+/// Adds pattern-matching-related methods to [Feature].
+extension FeaturePatterns on Feature {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Feature value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Feature() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Feature value)  $default,){
+final _that = this;
+switch (_that) {
+case _Feature():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Feature value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Feature() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Point center)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Feature() when $default != null:
+return $default(_that.center);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Point center)  $default,) {final _that = this;
+switch (_that) {
+case _Feature():
+return $default(_that.center);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Point center)?  $default,) {final _that = this;
+switch (_that) {
+case _Feature() when $default != null:
+return $default(_that.center);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$FeatureImplCopyWithImpl<$Res>
-    extends _$FeatureCopyWithImpl<$Res, _$FeatureImpl>
-    implements _$$FeatureImplCopyWith<$Res> {
-  __$$FeatureImplCopyWithImpl(
-      _$FeatureImpl _value, $Res Function(_$FeatureImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Feature
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? center = null,
-  }) {
-    return _then(_$FeatureImpl(
-      center: null == center
-          ? _value.center
-          : center // ignore: cast_nullable_to_non_nullable
-              as Point,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$FeatureImpl implements _Feature {
-  const _$FeatureImpl({this.center = const Point()});
 
-  factory _$FeatureImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FeatureImplFromJson(json);
+class _Feature implements Feature {
+  const _Feature({this.center = const Point()});
+  factory _Feature.fromJson(Map<String, dynamic> json) => _$FeatureFromJson(json);
 
-  @override
-  @JsonKey()
-  final Point center;
+@override@JsonKey() final  Point center;
 
-  @override
-  String toString() {
-    return 'Feature(center: $center)';
-  }
+/// Create a copy of Feature
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$FeatureCopyWith<_Feature> get copyWith => __$FeatureCopyWithImpl<_Feature>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FeatureImpl &&
-            (identical(other.center, center) || other.center == center));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, center);
-
-  /// Create a copy of Feature
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FeatureImplCopyWith<_$FeatureImpl> get copyWith =>
-      __$$FeatureImplCopyWithImpl<_$FeatureImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FeatureImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$FeatureToJson(this, );
 }
 
-abstract class _Feature implements Feature {
-  const factory _Feature({final Point center}) = _$FeatureImpl;
-
-  factory _Feature.fromJson(Map<String, dynamic> json) = _$FeatureImpl.fromJson;
-
-  @override
-  Point get center;
-
-  /// Create a copy of Feature
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FeatureImplCopyWith<_$FeatureImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Feature&&(identical(other.center, center) || other.center == center));
 }
 
-Glints _$GlintsFromJson(Map<String, dynamic> json) {
-  return _Glints.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,center);
+
+@override
+String toString() {
+  return 'Feature(center: $center)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$FeatureCopyWith<$Res> implements $FeatureCopyWith<$Res> {
+  factory _$FeatureCopyWith(_Feature value, $Res Function(_Feature) _then) = __$FeatureCopyWithImpl;
+@override @useResult
+$Res call({
+ Point center
+});
+
+
+@override $PointCopyWith<$Res> get center;
+
+}
+/// @nodoc
+class __$FeatureCopyWithImpl<$Res>
+    implements _$FeatureCopyWith<$Res> {
+  __$FeatureCopyWithImpl(this._self, this._then);
+
+  final _Feature _self;
+  final $Res Function(_Feature) _then;
+
+/// Create a copy of Feature
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? center = null,}) {
+  return _then(_Feature(
+center: null == center ? _self.center : center // ignore: cast_nullable_to_non_nullable
+as Point,
+  ));
+}
+
+/// Create a copy of Feature
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get center {
+  
+  return $PointCopyWith<$Res>(_self.center, (value) {
+    return _then(_self.copyWith(center: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$Glints {
-  Feature get left => throw _privateConstructorUsedError;
-  Feature get right => throw _privateConstructorUsedError;
+
+ Feature get left; Feature get right;
+/// Create a copy of Glints
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$GlintsCopyWith<Glints> get copyWith => _$GlintsCopyWithImpl<Glints>(this as Glints, _$identity);
 
   /// Serializes this Glints to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Glints
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $GlintsCopyWith<Glints> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Glints&&(identical(other.left, left) || other.left == left)&&(identical(other.right, right) || other.right == right));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,left,right);
+
+@override
+String toString() {
+  return 'Glints(left: $left, right: $right)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $GlintsCopyWith<$Res> {
-  factory $GlintsCopyWith(Glints value, $Res Function(Glints) then) =
-      _$GlintsCopyWithImpl<$Res, Glints>;
-  @useResult
-  $Res call({Feature left, Feature right});
+abstract mixin class $GlintsCopyWith<$Res>  {
+  factory $GlintsCopyWith(Glints value, $Res Function(Glints) _then) = _$GlintsCopyWithImpl;
+@useResult
+$Res call({
+ Feature left, Feature right
+});
 
-  $FeatureCopyWith<$Res> get left;
-  $FeatureCopyWith<$Res> get right;
+
+$FeatureCopyWith<$Res> get left;$FeatureCopyWith<$Res> get right;
+
 }
-
 /// @nodoc
-class _$GlintsCopyWithImpl<$Res, $Val extends Glints>
+class _$GlintsCopyWithImpl<$Res>
     implements $GlintsCopyWith<$Res> {
-  _$GlintsCopyWithImpl(this._value, this._then);
+  _$GlintsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Glints _self;
+  final $Res Function(Glints) _then;
 
-  /// Create a copy of Glints
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? left = null,
-    Object? right = null,
-  }) {
-    return _then(_value.copyWith(
-      left: null == left
-          ? _value.left
-          : left // ignore: cast_nullable_to_non_nullable
-              as Feature,
-      right: null == right
-          ? _value.right
-          : right // ignore: cast_nullable_to_non_nullable
-              as Feature,
-    ) as $Val);
-  }
-
-  /// Create a copy of Glints
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $FeatureCopyWith<$Res> get left {
-    return $FeatureCopyWith<$Res>(_value.left, (value) {
-      return _then(_value.copyWith(left: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Glints
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $FeatureCopyWith<$Res> get right {
-    return $FeatureCopyWith<$Res>(_value.right, (value) {
-      return _then(_value.copyWith(right: value) as $Val);
-    });
-  }
+/// Create a copy of Glints
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? left = null,Object? right = null,}) {
+  return _then(_self.copyWith(
+left: null == left ? _self.left : left // ignore: cast_nullable_to_non_nullable
+as Feature,right: null == right ? _self.right : right // ignore: cast_nullable_to_non_nullable
+as Feature,
+  ));
+}
+/// Create a copy of Glints
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FeatureCopyWith<$Res> get left {
+  
+  return $FeatureCopyWith<$Res>(_self.left, (value) {
+    return _then(_self.copyWith(left: value));
+  });
+}/// Create a copy of Glints
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FeatureCopyWith<$Res> get right {
+  
+  return $FeatureCopyWith<$Res>(_self.right, (value) {
+    return _then(_self.copyWith(right: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$GlintsImplCopyWith<$Res> implements $GlintsCopyWith<$Res> {
-  factory _$$GlintsImplCopyWith(
-          _$GlintsImpl value, $Res Function(_$GlintsImpl) then) =
-      __$$GlintsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Feature left, Feature right});
 
-  @override
-  $FeatureCopyWith<$Res> get left;
-  @override
-  $FeatureCopyWith<$Res> get right;
+/// Adds pattern-matching-related methods to [Glints].
+extension GlintsPatterns on Glints {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Glints value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Glints() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Glints value)  $default,){
+final _that = this;
+switch (_that) {
+case _Glints():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Glints value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Glints() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Feature left,  Feature right)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Glints() when $default != null:
+return $default(_that.left,_that.right);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Feature left,  Feature right)  $default,) {final _that = this;
+switch (_that) {
+case _Glints():
+return $default(_that.left,_that.right);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Feature left,  Feature right)?  $default,) {final _that = this;
+switch (_that) {
+case _Glints() when $default != null:
+return $default(_that.left,_that.right);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$GlintsImplCopyWithImpl<$Res>
-    extends _$GlintsCopyWithImpl<$Res, _$GlintsImpl>
-    implements _$$GlintsImplCopyWith<$Res> {
-  __$$GlintsImplCopyWithImpl(
-      _$GlintsImpl _value, $Res Function(_$GlintsImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Glints
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? left = null,
-    Object? right = null,
-  }) {
-    return _then(_$GlintsImpl(
-      left: null == left
-          ? _value.left
-          : left // ignore: cast_nullable_to_non_nullable
-              as Feature,
-      right: null == right
-          ? _value.right
-          : right // ignore: cast_nullable_to_non_nullable
-              as Feature,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$GlintsImpl implements _Glints {
-  const _$GlintsImpl(
-      {this.left = const Feature(), this.right = const Feature()});
 
-  factory _$GlintsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$GlintsImplFromJson(json);
+class _Glints implements Glints {
+  const _Glints({this.left = const Feature(), this.right = const Feature()});
+  factory _Glints.fromJson(Map<String, dynamic> json) => _$GlintsFromJson(json);
 
-  @override
-  @JsonKey()
-  final Feature left;
-  @override
-  @JsonKey()
-  final Feature right;
+@override@JsonKey() final  Feature left;
+@override@JsonKey() final  Feature right;
 
-  @override
-  String toString() {
-    return 'Glints(left: $left, right: $right)';
-  }
+/// Create a copy of Glints
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$GlintsCopyWith<_Glints> get copyWith => __$GlintsCopyWithImpl<_Glints>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GlintsImpl &&
-            (identical(other.left, left) || other.left == left) &&
-            (identical(other.right, right) || other.right == right));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, left, right);
-
-  /// Create a copy of Glints
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$GlintsImplCopyWith<_$GlintsImpl> get copyWith =>
-      __$$GlintsImplCopyWithImpl<_$GlintsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$GlintsImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$GlintsToJson(this, );
 }
 
-abstract class _Glints implements Glints {
-  const factory _Glints({final Feature left, final Feature right}) =
-      _$GlintsImpl;
-
-  factory _Glints.fromJson(Map<String, dynamic> json) = _$GlintsImpl.fromJson;
-
-  @override
-  Feature get left;
-  @override
-  Feature get right;
-
-  /// Create a copy of Glints
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$GlintsImplCopyWith<_$GlintsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Glints&&(identical(other.left, left) || other.left == left)&&(identical(other.right, right) || other.right == right));
 }
 
-Eye _$EyeFromJson(Map<String, dynamic> json) {
-  return _Eye.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,left,right);
+
+@override
+String toString() {
+  return 'Glints(left: $left, right: $right)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$GlintsCopyWith<$Res> implements $GlintsCopyWith<$Res> {
+  factory _$GlintsCopyWith(_Glints value, $Res Function(_Glints) _then) = __$GlintsCopyWithImpl;
+@override @useResult
+$Res call({
+ Feature left, Feature right
+});
+
+
+@override $FeatureCopyWith<$Res> get left;@override $FeatureCopyWith<$Res> get right;
+
+}
+/// @nodoc
+class __$GlintsCopyWithImpl<$Res>
+    implements _$GlintsCopyWith<$Res> {
+  __$GlintsCopyWithImpl(this._self, this._then);
+
+  final _Glints _self;
+  final $Res Function(_Glints) _then;
+
+/// Create a copy of Glints
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? left = null,Object? right = null,}) {
+  return _then(_Glints(
+left: null == left ? _self.left : left // ignore: cast_nullable_to_non_nullable
+as Feature,right: null == right ? _self.right : right // ignore: cast_nullable_to_non_nullable
+as Feature,
+  ));
+}
+
+/// Create a copy of Glints
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FeatureCopyWith<$Res> get left {
+  
+  return $FeatureCopyWith<$Res>(_self.left, (value) {
+    return _then(_self.copyWith(left: value));
+  });
+}/// Create a copy of Glints
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FeatureCopyWith<$Res> get right {
+  
+  return $FeatureCopyWith<$Res>(_self.right, (value) {
+    return _then(_self.copyWith(right: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$Eye {
-  Point get keyPoint => throw _privateConstructorUsedError;
-  Feature get iris => throw _privateConstructorUsedError;
-  Feature get pupil => throw _privateConstructorUsedError;
-  Glints get glints => throw _privateConstructorUsedError;
-  double get distance => throw _privateConstructorUsedError;
+
+ Point get keyPoint; Feature get iris; Feature get pupil; Glints get glints; double get distance;
+/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EyeCopyWith<Eye> get copyWith => _$EyeCopyWithImpl<Eye>(this as Eye, _$identity);
 
   /// Serializes this Eye to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Eye
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $EyeCopyWith<Eye> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Eye&&(identical(other.keyPoint, keyPoint) || other.keyPoint == keyPoint)&&(identical(other.iris, iris) || other.iris == iris)&&(identical(other.pupil, pupil) || other.pupil == pupil)&&(identical(other.glints, glints) || other.glints == glints)&&(identical(other.distance, distance) || other.distance == distance));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,keyPoint,iris,pupil,glints,distance);
+
+@override
+String toString() {
+  return 'Eye(keyPoint: $keyPoint, iris: $iris, pupil: $pupil, glints: $glints, distance: $distance)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $EyeCopyWith<$Res> {
-  factory $EyeCopyWith(Eye value, $Res Function(Eye) then) =
-      _$EyeCopyWithImpl<$Res, Eye>;
-  @useResult
-  $Res call(
-      {Point keyPoint,
-      Feature iris,
-      Feature pupil,
-      Glints glints,
-      double distance});
+abstract mixin class $EyeCopyWith<$Res>  {
+  factory $EyeCopyWith(Eye value, $Res Function(Eye) _then) = _$EyeCopyWithImpl;
+@useResult
+$Res call({
+ Point keyPoint, Feature iris, Feature pupil, Glints glints, double distance
+});
 
-  $PointCopyWith<$Res> get keyPoint;
-  $FeatureCopyWith<$Res> get iris;
-  $FeatureCopyWith<$Res> get pupil;
-  $GlintsCopyWith<$Res> get glints;
+
+$PointCopyWith<$Res> get keyPoint;$FeatureCopyWith<$Res> get iris;$FeatureCopyWith<$Res> get pupil;$GlintsCopyWith<$Res> get glints;
+
+}
+/// @nodoc
+class _$EyeCopyWithImpl<$Res>
+    implements $EyeCopyWith<$Res> {
+  _$EyeCopyWithImpl(this._self, this._then);
+
+  final Eye _self;
+  final $Res Function(Eye) _then;
+
+/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? keyPoint = null,Object? iris = null,Object? pupil = null,Object? glints = null,Object? distance = null,}) {
+  return _then(_self.copyWith(
+keyPoint: null == keyPoint ? _self.keyPoint : keyPoint // ignore: cast_nullable_to_non_nullable
+as Point,iris: null == iris ? _self.iris : iris // ignore: cast_nullable_to_non_nullable
+as Feature,pupil: null == pupil ? _self.pupil : pupil // ignore: cast_nullable_to_non_nullable
+as Feature,glints: null == glints ? _self.glints : glints // ignore: cast_nullable_to_non_nullable
+as Glints,distance: null == distance ? _self.distance : distance // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
+}
+/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get keyPoint {
+  
+  return $PointCopyWith<$Res>(_self.keyPoint, (value) {
+    return _then(_self.copyWith(keyPoint: value));
+  });
+}/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FeatureCopyWith<$Res> get iris {
+  
+  return $FeatureCopyWith<$Res>(_self.iris, (value) {
+    return _then(_self.copyWith(iris: value));
+  });
+}/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FeatureCopyWith<$Res> get pupil {
+  
+  return $FeatureCopyWith<$Res>(_self.pupil, (value) {
+    return _then(_self.copyWith(pupil: value));
+  });
+}/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GlintsCopyWith<$Res> get glints {
+  
+  return $GlintsCopyWith<$Res>(_self.glints, (value) {
+    return _then(_self.copyWith(glints: value));
+  });
+}
 }
 
-/// @nodoc
-class _$EyeCopyWithImpl<$Res, $Val extends Eye> implements $EyeCopyWith<$Res> {
-  _$EyeCopyWithImpl(this._value, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+/// Adds pattern-matching-related methods to [Eye].
+extension EyePatterns on Eye {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
 
-  /// Create a copy of Eye
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? keyPoint = null,
-    Object? iris = null,
-    Object? pupil = null,
-    Object? glints = null,
-    Object? distance = null,
-  }) {
-    return _then(_value.copyWith(
-      keyPoint: null == keyPoint
-          ? _value.keyPoint
-          : keyPoint // ignore: cast_nullable_to_non_nullable
-              as Point,
-      iris: null == iris
-          ? _value.iris
-          : iris // ignore: cast_nullable_to_non_nullable
-              as Feature,
-      pupil: null == pupil
-          ? _value.pupil
-          : pupil // ignore: cast_nullable_to_non_nullable
-              as Feature,
-      glints: null == glints
-          ? _value.glints
-          : glints // ignore: cast_nullable_to_non_nullable
-              as Glints,
-      distance: null == distance
-          ? _value.distance
-          : distance // ignore: cast_nullable_to_non_nullable
-              as double,
-    ) as $Val);
-  }
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Eye value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Eye() when $default != null:
+return $default(_that);case _:
+  return orElse();
 
-  /// Create a copy of Eye
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PointCopyWith<$Res> get keyPoint {
-    return $PointCopyWith<$Res>(_value.keyPoint, (value) {
-      return _then(_value.copyWith(keyPoint: value) as $Val);
-    });
-  }
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
 
-  /// Create a copy of Eye
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $FeatureCopyWith<$Res> get iris {
-    return $FeatureCopyWith<$Res>(_value.iris, (value) {
-      return _then(_value.copyWith(iris: value) as $Val);
-    });
-  }
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Eye value)  $default,){
+final _that = this;
+switch (_that) {
+case _Eye():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
 
-  /// Create a copy of Eye
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $FeatureCopyWith<$Res> get pupil {
-    return $FeatureCopyWith<$Res>(_value.pupil, (value) {
-      return _then(_value.copyWith(pupil: value) as $Val);
-    });
-  }
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Eye value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Eye() when $default != null:
+return $default(_that);case _:
+  return null;
 
-  /// Create a copy of Eye
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $GlintsCopyWith<$Res> get glints {
-    return $GlintsCopyWith<$Res>(_value.glints, (value) {
-      return _then(_value.copyWith(glints: value) as $Val);
-    });
-  }
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Point keyPoint,  Feature iris,  Feature pupil,  Glints glints,  double distance)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Eye() when $default != null:
+return $default(_that.keyPoint,_that.iris,_that.pupil,_that.glints,_that.distance);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Point keyPoint,  Feature iris,  Feature pupil,  Glints glints,  double distance)  $default,) {final _that = this;
+switch (_that) {
+case _Eye():
+return $default(_that.keyPoint,_that.iris,_that.pupil,_that.glints,_that.distance);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Point keyPoint,  Feature iris,  Feature pupil,  Glints glints,  double distance)?  $default,) {final _that = this;
+switch (_that) {
+case _Eye() when $default != null:
+return $default(_that.keyPoint,_that.iris,_that.pupil,_that.glints,_that.distance);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-abstract class _$$EyeImplCopyWith<$Res> implements $EyeCopyWith<$Res> {
-  factory _$$EyeImplCopyWith(_$EyeImpl value, $Res Function(_$EyeImpl) then) =
-      __$$EyeImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Point keyPoint,
-      Feature iris,
-      Feature pupil,
-      Glints glints,
-      double distance});
-
-  @override
-  $PointCopyWith<$Res> get keyPoint;
-  @override
-  $FeatureCopyWith<$Res> get iris;
-  @override
-  $FeatureCopyWith<$Res> get pupil;
-  @override
-  $GlintsCopyWith<$Res> get glints;
-}
-
-/// @nodoc
-class __$$EyeImplCopyWithImpl<$Res> extends _$EyeCopyWithImpl<$Res, _$EyeImpl>
-    implements _$$EyeImplCopyWith<$Res> {
-  __$$EyeImplCopyWithImpl(_$EyeImpl _value, $Res Function(_$EyeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Eye
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? keyPoint = null,
-    Object? iris = null,
-    Object? pupil = null,
-    Object? glints = null,
-    Object? distance = null,
-  }) {
-    return _then(_$EyeImpl(
-      keyPoint: null == keyPoint
-          ? _value.keyPoint
-          : keyPoint // ignore: cast_nullable_to_non_nullable
-              as Point,
-      iris: null == iris
-          ? _value.iris
-          : iris // ignore: cast_nullable_to_non_nullable
-              as Feature,
-      pupil: null == pupil
-          ? _value.pupil
-          : pupil // ignore: cast_nullable_to_non_nullable
-              as Feature,
-      glints: null == glints
-          ? _value.glints
-          : glints // ignore: cast_nullable_to_non_nullable
-              as Glints,
-      distance: null == distance
-          ? _value.distance
-          : distance // ignore: cast_nullable_to_non_nullable
-              as double,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$EyeImpl implements _Eye {
-  const _$EyeImpl(
-      {this.keyPoint = const Point(),
-      this.iris = const Feature(),
-      this.pupil = const Feature(),
-      this.glints = const Glints(),
-      this.distance = 0.0});
 
-  factory _$EyeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EyeImplFromJson(json);
+class _Eye implements Eye {
+  const _Eye({this.keyPoint = const Point(), this.iris = const Feature(), this.pupil = const Feature(), this.glints = const Glints(), this.distance = 0.0});
+  factory _Eye.fromJson(Map<String, dynamic> json) => _$EyeFromJson(json);
 
-  @override
-  @JsonKey()
-  final Point keyPoint;
-  @override
-  @JsonKey()
-  final Feature iris;
-  @override
-  @JsonKey()
-  final Feature pupil;
-  @override
-  @JsonKey()
-  final Glints glints;
-  @override
-  @JsonKey()
-  final double distance;
+@override@JsonKey() final  Point keyPoint;
+@override@JsonKey() final  Feature iris;
+@override@JsonKey() final  Feature pupil;
+@override@JsonKey() final  Glints glints;
+@override@JsonKey() final  double distance;
 
-  @override
-  String toString() {
-    return 'Eye(keyPoint: $keyPoint, iris: $iris, pupil: $pupil, glints: $glints, distance: $distance)';
-  }
+/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EyeCopyWith<_Eye> get copyWith => __$EyeCopyWithImpl<_Eye>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EyeImpl &&
-            (identical(other.keyPoint, keyPoint) ||
-                other.keyPoint == keyPoint) &&
-            (identical(other.iris, iris) || other.iris == iris) &&
-            (identical(other.pupil, pupil) || other.pupil == pupil) &&
-            (identical(other.glints, glints) || other.glints == glints) &&
-            (identical(other.distance, distance) ||
-                other.distance == distance));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, keyPoint, iris, pupil, glints, distance);
-
-  /// Create a copy of Eye
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EyeImplCopyWith<_$EyeImpl> get copyWith =>
-      __$$EyeImplCopyWithImpl<_$EyeImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EyeImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$EyeToJson(this, );
 }
 
-abstract class _Eye implements Eye {
-  const factory _Eye(
-      {final Point keyPoint,
-      final Feature iris,
-      final Feature pupil,
-      final Glints glints,
-      final double distance}) = _$EyeImpl;
-
-  factory _Eye.fromJson(Map<String, dynamic> json) = _$EyeImpl.fromJson;
-
-  @override
-  Point get keyPoint;
-  @override
-  Feature get iris;
-  @override
-  Feature get pupil;
-  @override
-  Glints get glints;
-  @override
-  double get distance;
-
-  /// Create a copy of Eye
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EyeImplCopyWith<_$EyeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Eye&&(identical(other.keyPoint, keyPoint) || other.keyPoint == keyPoint)&&(identical(other.iris, iris) || other.iris == iris)&&(identical(other.pupil, pupil) || other.pupil == pupil)&&(identical(other.glints, glints) || other.glints == glints)&&(identical(other.distance, distance) || other.distance == distance));
 }
 
-Eyes _$EyesFromJson(Map<String, dynamic> json) {
-  return _Eyes.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,keyPoint,iris,pupil,glints,distance);
+
+@override
+String toString() {
+  return 'Eye(keyPoint: $keyPoint, iris: $iris, pupil: $pupil, glints: $glints, distance: $distance)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$EyeCopyWith<$Res> implements $EyeCopyWith<$Res> {
+  factory _$EyeCopyWith(_Eye value, $Res Function(_Eye) _then) = __$EyeCopyWithImpl;
+@override @useResult
+$Res call({
+ Point keyPoint, Feature iris, Feature pupil, Glints glints, double distance
+});
+
+
+@override $PointCopyWith<$Res> get keyPoint;@override $FeatureCopyWith<$Res> get iris;@override $FeatureCopyWith<$Res> get pupil;@override $GlintsCopyWith<$Res> get glints;
+
+}
+/// @nodoc
+class __$EyeCopyWithImpl<$Res>
+    implements _$EyeCopyWith<$Res> {
+  __$EyeCopyWithImpl(this._self, this._then);
+
+  final _Eye _self;
+  final $Res Function(_Eye) _then;
+
+/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? keyPoint = null,Object? iris = null,Object? pupil = null,Object? glints = null,Object? distance = null,}) {
+  return _then(_Eye(
+keyPoint: null == keyPoint ? _self.keyPoint : keyPoint // ignore: cast_nullable_to_non_nullable
+as Point,iris: null == iris ? _self.iris : iris // ignore: cast_nullable_to_non_nullable
+as Feature,pupil: null == pupil ? _self.pupil : pupil // ignore: cast_nullable_to_non_nullable
+as Feature,glints: null == glints ? _self.glints : glints // ignore: cast_nullable_to_non_nullable
+as Glints,distance: null == distance ? _self.distance : distance // ignore: cast_nullable_to_non_nullable
+as double,
+  ));
+}
+
+/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get keyPoint {
+  
+  return $PointCopyWith<$Res>(_self.keyPoint, (value) {
+    return _then(_self.copyWith(keyPoint: value));
+  });
+}/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FeatureCopyWith<$Res> get iris {
+  
+  return $FeatureCopyWith<$Res>(_self.iris, (value) {
+    return _then(_self.copyWith(iris: value));
+  });
+}/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$FeatureCopyWith<$Res> get pupil {
+  
+  return $FeatureCopyWith<$Res>(_self.pupil, (value) {
+    return _then(_self.copyWith(pupil: value));
+  });
+}/// Create a copy of Eye
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$GlintsCopyWith<$Res> get glints {
+  
+  return $GlintsCopyWith<$Res>(_self.glints, (value) {
+    return _then(_self.copyWith(glints: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$Eyes {
-  Eye get left => throw _privateConstructorUsedError;
-  Eye get right => throw _privateConstructorUsedError;
+
+ Eye get left; Eye get right;
+/// Create a copy of Eyes
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EyesCopyWith<Eyes> get copyWith => _$EyesCopyWithImpl<Eyes>(this as Eyes, _$identity);
 
   /// Serializes this Eyes to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Eyes
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $EyesCopyWith<Eyes> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Eyes&&(identical(other.left, left) || other.left == left)&&(identical(other.right, right) || other.right == right));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,left,right);
+
+@override
+String toString() {
+  return 'Eyes(left: $left, right: $right)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $EyesCopyWith<$Res> {
-  factory $EyesCopyWith(Eyes value, $Res Function(Eyes) then) =
-      _$EyesCopyWithImpl<$Res, Eyes>;
-  @useResult
-  $Res call({Eye left, Eye right});
+abstract mixin class $EyesCopyWith<$Res>  {
+  factory $EyesCopyWith(Eyes value, $Res Function(Eyes) _then) = _$EyesCopyWithImpl;
+@useResult
+$Res call({
+ Eye left, Eye right
+});
 
-  $EyeCopyWith<$Res> get left;
-  $EyeCopyWith<$Res> get right;
+
+$EyeCopyWith<$Res> get left;$EyeCopyWith<$Res> get right;
+
 }
-
 /// @nodoc
-class _$EyesCopyWithImpl<$Res, $Val extends Eyes>
+class _$EyesCopyWithImpl<$Res>
     implements $EyesCopyWith<$Res> {
-  _$EyesCopyWithImpl(this._value, this._then);
+  _$EyesCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Eyes _self;
+  final $Res Function(Eyes) _then;
 
-  /// Create a copy of Eyes
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? left = null,
-    Object? right = null,
-  }) {
-    return _then(_value.copyWith(
-      left: null == left
-          ? _value.left
-          : left // ignore: cast_nullable_to_non_nullable
-              as Eye,
-      right: null == right
-          ? _value.right
-          : right // ignore: cast_nullable_to_non_nullable
-              as Eye,
-    ) as $Val);
-  }
-
-  /// Create a copy of Eyes
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $EyeCopyWith<$Res> get left {
-    return $EyeCopyWith<$Res>(_value.left, (value) {
-      return _then(_value.copyWith(left: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Eyes
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $EyeCopyWith<$Res> get right {
-    return $EyeCopyWith<$Res>(_value.right, (value) {
-      return _then(_value.copyWith(right: value) as $Val);
-    });
-  }
+/// Create a copy of Eyes
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? left = null,Object? right = null,}) {
+  return _then(_self.copyWith(
+left: null == left ? _self.left : left // ignore: cast_nullable_to_non_nullable
+as Eye,right: null == right ? _self.right : right // ignore: cast_nullable_to_non_nullable
+as Eye,
+  ));
+}
+/// Create a copy of Eyes
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EyeCopyWith<$Res> get left {
+  
+  return $EyeCopyWith<$Res>(_self.left, (value) {
+    return _then(_self.copyWith(left: value));
+  });
+}/// Create a copy of Eyes
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EyeCopyWith<$Res> get right {
+  
+  return $EyeCopyWith<$Res>(_self.right, (value) {
+    return _then(_self.copyWith(right: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$EyesImplCopyWith<$Res> implements $EyesCopyWith<$Res> {
-  factory _$$EyesImplCopyWith(
-          _$EyesImpl value, $Res Function(_$EyesImpl) then) =
-      __$$EyesImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Eye left, Eye right});
 
-  @override
-  $EyeCopyWith<$Res> get left;
-  @override
-  $EyeCopyWith<$Res> get right;
+/// Adds pattern-matching-related methods to [Eyes].
+extension EyesPatterns on Eyes {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Eyes value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Eyes() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Eyes value)  $default,){
+final _that = this;
+switch (_that) {
+case _Eyes():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Eyes value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Eyes() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Eye left,  Eye right)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Eyes() when $default != null:
+return $default(_that.left,_that.right);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Eye left,  Eye right)  $default,) {final _that = this;
+switch (_that) {
+case _Eyes():
+return $default(_that.left,_that.right);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Eye left,  Eye right)?  $default,) {final _that = this;
+switch (_that) {
+case _Eyes() when $default != null:
+return $default(_that.left,_that.right);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$EyesImplCopyWithImpl<$Res>
-    extends _$EyesCopyWithImpl<$Res, _$EyesImpl>
-    implements _$$EyesImplCopyWith<$Res> {
-  __$$EyesImplCopyWithImpl(_$EyesImpl _value, $Res Function(_$EyesImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Eyes
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? left = null,
-    Object? right = null,
-  }) {
-    return _then(_$EyesImpl(
-      left: null == left
-          ? _value.left
-          : left // ignore: cast_nullable_to_non_nullable
-              as Eye,
-      right: null == right
-          ? _value.right
-          : right // ignore: cast_nullable_to_non_nullable
-              as Eye,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$EyesImpl implements _Eyes {
-  const _$EyesImpl({this.left = const Eye(), this.right = const Eye()});
 
-  factory _$EyesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EyesImplFromJson(json);
+class _Eyes implements Eyes {
+  const _Eyes({this.left = const Eye(), this.right = const Eye()});
+  factory _Eyes.fromJson(Map<String, dynamic> json) => _$EyesFromJson(json);
 
-  @override
-  @JsonKey()
-  final Eye left;
-  @override
-  @JsonKey()
-  final Eye right;
+@override@JsonKey() final  Eye left;
+@override@JsonKey() final  Eye right;
 
-  @override
-  String toString() {
-    return 'Eyes(left: $left, right: $right)';
-  }
+/// Create a copy of Eyes
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EyesCopyWith<_Eyes> get copyWith => __$EyesCopyWithImpl<_Eyes>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EyesImpl &&
-            (identical(other.left, left) || other.left == left) &&
-            (identical(other.right, right) || other.right == right));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, left, right);
-
-  /// Create a copy of Eyes
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EyesImplCopyWith<_$EyesImpl> get copyWith =>
-      __$$EyesImplCopyWithImpl<_$EyesImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EyesImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$EyesToJson(this, );
 }
 
-abstract class _Eyes implements Eyes {
-  const factory _Eyes({final Eye left, final Eye right}) = _$EyesImpl;
-
-  factory _Eyes.fromJson(Map<String, dynamic> json) = _$EyesImpl.fromJson;
-
-  @override
-  Eye get left;
-  @override
-  Eye get right;
-
-  /// Create a copy of Eyes
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EyesImplCopyWith<_$EyesImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Eyes&&(identical(other.left, left) || other.left == left)&&(identical(other.right, right) || other.right == right));
 }
 
-Face _$FaceFromJson(Map<String, dynamic> json) {
-  return _Face.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,left,right);
+
+@override
+String toString() {
+  return 'Eyes(left: $left, right: $right)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$EyesCopyWith<$Res> implements $EyesCopyWith<$Res> {
+  factory _$EyesCopyWith(_Eyes value, $Res Function(_Eyes) _then) = __$EyesCopyWithImpl;
+@override @useResult
+$Res call({
+ Eye left, Eye right
+});
+
+
+@override $EyeCopyWith<$Res> get left;@override $EyeCopyWith<$Res> get right;
+
+}
+/// @nodoc
+class __$EyesCopyWithImpl<$Res>
+    implements _$EyesCopyWith<$Res> {
+  __$EyesCopyWithImpl(this._self, this._then);
+
+  final _Eyes _self;
+  final $Res Function(_Eyes) _then;
+
+/// Create a copy of Eyes
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? left = null,Object? right = null,}) {
+  return _then(_Eyes(
+left: null == left ? _self.left : left // ignore: cast_nullable_to_non_nullable
+as Eye,right: null == right ? _self.right : right // ignore: cast_nullable_to_non_nullable
+as Eye,
+  ));
+}
+
+/// Create a copy of Eyes
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EyeCopyWith<$Res> get left {
+  
+  return $EyeCopyWith<$Res>(_self.left, (value) {
+    return _then(_self.copyWith(left: value));
+  });
+}/// Create a copy of Eyes
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EyeCopyWith<$Res> get right {
+  
+  return $EyeCopyWith<$Res>(_self.right, (value) {
+    return _then(_self.copyWith(right: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$Face {
-  Rect get boundingRect => throw _privateConstructorUsedError;
-  Eyes get eyes => throw _privateConstructorUsedError;
+
+ Rect get boundingRect; Eyes get eyes;
+/// Create a copy of Face
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$FaceCopyWith<Face> get copyWith => _$FaceCopyWithImpl<Face>(this as Face, _$identity);
 
   /// Serializes this Face to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of Face
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $FaceCopyWith<Face> get copyWith => throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Face&&(identical(other.boundingRect, boundingRect) || other.boundingRect == boundingRect)&&(identical(other.eyes, eyes) || other.eyes == eyes));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,boundingRect,eyes);
+
+@override
+String toString() {
+  return 'Face(boundingRect: $boundingRect, eyes: $eyes)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $FaceCopyWith<$Res> {
-  factory $FaceCopyWith(Face value, $Res Function(Face) then) =
-      _$FaceCopyWithImpl<$Res, Face>;
-  @useResult
-  $Res call({Rect boundingRect, Eyes eyes});
+abstract mixin class $FaceCopyWith<$Res>  {
+  factory $FaceCopyWith(Face value, $Res Function(Face) _then) = _$FaceCopyWithImpl;
+@useResult
+$Res call({
+ Rect boundingRect, Eyes eyes
+});
 
-  $RectCopyWith<$Res> get boundingRect;
-  $EyesCopyWith<$Res> get eyes;
+
+$RectCopyWith<$Res> get boundingRect;$EyesCopyWith<$Res> get eyes;
+
 }
-
 /// @nodoc
-class _$FaceCopyWithImpl<$Res, $Val extends Face>
+class _$FaceCopyWithImpl<$Res>
     implements $FaceCopyWith<$Res> {
-  _$FaceCopyWithImpl(this._value, this._then);
+  _$FaceCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Face _self;
+  final $Res Function(Face) _then;
 
-  /// Create a copy of Face
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? boundingRect = null,
-    Object? eyes = null,
-  }) {
-    return _then(_value.copyWith(
-      boundingRect: null == boundingRect
-          ? _value.boundingRect
-          : boundingRect // ignore: cast_nullable_to_non_nullable
-              as Rect,
-      eyes: null == eyes
-          ? _value.eyes
-          : eyes // ignore: cast_nullable_to_non_nullable
-              as Eyes,
-    ) as $Val);
-  }
-
-  /// Create a copy of Face
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $RectCopyWith<$Res> get boundingRect {
-    return $RectCopyWith<$Res>(_value.boundingRect, (value) {
-      return _then(_value.copyWith(boundingRect: value) as $Val);
-    });
-  }
-
-  /// Create a copy of Face
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $EyesCopyWith<$Res> get eyes {
-    return $EyesCopyWith<$Res>(_value.eyes, (value) {
-      return _then(_value.copyWith(eyes: value) as $Val);
-    });
-  }
+/// Create a copy of Face
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? boundingRect = null,Object? eyes = null,}) {
+  return _then(_self.copyWith(
+boundingRect: null == boundingRect ? _self.boundingRect : boundingRect // ignore: cast_nullable_to_non_nullable
+as Rect,eyes: null == eyes ? _self.eyes : eyes // ignore: cast_nullable_to_non_nullable
+as Eyes,
+  ));
+}
+/// Create a copy of Face
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RectCopyWith<$Res> get boundingRect {
+  
+  return $RectCopyWith<$Res>(_self.boundingRect, (value) {
+    return _then(_self.copyWith(boundingRect: value));
+  });
+}/// Create a copy of Face
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EyesCopyWith<$Res> get eyes {
+  
+  return $EyesCopyWith<$Res>(_self.eyes, (value) {
+    return _then(_self.copyWith(eyes: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$FaceImplCopyWith<$Res> implements $FaceCopyWith<$Res> {
-  factory _$$FaceImplCopyWith(
-          _$FaceImpl value, $Res Function(_$FaceImpl) then) =
-      __$$FaceImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Rect boundingRect, Eyes eyes});
 
-  @override
-  $RectCopyWith<$Res> get boundingRect;
-  @override
-  $EyesCopyWith<$Res> get eyes;
+/// Adds pattern-matching-related methods to [Face].
+extension FacePatterns on Face {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Face value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Face() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Face value)  $default,){
+final _that = this;
+switch (_that) {
+case _Face():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Face value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Face() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Rect boundingRect,  Eyes eyes)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Face() when $default != null:
+return $default(_that.boundingRect,_that.eyes);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Rect boundingRect,  Eyes eyes)  $default,) {final _that = this;
+switch (_that) {
+case _Face():
+return $default(_that.boundingRect,_that.eyes);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Rect boundingRect,  Eyes eyes)?  $default,) {final _that = this;
+switch (_that) {
+case _Face() when $default != null:
+return $default(_that.boundingRect,_that.eyes);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$FaceImplCopyWithImpl<$Res>
-    extends _$FaceCopyWithImpl<$Res, _$FaceImpl>
-    implements _$$FaceImplCopyWith<$Res> {
-  __$$FaceImplCopyWithImpl(_$FaceImpl _value, $Res Function(_$FaceImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Face
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? boundingRect = null,
-    Object? eyes = null,
-  }) {
-    return _then(_$FaceImpl(
-      boundingRect: null == boundingRect
-          ? _value.boundingRect
-          : boundingRect // ignore: cast_nullable_to_non_nullable
-              as Rect,
-      eyes: null == eyes
-          ? _value.eyes
-          : eyes // ignore: cast_nullable_to_non_nullable
-              as Eyes,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$FaceImpl implements _Face {
-  const _$FaceImpl(
-      {this.boundingRect = const Rect(), this.eyes = const Eyes()});
 
-  factory _$FaceImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FaceImplFromJson(json);
+class _Face implements Face {
+  const _Face({this.boundingRect = const Rect(), this.eyes = const Eyes()});
+  factory _Face.fromJson(Map<String, dynamic> json) => _$FaceFromJson(json);
 
-  @override
-  @JsonKey()
-  final Rect boundingRect;
-  @override
-  @JsonKey()
-  final Eyes eyes;
+@override@JsonKey() final  Rect boundingRect;
+@override@JsonKey() final  Eyes eyes;
 
-  @override
-  String toString() {
-    return 'Face(boundingRect: $boundingRect, eyes: $eyes)';
-  }
+/// Create a copy of Face
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$FaceCopyWith<_Face> get copyWith => __$FaceCopyWithImpl<_Face>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FaceImpl &&
-            (identical(other.boundingRect, boundingRect) ||
-                other.boundingRect == boundingRect) &&
-            (identical(other.eyes, eyes) || other.eyes == eyes));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, boundingRect, eyes);
-
-  /// Create a copy of Face
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FaceImplCopyWith<_$FaceImpl> get copyWith =>
-      __$$FaceImplCopyWithImpl<_$FaceImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FaceImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$FaceToJson(this, );
 }
 
-abstract class _Face implements Face {
-  const factory _Face({final Rect boundingRect, final Eyes eyes}) = _$FaceImpl;
-
-  factory _Face.fromJson(Map<String, dynamic> json) = _$FaceImpl.fromJson;
-
-  @override
-  Rect get boundingRect;
-  @override
-  Eyes get eyes;
-
-  /// Create a copy of Face
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$FaceImplCopyWith<_$FaceImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Face&&(identical(other.boundingRect, boundingRect) || other.boundingRect == boundingRect)&&(identical(other.eyes, eyes) || other.eyes == eyes));
 }
 
-RawImage _$RawImageFromJson(Map<String, dynamic> json) {
-  return _RawImage.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,boundingRect,eyes);
+
+@override
+String toString() {
+  return 'Face(boundingRect: $boundingRect, eyes: $eyes)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$FaceCopyWith<$Res> implements $FaceCopyWith<$Res> {
+  factory _$FaceCopyWith(_Face value, $Res Function(_Face) _then) = __$FaceCopyWithImpl;
+@override @useResult
+$Res call({
+ Rect boundingRect, Eyes eyes
+});
+
+
+@override $RectCopyWith<$Res> get boundingRect;@override $EyesCopyWith<$Res> get eyes;
+
+}
+/// @nodoc
+class __$FaceCopyWithImpl<$Res>
+    implements _$FaceCopyWith<$Res> {
+  __$FaceCopyWithImpl(this._self, this._then);
+
+  final _Face _self;
+  final $Res Function(_Face) _then;
+
+/// Create a copy of Face
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? boundingRect = null,Object? eyes = null,}) {
+  return _then(_Face(
+boundingRect: null == boundingRect ? _self.boundingRect : boundingRect // ignore: cast_nullable_to_non_nullable
+as Rect,eyes: null == eyes ? _self.eyes : eyes // ignore: cast_nullable_to_non_nullable
+as Eyes,
+  ));
+}
+
+/// Create a copy of Face
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RectCopyWith<$Res> get boundingRect {
+  
+  return $RectCopyWith<$Res>(_self.boundingRect, (value) {
+    return _then(_self.copyWith(boundingRect: value));
+  });
+}/// Create a copy of Face
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EyesCopyWith<$Res> get eyes {
+  
+  return $EyesCopyWith<$Res>(_self.eyes, (value) {
+    return _then(_self.copyWith(eyes: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$RawImage {
-  int get width => throw _privateConstructorUsedError;
-  int get height => throw _privateConstructorUsedError;
-  List<int> get data => throw _privateConstructorUsedError;
+
+ int get width; int get height; List<int> get data;
+/// Create a copy of RawImage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$RawImageCopyWith<RawImage> get copyWith => _$RawImageCopyWithImpl<RawImage>(this as RawImage, _$identity);
 
   /// Serializes this RawImage to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of RawImage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $RawImageCopyWith<RawImage> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is RawImage&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&const DeepCollectionEquality().equals(other.data, data));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,width,height,const DeepCollectionEquality().hash(data));
+
+@override
+String toString() {
+  return 'RawImage(width: $width, height: $height, data: $data)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $RawImageCopyWith<$Res> {
-  factory $RawImageCopyWith(RawImage value, $Res Function(RawImage) then) =
-      _$RawImageCopyWithImpl<$Res, RawImage>;
-  @useResult
-  $Res call({int width, int height, List<int> data});
-}
+abstract mixin class $RawImageCopyWith<$Res>  {
+  factory $RawImageCopyWith(RawImage value, $Res Function(RawImage) _then) = _$RawImageCopyWithImpl;
+@useResult
+$Res call({
+ int width, int height, List<int> data
+});
 
+
+
+
+}
 /// @nodoc
-class _$RawImageCopyWithImpl<$Res, $Val extends RawImage>
+class _$RawImageCopyWithImpl<$Res>
     implements $RawImageCopyWith<$Res> {
-  _$RawImageCopyWithImpl(this._value, this._then);
+  _$RawImageCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final RawImage _self;
+  final $Res Function(RawImage) _then;
 
-  /// Create a copy of RawImage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? width = null,
-    Object? height = null,
-    Object? data = null,
-  }) {
-    return _then(_value.copyWith(
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-    ) as $Val);
-  }
+/// Create a copy of RawImage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? width = null,Object? height = null,Object? data = null,}) {
+  return _then(_self.copyWith(
+width: null == width ? _self.width : width // ignore: cast_nullable_to_non_nullable
+as int,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
+as int,data: null == data ? _self.data : data // ignore: cast_nullable_to_non_nullable
+as List<int>,
+  ));
 }
 
-/// @nodoc
-abstract class _$$RawImageImplCopyWith<$Res>
-    implements $RawImageCopyWith<$Res> {
-  factory _$$RawImageImplCopyWith(
-          _$RawImageImpl value, $Res Function(_$RawImageImpl) then) =
-      __$$RawImageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int width, int height, List<int> data});
 }
 
-/// @nodoc
-class __$$RawImageImplCopyWithImpl<$Res>
-    extends _$RawImageCopyWithImpl<$Res, _$RawImageImpl>
-    implements _$$RawImageImplCopyWith<$Res> {
-  __$$RawImageImplCopyWithImpl(
-      _$RawImageImpl _value, $Res Function(_$RawImageImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of RawImage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? width = null,
-    Object? height = null,
-    Object? data = null,
-  }) {
-    return _then(_$RawImageImpl(
-      width: null == width
-          ? _value.width
-          : width // ignore: cast_nullable_to_non_nullable
-              as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<int>,
-    ));
-  }
+/// Adds pattern-matching-related methods to [RawImage].
+extension RawImagePatterns on RawImage {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _RawImage value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _RawImage() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _RawImage value)  $default,){
+final _that = this;
+switch (_that) {
+case _RawImage():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _RawImage value)?  $default,){
+final _that = this;
+switch (_that) {
+case _RawImage() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int width,  int height,  List<int> data)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _RawImage() when $default != null:
+return $default(_that.width,_that.height,_that.data);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int width,  int height,  List<int> data)  $default,) {final _that = this;
+switch (_that) {
+case _RawImage():
+return $default(_that.width,_that.height,_that.data);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int width,  int height,  List<int> data)?  $default,) {final _that = this;
+switch (_that) {
+case _RawImage() when $default != null:
+return $default(_that.width,_that.height,_that.data);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$RawImageImpl extends _RawImage {
-  const _$RawImageImpl(
-      {this.width = 0, this.height = 0, final List<int> data = const []})
-      : _data = data,
-        super._();
 
-  factory _$RawImageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$RawImageImplFromJson(json);
+class _RawImage extends RawImage {
+  const _RawImage({this.width = 0, this.height = 0, final  List<int> data = const []}): _data = data,super._();
+  factory _RawImage.fromJson(Map<String, dynamic> json) => _$RawImageFromJson(json);
 
-  @override
-  @JsonKey()
-  final int width;
-  @override
-  @JsonKey()
-  final int height;
-  final List<int> _data;
-  @override
-  @JsonKey()
-  List<int> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
-
-  @override
-  String toString() {
-    return 'RawImage(width: $width, height: $height, data: $data)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RawImageImpl &&
-            (identical(other.width, width) || other.width == width) &&
-            (identical(other.height, height) || other.height == height) &&
-            const DeepCollectionEquality().equals(other._data, _data));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, width, height, const DeepCollectionEquality().hash(_data));
-
-  /// Create a copy of RawImage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RawImageImplCopyWith<_$RawImageImpl> get copyWith =>
-      __$$RawImageImplCopyWithImpl<_$RawImageImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$RawImageImplToJson(
-      this,
-    );
-  }
+@override@JsonKey() final  int width;
+@override@JsonKey() final  int height;
+ final  List<int> _data;
+@override@JsonKey() List<int> get data {
+  if (_data is EqualUnmodifiableListView) return _data;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_data);
 }
 
-abstract class _RawImage extends RawImage {
-  const factory _RawImage(
-      {final int width,
-      final int height,
-      final List<int> data}) = _$RawImageImpl;
-  const _RawImage._() : super._();
 
-  factory _RawImage.fromJson(Map<String, dynamic> json) =
-      _$RawImageImpl.fromJson;
+/// Create a copy of RawImage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$RawImageCopyWith<_RawImage> get copyWith => __$RawImageCopyWithImpl<_RawImage>(this, _$identity);
 
-  @override
-  int get width;
-  @override
-  int get height;
-  @override
-  List<int> get data;
-
-  /// Create a copy of RawImage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$RawImageImplCopyWith<_$RawImageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$RawImageToJson(this, );
 }
 
-BinocularGaze _$BinocularGazeFromJson(Map<String, dynamic> json) {
-  return _BinocularGaze.fromJson(json);
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _RawImage&&(identical(other.width, width) || other.width == width)&&(identical(other.height, height) || other.height == height)&&const DeepCollectionEquality().equals(other._data, _data));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,width,height,const DeepCollectionEquality().hash(_data));
+
+@override
+String toString() {
+  return 'RawImage(width: $width, height: $height, data: $data)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$RawImageCopyWith<$Res> implements $RawImageCopyWith<$Res> {
+  factory _$RawImageCopyWith(_RawImage value, $Res Function(_RawImage) _then) = __$RawImageCopyWithImpl;
+@override @useResult
+$Res call({
+ int width, int height, List<int> data
+});
+
+
+
+
+}
+/// @nodoc
+class __$RawImageCopyWithImpl<$Res>
+    implements _$RawImageCopyWith<$Res> {
+  __$RawImageCopyWithImpl(this._self, this._then);
+
+  final _RawImage _self;
+  final $Res Function(_RawImage) _then;
+
+/// Create a copy of RawImage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? width = null,Object? height = null,Object? data = null,}) {
+  return _then(_RawImage(
+width: null == width ? _self.width : width // ignore: cast_nullable_to_non_nullable
+as int,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
+as int,data: null == data ? _self._data : data // ignore: cast_nullable_to_non_nullable
+as List<int>,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$BinocularGaze {
-  Point get leftGaze => throw _privateConstructorUsedError;
-  Point get rightGaze => throw _privateConstructorUsedError;
+
+ Point get leftGaze; Point get rightGaze;
+/// Create a copy of BinocularGaze
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$BinocularGazeCopyWith<BinocularGaze> get copyWith => _$BinocularGazeCopyWithImpl<BinocularGaze>(this as BinocularGaze, _$identity);
 
   /// Serializes this BinocularGaze to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of BinocularGaze
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $BinocularGazeCopyWith<BinocularGaze> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is BinocularGaze&&(identical(other.leftGaze, leftGaze) || other.leftGaze == leftGaze)&&(identical(other.rightGaze, rightGaze) || other.rightGaze == rightGaze));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,leftGaze,rightGaze);
+
+@override
+String toString() {
+  return 'BinocularGaze(leftGaze: $leftGaze, rightGaze: $rightGaze)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $BinocularGazeCopyWith<$Res> {
-  factory $BinocularGazeCopyWith(
-          BinocularGaze value, $Res Function(BinocularGaze) then) =
-      _$BinocularGazeCopyWithImpl<$Res, BinocularGaze>;
-  @useResult
-  $Res call({Point leftGaze, Point rightGaze});
+abstract mixin class $BinocularGazeCopyWith<$Res>  {
+  factory $BinocularGazeCopyWith(BinocularGaze value, $Res Function(BinocularGaze) _then) = _$BinocularGazeCopyWithImpl;
+@useResult
+$Res call({
+ Point leftGaze, Point rightGaze
+});
 
-  $PointCopyWith<$Res> get leftGaze;
-  $PointCopyWith<$Res> get rightGaze;
+
+$PointCopyWith<$Res> get leftGaze;$PointCopyWith<$Res> get rightGaze;
+
 }
-
 /// @nodoc
-class _$BinocularGazeCopyWithImpl<$Res, $Val extends BinocularGaze>
+class _$BinocularGazeCopyWithImpl<$Res>
     implements $BinocularGazeCopyWith<$Res> {
-  _$BinocularGazeCopyWithImpl(this._value, this._then);
+  _$BinocularGazeCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final BinocularGaze _self;
+  final $Res Function(BinocularGaze) _then;
 
-  /// Create a copy of BinocularGaze
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? leftGaze = null,
-    Object? rightGaze = null,
-  }) {
-    return _then(_value.copyWith(
-      leftGaze: null == leftGaze
-          ? _value.leftGaze
-          : leftGaze // ignore: cast_nullable_to_non_nullable
-              as Point,
-      rightGaze: null == rightGaze
-          ? _value.rightGaze
-          : rightGaze // ignore: cast_nullable_to_non_nullable
-              as Point,
-    ) as $Val);
-  }
-
-  /// Create a copy of BinocularGaze
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PointCopyWith<$Res> get leftGaze {
-    return $PointCopyWith<$Res>(_value.leftGaze, (value) {
-      return _then(_value.copyWith(leftGaze: value) as $Val);
-    });
-  }
-
-  /// Create a copy of BinocularGaze
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $PointCopyWith<$Res> get rightGaze {
-    return $PointCopyWith<$Res>(_value.rightGaze, (value) {
-      return _then(_value.copyWith(rightGaze: value) as $Val);
-    });
-  }
+/// Create a copy of BinocularGaze
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? leftGaze = null,Object? rightGaze = null,}) {
+  return _then(_self.copyWith(
+leftGaze: null == leftGaze ? _self.leftGaze : leftGaze // ignore: cast_nullable_to_non_nullable
+as Point,rightGaze: null == rightGaze ? _self.rightGaze : rightGaze // ignore: cast_nullable_to_non_nullable
+as Point,
+  ));
+}
+/// Create a copy of BinocularGaze
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get leftGaze {
+  
+  return $PointCopyWith<$Res>(_self.leftGaze, (value) {
+    return _then(_self.copyWith(leftGaze: value));
+  });
+}/// Create a copy of BinocularGaze
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get rightGaze {
+  
+  return $PointCopyWith<$Res>(_self.rightGaze, (value) {
+    return _then(_self.copyWith(rightGaze: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$BinocularGazeImplCopyWith<$Res>
-    implements $BinocularGazeCopyWith<$Res> {
-  factory _$$BinocularGazeImplCopyWith(
-          _$BinocularGazeImpl value, $Res Function(_$BinocularGazeImpl) then) =
-      __$$BinocularGazeImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Point leftGaze, Point rightGaze});
 
-  @override
-  $PointCopyWith<$Res> get leftGaze;
-  @override
-  $PointCopyWith<$Res> get rightGaze;
+/// Adds pattern-matching-related methods to [BinocularGaze].
+extension BinocularGazePatterns on BinocularGaze {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _BinocularGaze value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _BinocularGaze() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _BinocularGaze value)  $default,){
+final _that = this;
+switch (_that) {
+case _BinocularGaze():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _BinocularGaze value)?  $default,){
+final _that = this;
+switch (_that) {
+case _BinocularGaze() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Point leftGaze,  Point rightGaze)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _BinocularGaze() when $default != null:
+return $default(_that.leftGaze,_that.rightGaze);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Point leftGaze,  Point rightGaze)  $default,) {final _that = this;
+switch (_that) {
+case _BinocularGaze():
+return $default(_that.leftGaze,_that.rightGaze);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Point leftGaze,  Point rightGaze)?  $default,) {final _that = this;
+switch (_that) {
+case _BinocularGaze() when $default != null:
+return $default(_that.leftGaze,_that.rightGaze);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$BinocularGazeImplCopyWithImpl<$Res>
-    extends _$BinocularGazeCopyWithImpl<$Res, _$BinocularGazeImpl>
-    implements _$$BinocularGazeImplCopyWith<$Res> {
-  __$$BinocularGazeImplCopyWithImpl(
-      _$BinocularGazeImpl _value, $Res Function(_$BinocularGazeImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of BinocularGaze
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? leftGaze = null,
-    Object? rightGaze = null,
-  }) {
-    return _then(_$BinocularGazeImpl(
-      leftGaze: null == leftGaze
-          ? _value.leftGaze
-          : leftGaze // ignore: cast_nullable_to_non_nullable
-              as Point,
-      rightGaze: null == rightGaze
-          ? _value.rightGaze
-          : rightGaze // ignore: cast_nullable_to_non_nullable
-              as Point,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$BinocularGazeImpl extends _BinocularGaze {
-  const _$BinocularGazeImpl(
-      {this.leftGaze = const Point(), this.rightGaze = const Point()})
-      : super._();
 
-  factory _$BinocularGazeImpl.fromJson(Map<String, dynamic> json) =>
-      _$$BinocularGazeImplFromJson(json);
+class _BinocularGaze extends BinocularGaze {
+  const _BinocularGaze({this.leftGaze = const Point(), this.rightGaze = const Point()}): super._();
+  factory _BinocularGaze.fromJson(Map<String, dynamic> json) => _$BinocularGazeFromJson(json);
 
-  @override
-  @JsonKey()
-  final Point leftGaze;
-  @override
-  @JsonKey()
-  final Point rightGaze;
+@override@JsonKey() final  Point leftGaze;
+@override@JsonKey() final  Point rightGaze;
 
-  @override
-  String toString() {
-    return 'BinocularGaze(leftGaze: $leftGaze, rightGaze: $rightGaze)';
-  }
+/// Create a copy of BinocularGaze
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$BinocularGazeCopyWith<_BinocularGaze> get copyWith => __$BinocularGazeCopyWithImpl<_BinocularGaze>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BinocularGazeImpl &&
-            (identical(other.leftGaze, leftGaze) ||
-                other.leftGaze == leftGaze) &&
-            (identical(other.rightGaze, rightGaze) ||
-                other.rightGaze == rightGaze));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, leftGaze, rightGaze);
-
-  /// Create a copy of BinocularGaze
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BinocularGazeImplCopyWith<_$BinocularGazeImpl> get copyWith =>
-      __$$BinocularGazeImplCopyWithImpl<_$BinocularGazeImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BinocularGazeImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$BinocularGazeToJson(this, );
 }
 
-abstract class _BinocularGaze extends BinocularGaze {
-  const factory _BinocularGaze({final Point leftGaze, final Point rightGaze}) =
-      _$BinocularGazeImpl;
-  const _BinocularGaze._() : super._();
-
-  factory _BinocularGaze.fromJson(Map<String, dynamic> json) =
-      _$BinocularGazeImpl.fromJson;
-
-  @override
-  Point get leftGaze;
-  @override
-  Point get rightGaze;
-
-  /// Create a copy of BinocularGaze
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$BinocularGazeImplCopyWith<_$BinocularGazeImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _BinocularGaze&&(identical(other.leftGaze, leftGaze) || other.leftGaze == leftGaze)&&(identical(other.rightGaze, rightGaze) || other.rightGaze == rightGaze));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,leftGaze,rightGaze);
+
+@override
+String toString() {
+  return 'BinocularGaze(leftGaze: $leftGaze, rightGaze: $rightGaze)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$BinocularGazeCopyWith<$Res> implements $BinocularGazeCopyWith<$Res> {
+  factory _$BinocularGazeCopyWith(_BinocularGaze value, $Res Function(_BinocularGaze) _then) = __$BinocularGazeCopyWithImpl;
+@override @useResult
+$Res call({
+ Point leftGaze, Point rightGaze
+});
+
+
+@override $PointCopyWith<$Res> get leftGaze;@override $PointCopyWith<$Res> get rightGaze;
+
+}
+/// @nodoc
+class __$BinocularGazeCopyWithImpl<$Res>
+    implements _$BinocularGazeCopyWith<$Res> {
+  __$BinocularGazeCopyWithImpl(this._self, this._then);
+
+  final _BinocularGaze _self;
+  final $Res Function(_BinocularGaze) _then;
+
+/// Create a copy of BinocularGaze
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? leftGaze = null,Object? rightGaze = null,}) {
+  return _then(_BinocularGaze(
+leftGaze: null == leftGaze ? _self.leftGaze : leftGaze // ignore: cast_nullable_to_non_nullable
+as Point,rightGaze: null == rightGaze ? _self.rightGaze : rightGaze // ignore: cast_nullable_to_non_nullable
+as Point,
+  ));
+}
+
+/// Create a copy of BinocularGaze
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get leftGaze {
+  
+  return $PointCopyWith<$Res>(_self.leftGaze, (value) {
+    return _then(_self.copyWith(leftGaze: value));
+  });
+}/// Create a copy of BinocularGaze
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PointCopyWith<$Res> get rightGaze {
+  
+  return $PointCopyWith<$Res>(_self.rightGaze, (value) {
+    return _then(_self.copyWith(rightGaze: value));
+  });
+}
+}
+
+// dart format on
