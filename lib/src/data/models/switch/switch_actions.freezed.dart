@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,198 +9,269 @@ part of 'switch_actions.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-SwitchActions _$SwitchActionsFromJson(Map<String, dynamic> json) {
-  return _SwitchActions.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SwitchActions {
-  String get singleClick => throw _privateConstructorUsedError;
-  String get doubleClick => throw _privateConstructorUsedError;
-  String get holdClick => throw _privateConstructorUsedError;
+
+ String get singleClick; String get doubleClick; String get holdClick;
+/// Create a copy of SwitchActions
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SwitchActionsCopyWith<SwitchActions> get copyWith => _$SwitchActionsCopyWithImpl<SwitchActions>(this as SwitchActions, _$identity);
 
   /// Serializes this SwitchActions to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson();
 
-  /// Create a copy of SwitchActions
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $SwitchActionsCopyWith<SwitchActions> get copyWith =>
-      throw _privateConstructorUsedError;
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SwitchActions&&(identical(other.singleClick, singleClick) || other.singleClick == singleClick)&&(identical(other.doubleClick, doubleClick) || other.doubleClick == doubleClick)&&(identical(other.holdClick, holdClick) || other.holdClick == holdClick));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,singleClick,doubleClick,holdClick);
+
+@override
+String toString() {
+  return 'SwitchActions(singleClick: $singleClick, doubleClick: $doubleClick, holdClick: $holdClick)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SwitchActionsCopyWith<$Res> {
-  factory $SwitchActionsCopyWith(
-          SwitchActions value, $Res Function(SwitchActions) then) =
-      _$SwitchActionsCopyWithImpl<$Res, SwitchActions>;
-  @useResult
-  $Res call({String singleClick, String doubleClick, String holdClick});
-}
+abstract mixin class $SwitchActionsCopyWith<$Res>  {
+  factory $SwitchActionsCopyWith(SwitchActions value, $Res Function(SwitchActions) _then) = _$SwitchActionsCopyWithImpl;
+@useResult
+$Res call({
+ String singleClick, String doubleClick, String holdClick
+});
 
+
+
+
+}
 /// @nodoc
-class _$SwitchActionsCopyWithImpl<$Res, $Val extends SwitchActions>
+class _$SwitchActionsCopyWithImpl<$Res>
     implements $SwitchActionsCopyWith<$Res> {
-  _$SwitchActionsCopyWithImpl(this._value, this._then);
+  _$SwitchActionsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SwitchActions _self;
+  final $Res Function(SwitchActions) _then;
 
-  /// Create a copy of SwitchActions
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? singleClick = null,
-    Object? doubleClick = null,
-    Object? holdClick = null,
-  }) {
-    return _then(_value.copyWith(
-      singleClick: null == singleClick
-          ? _value.singleClick
-          : singleClick // ignore: cast_nullable_to_non_nullable
-              as String,
-      doubleClick: null == doubleClick
-          ? _value.doubleClick
-          : doubleClick // ignore: cast_nullable_to_non_nullable
-              as String,
-      holdClick: null == holdClick
-          ? _value.holdClick
-          : holdClick // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of SwitchActions
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? singleClick = null,Object? doubleClick = null,Object? holdClick = null,}) {
+  return _then(_self.copyWith(
+singleClick: null == singleClick ? _self.singleClick : singleClick // ignore: cast_nullable_to_non_nullable
+as String,doubleClick: null == doubleClick ? _self.doubleClick : doubleClick // ignore: cast_nullable_to_non_nullable
+as String,holdClick: null == holdClick ? _self.holdClick : holdClick // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$SwitchActionsImplCopyWith<$Res>
-    implements $SwitchActionsCopyWith<$Res> {
-  factory _$$SwitchActionsImplCopyWith(
-          _$SwitchActionsImpl value, $Res Function(_$SwitchActionsImpl) then) =
-      __$$SwitchActionsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String singleClick, String doubleClick, String holdClick});
 }
 
-/// @nodoc
-class __$$SwitchActionsImplCopyWithImpl<$Res>
-    extends _$SwitchActionsCopyWithImpl<$Res, _$SwitchActionsImpl>
-    implements _$$SwitchActionsImplCopyWith<$Res> {
-  __$$SwitchActionsImplCopyWithImpl(
-      _$SwitchActionsImpl _value, $Res Function(_$SwitchActionsImpl) _then)
-      : super(_value, _then);
 
-  /// Create a copy of SwitchActions
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? singleClick = null,
-    Object? doubleClick = null,
-    Object? holdClick = null,
-  }) {
-    return _then(_$SwitchActionsImpl(
-      singleClick: null == singleClick
-          ? _value.singleClick
-          : singleClick // ignore: cast_nullable_to_non_nullable
-              as String,
-      doubleClick: null == doubleClick
-          ? _value.doubleClick
-          : doubleClick // ignore: cast_nullable_to_non_nullable
-              as String,
-      holdClick: null == holdClick
-          ? _value.holdClick
-          : holdClick // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [SwitchActions].
+extension SwitchActionsPatterns on SwitchActions {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SwitchActions value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SwitchActions() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SwitchActions value)  $default,){
+final _that = this;
+switch (_that) {
+case _SwitchActions():
+return $default(_that);}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SwitchActions value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SwitchActions() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String singleClick,  String doubleClick,  String holdClick)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SwitchActions() when $default != null:
+return $default(_that.singleClick,_that.doubleClick,_that.holdClick);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String singleClick,  String doubleClick,  String holdClick)  $default,) {final _that = this;
+switch (_that) {
+case _SwitchActions():
+return $default(_that.singleClick,_that.doubleClick,_that.holdClick);}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String singleClick,  String doubleClick,  String holdClick)?  $default,) {final _that = this;
+switch (_that) {
+case _SwitchActions() when $default != null:
+return $default(_that.singleClick,_that.doubleClick,_that.holdClick);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SwitchActionsImpl implements _SwitchActions {
-  const _$SwitchActionsImpl(
-      {required this.singleClick,
-      required this.doubleClick,
-      required this.holdClick});
 
-  factory _$SwitchActionsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SwitchActionsImplFromJson(json);
+class _SwitchActions implements SwitchActions {
+  const _SwitchActions({required this.singleClick, required this.doubleClick, required this.holdClick});
+  factory _SwitchActions.fromJson(Map<String, dynamic> json) => _$SwitchActionsFromJson(json);
 
-  @override
-  final String singleClick;
-  @override
-  final String doubleClick;
-  @override
-  final String holdClick;
+@override final  String singleClick;
+@override final  String doubleClick;
+@override final  String holdClick;
 
-  @override
-  String toString() {
-    return 'SwitchActions(singleClick: $singleClick, doubleClick: $doubleClick, holdClick: $holdClick)';
-  }
+/// Create a copy of SwitchActions
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SwitchActionsCopyWith<_SwitchActions> get copyWith => __$SwitchActionsCopyWithImpl<_SwitchActions>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SwitchActionsImpl &&
-            (identical(other.singleClick, singleClick) ||
-                other.singleClick == singleClick) &&
-            (identical(other.doubleClick, doubleClick) ||
-                other.doubleClick == doubleClick) &&
-            (identical(other.holdClick, holdClick) ||
-                other.holdClick == holdClick));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, singleClick, doubleClick, holdClick);
-
-  /// Create a copy of SwitchActions
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SwitchActionsImplCopyWith<_$SwitchActionsImpl> get copyWith =>
-      __$$SwitchActionsImplCopyWithImpl<_$SwitchActionsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SwitchActionsImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SwitchActionsToJson(this, );
 }
 
-abstract class _SwitchActions implements SwitchActions {
-  const factory _SwitchActions(
-      {required final String singleClick,
-      required final String doubleClick,
-      required final String holdClick}) = _$SwitchActionsImpl;
-
-  factory _SwitchActions.fromJson(Map<String, dynamic> json) =
-      _$SwitchActionsImpl.fromJson;
-
-  @override
-  String get singleClick;
-  @override
-  String get doubleClick;
-  @override
-  String get holdClick;
-
-  /// Create a copy of SwitchActions
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SwitchActionsImplCopyWith<_$SwitchActionsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SwitchActions&&(identical(other.singleClick, singleClick) || other.singleClick == singleClick)&&(identical(other.doubleClick, doubleClick) || other.doubleClick == doubleClick)&&(identical(other.holdClick, holdClick) || other.holdClick == holdClick));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,singleClick,doubleClick,holdClick);
+
+@override
+String toString() {
+  return 'SwitchActions(singleClick: $singleClick, doubleClick: $doubleClick, holdClick: $holdClick)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SwitchActionsCopyWith<$Res> implements $SwitchActionsCopyWith<$Res> {
+  factory _$SwitchActionsCopyWith(_SwitchActions value, $Res Function(_SwitchActions) _then) = __$SwitchActionsCopyWithImpl;
+@override @useResult
+$Res call({
+ String singleClick, String doubleClick, String holdClick
+});
+
+
+
+
+}
+/// @nodoc
+class __$SwitchActionsCopyWithImpl<$Res>
+    implements _$SwitchActionsCopyWith<$Res> {
+  __$SwitchActionsCopyWithImpl(this._self, this._then);
+
+  final _SwitchActions _self;
+  final $Res Function(_SwitchActions) _then;
+
+/// Create a copy of SwitchActions
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? singleClick = null,Object? doubleClick = null,Object? holdClick = null,}) {
+  return _then(_SwitchActions(
+singleClick: null == singleClick ? _self.singleClick : singleClick // ignore: cast_nullable_to_non_nullable
+as String,doubleClick: null == doubleClick ? _self.doubleClick : doubleClick // ignore: cast_nullable_to_non_nullable
+as String,holdClick: null == holdClick ? _self.holdClick : holdClick // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

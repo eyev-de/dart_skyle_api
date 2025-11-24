@@ -14,10 +14,11 @@ _PositioningMessage _$PositioningMessageFromJson(Map<String, dynamic> json) =>
       quality: json['quality'] == null
           ? const PositioningQuality()
           : PositioningQuality.fromJson(
-              json['quality'] as Map<String, dynamic>),
+              json['quality'] as Map<String, dynamic>,
+            ),
       distance:
           $enumDecodeNullable(_$PositioningDistanceEnumMap, json['distance']) ??
-              PositioningDistance.none,
+          PositioningDistance.none,
       face: json['face'] == null
           ? null
           : Face.fromJson(json['face'] as Map<String, dynamic>),
