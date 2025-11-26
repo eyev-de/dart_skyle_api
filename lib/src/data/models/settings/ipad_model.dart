@@ -12,23 +12,20 @@ enum IPadModel {
   /// 2025
   // iPad Pro 13‑inch (M5)
   // https://support.apple.com/125407
-  iPad17_3(38),
-  iPad17_4(39),
-
+  iPad17_3(40),
+  iPad17_4(41),
   // iPad Pro 11-inch (M5)
   // https://support.apple.com/125406
-  iPad17_1(40),
-  iPad17_2(41),
-
+  iPad17_1(42),
+  iPad17_2(43),
   // iPad Air 13-inch (M3)
   // https://support.apple.com/122242
-  iPad15_5(42),
-  iPad15_6(43),
-
+  iPad15_5(44),
+  iPad15_6(45),
   // iPad Air 11-inch (M3)
   // https://support.apple.com/122241
-  iPad15_3(44),
-  iPad15_4(45),
+  iPad15_3(46),
+  iPad15_4(47),
 
   /// 2024
   // iPad Pro (11-inch) (M4)
@@ -49,8 +46,8 @@ enum IPadModel {
   iPad14_11(33),
   // iPad mini (A17 Pro)
   // https://support.apple.com/121456
-  iPad16_1(46),
-  iPad16_2(47),
+  iPad16_1(38),
+  iPad16_2(39),
 
   /// 2022
   // iPad Pro (11-inch) (4th generation)

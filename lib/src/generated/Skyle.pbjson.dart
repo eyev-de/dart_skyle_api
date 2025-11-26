@@ -1,17 +1,24 @@
+// This is a generated file - do not edit.
 //
-//  Generated code. Do not modify.
-//  source: Skyle.proto
-//
+// Generated from Skyle.proto.
+
 // @dart = 3.3
 
 // ignore_for_file: annotate_overrides, camel_case_types, comment_references
-// ignore_for_file: constant_identifier_names, library_prefixes
-// ignore_for_file: non_constant_identifier_names, prefer_final_fields
-// ignore_for_file: unnecessary_import, unnecessary_this, unused_import
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: curly_braces_in_flow_control_structures
+// ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
+// ignore_for_file: non_constant_identifier_names, prefer_relative_imports
+// ignore_for_file: unused_import
 
 import 'dart:convert' as $convert;
 import 'dart:core' as $core;
 import 'dart:typed_data' as $typed_data;
+
+import 'package:protobuf/well_known_types/google/protobuf/empty.pbjson.dart'
+    as $0;
+
+import 'Types.pbjson.dart' as $1;
 
 @$core.Deprecated('Use triggerMessageDescriptor instead')
 const TriggerMessage$json = {
@@ -51,7 +58,14 @@ const Profile$json = {
   '2': [
     {'1': 'id', '3': 1, '4': 1, '5': 5, '10': 'id'},
     {'1': 'name', '3': 2, '4': 1, '5': 9, '10': 'name'},
-    {'1': 'skill', '3': 3, '4': 1, '5': 14, '6': '.Skyle.Profile.Skill', '10': 'skill'},
+    {
+      '1': 'skill',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.Skyle.Profile.Skill',
+      '10': 'skill'
+    },
   ],
   '4': [Profile_Skill$json],
 };
@@ -81,15 +95,31 @@ const StatusMessage$json = {
 };
 
 /// Descriptor for `StatusMessage`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List statusMessageDescriptor = $convert.base64Decode(
-    'Cg1TdGF0dXNNZXNzYWdlEhgKB3N1Y2Nlc3MYASABKAhSB3N1Y2Nlc3M=');
+final $typed_data.Uint8List statusMessageDescriptor = $convert
+    .base64Decode('Cg1TdGF0dXNNZXNzYWdlEhgKB3N1Y2Nlc3MYASABKAhSB3N1Y2Nlc3M=');
 
 @$core.Deprecated('Use optionMessageDescriptor instead')
 const OptionMessage$json = {
   '1': 'OptionMessage',
   '2': [
-    {'1': 'empty', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Empty', '9': 0, '10': 'empty'},
-    {'1': 'options', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Options', '9': 0, '10': 'options'},
+    {
+      '1': 'empty',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Empty',
+      '9': 0,
+      '10': 'empty'
+    },
+    {
+      '1': 'options',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.Options',
+      '9': 0,
+      '10': 'options'
+    },
   ],
   '8': [
     {'1': 'message'},
@@ -106,9 +136,33 @@ final $typed_data.Uint8List optionMessageDescriptor = $convert.base64Decode(
 const CalibControlMessages$json = {
   '1': 'CalibControlMessages',
   '2': [
-    {'1': 'calibControl', '3': 1, '4': 1, '5': 11, '6': '.Skyle.CalibControl', '9': 0, '10': 'calibControl'},
-    {'1': 'calibImprove', '3': 2, '4': 1, '5': 11, '6': '.Skyle.CalibImprove', '9': 0, '10': 'calibImprove'},
-    {'1': 'calibConfirm', '3': 3, '4': 1, '5': 11, '6': '.Skyle.CalibConfirm', '9': 0, '10': 'calibConfirm'},
+    {
+      '1': 'calibControl',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.CalibControl',
+      '9': 0,
+      '10': 'calibControl'
+    },
+    {
+      '1': 'calibImprove',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.CalibImprove',
+      '9': 0,
+      '10': 'calibImprove'
+    },
+    {
+      '1': 'calibConfirm',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.CalibConfirm',
+      '9': 0,
+      '10': 'calibConfirm'
+    },
   ],
   '8': [
     {'1': 'message'},
@@ -126,8 +180,24 @@ final $typed_data.Uint8List calibControlMessagesDescriptor = $convert.base64Deco
 const CalibCursorMessages$json = {
   '1': 'CalibCursorMessages',
   '2': [
-    {'1': 'empty', '3': 1, '4': 1, '5': 11, '6': '.google.protobuf.Empty', '9': 0, '10': 'empty'},
-    {'1': 'calibConfirm', '3': 3, '4': 1, '5': 11, '6': '.Skyle.CalibConfirm', '9': 0, '10': 'calibConfirm'},
+    {
+      '1': 'empty',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.google.protobuf.Empty',
+      '9': 0,
+      '10': 'empty'
+    },
+    {
+      '1': 'calibConfirm',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.CalibConfirm',
+      '9': 0,
+      '10': 'calibConfirm'
+    },
   ],
   '8': [
     {'1': 'message'},
@@ -148,9 +218,22 @@ const CalibControl$json = {
     {'1': 'numberOfPoints', '3': 2, '4': 1, '5': 5, '10': 'numberOfPoints'},
     {'1': 'abort', '3': 3, '4': 1, '5': 8, '10': 'abort'},
     {'1': 'stopHID', '3': 4, '4': 1, '5': 8, '10': 'stopHID'},
-    {'1': 'res', '3': 5, '4': 1, '5': 11, '6': '.Skyle.ScreenResolution', '10': 'res'},
+    {
+      '1': 'res',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.ScreenResolution',
+      '10': 'res'
+    },
     {'1': 'stepByStep', '3': 6, '4': 1, '5': 8, '10': 'stepByStep'},
-    {'1': 'calibrationPoints', '3': 7, '4': 3, '5': 5, '10': 'calibrationPoints'},
+    {
+      '1': 'calibrationPoints',
+      '3': 7,
+      '4': 3,
+      '5': 5,
+      '10': 'calibrationPoints'
+    },
   ],
 };
 
@@ -209,9 +292,33 @@ final $typed_data.Uint8List calibConfirmDescriptor = $convert.base64Decode(
 const CalibMessages$json = {
   '1': 'CalibMessages',
   '2': [
-    {'1': 'calibControl', '3': 1, '4': 1, '5': 11, '6': '.Skyle.CalibControl', '9': 0, '10': 'calibControl'},
-    {'1': 'calibPoint', '3': 2, '4': 1, '5': 11, '6': '.Skyle.CalibPoint', '9': 0, '10': 'calibPoint'},
-    {'1': 'calibQuality', '3': 3, '4': 1, '5': 11, '6': '.Skyle.CalibQuality', '9': 0, '10': 'calibQuality'},
+    {
+      '1': 'calibControl',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.CalibControl',
+      '9': 0,
+      '10': 'calibControl'
+    },
+    {
+      '1': 'calibPoint',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.CalibPoint',
+      '9': 0,
+      '10': 'calibPoint'
+    },
+    {
+      '1': 'calibQuality',
+      '3': 3,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.CalibQuality',
+      '9': 0,
+      '10': 'calibQuality'
+    },
   ],
   '8': [
     {'1': 'message'},
@@ -229,8 +336,22 @@ final $typed_data.Uint8List calibMessagesDescriptor = $convert.base64Decode(
 const BinocularGaze$json = {
   '1': 'BinocularGaze',
   '2': [
-    {'1': 'leftGaze', '3': 1, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'leftGaze'},
-    {'1': 'rightGaze', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'rightGaze'},
+    {
+      '1': 'leftGaze',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.Types.Point',
+      '10': 'leftGaze'
+    },
+    {
+      '1': 'rightGaze',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.Types.Point',
+      '10': 'rightGaze'
+    },
   ],
 };
 
@@ -245,7 +366,14 @@ const CalibPoint$json = {
   '1': 'CalibPoint',
   '2': [
     {'1': 'count', '3': 1, '4': 1, '5': 5, '10': 'count'},
-    {'1': 'currentPoint', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'currentPoint'},
+    {
+      '1': 'currentPoint',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.Types.Point',
+      '10': 'currentPoint'
+    },
   ],
 };
 
@@ -272,13 +400,48 @@ final $typed_data.Uint8List calibQualityDescriptor = $convert.base64Decode(
 const PositioningMessage$json = {
   '1': 'PositioningMessage',
   '2': [
-    {'1': 'leftEye', '3': 1, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'leftEye'},
-    {'1': 'rightEye', '3': 2, '4': 1, '5': 11, '6': '.Skyle.Types.Point', '10': 'rightEye'},
+    {
+      '1': 'leftEye',
+      '3': 1,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.Types.Point',
+      '10': 'leftEye'
+    },
+    {
+      '1': 'rightEye',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.Types.Point',
+      '10': 'rightEye'
+    },
     {'1': 'distanceQuality', '3': 3, '4': 1, '5': 5, '10': 'distanceQuality'},
-    {'1': 'positioningQuality', '3': 4, '4': 1, '5': 5, '10': 'positioningQuality'},
-    {'1': 'horizontalQuality', '3': 5, '4': 1, '5': 5, '10': 'horizontalQuality'},
+    {
+      '1': 'positioningQuality',
+      '3': 4,
+      '4': 1,
+      '5': 5,
+      '10': 'positioningQuality'
+    },
+    {
+      '1': 'horizontalQuality',
+      '3': 5,
+      '4': 1,
+      '5': 5,
+      '10': 'horizontalQuality'
+    },
     {'1': 'verticalQuality', '3': 6, '4': 1, '5': 5, '10': 'verticalQuality'},
-    {'1': 'face', '3': 7, '4': 1, '5': 11, '6': '.Skyle.Types.Face', '9': 0, '10': 'face', '17': true},
+    {
+      '1': 'face',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.Types.Face',
+      '9': 0,
+      '10': 'face',
+      '17': true
+    },
   ],
   '8': [
     {'1': '_face'},
@@ -299,18 +462,70 @@ final $typed_data.Uint8List positioningMessageDescriptor = $convert.base64Decode
 const Options$json = {
   '1': 'Options',
   '2': [
-    {'1': 'enableVideoStream', '3': 1, '4': 1, '5': 8, '10': 'enableVideoStream'},
+    {
+      '1': 'enableVideoStream',
+      '3': 1,
+      '4': 1,
+      '5': 8,
+      '10': 'enableVideoStream'
+    },
     {'1': 'enableAutoPause', '3': 2, '4': 1, '5': 8, '10': 'enableAutoPause'},
     {'1': 'enablePause', '3': 3, '4': 1, '5': 8, '10': 'enablePause'},
-    {'1': 'enablePositioningStream', '3': 4, '4': 1, '5': 8, '10': 'enablePositioningStream'},
-    {'1': 'enableAutoStandby', '3': 5, '4': 1, '5': 8, '10': 'enableAutoStandby'},
+    {
+      '1': 'enablePositioningStream',
+      '3': 4,
+      '4': 1,
+      '5': 8,
+      '10': 'enablePositioningStream'
+    },
+    {
+      '1': 'enableAutoStandby',
+      '3': 5,
+      '4': 1,
+      '5': 8,
+      '10': 'enableAutoStandby'
+    },
     {'1': 'disableMouse', '3': 6, '4': 1, '5': 8, '10': 'disableMouse'},
-    {'1': 'filter', '3': 7, '4': 1, '5': 11, '6': '.Skyle.FilterOptions', '10': 'filter'},
-    {'1': 'iPadOptions', '3': 8, '4': 1, '5': 11, '6': '.Skyle.IPadOptions', '10': 'iPadOptions'},
-    {'1': 'res', '3': 9, '4': 1, '5': 11, '6': '.Skyle.ScreenResolution', '10': 'res'},
+    {
+      '1': 'filter',
+      '3': 7,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.FilterOptions',
+      '10': 'filter'
+    },
+    {
+      '1': 'iPadOptions',
+      '3': 8,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.IPadOptions',
+      '10': 'iPadOptions'
+    },
+    {
+      '1': 'res',
+      '3': 9,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.ScreenResolution',
+      '10': 'res'
+    },
     {'1': 'hp', '3': 10, '4': 1, '5': 8, '10': 'hp'},
-    {'1': 'eyeUsage', '3': 11, '4': 1, '5': 14, '6': '.Skyle.Options.eyeUse', '10': 'eyeUsage'},
-    {'1': 'enableTrackingDetails', '3': 12, '4': 1, '5': 8, '10': 'enableTrackingDetails'},
+    {
+      '1': 'eyeUsage',
+      '3': 11,
+      '4': 1,
+      '5': 14,
+      '6': '.Skyle.Options.eyeUse',
+      '10': 'eyeUsage'
+    },
+    {
+      '1': 'enableTrackingDetails',
+      '3': 12,
+      '4': 1,
+      '5': 8,
+      '10': 'enableTrackingDetails'
+    },
   ],
   '4': [Options_eyeUse$json],
 };
@@ -345,7 +560,15 @@ const IPadOptions$json = {
   '2': [
     {'1': 'isOldiOS', '3': 1, '4': 1, '5': 8, '10': 'isOldiOS'},
     {'1': 'isNotZoomed', '3': 2, '4': 1, '5': 8, '10': 'isNotZoomed'},
-    {'1': 'model', '3': 3, '4': 1, '5': 14, '6': '.Skyle.IPadOptions.iPadModel', '9': 0, '10': 'model'},
+    {
+      '1': 'model',
+      '3': 3,
+      '4': 1,
+      '5': 14,
+      '6': '.Skyle.IPadOptions.iPadModel',
+      '9': 0,
+      '10': 'model'
+    },
   ],
   '4': [IPadOptions_iPadModel$json],
   '8': [
@@ -395,6 +618,16 @@ const IPadOptions_iPadModel$json = {
     {'1': 'IPad16_4', '2': 35},
     {'1': 'IPad16_5', '2': 36},
     {'1': 'IPad16_6', '2': 37},
+    {'1': 'IPad16_1', '2': 38},
+    {'1': 'IPad16_2', '2': 39},
+    {'1': 'IPad17_3', '2': 40},
+    {'1': 'IPad17_4', '2': 41},
+    {'1': 'IPad17_1', '2': 42},
+    {'1': 'IPad17_2', '2': 43},
+    {'1': 'IPad15_5', '2': 44},
+    {'1': 'IPad15_6', '2': 45},
+    {'1': 'IPad15_3', '2': 46},
+    {'1': 'IPad15_4', '2': 47},
   ],
 };
 
@@ -402,7 +635,7 @@ const IPadOptions_iPadModel$json = {
 final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode(
     'CgtJUGFkT3B0aW9ucxIaCghpc09sZGlPUxgBIAEoCFIIaXNPbGRpT1MSIAoLaXNOb3Rab29tZW'
     'QYAiABKAhSC2lzTm90Wm9vbWVkEjQKBW1vZGVsGAMgASgOMhwuU2t5bGUuSVBhZE9wdGlvbnMu'
-    'aVBhZE1vZGVsSABSBW1vZGVsIpwECglpUGFkTW9kZWwSCwoHSVBhZDhfNRAAEgsKB0lQYWQ4Xz'
+    'aVBhZE1vZGVsSABSBW1vZGVsIqgFCglpUGFkTW9kZWwSCwoHSVBhZDhfNRAAEgsKB0lQYWQ4Xz'
     'YQARILCgdJUGFkOF83EAISCwoHSVBhZDhfOBADEgwKCElQYWQ4XzExEAQSDAoISVBhZDhfMTIQ'
     'BRIMCghJUGFkMTNfMRAGEgwKCElQYWQxM18yEAcSDAoISVBhZDEzXzgQCBIMCghJUGFkMTNfOR'
     'AJEg0KCUlQYWQxM18xMBAKEg0KCUlQYWQxM18xMRALEg0KCUlQYWQxM18xNhAMEg0KCUlQYWQx'
@@ -412,7 +645,9 @@ final $typed_data.Uint8List iPadOptionsDescriptor = $convert.base64Decode(
     'IQGRIMCghJUGFkMTRfMxAaEgwKCElQYWQxNF80EBsSDAoISVBhZDE0XzUQHBIMCghJUGFkMTRf'
     'NhAdEgwKCElQYWQxNF84EB4SDAoISVBhZDE0XzkQHxINCglJUGFkMTRfMTAQIBINCglJUGFkMT'
     'RfMTEQIRIMCghJUGFkMTZfMxAiEgwKCElQYWQxNl80ECMSDAoISVBhZDE2XzUQJBIMCghJUGFk'
-    'MTZfNhAlQhAKDm9wdGlvbmFsX21vZGVs');
+    'MTZfNhAlEgwKCElQYWQxNl8xECYSDAoISVBhZDE2XzIQJxIMCghJUGFkMTdfMxAoEgwKCElQYW'
+    'QxN180ECkSDAoISVBhZDE3XzEQKhIMCghJUGFkMTdfMhArEgwKCElQYWQxNV81ECwSDAoISVBh'
+    'ZDE1XzYQLRIMCghJUGFkMTVfMxAuEgwKCElQYWQxNV80EC9CEAoOb3B0aW9uYWxfbW9kZWw=');
 
 @$core.Deprecated('Use deviceVersionsDescriptor instead')
 const DeviceVersions$json = {
@@ -456,7 +691,14 @@ const Button$json = {
   '1': 'Button',
   '2': [
     {'1': 'isPresent', '3': 1, '4': 1, '5': 8, '10': 'isPresent'},
-    {'1': 'buttonActions', '3': 2, '4': 1, '5': 11, '6': '.Skyle.ButtonActions', '10': 'buttonActions'},
+    {
+      '1': 'buttonActions',
+      '3': 2,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.ButtonActions',
+      '10': 'buttonActions'
+    },
     {'1': 'availableActions', '3': 3, '4': 3, '5': 9, '10': 'availableActions'},
   ],
 };
@@ -481,3 +723,146 @@ final $typed_data.Uint8List filterOptionsDescriptor = $convert.base64Decode(
     'Cg1GaWx0ZXJPcHRpb25zEiYKDmZpeGF0aW9uRmlsdGVyGAEgASgFUg5maXhhdGlvbkZpbHRlch'
     'IeCgpnYXplRmlsdGVyGAIgASgFUgpnYXplRmlsdGVy');
 
+const $core.Map<$core.String, $core.dynamic> SkyleServiceBase$json = {
+  '1': 'Skyle',
+  '2': [
+    {
+      '1': 'Calibrate',
+      '2': '.Skyle.CalibControlMessages',
+      '3': '.Skyle.CalibMessages',
+      '5': true,
+      '6': true
+    },
+    {
+      '1': 'Positioning',
+      '2': '.google.protobuf.Empty',
+      '3': '.Skyle.PositioningMessage',
+      '6': true
+    },
+    {
+      '1': 'Gaze',
+      '2': '.google.protobuf.Empty',
+      '3': '.Skyle.Types.Point',
+      '6': true
+    },
+    {
+      '1': 'Trigger',
+      '2': '.google.protobuf.Empty',
+      '3': '.Skyle.TriggerMessage',
+      '6': true
+    },
+    {'1': 'GetButton', '2': '.google.protobuf.Empty', '3': '.Skyle.Button'},
+    {
+      '1': 'SetButton',
+      '2': '.Skyle.ButtonActions',
+      '3': '.Skyle.ButtonActions'
+    },
+    {'1': 'Configure', '2': '.Skyle.OptionMessage', '3': '.Skyle.Options'},
+    {
+      '1': 'ConfigureStream',
+      '2': '.Skyle.OptionMessage',
+      '3': '.Skyle.Options',
+      '5': true,
+      '6': true
+    },
+    {
+      '1': 'GetVersions',
+      '2': '.google.protobuf.Empty',
+      '3': '.Skyle.DeviceVersions'
+    },
+    {
+      '1': 'GetProfiles',
+      '2': '.google.protobuf.Empty',
+      '3': '.Skyle.Profile',
+      '6': true
+    },
+    {
+      '1': 'CurrentProfile',
+      '2': '.google.protobuf.Empty',
+      '3': '.Skyle.Profile'
+    },
+    {'1': 'SetProfile', '2': '.Skyle.Profile', '3': '.Skyle.StatusMessage'},
+    {'1': 'DeleteProfile', '2': '.Skyle.Profile', '3': '.Skyle.StatusMessage'},
+    {'1': 'Reset', '2': '.Skyle.ResetMessage', '3': '.Skyle.StatusMessage'},
+    {
+      '1': 'CursorCalibration',
+      '2': '.Skyle.CalibCursorMessages',
+      '3': '.Skyle.Types.Point',
+      '5': true,
+      '6': true
+    },
+    {
+      '1': 'RawImages',
+      '2': '.google.protobuf.Empty',
+      '3': '.Skyle.Types.Mat',
+      '6': true
+    },
+    {
+      '1': 'RawBinocularGaze',
+      '2': '.google.protobuf.Empty',
+      '3': '.Skyle.BinocularGaze',
+      '6': true
+    },
+  ],
+};
+
+@$core.Deprecated('Use skyleServiceDescriptor instead')
+const $core.Map<$core.String, $core.Map<$core.String, $core.dynamic>>
+    SkyleServiceBase$messageJson = {
+  '.Skyle.CalibControlMessages': CalibControlMessages$json,
+  '.Skyle.CalibControl': CalibControl$json,
+  '.Skyle.ScreenResolution': ScreenResolution$json,
+  '.Skyle.CalibImprove': CalibImprove$json,
+  '.Skyle.CalibConfirm': CalibConfirm$json,
+  '.Skyle.CalibMessages': CalibMessages$json,
+  '.Skyle.CalibPoint': CalibPoint$json,
+  '.Skyle.Types.Point': $1.Point$json,
+  '.Skyle.CalibQuality': CalibQuality$json,
+  '.google.protobuf.Empty': $0.Empty$json,
+  '.Skyle.PositioningMessage': PositioningMessage$json,
+  '.Skyle.Types.Face': $1.Face$json,
+  '.Skyle.Types.Rectangle': $1.Rectangle$json,
+  '.Skyle.Types.Size': $1.Size$json,
+  '.Skyle.Types.Eyes': $1.Eyes$json,
+  '.Skyle.Types.Eye': $1.Eye$json,
+  '.Skyle.Types.Feature': $1.Feature$json,
+  '.Skyle.Types.RotatedRectangle': $1.RotatedRectangle$json,
+  '.Skyle.Types.Glints': $1.Glints$json,
+  '.Skyle.Types.Gaze': $1.Gaze$json,
+  '.Skyle.TriggerMessage': TriggerMessage$json,
+  '.Skyle.Button': Button$json,
+  '.Skyle.ButtonActions': ButtonActions$json,
+  '.Skyle.OptionMessage': OptionMessage$json,
+  '.Skyle.Options': Options$json,
+  '.Skyle.FilterOptions': FilterOptions$json,
+  '.Skyle.IPadOptions': IPadOptions$json,
+  '.Skyle.DeviceVersions': DeviceVersions$json,
+  '.Skyle.Profile': Profile$json,
+  '.Skyle.StatusMessage': StatusMessage$json,
+  '.Skyle.ResetMessage': ResetMessage$json,
+  '.Skyle.CalibCursorMessages': CalibCursorMessages$json,
+  '.Skyle.Types.Mat': $1.Mat$json,
+  '.Skyle.BinocularGaze': BinocularGaze$json,
+};
+
+/// Descriptor for `Skyle`. Decode as a `google.protobuf.ServiceDescriptorProto`.
+final $typed_data.Uint8List skyleServiceDescriptor = $convert.base64Decode(
+    'CgVTa3lsZRJCCglDYWxpYnJhdGUSGy5Ta3lsZS5DYWxpYkNvbnRyb2xNZXNzYWdlcxoULlNreW'
+    'xlLkNhbGliTWVzc2FnZXMoATABEkIKC1Bvc2l0aW9uaW5nEhYuZ29vZ2xlLnByb3RvYnVmLkVt'
+    'cHR5GhkuU2t5bGUuUG9zaXRpb25pbmdNZXNzYWdlMAESNAoER2F6ZRIWLmdvb2dsZS5wcm90b2'
+    'J1Zi5FbXB0eRoSLlNreWxlLlR5cGVzLlBvaW50MAESOgoHVHJpZ2dlchIWLmdvb2dsZS5wcm90'
+    'b2J1Zi5FbXB0eRoVLlNreWxlLlRyaWdnZXJNZXNzYWdlMAESMgoJR2V0QnV0dG9uEhYuZ29vZ2'
+    'xlLnByb3RvYnVmLkVtcHR5Gg0uU2t5bGUuQnV0dG9uEjcKCVNldEJ1dHRvbhIULlNreWxlLkJ1'
+    'dHRvbkFjdGlvbnMaFC5Ta3lsZS5CdXR0b25BY3Rpb25zEjEKCUNvbmZpZ3VyZRIULlNreWxlLk'
+    '9wdGlvbk1lc3NhZ2UaDi5Ta3lsZS5PcHRpb25zEjsKD0NvbmZpZ3VyZVN0cmVhbRIULlNreWxl'
+    'Lk9wdGlvbk1lc3NhZ2UaDi5Ta3lsZS5PcHRpb25zKAEwARI8CgtHZXRWZXJzaW9ucxIWLmdvb2'
+    'dsZS5wcm90b2J1Zi5FbXB0eRoVLlNreWxlLkRldmljZVZlcnNpb25zEjcKC0dldFByb2ZpbGVz'
+    'EhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5Gg4uU2t5bGUuUHJvZmlsZTABEjgKDkN1cnJlbnRQcm'
+    '9maWxlEhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5Gg4uU2t5bGUuUHJvZmlsZRIyCgpTZXRQcm9m'
+    'aWxlEg4uU2t5bGUuUHJvZmlsZRoULlNreWxlLlN0YXR1c01lc3NhZ2USNQoNRGVsZXRlUHJvZm'
+    'lsZRIOLlNreWxlLlByb2ZpbGUaFC5Ta3lsZS5TdGF0dXNNZXNzYWdlEjIKBVJlc2V0EhMuU2t5'
+    'bGUuUmVzZXRNZXNzYWdlGhQuU2t5bGUuU3RhdHVzTWVzc2FnZRJHChFDdXJzb3JDYWxpYnJhdG'
+    'lvbhIaLlNreWxlLkNhbGliQ3Vyc29yTWVzc2FnZXMaEi5Ta3lsZS5UeXBlcy5Qb2ludCgBMAES'
+    'NwoJUmF3SW1hZ2VzEhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5GhAuU2t5bGUuVHlwZXMuTWF0MA'
+    'ESQgoQUmF3Qmlub2N1bGFyR2F6ZRIWLmdvb2dsZS5wcm90b2J1Zi5FbXB0eRoULlNreWxlLkJp'
+    'bm9jdWxhckdhemUwAQ==');
