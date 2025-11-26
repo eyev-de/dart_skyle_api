@@ -6,7 +6,30 @@
 
 import '../../../generated/Skyle.pb.dart';
 
+/// Device Selection of iPads
+/// https://appledb.dev/device-selection/iPads.html
 enum IPadModel {
+  /// 2025
+  // iPad Pro 13‑inch (M5)
+  // https://support.apple.com/125407
+  iPad17_3(38),
+  iPad17_4(39),
+
+  // iPad Pro 11-inch (M5)
+  // https://support.apple.com/125406
+  iPad17_1(40),
+  iPad17_2(41),
+
+  // iPad Air 13-inch (M3)
+  // https://support.apple.com/122242
+  iPad15_5(42),
+  iPad15_6(43),
+
+  // iPad Air 11-inch (M3)
+  // https://support.apple.com/122241
+  iPad15_3(44),
+  iPad15_4(45),
+
   /// 2024
   // iPad Pro (11-inch) (M4)
   // https://support.apple.com/119892
@@ -24,6 +47,10 @@ enum IPadModel {
   // https://support.apple.com/119893
   iPad14_10(32),
   iPad14_11(33),
+  // iPad mini (A17 Pro)
+  // https://support.apple.com/121456
+  iPad16_1(46),
+  iPad16_2(47),
 
   /// 2022
   // iPad Pro (11-inch) (4th generation)
@@ -125,12 +152,12 @@ enum IPadModel {
     // width: MediaQuery.of(context).size.width * MediaQuery.of(context).devicePixelRatio;
     // height: MediaQuery.of(context).size.height * MediaQuery.of(context).devicePixelRatio;
     return switch (this) {
-      iPad16_5 || iPad16_6 => const (2752, 2064),
-      iPad16_3 || iPad16_4 => const (2420, 1668),
+      iPad16_5 || iPad16_6 || iPad17_3 || iPad17_4 => const (2752, 2064),
+      iPad16_3 || iPad16_4 || iPad17_1 || iPad17_2 => const (2420, 1668),
       iPad14_3 || iPad14_4 || iPad13_4 || iPad13_5 || iPad13_6 || iPad13_7 => const (2388, 1668),
       iPad8_1 || iPad8_2 || iPad8_3 || iPad8_4 || iPad8_9 || iPad8_10 => const (2388, 1668),
-      iPad14_8 || iPad14_9 || iPad13_16 || iPad13_17 || iPad13_1 || iPad13_2 => const (2360, 1640),
-      iPad14_1 || iPad14_2 => const (2266, 1488),
+      iPad14_8 || iPad14_9 || iPad15_3 || iPad15_4 || iPad13_16 || iPad13_17 || iPad13_1 || iPad13_2 => const (2360, 1640),
+      iPad14_1 || iPad14_2 || iPad16_1 || iPad16_2 => const (2266, 1488),
       _ => const (2732, 2048),
     };
   }
@@ -138,13 +165,13 @@ enum IPadModel {
   /// Physical Pixels - Display Zoom: Larger Text
   (double, double) get screenSizePixelLargerText {
     return switch (this) {
-      iPad16_5 || iPad16_6 => const (2064, 1548),
+      iPad16_5 || iPad16_6 || iPad17_3 || iPad17_4 => const (2064, 1548),
       // No display zoom available -> same as default size
-      iPad16_3 || iPad16_4 => screenSizePixel,
+      iPad16_3 || iPad16_4 || iPad17_1 || iPad17_2 => screenSizePixel,
       iPad14_3 || iPad14_4 || iPad13_4 || iPad13_5 || iPad13_6 || iPad13_7 => screenSizePixel,
       iPad8_1 || iPad8_2 || iPad8_3 || iPad8_4 || iPad8_9 || iPad8_10 => screenSizePixel,
-      iPad14_8 || iPad14_9 || iPad13_16 || iPad13_17 || iPad13_1 || iPad13_2 => screenSizePixel,
-      iPad14_1 || iPad14_2 => screenSizePixel,
+      iPad14_8 || iPad14_9 || iPad15_3 || iPad15_4 || iPad13_16 || iPad13_17 || iPad13_1 || iPad13_2 => screenSizePixel,
+      iPad14_1 || iPad14_2 || iPad16_1 || iPad16_2 => screenSizePixel,
       // ---
       _ => const (2048, 1536),
     };
@@ -153,20 +180,23 @@ enum IPadModel {
   /// Physical Pixels - Display Zoom: More Space
   (double, double) get screenSizePixelMoreSpace {
     return switch (this) {
-      iPad16_5 || iPad16_6 => const (3200, 2400),
-      iPad16_3 || iPad16_4 => const (2816, 1940),
+      iPad16_5 || iPad16_6 || iPad17_3 || iPad17_4 => const (3200, 2400),
+      iPad16_3 || iPad16_4 || iPad17_1 || iPad17_2 => const (2816, 1940),
       iPad14_3 || iPad14_4 || iPad13_4 || iPad13_5 || iPad13_6 || iPad13_7 => const (2778, 1940),
       iPad8_1 || iPad8_2 || iPad8_3 || iPad8_4 || iPad8_9 || iPad8_10 => const (2778, 1940),
-      iPad14_8 || iPad14_9 || iPad13_16 || iPad13_17 || iPad13_1 || iPad13_2 => const (2746, 1908),
+      iPad14_8 || iPad14_9 || iPad15_3 || iPad15_4 || iPad13_16 || iPad13_17 || iPad13_1 || iPad13_2 => const (2746, 1908),
       // No display zoom available -> same as default size
-      iPad14_1 || iPad14_2 => screenSizePixel,
+      iPad14_1 || iPad14_2 || iPad16_1 || iPad16_2 => screenSizePixel,
       // ---
       _ => const (3180, 2384),
     };
   }
 
   int get pixelPerInch {
-    return switch (this) { iPad14_1 || iPad14_2 => 326, _ => 264 };
+    return switch (this) {
+      iPad14_1 || iPad14_2 || iPad16_1 || iPad16_2 => 326,
+      _ => 264,
+    };
   }
 
   bool get hasLargerTextAsDisplayZoom {
@@ -179,6 +209,11 @@ enum IPadModel {
 
   String get label {
     return switch (this) {
+      IPadModel.iPad17_3 || IPadModel.iPad17_4 => 'iPad Pro 13-inch (M5)',
+      IPadModel.iPad17_1 || IPadModel.iPad17_2 => 'iPad Pro 11-inch (M5)',
+      IPadModel.iPad15_5 || IPadModel.iPad15_6 => 'iPad Air 13-inch (M3)',
+      IPadModel.iPad15_3 || IPadModel.iPad15_4 => 'iPad Air 11-inch (M3)',
+      IPadModel.iPad16_1 || IPadModel.iPad16_2 => 'iPad mini (A17 Pro)',
       IPadModel.iPad16_3 || IPadModel.iPad16_4 => 'iPad Pro 11-inch (M4)',
       IPadModel.iPad16_5 || IPadModel.iPad16_6 => 'iPad Pro 13-inch (M4)',
       IPadModel.iPad14_8 || IPadModel.iPad14_9 => 'iPad Air 11-inch (M2)',
@@ -203,6 +238,8 @@ enum IPadModel {
     }
     // Closest to old screenSizePixel (2360, 1640) => iPad13_16, iPad13_17, iPad13_1, iPad13_2
     final similarToIPad13_1List = [
+      iPad17_1,
+      iPad17_2,
       iPad16_3,
       iPad16_4,
       iPad14_3,
@@ -217,16 +254,20 @@ enum IPadModel {
       iPad8_4,
       iPad8_9,
       iPad8_10,
+      iPad15_3,
+      iPad15_4,
       iPad14_8,
       iPad14_9,
       iPad14_1,
       iPad14_2,
+      iPad16_1,
+      iPad16_2,
     ];
     if (similarToIPad13_1List.contains(this)) {
       return iPad13_1;
     } else {
       // Default: Closest to old screenSizePixel (2732, 2048) iPad8_5 ... 8_8,8_11,8_12 ; iPad13_8 ... 13_11
-      //similarToIPad13_11List = [iPad16_5, iPad16_6, iPad14_10, iPad14_11, iPad14_5, iPad14_6];
+      //similarToIPad13_11List = [iPad17_3, iPad17_4, iPad16_5, iPad16_6, iPad15_5, iPad15_6, iPad14_10, iPad14_11, iPad14_5, iPad14_6];
       return iPad13_11;
     }
   }
