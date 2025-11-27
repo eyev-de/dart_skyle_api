@@ -10,15 +10,14 @@
 // ignore_for_file: deprecated_member_use_from_same_package, library_prefixes
 // ignore_for_file: non_constant_identifier_names, prefer_relative_imports
 
-import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
-import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart' as $0;
 
 import 'Skyle.pbenum.dart';
-import 'Types.pb.dart' as $1;
+import 'Types.pb.dart' as $2;
+import 'google/protobuf/empty.pb.dart' as $1;
 
 export 'package:protobuf/protobuf.dart' show GeneratedMessageGenericExtensions;
 
@@ -43,29 +42,22 @@ class TriggerMessage extends $pb.GeneratedMessage {
 
   TriggerMessage._();
 
-  factory TriggerMessage.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory TriggerMessage.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory TriggerMessage.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory TriggerMessage.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'TriggerMessage',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'singleClick', protoName: 'singleClick')
-    ..aOB(2, _omitFieldNames ? '' : 'doubleClick', protoName: 'doubleClick')
-    ..aOB(3, _omitFieldNames ? '' : 'holdClick', protoName: 'holdClick')
-    ..aOB(4, _omitFieldNames ? '' : 'fixation')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'TriggerMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOB(1, _omitFieldNames ? '' : 'singleClick', protoName: 'singleClick')
+        ..aOB(2, _omitFieldNames ? '' : 'doubleClick', protoName: 'doubleClick')
+        ..aOB(3, _omitFieldNames ? '' : 'holdClick', protoName: 'holdClick')
+        ..aOB(4, _omitFieldNames ? '' : 'fixation')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   TriggerMessage clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  TriggerMessage copyWith(void Function(TriggerMessage) updates) =>
-      super.copyWith((message) => updates(message as TriggerMessage))
-          as TriggerMessage;
+  TriggerMessage copyWith(void Function(TriggerMessage) updates) => super.copyWith((message) => updates(message as TriggerMessage)) as TriggerMessage;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -75,8 +67,7 @@ class TriggerMessage extends $pb.GeneratedMessage {
   @$core.override
   TriggerMessage createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static TriggerMessage getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<TriggerMessage>(create);
+  static TriggerMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<TriggerMessage>(create);
   static TriggerMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -133,28 +124,21 @@ class ResetMessage extends $pb.GeneratedMessage {
 
   ResetMessage._();
 
-  factory ResetMessage.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ResetMessage.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory ResetMessage.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory ResetMessage.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'ResetMessage',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'services')
-    ..aOB(2, _omitFieldNames ? '' : 'device')
-    ..aOB(3, _omitFieldNames ? '' : 'data')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'ResetMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOB(1, _omitFieldNames ? '' : 'services')
+        ..aOB(2, _omitFieldNames ? '' : 'device')
+        ..aOB(3, _omitFieldNames ? '' : 'data')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ResetMessage clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  ResetMessage copyWith(void Function(ResetMessage) updates) =>
-      super.copyWith((message) => updates(message as ResetMessage))
-          as ResetMessage;
+  ResetMessage copyWith(void Function(ResetMessage) updates) => super.copyWith((message) => updates(message as ResetMessage)) as ResetMessage;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -164,8 +148,7 @@ class ResetMessage extends $pb.GeneratedMessage {
   @$core.override
   ResetMessage createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static ResetMessage getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ResetMessage>(create);
+  static ResetMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ResetMessage>(create);
   static ResetMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -213,28 +196,21 @@ class Profile extends $pb.GeneratedMessage {
 
   Profile._();
 
-  factory Profile.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Profile.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory Profile.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory Profile.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Profile',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aI(1, _omitFieldNames ? '' : 'id')
-    ..aOS(2, _omitFieldNames ? '' : 'name')
-    ..aE<Profile_Skill>(3, _omitFieldNames ? '' : 'skill',
-        enumValues: Profile_Skill.values)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'Profile', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aI(1, _omitFieldNames ? '' : 'id')
+        ..aOS(2, _omitFieldNames ? '' : 'name')
+        ..aE<Profile_Skill>(3, _omitFieldNames ? '' : 'skill', enumValues: Profile_Skill.values)
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Profile clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  Profile copyWith(void Function(Profile) updates) =>
-      super.copyWith((message) => updates(message as Profile)) as Profile;
+  Profile copyWith(void Function(Profile) updates) => super.copyWith((message) => updates(message as Profile)) as Profile;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -244,8 +220,7 @@ class Profile extends $pb.GeneratedMessage {
   @$core.override
   Profile createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static Profile getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Profile>(create);
+  static Profile getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Profile>(create);
   static Profile? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -289,26 +264,19 @@ class StatusMessage extends $pb.GeneratedMessage {
 
   StatusMessage._();
 
-  factory StatusMessage.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory StatusMessage.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory StatusMessage.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory StatusMessage.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'StatusMessage',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'success')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'StatusMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOB(1, _omitFieldNames ? '' : 'success')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   StatusMessage clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  StatusMessage copyWith(void Function(StatusMessage) updates) =>
-      super.copyWith((message) => updates(message as StatusMessage))
-          as StatusMessage;
+  StatusMessage copyWith(void Function(StatusMessage) updates) => super.copyWith((message) => updates(message as StatusMessage)) as StatusMessage;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -318,8 +286,7 @@ class StatusMessage extends $pb.GeneratedMessage {
   @$core.override
   StatusMessage createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static StatusMessage getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<StatusMessage>(create);
+  static StatusMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StatusMessage>(create);
   static StatusMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -338,7 +305,7 @@ enum OptionMessage_Message { empty, options, notSet }
 ///  Message to wrap the options message: either empty or filled with options
 class OptionMessage extends $pb.GeneratedMessage {
   factory OptionMessage({
-    $0.Empty? empty,
+    $1.Empty? empty,
     Options? options,
   }) {
     final result = create();
@@ -349,36 +316,26 @@ class OptionMessage extends $pb.GeneratedMessage {
 
   OptionMessage._();
 
-  factory OptionMessage.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory OptionMessage.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory OptionMessage.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory OptionMessage.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static const $core.Map<$core.int, OptionMessage_Message>
-      _OptionMessage_MessageByTag = {
+  static const $core.Map<$core.int, OptionMessage_Message> _OptionMessage_MessageByTag = {
     1: OptionMessage_Message.empty,
     2: OptionMessage_Message.options,
     0: OptionMessage_Message.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'OptionMessage',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..oo(0, [1, 2])
-    ..aOM<$0.Empty>(1, _omitFieldNames ? '' : 'empty',
-        subBuilder: $0.Empty.create)
-    ..aOM<Options>(2, _omitFieldNames ? '' : 'options',
-        subBuilder: Options.create)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'OptionMessage', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..oo(0, [1, 2])
+        ..aOM<$1.Empty>(1, _omitFieldNames ? '' : 'empty', subBuilder: $1.Empty.create)
+        ..aOM<Options>(2, _omitFieldNames ? '' : 'options', subBuilder: Options.create)
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   OptionMessage clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  OptionMessage copyWith(void Function(OptionMessage) updates) =>
-      super.copyWith((message) => updates(message as OptionMessage))
-          as OptionMessage;
+  OptionMessage copyWith(void Function(OptionMessage) updates) => super.copyWith((message) => updates(message as OptionMessage)) as OptionMessage;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -388,28 +345,26 @@ class OptionMessage extends $pb.GeneratedMessage {
   @$core.override
   OptionMessage createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static OptionMessage getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<OptionMessage>(create);
+  static OptionMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<OptionMessage>(create);
   static OptionMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
   @$pb.TagNumber(2)
-  OptionMessage_Message whichMessage() =>
-      _OptionMessage_MessageByTag[$_whichOneof(0)]!;
+  OptionMessage_Message whichMessage() => _OptionMessage_MessageByTag[$_whichOneof(0)]!;
   @$pb.TagNumber(1)
   @$pb.TagNumber(2)
   void clearMessage() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
-  $0.Empty get empty => $_getN(0);
+  $1.Empty get empty => $_getN(0);
   @$pb.TagNumber(1)
-  set empty($0.Empty value) => $_setField(1, value);
+  set empty($1.Empty value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasEmpty() => $_has(0);
   @$pb.TagNumber(1)
   void clearEmpty() => $_clearField(1);
   @$pb.TagNumber(1)
-  $0.Empty ensureEmpty() => $_ensure(0);
+  $1.Empty ensureEmpty() => $_ensure(0);
 
   @$pb.TagNumber(2)
   Options get options => $_getN(1);
@@ -423,12 +378,7 @@ class OptionMessage extends $pb.GeneratedMessage {
   Options ensureOptions() => $_ensure(1);
 }
 
-enum CalibControlMessages_Message {
-  calibControl,
-  calibImprove,
-  calibConfirm,
-  notSet
-}
+enum CalibControlMessages_Message { calibControl, calibImprove, calibConfirm, notSet }
 
 /// *
 ///  Message wrapping possible calibration control messages for a client
@@ -447,39 +397,30 @@ class CalibControlMessages extends $pb.GeneratedMessage {
 
   CalibControlMessages._();
 
-  factory CalibControlMessages.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibControlMessages.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory CalibControlMessages.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibControlMessages.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
-  static const $core.Map<$core.int, CalibControlMessages_Message>
-      _CalibControlMessages_MessageByTag = {
+  static const $core.Map<$core.int, CalibControlMessages_Message> _CalibControlMessages_MessageByTag = {
     1: CalibControlMessages_Message.calibControl,
     2: CalibControlMessages_Message.calibImprove,
     3: CalibControlMessages_Message.calibConfirm,
     0: CalibControlMessages_Message.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CalibControlMessages',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibControlMessages',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
     ..oo(0, [1, 2, 3])
-    ..aOM<CalibControl>(1, _omitFieldNames ? '' : 'calibControl',
-        protoName: 'calibControl', subBuilder: CalibControl.create)
-    ..aOM<CalibImprove>(2, _omitFieldNames ? '' : 'calibImprove',
-        protoName: 'calibImprove', subBuilder: CalibImprove.create)
-    ..aOM<CalibConfirm>(3, _omitFieldNames ? '' : 'calibConfirm',
-        protoName: 'calibConfirm', subBuilder: CalibConfirm.create)
+    ..aOM<CalibControl>(1, _omitFieldNames ? '' : 'calibControl', protoName: 'calibControl', subBuilder: CalibControl.create)
+    ..aOM<CalibImprove>(2, _omitFieldNames ? '' : 'calibImprove', protoName: 'calibImprove', subBuilder: CalibImprove.create)
+    ..aOM<CalibConfirm>(3, _omitFieldNames ? '' : 'calibConfirm', protoName: 'calibConfirm', subBuilder: CalibConfirm.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibControlMessages clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibControlMessages copyWith(void Function(CalibControlMessages) updates) =>
-      super.copyWith((message) => updates(message as CalibControlMessages))
-          as CalibControlMessages;
+      super.copyWith((message) => updates(message as CalibControlMessages)) as CalibControlMessages;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -489,15 +430,13 @@ class CalibControlMessages extends $pb.GeneratedMessage {
   @$core.override
   CalibControlMessages createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static CalibControlMessages getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CalibControlMessages>(create);
+  static CalibControlMessages getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CalibControlMessages>(create);
   static CalibControlMessages? _defaultInstance;
 
   @$pb.TagNumber(1)
   @$pb.TagNumber(2)
   @$pb.TagNumber(3)
-  CalibControlMessages_Message whichMessage() =>
-      _CalibControlMessages_MessageByTag[$_whichOneof(0)]!;
+  CalibControlMessages_Message whichMessage() => _CalibControlMessages_MessageByTag[$_whichOneof(0)]!;
   @$pb.TagNumber(1)
   @$pb.TagNumber(2)
   @$pb.TagNumber(3)
@@ -543,7 +482,7 @@ enum CalibCursorMessages_Message { empty, calibConfirm, notSet }
 ///  Message wrapping possible cursor calibration messages for a client
 class CalibCursorMessages extends $pb.GeneratedMessage {
   factory CalibCursorMessages({
-    $0.Empty? empty,
+    $1.Empty? empty,
     CalibConfirm? calibConfirm,
   }) {
     final result = create();
@@ -554,36 +493,28 @@ class CalibCursorMessages extends $pb.GeneratedMessage {
 
   CalibCursorMessages._();
 
-  factory CalibCursorMessages.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibCursorMessages.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory CalibCursorMessages.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibCursorMessages.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
-  static const $core.Map<$core.int, CalibCursorMessages_Message>
-      _CalibCursorMessages_MessageByTag = {
+  static const $core.Map<$core.int, CalibCursorMessages_Message> _CalibCursorMessages_MessageByTag = {
     1: CalibCursorMessages_Message.empty,
     3: CalibCursorMessages_Message.calibConfirm,
     0: CalibCursorMessages_Message.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CalibCursorMessages',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibCursorMessages',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
     ..oo(0, [1, 3])
-    ..aOM<$0.Empty>(1, _omitFieldNames ? '' : 'empty',
-        subBuilder: $0.Empty.create)
-    ..aOM<CalibConfirm>(3, _omitFieldNames ? '' : 'calibConfirm',
-        protoName: 'calibConfirm', subBuilder: CalibConfirm.create)
+    ..aOM<$1.Empty>(1, _omitFieldNames ? '' : 'empty', subBuilder: $1.Empty.create)
+    ..aOM<CalibConfirm>(3, _omitFieldNames ? '' : 'calibConfirm', protoName: 'calibConfirm', subBuilder: CalibConfirm.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibCursorMessages clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibCursorMessages copyWith(void Function(CalibCursorMessages) updates) =>
-      super.copyWith((message) => updates(message as CalibCursorMessages))
-          as CalibCursorMessages;
+      super.copyWith((message) => updates(message as CalibCursorMessages)) as CalibCursorMessages;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -593,28 +524,26 @@ class CalibCursorMessages extends $pb.GeneratedMessage {
   @$core.override
   CalibCursorMessages createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static CalibCursorMessages getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CalibCursorMessages>(create);
+  static CalibCursorMessages getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CalibCursorMessages>(create);
   static CalibCursorMessages? _defaultInstance;
 
   @$pb.TagNumber(1)
   @$pb.TagNumber(3)
-  CalibCursorMessages_Message whichMessage() =>
-      _CalibCursorMessages_MessageByTag[$_whichOneof(0)]!;
+  CalibCursorMessages_Message whichMessage() => _CalibCursorMessages_MessageByTag[$_whichOneof(0)]!;
   @$pb.TagNumber(1)
   @$pb.TagNumber(3)
   void clearMessage() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
-  $0.Empty get empty => $_getN(0);
+  $1.Empty get empty => $_getN(0);
   @$pb.TagNumber(1)
-  set empty($0.Empty value) => $_setField(1, value);
+  set empty($1.Empty value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasEmpty() => $_has(0);
   @$pb.TagNumber(1)
   void clearEmpty() => $_clearField(1);
   @$pb.TagNumber(1)
-  $0.Empty ensureEmpty() => $_ensure(0);
+  $1.Empty ensureEmpty() => $_ensure(0);
 
   @$pb.TagNumber(3)
   CalibConfirm get calibConfirm => $_getN(1);
@@ -647,43 +576,31 @@ class CalibControl extends $pb.GeneratedMessage {
     if (stopHID != null) result.stopHID = stopHID;
     if (res != null) result.res = res;
     if (stepByStep != null) result.stepByStep = stepByStep;
-    if (calibrationPoints != null)
-      result.calibrationPoints.addAll(calibrationPoints);
+    if (calibrationPoints != null) result.calibrationPoints.addAll(calibrationPoints);
     return result;
   }
 
   CalibControl._();
 
-  factory CalibControl.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibControl.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory CalibControl.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory CalibControl.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CalibControl',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'calibrate')
-    ..aI(2, _omitFieldNames ? '' : 'numberOfPoints',
-        protoName: 'numberOfPoints')
-    ..aOB(3, _omitFieldNames ? '' : 'abort')
-    ..aOB(4, _omitFieldNames ? '' : 'stopHID', protoName: 'stopHID')
-    ..aOM<ScreenResolution>(5, _omitFieldNames ? '' : 'res',
-        subBuilder: ScreenResolution.create)
-    ..aOB(6, _omitFieldNames ? '' : 'stepByStep', protoName: 'stepByStep')
-    ..p<$core.int>(
-        7, _omitFieldNames ? '' : 'calibrationPoints', $pb.PbFieldType.K3,
-        protoName: 'calibrationPoints')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibControl', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOB(1, _omitFieldNames ? '' : 'calibrate')
+        ..aI(2, _omitFieldNames ? '' : 'numberOfPoints', protoName: 'numberOfPoints')
+        ..aOB(3, _omitFieldNames ? '' : 'abort')
+        ..aOB(4, _omitFieldNames ? '' : 'stopHID', protoName: 'stopHID')
+        ..aOM<ScreenResolution>(5, _omitFieldNames ? '' : 'res', subBuilder: ScreenResolution.create)
+        ..aOB(6, _omitFieldNames ? '' : 'stepByStep', protoName: 'stepByStep')
+        ..p<$core.int>(7, _omitFieldNames ? '' : 'calibrationPoints', $pb.PbFieldType.K3, protoName: 'calibrationPoints')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibControl clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CalibControl copyWith(void Function(CalibControl) updates) =>
-      super.copyWith((message) => updates(message as CalibControl))
-          as CalibControl;
+  CalibControl copyWith(void Function(CalibControl) updates) => super.copyWith((message) => updates(message as CalibControl)) as CalibControl;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -693,8 +610,7 @@ class CalibControl extends $pb.GeneratedMessage {
   @$core.override
   CalibControl createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static CalibControl getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CalibControl>(create);
+  static CalibControl getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CalibControl>(create);
   static CalibControl? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -790,17 +706,13 @@ class ScreenResolution extends $pb.GeneratedMessage {
 
   ScreenResolution._();
 
-  factory ScreenResolution.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ScreenResolution.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory ScreenResolution.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ScreenResolution.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'ScreenResolution',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ScreenResolution',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
     ..aI(5, _omitFieldNames ? '' : 'width')
     ..aI(6, _omitFieldNames ? '' : 'height')
     ..aI(7, _omitFieldNames ? '' : 'widthInMM', protoName: 'widthInMM')
@@ -810,9 +722,7 @@ class ScreenResolution extends $pb.GeneratedMessage {
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ScreenResolution clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  ScreenResolution copyWith(void Function(ScreenResolution) updates) =>
-      super.copyWith((message) => updates(message as ScreenResolution))
-          as ScreenResolution;
+  ScreenResolution copyWith(void Function(ScreenResolution) updates) => super.copyWith((message) => updates(message as ScreenResolution)) as ScreenResolution;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -822,8 +732,7 @@ class ScreenResolution extends $pb.GeneratedMessage {
   @$core.override
   ScreenResolution createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static ScreenResolution getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ScreenResolution>(create);
+  static ScreenResolution getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ScreenResolution>(create);
   static ScreenResolution? _defaultInstance;
 
   @$pb.TagNumber(5)
@@ -878,27 +787,20 @@ class CalibImprove extends $pb.GeneratedMessage {
 
   CalibImprove._();
 
-  factory CalibImprove.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibImprove.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory CalibImprove.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory CalibImprove.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CalibImprove',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aI(1, _omitFieldNames ? '' : 'rating')
-    ..aOB(2, _omitFieldNames ? '' : 'stopHID', protoName: 'stopHID')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibImprove', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aI(1, _omitFieldNames ? '' : 'rating')
+        ..aOB(2, _omitFieldNames ? '' : 'stopHID', protoName: 'stopHID')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibImprove clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CalibImprove copyWith(void Function(CalibImprove) updates) =>
-      super.copyWith((message) => updates(message as CalibImprove))
-          as CalibImprove;
+  CalibImprove copyWith(void Function(CalibImprove) updates) => super.copyWith((message) => updates(message as CalibImprove)) as CalibImprove;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -908,8 +810,7 @@ class CalibImprove extends $pb.GeneratedMessage {
   @$core.override
   CalibImprove createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static CalibImprove getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CalibImprove>(create);
+  static CalibImprove getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CalibImprove>(create);
   static CalibImprove? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -944,26 +845,19 @@ class CalibConfirm extends $pb.GeneratedMessage {
 
   CalibConfirm._();
 
-  factory CalibConfirm.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibConfirm.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory CalibConfirm.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory CalibConfirm.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CalibConfirm',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'confirmed')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibConfirm', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOB(1, _omitFieldNames ? '' : 'confirmed')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibConfirm clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CalibConfirm copyWith(void Function(CalibConfirm) updates) =>
-      super.copyWith((message) => updates(message as CalibConfirm))
-          as CalibConfirm;
+  CalibConfirm copyWith(void Function(CalibConfirm) updates) => super.copyWith((message) => updates(message as CalibConfirm)) as CalibConfirm;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -973,8 +867,7 @@ class CalibConfirm extends $pb.GeneratedMessage {
   @$core.override
   CalibConfirm createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static CalibConfirm getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CalibConfirm>(create);
+  static CalibConfirm getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CalibConfirm>(create);
   static CalibConfirm? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1006,39 +899,28 @@ class CalibMessages extends $pb.GeneratedMessage {
 
   CalibMessages._();
 
-  factory CalibMessages.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibMessages.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory CalibMessages.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory CalibMessages.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static const $core.Map<$core.int, CalibMessages_Message>
-      _CalibMessages_MessageByTag = {
+  static const $core.Map<$core.int, CalibMessages_Message> _CalibMessages_MessageByTag = {
     1: CalibMessages_Message.calibControl,
     2: CalibMessages_Message.calibPoint,
     3: CalibMessages_Message.calibQuality,
     0: CalibMessages_Message.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CalibMessages',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..oo(0, [1, 2, 3])
-    ..aOM<CalibControl>(1, _omitFieldNames ? '' : 'calibControl',
-        protoName: 'calibControl', subBuilder: CalibControl.create)
-    ..aOM<CalibPoint>(2, _omitFieldNames ? '' : 'calibPoint',
-        protoName: 'calibPoint', subBuilder: CalibPoint.create)
-    ..aOM<CalibQuality>(3, _omitFieldNames ? '' : 'calibQuality',
-        protoName: 'calibQuality', subBuilder: CalibQuality.create)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibMessages', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..oo(0, [1, 2, 3])
+        ..aOM<CalibControl>(1, _omitFieldNames ? '' : 'calibControl', protoName: 'calibControl', subBuilder: CalibControl.create)
+        ..aOM<CalibPoint>(2, _omitFieldNames ? '' : 'calibPoint', protoName: 'calibPoint', subBuilder: CalibPoint.create)
+        ..aOM<CalibQuality>(3, _omitFieldNames ? '' : 'calibQuality', protoName: 'calibQuality', subBuilder: CalibQuality.create)
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibMessages clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CalibMessages copyWith(void Function(CalibMessages) updates) =>
-      super.copyWith((message) => updates(message as CalibMessages))
-          as CalibMessages;
+  CalibMessages copyWith(void Function(CalibMessages) updates) => super.copyWith((message) => updates(message as CalibMessages)) as CalibMessages;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -1048,15 +930,13 @@ class CalibMessages extends $pb.GeneratedMessage {
   @$core.override
   CalibMessages createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static CalibMessages getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CalibMessages>(create);
+  static CalibMessages getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CalibMessages>(create);
   static CalibMessages? _defaultInstance;
 
   @$pb.TagNumber(1)
   @$pb.TagNumber(2)
   @$pb.TagNumber(3)
-  CalibMessages_Message whichMessage() =>
-      _CalibMessages_MessageByTag[$_whichOneof(0)]!;
+  CalibMessages_Message whichMessage() => _CalibMessages_MessageByTag[$_whichOneof(0)]!;
   @$pb.TagNumber(1)
   @$pb.TagNumber(2)
   @$pb.TagNumber(3)
@@ -1100,8 +980,8 @@ class CalibMessages extends $pb.GeneratedMessage {
 ///  Message for binocular gaze points
 class BinocularGaze extends $pb.GeneratedMessage {
   factory BinocularGaze({
-    $1.Point? leftGaze,
-    $1.Point? rightGaze,
+    $2.Point? leftGaze,
+    $2.Point? rightGaze,
   }) {
     final result = create();
     if (leftGaze != null) result.leftGaze = leftGaze;
@@ -1111,29 +991,20 @@ class BinocularGaze extends $pb.GeneratedMessage {
 
   BinocularGaze._();
 
-  factory BinocularGaze.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory BinocularGaze.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory BinocularGaze.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory BinocularGaze.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'BinocularGaze',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOM<$1.Point>(1, _omitFieldNames ? '' : 'leftGaze',
-        protoName: 'leftGaze', subBuilder: $1.Point.create)
-    ..aOM<$1.Point>(2, _omitFieldNames ? '' : 'rightGaze',
-        protoName: 'rightGaze', subBuilder: $1.Point.create)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'BinocularGaze', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOM<$2.Point>(1, _omitFieldNames ? '' : 'leftGaze', protoName: 'leftGaze', subBuilder: $2.Point.create)
+        ..aOM<$2.Point>(2, _omitFieldNames ? '' : 'rightGaze', protoName: 'rightGaze', subBuilder: $2.Point.create)
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   BinocularGaze clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  BinocularGaze copyWith(void Function(BinocularGaze) updates) =>
-      super.copyWith((message) => updates(message as BinocularGaze))
-          as BinocularGaze;
+  BinocularGaze copyWith(void Function(BinocularGaze) updates) => super.copyWith((message) => updates(message as BinocularGaze)) as BinocularGaze;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -1143,31 +1014,30 @@ class BinocularGaze extends $pb.GeneratedMessage {
   @$core.override
   BinocularGaze createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static BinocularGaze getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<BinocularGaze>(create);
+  static BinocularGaze getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<BinocularGaze>(create);
   static BinocularGaze? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.Point get leftGaze => $_getN(0);
+  $2.Point get leftGaze => $_getN(0);
   @$pb.TagNumber(1)
-  set leftGaze($1.Point value) => $_setField(1, value);
+  set leftGaze($2.Point value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasLeftGaze() => $_has(0);
   @$pb.TagNumber(1)
   void clearLeftGaze() => $_clearField(1);
   @$pb.TagNumber(1)
-  $1.Point ensureLeftGaze() => $_ensure(0);
+  $2.Point ensureLeftGaze() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $1.Point get rightGaze => $_getN(1);
+  $2.Point get rightGaze => $_getN(1);
   @$pb.TagNumber(2)
-  set rightGaze($1.Point value) => $_setField(2, value);
+  set rightGaze($2.Point value) => $_setField(2, value);
   @$pb.TagNumber(2)
   $core.bool hasRightGaze() => $_has(1);
   @$pb.TagNumber(2)
   void clearRightGaze() => $_clearField(2);
   @$pb.TagNumber(2)
-  $1.Point ensureRightGaze() => $_ensure(1);
+  $2.Point ensureRightGaze() => $_ensure(1);
 }
 
 /// *
@@ -1175,7 +1045,7 @@ class BinocularGaze extends $pb.GeneratedMessage {
 class CalibPoint extends $pb.GeneratedMessage {
   factory CalibPoint({
     $core.int? count,
-    $1.Point? currentPoint,
+    $2.Point? currentPoint,
   }) {
     final result = create();
     if (count != null) result.count = count;
@@ -1185,27 +1055,20 @@ class CalibPoint extends $pb.GeneratedMessage {
 
   CalibPoint._();
 
-  factory CalibPoint.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibPoint.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory CalibPoint.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory CalibPoint.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CalibPoint',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aI(1, _omitFieldNames ? '' : 'count')
-    ..aOM<$1.Point>(2, _omitFieldNames ? '' : 'currentPoint',
-        protoName: 'currentPoint', subBuilder: $1.Point.create)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibPoint', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aI(1, _omitFieldNames ? '' : 'count')
+        ..aOM<$2.Point>(2, _omitFieldNames ? '' : 'currentPoint', protoName: 'currentPoint', subBuilder: $2.Point.create)
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibPoint clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CalibPoint copyWith(void Function(CalibPoint) updates) =>
-      super.copyWith((message) => updates(message as CalibPoint)) as CalibPoint;
+  CalibPoint copyWith(void Function(CalibPoint) updates) => super.copyWith((message) => updates(message as CalibPoint)) as CalibPoint;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -1215,8 +1078,7 @@ class CalibPoint extends $pb.GeneratedMessage {
   @$core.override
   CalibPoint createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static CalibPoint getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CalibPoint>(create);
+  static CalibPoint getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CalibPoint>(create);
   static CalibPoint? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1229,15 +1091,15 @@ class CalibPoint extends $pb.GeneratedMessage {
   void clearCount() => $_clearField(1);
 
   @$pb.TagNumber(2)
-  $1.Point get currentPoint => $_getN(1);
+  $2.Point get currentPoint => $_getN(1);
   @$pb.TagNumber(2)
-  set currentPoint($1.Point value) => $_setField(2, value);
+  set currentPoint($2.Point value) => $_setField(2, value);
   @$pb.TagNumber(2)
   $core.bool hasCurrentPoint() => $_has(1);
   @$pb.TagNumber(2)
   void clearCurrentPoint() => $_clearField(2);
   @$pb.TagNumber(2)
-  $1.Point ensureCurrentPoint() => $_ensure(1);
+  $2.Point ensureCurrentPoint() => $_ensure(1);
 }
 
 /// *
@@ -1255,27 +1117,20 @@ class CalibQuality extends $pb.GeneratedMessage {
 
   CalibQuality._();
 
-  factory CalibQuality.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory CalibQuality.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory CalibQuality.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory CalibQuality.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'CalibQuality',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aD(1, _omitFieldNames ? '' : 'quality')
-    ..p<$core.double>(2, _omitFieldNames ? '' : 'qualities', $pb.PbFieldType.KD)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'CalibQuality', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aD(1, _omitFieldNames ? '' : 'quality')
+        ..p<$core.double>(2, _omitFieldNames ? '' : 'qualities', $pb.PbFieldType.KD)
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   CalibQuality clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  CalibQuality copyWith(void Function(CalibQuality) updates) =>
-      super.copyWith((message) => updates(message as CalibQuality))
-          as CalibQuality;
+  CalibQuality copyWith(void Function(CalibQuality) updates) => super.copyWith((message) => updates(message as CalibQuality)) as CalibQuality;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -1285,8 +1140,7 @@ class CalibQuality extends $pb.GeneratedMessage {
   @$core.override
   CalibQuality createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static CalibQuality getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<CalibQuality>(create);
+  static CalibQuality getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CalibQuality>(create);
   static CalibQuality? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1306,20 +1160,19 @@ class CalibQuality extends $pb.GeneratedMessage {
 ///  Message with eye positions and quality indicators
 class PositioningMessage extends $pb.GeneratedMessage {
   factory PositioningMessage({
-    $1.Point? leftEye,
-    $1.Point? rightEye,
+    $2.Point? leftEye,
+    $2.Point? rightEye,
     $core.int? distanceQuality,
     $core.int? positioningQuality,
     $core.int? horizontalQuality,
     $core.int? verticalQuality,
-    $1.Face? face,
+    $2.Face? face,
   }) {
     final result = create();
     if (leftEye != null) result.leftEye = leftEye;
     if (rightEye != null) result.rightEye = rightEye;
     if (distanceQuality != null) result.distanceQuality = distanceQuality;
-    if (positioningQuality != null)
-      result.positioningQuality = positioningQuality;
+    if (positioningQuality != null) result.positioningQuality = positioningQuality;
     if (horizontalQuality != null) result.horizontalQuality = horizontalQuality;
     if (verticalQuality != null) result.verticalQuality = verticalQuality;
     if (face != null) result.face = face;
@@ -1328,38 +1181,27 @@ class PositioningMessage extends $pb.GeneratedMessage {
 
   PositioningMessage._();
 
-  factory PositioningMessage.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PositioningMessage.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory PositioningMessage.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory PositioningMessage.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'PositioningMessage',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOM<$1.Point>(1, _omitFieldNames ? '' : 'leftEye',
-        protoName: 'leftEye', subBuilder: $1.Point.create)
-    ..aOM<$1.Point>(2, _omitFieldNames ? '' : 'rightEye',
-        protoName: 'rightEye', subBuilder: $1.Point.create)
-    ..aI(3, _omitFieldNames ? '' : 'distanceQuality',
-        protoName: 'distanceQuality')
-    ..aI(4, _omitFieldNames ? '' : 'positioningQuality',
-        protoName: 'positioningQuality')
-    ..aI(5, _omitFieldNames ? '' : 'horizontalQuality',
-        protoName: 'horizontalQuality')
-    ..aI(6, _omitFieldNames ? '' : 'verticalQuality',
-        protoName: 'verticalQuality')
-    ..aOM<$1.Face>(7, _omitFieldNames ? '' : 'face', subBuilder: $1.Face.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'PositioningMessage',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+    ..aOM<$2.Point>(1, _omitFieldNames ? '' : 'leftEye', protoName: 'leftEye', subBuilder: $2.Point.create)
+    ..aOM<$2.Point>(2, _omitFieldNames ? '' : 'rightEye', protoName: 'rightEye', subBuilder: $2.Point.create)
+    ..aI(3, _omitFieldNames ? '' : 'distanceQuality', protoName: 'distanceQuality')
+    ..aI(4, _omitFieldNames ? '' : 'positioningQuality', protoName: 'positioningQuality')
+    ..aI(5, _omitFieldNames ? '' : 'horizontalQuality', protoName: 'horizontalQuality')
+    ..aI(6, _omitFieldNames ? '' : 'verticalQuality', protoName: 'verticalQuality')
+    ..aOM<$2.Face>(7, _omitFieldNames ? '' : 'face', subBuilder: $2.Face.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   PositioningMessage clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   PositioningMessage copyWith(void Function(PositioningMessage) updates) =>
-      super.copyWith((message) => updates(message as PositioningMessage))
-          as PositioningMessage;
+      super.copyWith((message) => updates(message as PositioningMessage)) as PositioningMessage;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -1369,31 +1211,30 @@ class PositioningMessage extends $pb.GeneratedMessage {
   @$core.override
   PositioningMessage createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static PositioningMessage getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<PositioningMessage>(create);
+  static PositioningMessage getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PositioningMessage>(create);
   static PositioningMessage? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $1.Point get leftEye => $_getN(0);
+  $2.Point get leftEye => $_getN(0);
   @$pb.TagNumber(1)
-  set leftEye($1.Point value) => $_setField(1, value);
+  set leftEye($2.Point value) => $_setField(1, value);
   @$pb.TagNumber(1)
   $core.bool hasLeftEye() => $_has(0);
   @$pb.TagNumber(1)
   void clearLeftEye() => $_clearField(1);
   @$pb.TagNumber(1)
-  $1.Point ensureLeftEye() => $_ensure(0);
+  $2.Point ensureLeftEye() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $1.Point get rightEye => $_getN(1);
+  $2.Point get rightEye => $_getN(1);
   @$pb.TagNumber(2)
-  set rightEye($1.Point value) => $_setField(2, value);
+  set rightEye($2.Point value) => $_setField(2, value);
   @$pb.TagNumber(2)
   $core.bool hasRightEye() => $_has(1);
   @$pb.TagNumber(2)
   void clearRightEye() => $_clearField(2);
   @$pb.TagNumber(2)
-  $1.Point ensureRightEye() => $_ensure(1);
+  $2.Point ensureRightEye() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $core.int get distanceQuality => $_getIZ(2);
@@ -1432,15 +1273,15 @@ class PositioningMessage extends $pb.GeneratedMessage {
   void clearVerticalQuality() => $_clearField(6);
 
   @$pb.TagNumber(7)
-  $1.Face get face => $_getN(6);
+  $2.Face get face => $_getN(6);
   @$pb.TagNumber(7)
-  set face($1.Face value) => $_setField(7, value);
+  set face($2.Face value) => $_setField(7, value);
   @$pb.TagNumber(7)
   $core.bool hasFace() => $_has(6);
   @$pb.TagNumber(7)
   void clearFace() => $_clearField(7);
   @$pb.TagNumber(7)
-  $1.Face ensureFace() => $_ensure(6);
+  $2.Face ensureFace() => $_ensure(6);
 }
 
 /// *
@@ -1464,8 +1305,7 @@ class Options extends $pb.GeneratedMessage {
     if (enableVideoStream != null) result.enableVideoStream = enableVideoStream;
     if (enableAutoPause != null) result.enableAutoPause = enableAutoPause;
     if (enablePause != null) result.enablePause = enablePause;
-    if (enablePositioningStream != null)
-      result.enablePositioningStream = enablePositioningStream;
+    if (enablePositioningStream != null) result.enablePositioningStream = enablePositioningStream;
     if (enableAutoStandby != null) result.enableAutoStandby = enableAutoStandby;
     if (disableMouse != null) result.disableMouse = disableMouse;
     if (filter != null) result.filter = filter;
@@ -1473,52 +1313,36 @@ class Options extends $pb.GeneratedMessage {
     if (res != null) result.res = res;
     if (hp != null) result.hp = hp;
     if (eyeUsage != null) result.eyeUsage = eyeUsage;
-    if (enableTrackingDetails != null)
-      result.enableTrackingDetails = enableTrackingDetails;
+    if (enableTrackingDetails != null) result.enableTrackingDetails = enableTrackingDetails;
     return result;
   }
 
   Options._();
 
-  factory Options.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Options.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory Options.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory Options.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Options',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'enableVideoStream',
-        protoName: 'enableVideoStream')
-    ..aOB(2, _omitFieldNames ? '' : 'enableAutoPause',
-        protoName: 'enableAutoPause')
-    ..aOB(3, _omitFieldNames ? '' : 'enablePause', protoName: 'enablePause')
-    ..aOB(4, _omitFieldNames ? '' : 'enablePositioningStream',
-        protoName: 'enablePositioningStream')
-    ..aOB(5, _omitFieldNames ? '' : 'enableAutoStandby',
-        protoName: 'enableAutoStandby')
-    ..aOB(6, _omitFieldNames ? '' : 'disableMouse', protoName: 'disableMouse')
-    ..aOM<FilterOptions>(7, _omitFieldNames ? '' : 'filter',
-        subBuilder: FilterOptions.create)
-    ..aOM<IPadOptions>(8, _omitFieldNames ? '' : 'iPadOptions',
-        protoName: 'iPadOptions', subBuilder: IPadOptions.create)
-    ..aOM<ScreenResolution>(9, _omitFieldNames ? '' : 'res',
-        subBuilder: ScreenResolution.create)
-    ..aOB(10, _omitFieldNames ? '' : 'hp')
-    ..aE<Options_eyeUse>(11, _omitFieldNames ? '' : 'eyeUsage',
-        protoName: 'eyeUsage', enumValues: Options_eyeUse.values)
-    ..aOB(12, _omitFieldNames ? '' : 'enableTrackingDetails',
-        protoName: 'enableTrackingDetails')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'Options', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOB(1, _omitFieldNames ? '' : 'enableVideoStream', protoName: 'enableVideoStream')
+        ..aOB(2, _omitFieldNames ? '' : 'enableAutoPause', protoName: 'enableAutoPause')
+        ..aOB(3, _omitFieldNames ? '' : 'enablePause', protoName: 'enablePause')
+        ..aOB(4, _omitFieldNames ? '' : 'enablePositioningStream', protoName: 'enablePositioningStream')
+        ..aOB(5, _omitFieldNames ? '' : 'enableAutoStandby', protoName: 'enableAutoStandby')
+        ..aOB(6, _omitFieldNames ? '' : 'disableMouse', protoName: 'disableMouse')
+        ..aOM<FilterOptions>(7, _omitFieldNames ? '' : 'filter', subBuilder: FilterOptions.create)
+        ..aOM<IPadOptions>(8, _omitFieldNames ? '' : 'iPadOptions', protoName: 'iPadOptions', subBuilder: IPadOptions.create)
+        ..aOM<ScreenResolution>(9, _omitFieldNames ? '' : 'res', subBuilder: ScreenResolution.create)
+        ..aOB(10, _omitFieldNames ? '' : 'hp')
+        ..aE<Options_eyeUse>(11, _omitFieldNames ? '' : 'eyeUsage', protoName: 'eyeUsage', enumValues: Options_eyeUse.values)
+        ..aOB(12, _omitFieldNames ? '' : 'enableTrackingDetails', protoName: 'enableTrackingDetails')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Options clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  Options copyWith(void Function(Options) updates) =>
-      super.copyWith((message) => updates(message as Options)) as Options;
+  Options copyWith(void Function(Options) updates) => super.copyWith((message) => updates(message as Options)) as Options;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -1528,8 +1352,7 @@ class Options extends $pb.GeneratedMessage {
   @$core.override
   Options createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static Options getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Options>(create);
+  static Options getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Options>(create);
   static Options? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1666,35 +1489,26 @@ class IPadOptions extends $pb.GeneratedMessage {
 
   IPadOptions._();
 
-  factory IPadOptions.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory IPadOptions.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory IPadOptions.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory IPadOptions.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static const $core.Map<$core.int, IPadOptions_OptionalModel>
-      _IPadOptions_OptionalModelByTag = {
+  static const $core.Map<$core.int, IPadOptions_OptionalModel> _IPadOptions_OptionalModelByTag = {
     3: IPadOptions_OptionalModel.model,
     0: IPadOptions_OptionalModel.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'IPadOptions',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..oo(0, [3])
-    ..aOB(1, _omitFieldNames ? '' : 'isOldiOS', protoName: 'isOldiOS')
-    ..aOB(2, _omitFieldNames ? '' : 'isNotZoomed', protoName: 'isNotZoomed')
-    ..aE<IPadOptions_iPadModel>(3, _omitFieldNames ? '' : 'model',
-        enumValues: IPadOptions_iPadModel.values)
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'IPadOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..oo(0, [3])
+        ..aOB(1, _omitFieldNames ? '' : 'isOldiOS', protoName: 'isOldiOS')
+        ..aOB(2, _omitFieldNames ? '' : 'isNotZoomed', protoName: 'isNotZoomed')
+        ..aE<IPadOptions_iPadModel>(3, _omitFieldNames ? '' : 'model', enumValues: IPadOptions_iPadModel.values)
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   IPadOptions clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  IPadOptions copyWith(void Function(IPadOptions) updates) =>
-      super.copyWith((message) => updates(message as IPadOptions))
-          as IPadOptions;
+  IPadOptions copyWith(void Function(IPadOptions) updates) => super.copyWith((message) => updates(message as IPadOptions)) as IPadOptions;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -1704,13 +1518,11 @@ class IPadOptions extends $pb.GeneratedMessage {
   @$core.override
   IPadOptions createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static IPadOptions getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<IPadOptions>(create);
+  static IPadOptions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<IPadOptions>(create);
   static IPadOptions? _defaultInstance;
 
   @$pb.TagNumber(3)
-  IPadOptions_OptionalModel whichOptionalModel() =>
-      _IPadOptions_OptionalModelByTag[$_whichOneof(0)]!;
+  IPadOptions_OptionalModel whichOptionalModel() => _IPadOptions_OptionalModelByTag[$_whichOneof(0)]!;
   @$pb.TagNumber(3)
   void clearOptionalModel() => $_clearField($_whichOneof(0));
 
@@ -1767,33 +1579,25 @@ class DeviceVersions extends $pb.GeneratedMessage {
 
   DeviceVersions._();
 
-  factory DeviceVersions.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory DeviceVersions.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory DeviceVersions.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory DeviceVersions.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'DeviceVersions',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'firmware')
-    ..aOS(2, _omitFieldNames ? '' : 'eyetracker')
-    ..aOS(3, _omitFieldNames ? '' : 'calib')
-    ..aOS(4, _omitFieldNames ? '' : 'base')
-    ..a<$fixnum.Int64>(5, _omitFieldNames ? '' : 'serial', $pb.PbFieldType.OU6,
-        defaultOrMaker: $fixnum.Int64.ZERO)
-    ..aI(6, _omitFieldNames ? '' : 'skyleType', protoName: 'skyleType')
-    ..aOB(7, _omitFieldNames ? '' : 'isDemo', protoName: 'isDemo')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'DeviceVersions', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOS(1, _omitFieldNames ? '' : 'firmware')
+        ..aOS(2, _omitFieldNames ? '' : 'eyetracker')
+        ..aOS(3, _omitFieldNames ? '' : 'calib')
+        ..aOS(4, _omitFieldNames ? '' : 'base')
+        ..a<$fixnum.Int64>(5, _omitFieldNames ? '' : 'serial', $pb.PbFieldType.OU6, defaultOrMaker: $fixnum.Int64.ZERO)
+        ..aI(6, _omitFieldNames ? '' : 'skyleType', protoName: 'skyleType')
+        ..aOB(7, _omitFieldNames ? '' : 'isDemo', protoName: 'isDemo')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   DeviceVersions clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  DeviceVersions copyWith(void Function(DeviceVersions) updates) =>
-      super.copyWith((message) => updates(message as DeviceVersions))
-          as DeviceVersions;
+  DeviceVersions copyWith(void Function(DeviceVersions) updates) => super.copyWith((message) => updates(message as DeviceVersions)) as DeviceVersions;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -1803,8 +1607,7 @@ class DeviceVersions extends $pb.GeneratedMessage {
   @$core.override
   DeviceVersions createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static DeviceVersions getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<DeviceVersions>(create);
+  static DeviceVersions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<DeviceVersions>(create);
   static DeviceVersions? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1888,28 +1691,21 @@ class ButtonActions extends $pb.GeneratedMessage {
 
   ButtonActions._();
 
-  factory ButtonActions.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory ButtonActions.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory ButtonActions.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory ButtonActions.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'ButtonActions',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOS(1, _omitFieldNames ? '' : 'singleClick', protoName: 'singleClick')
-    ..aOS(2, _omitFieldNames ? '' : 'doubleClick', protoName: 'doubleClick')
-    ..aOS(3, _omitFieldNames ? '' : 'holdClick', protoName: 'holdClick')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'ButtonActions', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOS(1, _omitFieldNames ? '' : 'singleClick', protoName: 'singleClick')
+        ..aOS(2, _omitFieldNames ? '' : 'doubleClick', protoName: 'doubleClick')
+        ..aOS(3, _omitFieldNames ? '' : 'holdClick', protoName: 'holdClick')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   ButtonActions clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  ButtonActions copyWith(void Function(ButtonActions) updates) =>
-      super.copyWith((message) => updates(message as ButtonActions))
-          as ButtonActions;
+  ButtonActions copyWith(void Function(ButtonActions) updates) => super.copyWith((message) => updates(message as ButtonActions)) as ButtonActions;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -1919,8 +1715,7 @@ class ButtonActions extends $pb.GeneratedMessage {
   @$core.override
   ButtonActions createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static ButtonActions getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<ButtonActions>(create);
+  static ButtonActions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ButtonActions>(create);
   static ButtonActions? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -1962,36 +1757,27 @@ class Button extends $pb.GeneratedMessage {
     final result = create();
     if (isPresent != null) result.isPresent = isPresent;
     if (buttonActions != null) result.buttonActions = buttonActions;
-    if (availableActions != null)
-      result.availableActions.addAll(availableActions);
+    if (availableActions != null) result.availableActions.addAll(availableActions);
     return result;
   }
 
   Button._();
 
-  factory Button.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory Button.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory Button.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory Button.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'Button',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aOB(1, _omitFieldNames ? '' : 'isPresent', protoName: 'isPresent')
-    ..aOM<ButtonActions>(2, _omitFieldNames ? '' : 'buttonActions',
-        protoName: 'buttonActions', subBuilder: ButtonActions.create)
-    ..pPS(3, _omitFieldNames ? '' : 'availableActions',
-        protoName: 'availableActions')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'Button', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aOB(1, _omitFieldNames ? '' : 'isPresent', protoName: 'isPresent')
+        ..aOM<ButtonActions>(2, _omitFieldNames ? '' : 'buttonActions', protoName: 'buttonActions', subBuilder: ButtonActions.create)
+        ..pPS(3, _omitFieldNames ? '' : 'availableActions', protoName: 'availableActions')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   Button clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  Button copyWith(void Function(Button) updates) =>
-      super.copyWith((message) => updates(message as Button)) as Button;
+  Button copyWith(void Function(Button) updates) => super.copyWith((message) => updates(message as Button)) as Button;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -2001,8 +1787,7 @@ class Button extends $pb.GeneratedMessage {
   @$core.override
   Button createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static Button getDefault() =>
-      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Button>(create);
+  static Button getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<Button>(create);
   static Button? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -2044,28 +1829,20 @@ class FilterOptions extends $pb.GeneratedMessage {
 
   FilterOptions._();
 
-  factory FilterOptions.fromBuffer($core.List<$core.int> data,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+  factory FilterOptions.fromBuffer($core.List<$core.int> data, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
       create()..mergeFromBuffer(data, registry);
-  factory FilterOptions.fromJson($core.String json,
-          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
-      create()..mergeFromJson(json, registry);
+  factory FilterOptions.fromJson($core.String json, [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(json, registry);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
-      _omitMessageNames ? '' : 'FilterOptions',
-      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'),
-      createEmptyInstance: create)
-    ..aI(1, _omitFieldNames ? '' : 'fixationFilter',
-        protoName: 'fixationFilter')
-    ..aI(2, _omitFieldNames ? '' : 'gazeFilter', protoName: 'gazeFilter')
-    ..hasRequiredFields = false;
+  static final $pb.BuilderInfo _i =
+      $pb.BuilderInfo(_omitMessageNames ? '' : 'FilterOptions', package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle'), createEmptyInstance: create)
+        ..aI(1, _omitFieldNames ? '' : 'fixationFilter', protoName: 'fixationFilter')
+        ..aI(2, _omitFieldNames ? '' : 'gazeFilter', protoName: 'gazeFilter')
+        ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
   FilterOptions clone() => deepCopy();
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
-  FilterOptions copyWith(void Function(FilterOptions) updates) =>
-      super.copyWith((message) => updates(message as FilterOptions))
-          as FilterOptions;
+  FilterOptions copyWith(void Function(FilterOptions) updates) => super.copyWith((message) => updates(message as FilterOptions)) as FilterOptions;
 
   @$core.override
   $pb.BuilderInfo get info_ => _i;
@@ -2075,8 +1852,7 @@ class FilterOptions extends $pb.GeneratedMessage {
   @$core.override
   FilterOptions createEmptyInstance() => create();
   @$core.pragma('dart2js:noInline')
-  static FilterOptions getDefault() => _defaultInstance ??=
-      $pb.GeneratedMessage.$_defaultFor<FilterOptions>(create);
+  static FilterOptions getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<FilterOptions>(create);
   static FilterOptions? _defaultInstance;
 
   @$pb.TagNumber(1)
@@ -2098,76 +1874,5 @@ class FilterOptions extends $pb.GeneratedMessage {
   void clearGazeFilter() => $_clearField(2);
 }
 
-/// *
-///  Skyle service to use the eye tracker
-class SkyleApi {
-  final $pb.RpcClient _client;
-
-  SkyleApi(this._client);
-
-  $async.Future<CalibMessages> calibrate(
-          $pb.ClientContext? ctx, CalibControlMessages request) =>
-      _client.invoke<CalibMessages>(
-          ctx, 'Skyle', 'Calibrate', request, CalibMessages());
-  $async.Future<PositioningMessage> positioning(
-          $pb.ClientContext? ctx, $0.Empty request) =>
-      _client.invoke<PositioningMessage>(
-          ctx, 'Skyle', 'Positioning', request, PositioningMessage());
-  $async.Future<$1.Point> gaze($pb.ClientContext? ctx, $0.Empty request) =>
-      _client.invoke<$1.Point>(ctx, 'Skyle', 'Gaze', request, $1.Point());
-  $async.Future<TriggerMessage> trigger(
-          $pb.ClientContext? ctx, $0.Empty request) =>
-      _client.invoke<TriggerMessage>(
-          ctx, 'Skyle', 'Trigger', request, TriggerMessage());
-  $async.Future<Button> getButton($pb.ClientContext? ctx, $0.Empty request) =>
-      _client.invoke<Button>(ctx, 'Skyle', 'GetButton', request, Button());
-  $async.Future<ButtonActions> setButton(
-          $pb.ClientContext? ctx, ButtonActions request) =>
-      _client.invoke<ButtonActions>(
-          ctx, 'Skyle', 'SetButton', request, ButtonActions());
-  $async.Future<Options> configure(
-          $pb.ClientContext? ctx, OptionMessage request) =>
-      _client.invoke<Options>(ctx, 'Skyle', 'Configure', request, Options());
-  $async.Future<Options> configureStream(
-          $pb.ClientContext? ctx, OptionMessage request) =>
-      _client.invoke<Options>(
-          ctx, 'Skyle', 'ConfigureStream', request, Options());
-  $async.Future<DeviceVersions> getVersions(
-          $pb.ClientContext? ctx, $0.Empty request) =>
-      _client.invoke<DeviceVersions>(
-          ctx, 'Skyle', 'GetVersions', request, DeviceVersions());
-  $async.Future<Profile> getProfiles(
-          $pb.ClientContext? ctx, $0.Empty request) =>
-      _client.invoke<Profile>(ctx, 'Skyle', 'GetProfiles', request, Profile());
-  $async.Future<Profile> currentProfile(
-          $pb.ClientContext? ctx, $0.Empty request) =>
-      _client.invoke<Profile>(
-          ctx, 'Skyle', 'CurrentProfile', request, Profile());
-  $async.Future<StatusMessage> setProfile(
-          $pb.ClientContext? ctx, Profile request) =>
-      _client.invoke<StatusMessage>(
-          ctx, 'Skyle', 'SetProfile', request, StatusMessage());
-  $async.Future<StatusMessage> deleteProfile(
-          $pb.ClientContext? ctx, Profile request) =>
-      _client.invoke<StatusMessage>(
-          ctx, 'Skyle', 'DeleteProfile', request, StatusMessage());
-  $async.Future<StatusMessage> reset(
-          $pb.ClientContext? ctx, ResetMessage request) =>
-      _client.invoke<StatusMessage>(
-          ctx, 'Skyle', 'Reset', request, StatusMessage());
-  $async.Future<$1.Point> cursorCalibration(
-          $pb.ClientContext? ctx, CalibCursorMessages request) =>
-      _client.invoke<$1.Point>(
-          ctx, 'Skyle', 'CursorCalibration', request, $1.Point());
-  $async.Future<$1.Mat> rawImages($pb.ClientContext? ctx, $0.Empty request) =>
-      _client.invoke<$1.Mat>(ctx, 'Skyle', 'RawImages', request, $1.Mat());
-  $async.Future<BinocularGaze> rawBinocularGaze(
-          $pb.ClientContext? ctx, $0.Empty request) =>
-      _client.invoke<BinocularGaze>(
-          ctx, 'Skyle', 'RawBinocularGaze', request, BinocularGaze());
-}
-
-const $core.bool _omitFieldNames =
-    $core.bool.fromEnvironment('protobuf.omit_field_names');
-const $core.bool _omitMessageNames =
-    $core.bool.fromEnvironment('protobuf.omit_message_names');
+const $core.bool _omitFieldNames = $core.bool.fromEnvironment('protobuf.omit_field_names');
+const $core.bool _omitMessageNames = $core.bool.fromEnvironment('protobuf.omit_message_names');
