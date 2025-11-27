@@ -13,9 +13,9 @@ import 'package:grpc/grpc.dart';
 import '../data/models/calibration/calibration_points.dart';
 import '../data/models/switch/switch.dart';
 import '../domain/repositories/calibration_repository.dart';
+import '../generated/Skyle.pbgrpc.dart';
 import '../generated/Types.pb.dart' as types;
 import '../generated/google/protobuf/empty.pb.dart';
-import '../generated/Skyle.pbgrpc.dart';
 import 'positionings.dart';
 
 class SkyleSimulatedServiceConfiguration {
@@ -253,7 +253,7 @@ class SkyleSimulatedService extends SkyleServiceBase {
   }
 
   @override
-  Stream<types.RawImage> rawImages(ServiceCall call, Empty request) {
+  Stream<types.Mat> rawImages(ServiceCall call, Empty request) {
     return const Stream.empty();
   }
 
