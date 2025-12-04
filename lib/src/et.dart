@@ -6,13 +6,12 @@
 
 import 'dart:async';
 
+import 'package:grpc/grpc.dart';
 import 'package:grpc/grpc_or_grpcweb.dart';
 import 'package:logger/logger.dart';
 
+import '../api.dart';
 import 'connectivity/connectivityprovider.dart';
-import 'core/data_state.dart';
-import 'core/exceptions.dart';
-import 'data/models/types.dart';
 import 'data/repositories/calibration_repository_impl.dart';
 import 'data/repositories/gaze_repository_impl.dart';
 import 'data/repositories/positioning_repository_impl.dart';
@@ -24,19 +23,7 @@ import 'data/repositories/switch_repository_impl.dart';
 import 'data/repositories/trigger_repository_impl.dart';
 import 'data/repositories/versions_repository_impl.dart';
 import 'data/repositories/video_stream_repository_impl.dart';
-import 'domain/repositories/calibration_repository.dart';
-import 'domain/repositories/gaze_repository.dart';
-import 'domain/repositories/positioning_repository.dart';
-import 'domain/repositories/profiles_repository.dart';
-import 'domain/repositories/raw_video_stream_repository.dart';
-import 'domain/repositories/reset_repository.dart';
-import 'domain/repositories/settings_repository.dart';
-import 'domain/repositories/switch_repository.dart';
-import 'domain/repositories/trigger_repository.dart';
-import 'domain/repositories/versions_repository.dart';
-import 'domain/repositories/video_stream_repository.dart';
 import 'generated/Skyle.pbgrpc.dart';
-import 'test/test_server.dart';
 
 enum Connection { disconnected, connecting, connected }
 
@@ -131,40 +118,29 @@ class ET {
     }
   }
 
-  /// TODO(krjw-eyev): Add async cancellation if called again.
-  /// Trys to reconnect the grpc connection. Is only needed after calling [softDisconnect]
+  /// Tries to reconnect the grpc connection. Is only needed after calling [softDisconnect]
   ///
   /// Accepts a new [url] and a new [grpcPort]. Should only be set if you really know what you are doing.
   Future<void> trySoftReconnect({String url = 'skyle.local', int grpcPort = 50051}) async {
     try {
-      if (_connection == Connection.connected || _connection == Connection.disconnected) return;
+      // Return immediately if we are already connected to avoid unnecessary resets.
+      if (_connection == Connection.connected) return;
+      // Update internal configuration.
       _grpcPort = grpcPort;
       ET.baseURL = url;
-      _createClient(url: url, port: ET._grpcPort);
-      logger?.i('Connecting Skyle with base ip: $url...');
 
-      for (var i = 0; i < _maxRetries; i++) {
-        try {
-          // First set options client to make the initial call
-          settings = SettingsRepositoryImpl(client: client);
-          if (await settings.get() is DataFailed) throw NotConnectedException();
-          // Set all clients
-          _setClients();
-          // Set the connection state and notify everyone
-          _connection = Connection.connected;
-          _connectionStreamController.add(_connection);
-          ET.logger?.i('Connected Skyle.');
-          break;
-        } catch (error) {
-          final milliseconds = 100 + 500 * i;
-          logger?.w('Warning in tryReconnect():', error: error, stackTrace: StackTrace.current);
-          logger?.i('GRPC connection attempt ${i + 1}/$_maxRetries - Waiting ${milliseconds / 1000}s before retrying.');
-          await Future.delayed(Duration(milliseconds: milliseconds));
-        }
-      }
-      if (_connection == Connection.disconnected) {
-        throw Exception('Could not excecute initial GRPC');
-      }
+      logger?.i('Connecting Skyle with base ip: $url...');
+      // Initialize the gRPC channel and the client. This also registers the listener on 'onConnectionStateChanged'.
+      _createClient(url: url, port: ET._grpcPort);
+      // Initialize the settings repository to make a test call.
+      settings = SettingsRepositoryImpl(client: client);
+      // Kickstart lazy gRPC channel. The listener in _createClient handles the connection state.
+      unawaited(
+        settings.get().timeout(const Duration(seconds: 1)).catchError((_) {
+          // Ignore error; just waking up the channel
+          return const DataFailed<Settings>('Ignored kickstart error');
+        }),
+      );
     } catch (e, st) {
       logger?.e('Skyle disconnected fatally:', error: e, stackTrace: st);
       await softDisconnect();
@@ -172,12 +148,53 @@ class ET {
   }
 
   void _createClient({required String url, required int port}) {
-    _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(
-      host: url,
-      port: port,
-      transportSecure: false,
-    );
+    // 1. Create channel
+    _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(host: url, port: port, transportSecure: false);
+    // 2. Instantiate client immediately (required for _setClients)
     _client = SkyleClient(_channel!);
+    // 3. Listen for status changes
+    _channel!.onConnectionStateChanged.listen(
+      (state) {
+        logger?.i('--> gRPC connection state changed: $state, _connection: $_connection}');
+
+        switch (state) {
+          // Connection successfully established -> reload repositories with the active client
+          case ConnectionState.ready:
+            if (_connection != Connection.connected) {
+              logger?.i('gRPC is ready. Initializing clients...');
+              _setClients();
+              _connection = Connection.connected;
+              _connectionStreamController.add(_connection);
+              logger?.i('Connected Skyle - Internal state set to connected.');
+            }
+            break;
+
+          // Connection terminated
+          case ConnectionState.shutdown:
+            if (_connection != Connection.disconnected) {
+              logger?.i('gRPC channel shutdown detected. Setting internal state to disconnected.');
+              _connection = Connection.disconnected;
+              _connectionStreamController.add(_connection);
+            }
+            break;
+
+          // Temporary problems or connection establishment
+          case ConnectionState.transientFailure:
+          case ConnectionState.connecting:
+          case ConnectionState.idle:
+            // Set status to 'connecting' if we were not already connecting or connected
+            if (_connection != Connection.connected && _connection != Connection.connecting) {
+              logger?.i('gRPC reported $state. Setting internal state to connecting...');
+              _connection = Connection.connecting;
+              _connectionStreamController.add(_connection);
+            } else if (_connection == Connection.connected && state == ConnectionState.transientFailure) {
+              // Optional: Warn if we have a glitch while connected
+              logger?.w('Warning: Transient failure while connected. Keeping connection alive for now.');
+            }
+            break;
+        }
+      },
+    );
   }
 
   /// Disconnects only the grpc client and makes it unusable.
