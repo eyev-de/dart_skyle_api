@@ -52,34 +52,35 @@ class ET {
   TriggerRepository trigger = TriggerRepositoryImpl();
   RawVideoStreamRepository video = RawVideoStreamRepositoryImpl();
 
-  Size resolution(int generation) {
-    if (generation == 2) {
-      return const Size(width: 1280, height: 800);
-    }
-    return const Size(width: 2464, height: 2064);
-  }
-
   Connection _connection = Connection.disconnected;
   Connection get connection => _connection;
+
+  final StreamController<Connection> _connectionStreamController = StreamController<Connection>.broadcast();
+  late final Stream<Connection> connectionStream = _connectionStreamController.stream;
 
   static Logger? logger;
   static String baseURL = 'skyle.local';
   static int _grpcPort = 50051;
   static List<String> possibleIPs = ['10.0.0.2', '192.168.137.2'];
-  static const _maxRetries = 10;
 
-  final StreamController<Connection> _connectionStreamController = StreamController<Connection>.broadcast();
-  late final Stream<Connection> connectionStream = _connectionStreamController.stream;
+  /// Number of retries for the connection kickstart loop (approx. 10 seconds total duration).
+  static const int _kickstartRetries = 20;
+
+  /// Duration to wait for the iOS network stack to stabilize after a hot-plug event.
+  static const Duration _hotplugDelay = Duration(seconds: 2);
 
   ET();
 
+  Size resolution(int generation) {
+    if (generation == 2) return const Size(width: 1280, height: 800);
+    return const Size(width: 2464, height: 2064);
+  }
+
   /// Starts the connection process of Skyle.
   ///
-  /// First the ethernet interfaces are scanned for the right IP address. If the correct IP address is found,
-  /// the grpc client is created. One API call is tested until the grpc library does not throw an exception anymore.
+  /// First the ethernet interfaces are scanned for the right IP address. If the correct IP address is found, the grpc client is created.
+  /// One API call is tested until the grpc library does not throw an exception anymore.
   /// This function blocks until Skyle is connected but it can also be called and not awaited which results in an async re/connection cycle.
-  /// Accepts [additionalIps] to be added to scan for an ET and a new [grpcPort]. Should only be set if you really know what you are doing.
-  /// The Skyle Integration Kit [grpcPort] is 50051, for Skyle for Windows and Skyle for iPad use 50052. The default is 50051.
   Future<void> connect({List<String> additionalIps = const [], int grpcPort = 50051}) async {
     if (_connectivityProvider.state != ConnectivityProviderState.disposed) throw StillRunningException();
     possibleIPs.addAll(additionalIps);
@@ -104,11 +105,15 @@ class ET {
     logger?.i('Disconnected Skyle...');
   }
 
+  /// Callback used by ConnectivityProvider when network interfaces change.
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting && _connection == Connection.disconnected) {
-      logger?.i('Interface connected: Try connecting Skyle: ${message.url ?? ET.baseURL}');
+      logger?.i('Interface detected: ${message.url}. Waiting for network stack to settle...');
       _connection = message.connection;
       _connectionStreamController.add(_connection);
+      // iOS needs 1-3 seconds to assign a routing-capable IP address after hot-plugging.
+      await Future.delayed(_hotplugDelay);
+      logger?.i('Starting Skyle connection to: ${message.url ?? ET.baseURL}');
       await trySoftReconnect(url: message.url ?? ET.baseURL, grpcPort: _grpcPort);
     } else if (message.connection == Connection.disconnected) {
       await softDisconnect();
@@ -125,38 +130,49 @@ class ET {
     try {
       // Return immediately if we are already connected to avoid unnecessary resets.
       if (_connection == Connection.connected) return;
-      // Update internal configuration.
       _grpcPort = grpcPort;
       ET.baseURL = url;
-
       logger?.i('Connecting Skyle with base ip: $url...');
-      // Initialize the gRPC channel and the client. This also registers the listener on 'onConnectionStateChanged'.
+      // Create channel and client
       _createClient(url: url, port: ET._grpcPort);
-      // Initialize the settings repository to make a test call.
+      // Initialize the settings repository to make test calls
       settings = SettingsRepositoryImpl(client: client);
-      // Kickstart lazy gRPC channel. The listener in _createClient handles the connection state.
-      unawaited(
-        settings.get().timeout(const Duration(seconds: 1)).catchError((_) {
-          // Ignore error; just waking up the channel
-          return const DataFailed<Settings>('Ignored kickstart error');
-        }),
-      );
+      // Force connection establishment -> start a background loop to wake up the channel.
+      unawaited(_kickstartConnectionLoop());
     } catch (e, st) {
       logger?.e('Skyle disconnected fatally:', error: e, stackTrace: st);
       await softDisconnect();
     }
   }
 
+  /// Repeatedly attempts to contact the server to wake up the gRPC channel.
+  /// This is necessary because the initial socket connection might fail if the IP isn't fully routed yet.
+  Future<void> _kickstartConnectionLoop() async {
+    logger?.d('Starting connection handshake loop...');
+    for (int i = 0; i < _kickstartRetries; i++) {
+      // Stop trying if we successfully connected
+      if (_connection == Connection.connected) return;
+      try {
+        // Short timeout. If this succeeds, the onConnectionStateChanged listener handles the rest.
+        await settings.get().timeout(const Duration(milliseconds: 500));
+        return;
+      } catch (e) {
+        // Ignore errors, wait briefly and try again -> time to negotiate DHCP/Link-Local.
+        await Future.delayed(const Duration(milliseconds: 500));
+      }
+    }
+    logger?.w('Connection Kickstart gave up after $_kickstartRetries attempts.');
+  }
+
   void _createClient({required String url, required int port}) {
-    // 1. Create channel
+    // Create channel
     _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(host: url, port: port, transportSecure: false);
-    // 2. Instantiate client immediately (required for _setClients)
+    // Instantiate client immediately (required for _setClients)
     _client = SkyleClient(_channel!);
-    // 3. Listen for status changes
+    // Listen for status changes
     _channel!.onConnectionStateChanged.listen(
       (state) {
-        logger?.i('--> gRPC connection state changed: $state, _connection: $_connection}');
-
+        logger?.i('-> gRPC state: $state | Internal state: $_connection');
         switch (state) {
           // Connection successfully established -> reload repositories with the active client
           case ConnectionState.ready:
@@ -165,31 +181,38 @@ class ET {
               _setClients();
               _connection = Connection.connected;
               _connectionStreamController.add(_connection);
-              logger?.i('Connected Skyle - Internal state set to connected.');
             }
             break;
-
           // Connection terminated
           case ConnectionState.shutdown:
             if (_connection != Connection.disconnected) {
-              logger?.i('gRPC channel shutdown detected. Setting internal state to disconnected.');
               _connection = Connection.disconnected;
               _connectionStreamController.add(_connection);
             }
             break;
-
           // Temporary problems or connection establishment
           case ConnectionState.transientFailure:
           case ConnectionState.connecting:
-          case ConnectionState.idle:
-            // Set status to 'connecting' if we were not already connecting or connected
             if (_connection != Connection.connected && _connection != Connection.connecting) {
-              logger?.i('gRPC reported $state. Setting internal state to connecting...');
               _connection = Connection.connecting;
               _connectionStreamController.add(_connection);
-            } else if (_connection == Connection.connected && state == ConnectionState.transientFailure) {
-              // Optional: Warn if we have a glitch while connected
-              logger?.w('Warning: Transient failure while connected. Keeping connection alive for now.');
+            }
+            break;
+          // Channel went to sleep
+          case ConnectionState.idle:
+            // If we are in the process of connecting but the channel went idle (gave up), we must force a wakeup call.
+            if (_connection == Connection.connecting) {
+              // Fire and forget a call to wake up the channel. We ignore the error as we only care about triggering the state change.
+              unawaited(
+                settings.get().timeout(const Duration(milliseconds: 500)).catchError((_) {
+                  return const DataFailed<Settings>('Ignored wakeup error');
+                }),
+              );
+            }
+            // Standard behavior if we weren't trying to connect
+            else if (_connection != Connection.connected && _connection != Connection.connecting) {
+              _connection = Connection.connecting;
+              _connectionStreamController.add(_connection);
             }
             break;
         }
@@ -237,7 +260,7 @@ class ET {
     await _connectionStreamController.close();
   }
 
-  /// Simulates a connection. This is only used for tests with the [TestServer] which is located in lib/src/test/test_server.dart
+  /// Simulates a connection. This is only used for tests with the [TestServer].
   Future<void> testConnectClients({required String url, required int port}) async {
     _connectivityProvider.state = ConnectivityProviderState.running;
     _connection = Connection.connecting;
