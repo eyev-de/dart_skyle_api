@@ -39,6 +39,24 @@ class ET {
   SkyleClient? _client;
   SkyleClient? get client => _client;
 
+  /// Timer for delayed idle wakeup calls to avoid busy-wait loops.
+  Timer? _idleWakeupTimer;
+
+  /// Counter for consecutive idle events; reset on successful connection.
+  int _idleWakeupAttempts = 0;
+
+  /// Maximum idle wakeup attempts before giving up to prevent infinite loops.
+  static const _maxIdleWakeups = 10;
+
+  /// Indicates if kickstart loop is running; coordinates with idle wakeup.
+  bool _kickstartRunning = false;
+
+  /// Cancellation flag for kickstart loop; set on disconnect/dispose.
+  bool _shouldStopKickstart = false;
+
+  /// gRPC state change subscription; must be cancelled to prevent memory leaks.
+  StreamSubscription<ConnectionState>? _connectionStateSubscription;
+
   final ConnectivityProvider _connectivityProvider = ConnectivityProvider();
   CalibrationRepository calibration = CalibrationRepositoryImpl();
   SettingsRepository settings = SettingsRepositoryImpl();
@@ -97,10 +115,12 @@ class ET {
   /// This should be called if you want to reconfigure a completely new connection.
   Future<void> disconnect() async {
     if (_connectivityProvider.state != ConnectivityProviderState.running) throw NotRunningException();
-    if (_connection == Connection.connecting) {
-      // Handles disconnect request when in the process of connecting the grpcs
-      // TODO(krjw-eyev): Handle disconnect request here. Send async cancellation to trySoftReconnect().
-    }
+    logger?.i('Disconnecting Skyle...');
+    _shouldStopKickstart = true;
+    _idleWakeupTimer?.cancel();
+    _idleWakeupTimer = null;
+    await _connectionStateSubscription?.cancel();
+    _connectionStateSubscription = null;
     await _connectivityProvider.stop();
     logger?.i('Disconnected Skyle...');
   }
@@ -108,17 +128,19 @@ class ET {
   /// Callback used by ConnectivityProvider when network interfaces change.
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting && _connection == Connection.disconnected) {
-      logger?.i('Interface detected: ${message.url}. Waiting for network stack to settle...');
+      final url = message.url ?? ET.baseURL; // ✅ Extract early
+      logger?.i('Interface detected: $url. Waiting for network stack to settle...');
       _connection = message.connection;
       _connectionStreamController.add(_connection);
-      // iOS needs 1-3 seconds to assign a routing-capable IP address after hot-plugging.
       await Future.delayed(_hotplugDelay);
-      logger?.i('Starting Skyle connection to: ${message.url ?? ET.baseURL}');
-      await trySoftReconnect(url: message.url ?? ET.baseURL, grpcPort: _grpcPort);
+      if (_connection != Connection.connecting) {
+        logger?.w('Connection state changed during hotplug delay. Aborting connection attempt.');
+        return;
+      }
+      logger?.i('Starting Skyle connection to: $url');
+      await trySoftReconnect(url: url, grpcPort: _grpcPort);
     } else if (message.connection == Connection.disconnected) {
       await softDisconnect();
-      _connection = message.connection;
-      _connectionStreamController.add(_connection);
       logger?.i('Skyle interface disconnected.');
     }
   }
@@ -129,7 +151,10 @@ class ET {
   Future<void> trySoftReconnect({String url = 'skyle.local', int grpcPort = 50051}) async {
     try {
       // Return immediately if we are already connected to avoid unnecessary resets.
-      if (_connection == Connection.connected) return;
+      if (_connection == Connection.connected) {
+        logger?.w('Already connected. Skipping reconnect.');
+        return;
+      }
       _grpcPort = grpcPort;
       ET.baseURL = url;
       logger?.i('Connecting Skyle with base ip: $url...');
@@ -140,42 +165,74 @@ class ET {
       // Force connection establishment -> start a background loop to wake up the channel.
       unawaited(_kickstartConnectionLoop());
     } catch (e, st) {
-      logger?.e('Skyle disconnected fatally:', error: e, stackTrace: st);
-      await softDisconnect();
+      logger?.e('trySoftReconnect failed:', error: e, stackTrace: st);
+      // Don't call softDisconnect if we're already disconnecting
+      if (_connection != Connection.disconnected) await softDisconnect();
     }
   }
 
   /// Repeatedly attempts to contact the server to wake up the gRPC channel.
   /// This is necessary because the initial socket connection might fail if the IP isn't fully routed yet.
   Future<void> _kickstartConnectionLoop() async {
+    _kickstartRunning = true;
+    _shouldStopKickstart = false;
     logger?.d('Starting connection handshake loop...');
-    for (int i = 0; i < _kickstartRetries; i++) {
-      // Stop trying if we successfully connected
-      if (_connection == Connection.connected) return;
-      try {
-        // Short timeout. If this succeeds, the onConnectionStateChanged listener handles the rest.
-        await settings.get().timeout(const Duration(milliseconds: 500));
-        return;
-      } catch (e) {
-        // Ignore errors, wait briefly and try again -> time to negotiate DHCP/Link-Local.
-        await Future.delayed(const Duration(milliseconds: 500));
+    try {
+      for (int i = 0; i < _kickstartRetries; i++) {
+        // Check cancellation FIRST
+        if (_shouldStopKickstart) {
+          logger?.i('Kickstart: Cancelled by user');
+          return;
+        }
+        if (_connection == Connection.connected) {
+          logger?.i('Kickstart: Connection established!');
+          return;
+        }
+        if (_idleWakeupAttempts > _maxIdleWakeups) {
+          logger?.e('Kickstart: Too many idle loops detected. Aborting.');
+          break;
+        }
+        if (_client == null) {
+          logger?.w('Kickstart: Client is null, aborting');
+          break;
+        }
+        try {
+          final timeout = i < 5 ? const Duration(milliseconds: 500) : const Duration(seconds: 1);
+          await settings.get().timeout(timeout);
+          logger?.i('Kickstart: Successful handshake');
+          return;
+        } catch (e) {
+          logger?.d('Kickstart attempt ${i + 1}/$_kickstartRetries failed');
+          if (i < 5) {
+            await Future.delayed(const Duration(milliseconds: 300));
+          } else if (i < 10) {
+            await Future.delayed(const Duration(milliseconds: 500));
+          } else {
+            await Future.delayed(const Duration(seconds: 1));
+          }
+        }
       }
+      logger?.w('Connection kickstart gave up after $_kickstartRetries attempts.');
+    } finally {
+      _kickstartRunning = false;
+      _idleWakeupAttempts = 0;
     }
-    logger?.w('Connection Kickstart gave up after $_kickstartRetries attempts.');
   }
 
   void _createClient({required String url, required int port}) {
-    // Create channel
+    _idleWakeupAttempts = 0;
+    _idleWakeupTimer?.cancel();
+    _connectionStateSubscription?.cancel();
     _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(host: url, port: port, transportSecure: false);
-    // Instantiate client immediately (required for _setClients)
     _client = SkyleClient(_channel!);
-    // Listen for status changes
-    _channel!.onConnectionStateChanged.listen(
+    _connectionStateSubscription = _channel!.onConnectionStateChanged.listen(
       (state) {
-        logger?.i('-> gRPC state: $state | Internal state: $_connection');
+        logger?.d('-> gRPC state: $state | Internal: $_connection | Kickstart: $_kickstartRunning');
         switch (state) {
-          // Connection successfully established -> reload repositories with the active client
           case ConnectionState.ready:
+            // Reset counters und cancel timer
+            _idleWakeupAttempts = 0;
+            _idleWakeupTimer?.cancel();
             if (_connection != Connection.connected) {
               logger?.i('gRPC is ready. Initializing clients...');
               _setClients();
@@ -183,34 +240,55 @@ class ET {
               _connectionStreamController.add(_connection);
             }
             break;
-          // Connection terminated
           case ConnectionState.shutdown:
+            _idleWakeupAttempts = 0;
+            _idleWakeupTimer?.cancel();
             if (_connection != Connection.disconnected) {
               _connection = Connection.disconnected;
               _connectionStreamController.add(_connection);
             }
             break;
-          // Temporary problems or connection establishment
           case ConnectionState.transientFailure:
           case ConnectionState.connecting:
+            // Reset idle counter
+            _idleWakeupAttempts = 0;
+            _idleWakeupTimer?.cancel();
             if (_connection != Connection.connected && _connection != Connection.connecting) {
               _connection = Connection.connecting;
               _connectionStreamController.add(_connection);
             }
             break;
-          // Channel went to sleep
           case ConnectionState.idle:
-            // If we are in the process of connecting but the channel went idle (gave up), we must force a wakeup call.
             if (_connection == Connection.connecting) {
-              // Fire and forget a call to wake up the channel. We ignore the error as we only care about triggering the state change.
-              unawaited(
-                settings.get().timeout(const Duration(milliseconds: 500)).catchError((_) {
-                  return const DataFailed<Settings>('Ignored wakeup error');
-                }),
-              );
-            }
-            // Standard behavior if we weren't trying to connect
-            else if (_connection != Connection.connected && _connection != Connection.connecting) {
+              _idleWakeupAttempts++;
+              if (_idleWakeupAttempts > _maxIdleWakeups) {
+                logger?.e('Too many idle wakeup attempts ($_idleWakeupAttempts). Stopping.');
+                _idleWakeupAttempts = 0;
+                _idleWakeupTimer?.cancel();
+                return;
+              }
+              if (_kickstartRunning) {
+                logger?.d('Idle detected but kickstart is running - skipping wakeup');
+                return;
+              }
+              final delay = _idleWakeupAttempts <= 3
+                  ? const Duration(milliseconds: 200)
+                  : _idleWakeupAttempts <= 6
+                  ? const Duration(milliseconds: 500)
+                  : const Duration(seconds: 1);
+              logger?.w('Channel idle (attempt $_idleWakeupAttempts/$_maxIdleWakeups). Waiting ${delay.inMilliseconds}ms before wakeup...');
+              _idleWakeupTimer?.cancel();
+              _idleWakeupTimer = Timer(delay, () {
+                if (_connection == Connection.connecting && !_kickstartRunning) {
+                  logger?.d('Triggering idle wakeup call...');
+                  unawaited(
+                    settings.get().timeout(const Duration(seconds: 1)).catchError((_) {
+                      return const DataFailed<Settings>('Ignored wakeup error');
+                    }),
+                  );
+                }
+              });
+            } else if (_connection != Connection.connected && _connection != Connection.connecting) {
               _connection = Connection.connecting;
               _connectionStreamController.add(_connection);
             }
@@ -227,6 +305,13 @@ class ET {
   Future<void> softDisconnect() async {
     try {
       logger?.i('Disconnecting active Skyle grpcs...');
+      _shouldStopKickstart = true;
+      _idleWakeupTimer?.cancel();
+      _idleWakeupTimer = null;
+      _idleWakeupAttempts = 0;
+      _kickstartRunning = false;
+      await _connectionStateSubscription?.cancel();
+      _connectionStateSubscription = null;
       await calibration.abort();
       switchSettings.stop();
       await _channel?.terminate();
@@ -236,10 +321,26 @@ class ET {
       _channel = null;
       _client = null;
       _setClients();
-      _connection = Connection.connecting;
+      _connection = Connection.disconnected;
       _connectionStreamController.add(_connection);
       logger?.i('Disconnected Skyle grpcs...');
     }
+  }
+
+  /// Disposes the instance of [ET] completely.
+  Future<void> dispose() async {
+    _shouldStopKickstart = true;
+    _idleWakeupTimer?.cancel();
+    _idleWakeupTimer = null;
+    await _connectionStateSubscription?.cancel();
+    _connectionStateSubscription = null;
+    // connectivity provider might be disposed already
+    try {
+      await disconnect();
+    } catch (e) {
+      logger?.w('Error during disconnect in dispose: $e');
+    }
+    await _connectionStreamController.close();
   }
 
   void _setClients() {
@@ -252,12 +353,6 @@ class ET {
     profiles = ProfilesRepositoryImpl(client: client);
     trigger = TriggerRepositoryImpl(client: client);
     video = RawVideoStreamRepositoryImpl(client: client);
-  }
-
-  /// Disposes the instance of [ET] completely.
-  Future<void> dispose() async {
-    await disconnect();
-    await _connectionStreamController.close();
   }
 
   /// Simulates a connection. This is only used for tests with the [TestServer].
