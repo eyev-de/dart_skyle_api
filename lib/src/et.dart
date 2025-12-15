@@ -128,7 +128,7 @@ class ET {
   /// Callback used by ConnectivityProvider when network interfaces change.
   Future<void> _onConnectionMessageChanged(ConnectionMessage message) async {
     if (message.connection == Connection.connecting && _connection == Connection.disconnected) {
-      final url = message.url ?? ET.baseURL; // ✅ Extract early
+      final url = message.url ?? ET.baseURL; // Extract early
       logger?.i('Interface detected: $url. Waiting for network stack to settle...');
       _connection = message.connection;
       _connectionStreamController.add(_connection);
