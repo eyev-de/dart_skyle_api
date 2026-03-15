@@ -5,11 +5,11 @@
 //
 
 import 'package:grpc/grpc_or_grpcweb.dart';
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
 import '../../domain/repositories/raw_gaze_repository.dart';
-import '../../generated/google/protobuf/empty.pb.dart';
 import '../../generated/Skyle.pbgrpc.dart' as grpc;
 import '../models/types.dart';
 

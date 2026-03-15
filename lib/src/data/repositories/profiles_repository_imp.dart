@@ -5,11 +5,11 @@
 //
 
 import 'package:grpc/grpc.dart';
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 
 import '../../core/exceptions.dart';
 import '../../domain/repositories/profiles_repository.dart';
 import '../../et.dart';
-import '../../generated/google/protobuf/empty.pb.dart';
 import '../../generated/Skyle.pbgrpc.dart' as grpc;
 import '../models/profile/profile.dart';
 

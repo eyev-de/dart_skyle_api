@@ -6,13 +6,14 @@
 
 import 'dart:async';
 
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
+
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
 import '../../data/models/switch/switch.dart';
 import '../../data/models/switch/switch_actions.dart';
 import '../../domain/repositories/switch_repository.dart';
 import '../../generated/Skyle.pbgrpc.dart';
-import '../../generated/google/protobuf/empty.pb.dart';
 
 class SwitchRepositoryImpl implements SwitchRepository {
   SkyleClient? client;
@@ -25,11 +26,13 @@ class SwitchRepositoryImpl implements SwitchRepository {
   Future<DataState<SwitchActions>> setSwitch(SwitchActions switchActions) async {
     try {
       if (client == null) throw NotConnectedException();
-      final ButtonActions buttonActions = await client!.setButton(ButtonActions(
-        singleClick: switchActions.singleClick,
-        doubleClick: switchActions.doubleClick,
-        holdClick: switchActions.holdClick,
-      ));
+      final ButtonActions buttonActions = await client!.setButton(
+        ButtonActions(
+          singleClick: switchActions.singleClick,
+          doubleClick: switchActions.doubleClick,
+          holdClick: switchActions.holdClick,
+        ),
+      );
 
       return DataSuccess(SwitchActions.fromButtonActions(buttonActions));
     } catch (error) {

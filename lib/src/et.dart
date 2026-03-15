@@ -223,7 +223,19 @@ class ET {
     _idleWakeupAttempts = 0;
     _idleWakeupTimer?.cancel();
     _connectionStateSubscription?.cancel();
-    _channel = GrpcOrGrpcWebClientChannel.toSingleEndpoint(host: url, port: port, transportSecure: false);
+    _channel = GrpcOrGrpcWebClientChannel.grpc(
+      url,
+      port: port,
+      options: const ChannelOptions(
+        credentials: ChannelCredentials.insecure(),
+        idleTimeout: Duration(days: 365),
+        keepAlive: ClientKeepAliveOptions(
+          pingInterval: Duration(seconds: 20),
+          timeout: Duration(seconds: 10),
+          permitWithoutCalls: true,
+        ),
+      ),
+    );
     _client = SkyleClient(_channel!);
     _connectionStateSubscription = _channel!.onConnectionStateChanged.listen(
       (state) {

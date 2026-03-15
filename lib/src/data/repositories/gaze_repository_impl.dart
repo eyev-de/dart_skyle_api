@@ -7,6 +7,7 @@
 import 'dart:async';
 
 import 'package:grpc/grpc_or_grpcweb.dart';
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
@@ -14,7 +15,6 @@ import '../../data/models/types.dart';
 import '../../domain/repositories/gaze_repository.dart';
 import '../../generated/Skyle.pbgrpc.dart' as grpc;
 import '../../generated/Types.pb.dart' as types;
-import '../../generated/google/protobuf/empty.pb.dart';
 
 class GazeRepositoryImpl implements GazeRepository {
   grpc.SkyleClient? client;

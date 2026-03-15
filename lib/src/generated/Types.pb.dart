@@ -740,6 +740,85 @@ class Eyes extends $pb.GeneratedMessage {
   Eye ensureRight() => $_ensure(1);
 }
 
+///
+///  Message for the head pose
+class HeadPose extends $pb.GeneratedMessage {
+  factory HeadPose({
+    $core.double? pitch,
+    $core.double? yaw,
+    $core.double? roll,
+  }) {
+    final result = create();
+    if (pitch != null) result.pitch = pitch;
+    if (yaw != null) result.yaw = yaw;
+    if (roll != null) result.roll = roll;
+    return result;
+  }
+
+  HeadPose._();
+
+  factory HeadPose.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory HeadPose.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'HeadPose',
+      package: const $pb.PackageName(_omitMessageNames ? '' : 'Skyle.Types'),
+      createEmptyInstance: create)
+    ..aD(1, _omitFieldNames ? '' : 'pitch')
+    ..aD(2, _omitFieldNames ? '' : 'yaw')
+    ..aD(3, _omitFieldNames ? '' : 'roll')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  HeadPose clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  HeadPose copyWith(void Function(HeadPose) updates) =>
+      super.copyWith((message) => updates(message as HeadPose)) as HeadPose;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static HeadPose create() => HeadPose._();
+  @$core.override
+  HeadPose createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static HeadPose getDefault() =>
+      _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<HeadPose>(create);
+  static HeadPose? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.double get pitch => $_getN(0);
+  @$pb.TagNumber(1)
+  set pitch($core.double value) => $_setDouble(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasPitch() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPitch() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.double get yaw => $_getN(1);
+  @$pb.TagNumber(2)
+  set yaw($core.double value) => $_setDouble(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasYaw() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearYaw() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.double get roll => $_getN(2);
+  @$pb.TagNumber(3)
+  set roll($core.double value) => $_setDouble(2, value);
+  @$pb.TagNumber(3)
+  $core.bool hasRoll() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearRoll() => $_clearField(3);
+}
+
 /// *
 ///  Message for a face
 ///  Rectangle bounding box of the face
@@ -749,11 +828,13 @@ class Face extends $pb.GeneratedMessage {
     Rectangle? boundingRect,
     Eyes? eyes,
     $core.List<$core.int>? id,
+    HeadPose? headPose,
   }) {
     final result = create();
     if (boundingRect != null) result.boundingRect = boundingRect;
     if (eyes != null) result.eyes = eyes;
     if (id != null) result.id = id;
+    if (headPose != null) result.headPose = headPose;
     return result;
   }
 
@@ -775,6 +856,8 @@ class Face extends $pb.GeneratedMessage {
     ..aOM<Eyes>(2, _omitFieldNames ? '' : 'eyes', subBuilder: Eyes.create)
     ..a<$core.List<$core.int>>(
         3, _omitFieldNames ? '' : 'id', $pb.PbFieldType.OY)
+    ..aOM<HeadPose>(4, _omitFieldNames ? '' : 'headPose',
+        protoName: 'headPose', subBuilder: HeadPose.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -825,6 +908,17 @@ class Face extends $pb.GeneratedMessage {
   $core.bool hasId() => $_has(2);
   @$pb.TagNumber(3)
   void clearId() => $_clearField(3);
+
+  @$pb.TagNumber(4)
+  HeadPose get headPose => $_getN(3);
+  @$pb.TagNumber(4)
+  set headPose(HeadPose value) => $_setField(4, value);
+  @$pb.TagNumber(4)
+  $core.bool hasHeadPose() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearHeadPose() => $_clearField(4);
+  @$pb.TagNumber(4)
+  HeadPose ensureHeadPose() => $_ensure(3);
 }
 
 /// *

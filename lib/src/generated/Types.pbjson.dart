@@ -276,6 +276,21 @@ final $typed_data.Uint8List eyesDescriptor = $convert.base64Decode(
     'CgRFeWVzEiQKBGxlZnQYASABKAsyEC5Ta3lsZS5UeXBlcy5FeWVSBGxlZnQSJgoFcmlnaHQYAi'
     'ABKAsyEC5Ta3lsZS5UeXBlcy5FeWVSBXJpZ2h0');
 
+@$core.Deprecated('Use headPoseDescriptor instead')
+const HeadPose$json = {
+  '1': 'HeadPose',
+  '2': [
+    {'1': 'pitch', '3': 1, '4': 1, '5': 1, '10': 'pitch'},
+    {'1': 'yaw', '3': 2, '4': 1, '5': 1, '10': 'yaw'},
+    {'1': 'roll', '3': 3, '4': 1, '5': 1, '10': 'roll'},
+  ],
+};
+
+/// Descriptor for `HeadPose`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List headPoseDescriptor = $convert.base64Decode(
+    'CghIZWFkUG9zZRIUCgVwaXRjaBgBIAEoAVIFcGl0Y2gSEAoDeWF3GAIgASgBUgN5YXcSEgoEcm'
+    '9sbBgDIAEoAVIEcm9sbA==');
+
 @$core.Deprecated('Use faceDescriptor instead')
 const Face$json = {
   '1': 'Face',
@@ -297,6 +312,14 @@ const Face$json = {
       '10': 'eyes'
     },
     {'1': 'id', '3': 3, '4': 1, '5': 12, '10': 'id'},
+    {
+      '1': 'headPose',
+      '3': 4,
+      '4': 1,
+      '5': 11,
+      '6': '.Skyle.Types.HeadPose',
+      '10': 'headPose'
+    },
   ],
 };
 
@@ -304,7 +327,8 @@ const Face$json = {
 final $typed_data.Uint8List faceDescriptor = $convert.base64Decode(
     'CgRGYWNlEjoKDGJvdW5kaW5nUmVjdBgBIAEoCzIWLlNreWxlLlR5cGVzLlJlY3RhbmdsZVIMYm'
     '91bmRpbmdSZWN0EiUKBGV5ZXMYAiABKAsyES5Ta3lsZS5UeXBlcy5FeWVzUgRleWVzEg4KAmlk'
-    'GAMgASgMUgJpZA==');
+    'GAMgASgMUgJpZBIxCghoZWFkUG9zZRgEIAEoCzIVLlNreWxlLlR5cGVzLkhlYWRQb3NlUghoZW'
+    'FkUG9zZQ==');
 
 @$core.Deprecated('Use matDescriptor instead')
 const Mat$json = {

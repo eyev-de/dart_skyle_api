@@ -4,12 +4,13 @@
 //  Copyright © 2022 eyeV GmbH. All rights reserved.
 //
 
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
+
 import '../../core/data_state.dart';
 import '../../core/exceptions.dart';
 import '../../data/models/versions/versions.dart';
 import '../../domain/repositories/versions_repository.dart';
 import '../../generated/Skyle.pbgrpc.dart';
-import '../../generated/google/protobuf/empty.pb.dart';
 
 class VersionsRepositoryImpl implements VersionsRepository {
   SkyleClient? client;

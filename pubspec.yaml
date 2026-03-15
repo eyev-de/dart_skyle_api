@@ -8,12 +8,12 @@ environment:
 dependencies:
   collection: ^1.19.1
   freezed_annotation: ^3.1.0
-  grpc: ^5.0.0
+  grpc: ^5.1.0
   http: ^1.6.0
-  json_annotation: ^4.9.0
+  json_annotation: ^4.11.0
   logger: ^2.6.2
   path: ^1.9.1
-  protobuf: ^5.1.0
+  protobuf: ^6.0.0
   retry: ^3.1.2
   universal_platform: ^1.1.0
 
@@ -21,4 +21,4 @@ dev_dependencies:
   build_runner: ^2.5.4
   freezed: ^3.1.0
   json_serializable: ^6.9.5
-  test: ^1.27.0
+  test: ^1.30.0

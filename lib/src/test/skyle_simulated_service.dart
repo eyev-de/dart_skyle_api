@@ -9,13 +9,13 @@ import 'dart:math';
 
 import 'package:fixnum/fixnum.dart';
 import 'package:grpc/grpc.dart';
+import 'package:protobuf/well_known_types/google/protobuf/empty.pb.dart';
 
 import '../data/models/calibration/calibration_points.dart';
 import '../data/models/switch/switch.dart';
 import '../domain/repositories/calibration_repository.dart';
 import '../generated/Skyle.pbgrpc.dart';
 import '../generated/Types.pb.dart' as types;
-import '../generated/google/protobuf/empty.pb.dart';
 import 'positionings.dart';
 
 class SkyleSimulatedServiceConfiguration {
