@@ -49,13 +49,14 @@ class NetworkInterfaceProvider implements ConnectivityProvider {
   @override
   Future<void> stop() async {
     if (state != ConnectivityProviderState.running) return;
+    state = ConnectivityProviderState.disposed;
     _isolate?.kill(priority: Isolate.immediate);
     // Wait for the isolate to terminate
     await _onExit?.first;
+    _onExit = null;
     _isolate = null;
     _port?.close();
     _port = null;
-    state = ConnectivityProviderState.disposed;
     connection = ConnectionMessage.disconnected();
     _onConnectionMessageChanged?.call(connection);
   }
